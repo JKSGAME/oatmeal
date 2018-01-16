@@ -1,0 +1,23 @@
+.Dashboard {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+    align-content: center;
+    height: 100vh;
+    width: auto;
+}
+
+.carousel {
+    height: 40vh;
+    width: 40vw;
+    border: solid black 1px;
+    align-self: center;
+}
+
+.btn {
+    height: 10vh;
+    width: 25vw;
+    align-self: center;
+}

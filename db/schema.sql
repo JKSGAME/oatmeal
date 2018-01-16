@@ -1,0 +1,56 @@
+CREATE TABLE users (
+    id serial primary key,
+    name VARCHAR(30),
+    team_id TEXT,
+    user_type_id INTEGER references user_type(id),
+    has_permission BOOLEAN,
+    photos TEXT
+);
+
+CREATE TABLE leaderboard (
+    id serial primary key,
+    challenge_id INTEGER references challenges(id),
+    standings TEXT
+);
+
+CREATE TABLE user_type (
+    id serial primary key,
+    user_type VARCHAR(25)
+);
+INSERT INTO user_type (id, user_type) values
+(default, 'user'), (default, 'manager'), (default, 'admin')
+
+CREATE TABLE challenge_type (
+    id serial primary key,
+    challenge_type VARCHAR(50)
+);
+INSERT INTO challenge_type (id, challenge_type) values
+(default, 'agent v agent'), (default, 'team v team')
+
+CREATE TABLE team (
+    id serial primary key,
+    team VARCHAR(50)
+);
+
+CREATE TABLE challenges (
+    id serial primary key,
+    name VARCHAR(50),
+    team_id TEXT,
+    challenge_type_id INTEGER references challenge_type(id),
+    description TEXT,
+    duration_id INTEGER references duration(id),
+    time_start TEXT,
+    time_end TEXT,
+    mode TEXT,
+    kpi TEXT,
+    value INTEGER,
+    reward_value INTEGER,
+    reward_distribution TEXT
+);
+
+CREATE TABLE duration (
+    id serial primary key,
+    duration TEXT
+);
+INSERT INTO duration (id, duration) values
+(default, 'daily'), (default, 'weekly'), (default, 'monthly'), (default, 'yearly')

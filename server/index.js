@@ -4,6 +4,7 @@ const express = require('express')
     , cors = require('cors')
     , session = require('express-session')
     , massive = require('massive')
+    , socket = require('socket.io')
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,11 +12,11 @@ app.use(cors());
 
 massive(process.env.DB_CONNECTION).then(db=>{app.set( 'db', db )})
 
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
-    resave: false
-}))
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     saveUninitialized: true,
+//     resave: false
+// }))
 
 //Get dashboard information with current challenges  UPDATE SQL FILE NAME WHEN STEVEN UPDATES THEM
 app.get('api/dashboard', function(req, res){
@@ -51,7 +52,19 @@ app.post('api/create', function (req, res){
 })
 
 
+const io = socket( app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) );
 
-app.list(process.env.SERVER_PORT, ()=>{console.log(`listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ `)});
+// Will need to update sockets to connect with dummy data
+
+io.on('connection', socket => {
+    console.log('connection est. 2018')
+
+    socket.on('send message', input => {
+        socket.emit('response', { message:'Thank You' })
+    })
+    socket.on('another message', input => {
+        socket.emit('response', { message:'No really, send help' })
+    })
+})
 
 exports = module.exports = app

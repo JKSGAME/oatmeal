@@ -4,7 +4,7 @@ import './LastPlaceAgent.css';
 import io from 'socket.io-client';
 const socket = io();
 
-class LastPlaceAgent extends Component {
+class UnrankedAgents extends Component {
     constructor(){
         super()
 
@@ -36,4 +36,4 @@ class LastPlaceAgent extends Component {
   }
 }
 
-export default LastPlaceAgent;
+export default UnrankedAgents;

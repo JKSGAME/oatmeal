@@ -25,6 +25,8 @@ class TeamvTeam extends Component {
         </header>
         <div>
             <FirstPlaceTeam />
+        </div>
+        <div>
             <SecondPlaceTeam />
         </div>
         <button className='btn'>Create Challenge</button>

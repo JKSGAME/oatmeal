@@ -31,7 +31,7 @@ class AgentvAgent extends Component {
                 <SecondThirdAgent />
             </div>
             <div classname = "lastPlace">
-                <LastPlaceAgent />
+                <UnrankedAgents />
             </div>
         </div>
         <button className='btn'>Create Challenge</button>

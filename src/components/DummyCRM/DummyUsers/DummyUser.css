@@ -1,0 +1,21 @@
+.DummyUser {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: space-around;
+	border: solid black 1px;
+}
+
+.btn-sales-add {
+    height: 10vh;
+    width: 25vw;
+    align-self: center;
+}
+
+.btn-dials-add {
+    height: 10vh;
+    width: 25vw;
+    align-self: center;
+}

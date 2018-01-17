@@ -8,43 +8,41 @@ class FirstPlaceTeam extends Component {
     constructor(){
         super()
 
-        this.state ={
-            leaderboard = {}
-        }
-
-        socket.on('response', data => {
-            this.setState( {leaderboard: data})
-        })
     }
 
     
     render() {
     return (
-      <div className="FirstPlace">
+      <div className="FirstPlaceTeam">
       {/* Will access information with something like leaderboard[0].name */}
-        <div>Total KPI</div>
-        <div>
-            <div>
-                <p>1st Place</p>
-                <img> </img>
-                <p> Team leaders name</p>
-                <p>Team leader currnet KPI</p>
-            </div>
-            <div>
-                <div>
-                    <p> 2nd Place</p>
-                    <img> </img>
-                    <p>2nd Place Name</p>
-                    <p>2nd place current KPI</p>
+        <div className="totalKPI">Total KPI</div>
+        <div className="rightColumn">
+            <div>Team Name One</div>
+            <div className="teamLeaders">
+                <div className="leaderOne">
+                    <p>1st Place</p>
+                    <div>Image</div>
+                    <p> Team leaders name</p>
+                    <p>Team leader currnet KPI</p>
                 </div>
-                <div>
-                <p> 3rd Place</p>
-                    <img> </img>
-                    <p>3rd Place Name</p>
-                    <p>3rd place current KPI</p>
+                <div className="secondThird">
+                    <div>
+                        <p> 2nd Place</p>
+                        <div>Image</div>
+                        <p>2nd Place Name</p>
+                        <p>2nd place current KPI</p>
+                    </div>
+                    <div>
+                    <p> 3rd Place</p>
+                        <div>Image</div>
+                        <p>3rd Place Name</p>
+                        <p>3rd place current KPI</p>
+                    </div>
                 </div>
             </div>
+            <div ><button>Expand</button></div>
         </div>
+       
       </div>
     );
   }

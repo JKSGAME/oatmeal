@@ -9,12 +9,7 @@
     width: auto;
 }
 
-.carousel {
-    height: 40vh;
-    width: 40vw;
-    border: solid black 1px;
-    align-self: center;
-}
+
 
 .btn {
     height: 10vh;

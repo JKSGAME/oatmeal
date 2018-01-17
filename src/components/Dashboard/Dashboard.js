@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Dashboard.css'
 import ModalExampleDimmer from './Modal'
+import Leaderboard from '../Leaderboard/Leaderboard';
 
 class Dashboard extends Component {
   render() {
@@ -10,7 +11,7 @@ class Dashboard extends Component {
         <h1>Welcome to the Dashboard</h1>
         </header>
         <div className='carousel'>
-        <p>Leaderboards to be displayed here.</p>
+        <Leaderboard />
         </div>
         <ModalExampleDimmer/>
       </div>

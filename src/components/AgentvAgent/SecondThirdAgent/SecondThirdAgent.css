@@ -1,0 +1,12 @@
+.SecondThird{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.secondThirdAvatar{
+    height: 80%;
+    width: 75%;
+    border: solid black 2px;
+}

@@ -1,0 +1,16 @@
+.Leader{
+    display: flex;
+    flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: space-around;
+    border: solid black 1px;
+    height:35vh;
+}
+
+.leaderAvatar{
+    height: 80%;
+    width: 30%;
+    border: solid black 2px;
+}

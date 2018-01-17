@@ -7,24 +7,18 @@ class Leaderboard extends Component {
     constructor(){
         super()
 
-        this.state ={
-            score = {}
-        }
-
-        this.changeScore = this.changeScore.bind(this)
-
     }
     
     render() {
         {/* Some sort of switch or jsx if statement here to determin which view will get rendered */}
+    // return (
+    //   <div className="Leaderboard">
+    //     <TeamvTeam />
+    //     <button className='btn'>Create Challenge</button>
+    //   </div>
+    // );
     return (
-      <div className="Dashboard">
-        <TeamvTeam />
-        <button className='btn'>Create Challenge</button>
-      </div>
-    );
-    return (
-        <div className="Dashboard">
+        <div className="Leaderboard">
           <AgentvAgent />
           <button className='btn'>Create Challenge</button>
         </div>

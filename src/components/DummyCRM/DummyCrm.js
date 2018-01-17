@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
 import './DummyCrm.css'
 import DummyUser from './DummyUsers/DummyUser.js'
+import axios from 'axios'
 
 class DummyCrm extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      users: []
+    }
+
+  }
+
+  componentDidMount() {
+    axios.get('/api/users').then(( res ) => {
+      this.setState({
+        users: res.data[0],
+        teams: res.data[1]
+      })
+    })
+  }
+
   render() {
     return (
       <div className="DummyCrm">
@@ -10,15 +30,10 @@ class DummyCrm extends Component {
           <h1>Dummy CRM</h1>
         </header>
         <div className='dummy-user-layout'>
-          <div className='dummy-top-row'>
-            <DummyUser/>
-            <DummyUser/>
-            <DummyUser/>
-          </div>
-          <div className='dummy-bottom-row'>
-            <DummyUser/>
-            <DummyUser/>
-            <DummyUser/>
+          <div className='dummy-data'>
+            {this.state.users.map( ( e, i ) => {
+              return <DummyUser key={i} name={e.name} team={this.state.teams[(e.team_id * 1) - 1].team} />
+            })}
           </div>
         </div>
       </div>

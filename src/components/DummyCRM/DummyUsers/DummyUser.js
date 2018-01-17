@@ -1,34 +1,18 @@
 import React, { Component } from 'react';
 import './DummyUser.css'
 
-import axios from 'axios'
-
 class DummyUser extends Component {
 
   constructor( props ) {
     super( props )
 
     this.state = {
-      user: '',
-      team: '',
       sales: 0,
       dials: 0
     }
 
     this.handleClickSales = this.handleClickSales.bind( this )
     this.handleClickDials = this.handleClickDials.bind( this )
-
-  }
-
-  componentDidMount() {
-
-    axios.get('/api/users').then(( res ) => {
-      console.log(res)
-      this.setState({
-        // user: res.data,
-        // team: res.team.name
-      })
-    })
 
   }
 
@@ -45,13 +29,14 @@ class DummyUser extends Component {
   }
 
   render() {
+
     return (
       <div className="DummyUser">
-        <header>
-            <h1>User: { this.state.user }</h1>
-            <h2>Team: { this.state.team }</h2>
+        <header className="DummyTitle">
+            <h1>Name: { this.props.name }</h1>
+            <h2>Team: { this.props.team }</h2>
         </header>
-        <span>
+        <span className="DummyKpis">
             <h3>Current Sales: { this.state.sales }</h3>
             <h3>Current Dials: { this.state.dials }</h3>
         </span>

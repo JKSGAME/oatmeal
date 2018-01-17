@@ -21,18 +21,18 @@ massive( process.env.DB_CONNECTION ).then( db => { app.set( 'db', db ) } )
 // }))
 
 const controllers = require('./controllers/controllers')
-//Get dashboard information with current challenges  UPDATE SQL FILE NAME WHEN STEVEN UPDATES THEM
+
+//Dashboard Endpoints
 app.get( '/api/dashboard', controllers.get_dashboard ) 
 
-
-//Get leaderboard information  UPDATE SQL FILE NAME WHEN STEVEN COMPLETES THEM
+//Leaderboard Endpoints
 app.get( '/api/leaderboard/:id', controllers.get_leaderboard )
 
 //User Endpoints
+app.get( '/api/users', controllers.users_team_join )
 app.get( '/api/user/:id', controllers.get_user_info )
-app.get( '/api/users', controllers.get_users )
 
-//Post new Challenges to db TOTALLY NEED TO REVIEW THIS NOT SURE ITS RIGHT
+//Challenge Endpoints
 app.post( '/api/create', controllers.create_challenge )
 // Getting Challenges from challenge_type table
 app.get('/api/challenges', controllers.get_challenges)

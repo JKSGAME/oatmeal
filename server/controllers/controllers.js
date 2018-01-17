@@ -52,6 +52,17 @@ module.exports = {
         db.get_teams( [req.body] ).then( teams => {
             res.send( teams )
         })
+    },
+
+    users_team_join ( req, res ) {
+        const db = req.app.get( 'db' )
+        let status = 200
+        db.getUsers().then( users => {
+            db.get_teams().then( team => {
+                let response = [ users, team ]
+                res.status( status ).send( response )
+            })
+        }).catch( console.log )
     }
 
 }

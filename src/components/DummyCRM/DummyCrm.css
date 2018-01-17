@@ -16,20 +16,14 @@
 	align-content: space-around;
 }
 
-.dummy-top-row {
+.dummy-data {
     display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
-	align-content: space-around;
-}
-
-.dummy-bottom-row {
-    display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: space-around;
+	align-content: center;
+	width: 30;
+	margin: 15px;
+	padding: 15px;
 }

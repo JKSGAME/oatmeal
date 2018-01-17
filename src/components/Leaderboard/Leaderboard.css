@@ -1,0 +1,6 @@
+.Leaderboard {
+    height: 60vh;
+    width: 60vw;
+    border: solid black 1px;
+    align-self: center;
+}

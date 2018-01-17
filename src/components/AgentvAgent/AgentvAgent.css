@@ -1,0 +1,21 @@
+.AgentvAgent{
+    display: flex;
+    flex-direction: column;
+}
+
+.topAgent{
+    height: 35vh;
+
+}
+
+.bottomAgent{
+    height: 25vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    border: solid black 1px;
+}
+

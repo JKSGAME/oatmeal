@@ -1,0 +1,38 @@
+.FirstPlaceTeam{
+    display: flex;
+    flex-direction: row;
+    height: 35vh
+
+}
+
+.totalKPI{
+    width: 40%;
+	justify-content: space-around;
+	align-items: center;
+	align-content: space-around;
+	border: solid black 1px;
+}
+
+.rightColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+	align-items: center;
+	align-content: space-around;
+
+}
+
+.teamLeaders{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-around;
+	align-items: center;
+	align-content: space-around;
+
+}
+
+.secondThird{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,35 @@
+.SecondPlaceTeam{
+    display: flex;
+    flex-direction: row;
+    height: 25vh;
+}
+
+.totalKPI{
+    width: 40%;
+	justify-content: space-around;
+	align-items: center;
+	align-content: space-around;
+	border: solid black 1px;
+}
+
+.rightColumn{
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+
+
+}
+
+.loserList{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: space-between;
+
+}
+
+.listElements{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

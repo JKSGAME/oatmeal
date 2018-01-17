@@ -1,0 +1,13 @@
+.unranked{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.avatar{
+    width: 35px;
+    height: 35px;
+    border: solid black 1px;
+    border-radius: 50%;
+
+}

@@ -8,13 +8,6 @@ class SecondThirdAgent extends Component {
     constructor(){
         super()
 
-        this.state ={
-            leaderboard = {}
-        }
-
-        socket.on('response', data => {
-            this.setState( {leaderboard: data})
-        })
     }
 
     
@@ -24,23 +17,21 @@ class SecondThirdAgent extends Component {
         <div>
             {/* Access this data will likely be something like leaderboard[1].name for 2nd place
             and leaderboard[2].name for third place */}
-            <img>will be image from db</img>
+            <div className="secondThirdAvatar">will be image from db</div>
             <div>
-                <p>2nd Place Name</p>
-                <p>2nd Place Title</p>
-                <p>2nd Place Team Name</p>
+                <div>2nd Place Name</div>
+                <div>2nd Place Team Name</div>
+                <div>2nd Current KPI</div>
             </div>
-            <div> 2nd Current KPI</div>
         </div>
 
         <div>
-            <img>will be image from db</img>
+            <div className="secondThirdAvatar">will be image from db</div>
             <div>
-                <p>3rd Place Name</p>
-                <p>3rd Place Titles</p>
-                <p>3rd Place Team</p>
+                <div>3rd Place Name</div>
+                <div>3rd Place Team</div>
+                <div>3rd Current KPI</div>
             </div>
-            <div>3rd Current KPI</div>
         </div>
         
       </div>

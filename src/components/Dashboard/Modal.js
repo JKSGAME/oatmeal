@@ -1,49 +1,96 @@
-import React, { Component } from 'react'
-import { Popup, Button, Header, Image, Modal, Input, Dropdown } from 'semantic-ui-react'
-
-const challengeTypes = [{ key: 'Agent v Agent', text: 'Agent v Agent', value: 'Agent v Agent'}, {key: 'Team v Team', text: 'Team v Team', value: 'Team v Team'}]
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Button, Header, Image, Modal, Input, Dropdown, Divider, Grid, Segment, Form, TextArea } from 'semantic-ui-react';
+import GridColumn from 'semantic-ui-react/dist/commonjs/collections/Grid/GridColumn';
 
 class ModalExampleDimmer extends Component {
-    state = { open: false }
+    constructor(){
+        super()
+        this.state = { 
+            open: false,
+            challenges: [],
+            teams: [],
+            selectedType: '',
+            selectedTeam: ''
+        }
+        this.changeType = this.changeType.bind(this)
+        this.changeTeam = this.changeTeam.bind(this)
+        this.submit = this.submit.bind(this)
+    }
 
     show = dimmer => () => this.setState({ dimmer, open: true })
-    close = () => this.setState({ open: false })
+    close = () => this.setState({ 
+        open: false, 
+        selectedTeam: '',
+        selectedType: '' 
+    })
+
+    changeType(e, {value}) {
+        this.setState({
+            selectedType: value
+        })
+    }
+
+    changeTeam(e, {value}) {
+        this.setState({
+            selectedTeam: value
+        })
+    }
+
+    submit() {
+        this.setState({
+            open: false,
+            selectedTeam: '',
+            selectedType: ''
+        })
+    }
+
+    componentDidMount() {
+        axios.get('/api/challenges').then( res => {
+                 this.setState({
+                challenges: res.data
+            })
+        })
+
+        axios.get('/api/teams').then( res => {
+                 this.setState({
+                teams: res.data
+            })
+        })
+    }
 
     render() {
-        const { open, dimmer } = this.state
-
+        const { open, dimmer, value, selectedTeam, selectedType } = this.state
+        const challengeType = this.state.challenges.map( ( e, i ) => {
+            return { id: e.id, key: e.challenge_type, text: e.challenge_type, value: e.challenge_type }
+        })
+        const teamInfo = this.state.teams.map( ( e, i ) => {
+            return { id: e.id, key: e.team, text: e.team, value: e.team }
+        })
         return (
             <div>
                 <Button onClick={this.show('blurring')}>Create Challenge</Button>
-                <Popup trigger={<Button onClick={this.show(false)}>None</Button>}>
-                    <Popup.Header>Heads up!</Popup.Header>
-                    <Popup.Content>
-                        By default, a Modal closes when escape is pressed or when the dimmer is
-              clicked. Setting the dimmer to "None" (dimmer={'{'}false{'}'}) means that there is no
-              dimmer to click so clicking outside won't close the Modal. To close on
-              outside click when there's no dimmer, you can pass the "closeOnDocumentClick" prop.
-            </Popup.Content>
-                </Popup>
-
                 <Modal dimmer={dimmer} open={open} onClose={this.close} size={'large'}>
                     <Modal.Header>Create Challenge</Modal.Header>
                     <Modal.Content scrolling={true}>
                         <Modal.Description>
-                            <Header>Default Profile Image</Header>
                             <Input label={'Challenge Name'} placeholder='Type here' />
-                            <Dropdown button
-                            floating
-                            labeled
-                            options={challengeTypes}
-                            search
-                            text='Select Challenge Type'/>
+                            <Divider hidden={true}/>
+                            <Dropdown placeholder='Select Challenge Type' floating search selection value={selectedType} onChange={this.changeType} options={challengeType} text={selectedType} labeled={true} label='Challenge'/>
+                            <Dropdown placeholder='Select Teams Involved' floating search selection value={selectedTeam} onChange={this.changeTeam} options={teamInfo} text={selectedTeam}/>
+                            <Divider hidden={true} vertical/>
+                            <Dropdown placeholder='Time Start' floating search selection value={''} onChange={''} options={''} text={''}/>
+                            <Dropdown placeholder='Time End' floating search selection value={''} onChange={''} options={''} text={''}/>
+                            <Divider hidden={true}/>
+                            <Form>
+                            <TextArea autoHeight placeholder='Leave a Description of the Challenge Here'/>
+                            </Form>
+                            <Divider/>
                         </Modal.Description>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button color='black' onClick={this.close}>
-                            Nope
-              </Button>
-                        <Button positive icon='checkmark' labelPosition='right' content="Yep, that's me" onClick={this.close} />
+                        <Button color='black' onClick={this.close}>Cancel</Button>
+                        <Button positive icon='checkmark' labelPosition='right' content="Submit Challenge" onClick={this.submit} />
                     </Modal.Actions>
                 </Modal>
             </div>

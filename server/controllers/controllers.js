@@ -32,12 +32,26 @@ module.exports = {
         })
     },
 
+    get_challenges( req, res ) {
+        const db = req.app.get( 'db' )
+        db.get_challenge_type( [req.body] ).then( challenges => {
+            res.send( challenges )
+        })
+    },
+
     get_users ( req, res ) {
         const db = req.app.get( 'db' )
         let status = 200
         db.getUsers().then( users => {
             res.status( status ).send( users )
         }).catch( console.log )
+    }, 
+
+    get_team_info ( req, res ) {
+        const db = req.app.get( 'db' )
+        db.get_teams( [req.body] ).then( teams => {
+            res.send( teams )
+        })
     }
 
-}   
+}

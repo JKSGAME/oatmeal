@@ -34,6 +34,11 @@ app.get( '/api/users', controllers.get_users )
 
 //Post new Challenges to db TOTALLY NEED TO REVIEW THIS NOT SURE ITS RIGHT
 app.post( '/api/create', controllers.create_challenge )
+// Getting Challenges from challenge_type table
+app.get('/api/challenges', controllers.get_challenges)
+
+// Get team information from Team table
+app.get('/api/teams', controllers.get_team_info)
 
 
 const io = socket( app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) );

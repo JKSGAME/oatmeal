@@ -26,9 +26,9 @@ module.exports = {
 
     create_challenge ( req, res ) {
         const db = req.app.get( 'db' )
-        let status = 200
-        db.createChallenge().then( challenge => {
-            res.status( status ).send( 'Challenge Created' )
+        let { Name, Type, Team, TimeStart, TimeEnd, Desc, Mode, KPI, TargetValue, RewardValue, RewardDist } = req.body
+        db.create_challenge([Name, Team, Type, Desc, TimeStart, TimeEnd, Mode, KPI, TargetValue, RewardValue, RewardDist]).then( challenge => {
+            res.send( challenge )
         })
     },
 
@@ -63,6 +63,20 @@ module.exports = {
                 res.status( status ).send( response )
             })
         }).catch( console.log )
+    },
+
+    get_mode ( req, res ) {
+        const db = req.app.get( 'db' )
+        db.get_modes( [req.body] ).then( modes => {
+            res.send( modes )
+        })
+    },
+
+    get_kpi ( req, res ) {
+        const db = req.app.get( 'db' )
+        db.get_kpis( [req.body] ).then( kpis => {
+            res.send( kpis )
+        })
     }
 
 }

@@ -20,7 +20,6 @@ class Leaderboard extends Component {
     return (
         <div className="Leaderboard">
           <AgentvAgent />
-          <button className='btn'>Create Challenge</button>
         </div>
       );
   }

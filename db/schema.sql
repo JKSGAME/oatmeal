@@ -54,3 +54,17 @@ CREATE TABLE duration (
 );
 INSERT INTO duration (id, duration) values
 (default, 'daily'), (default, 'weekly'), (default, 'monthly'), (default, 'yearly')
+
+CREATE TABLE modes (
+    id serial primary key,
+    mode TEXT
+);
+INSERT INTO modes (id, mode) values
+(default, 'Race'), (default, 'King of the Hill'), (default, 'Free For All')
+
+CREATE TABLE kpi (
+    id serial primary key,
+    kpi TEXT
+);
+INSERT INTO kpi (id, kpi) values
+(default, 'Dials'), (default, 'Sales')

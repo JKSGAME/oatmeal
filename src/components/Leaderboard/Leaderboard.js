@@ -14,13 +14,11 @@ class Leaderboard extends Component {
     // return (
     //   <div className="Leaderboard">
     //     <TeamvTeam />
-    //     <button className='btn'>Create Challenge</button>
     //   </div>
     // );
     return (
         <div className="Leaderboard">
           <AgentvAgent />
-          <button className='btn'>Create Challenge</button>
         </div>
       );
   }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './SecondPlaceTeam.css';
 
-import io from 'socket.io-client';
-const socket = io();
+
 
 class SecondPlaceTeam extends Component {
     constructor(){

@@ -63,6 +63,14 @@ module.exports = {
                 res.status( status ).send( response )
             })
         }).catch( console.log )
+    },
+
+    teamvteam ( req, res ) {
+        const db = req.app.get( 'db' )
+        let status = 200
+        db.teamvteam().then( response => {
+            res.status( status ).send( response )
+        }).catch( console.log )
     }
 
 }

@@ -23,7 +23,7 @@ massive( process.env.DB_CONNECTION ).then( db => { app.set( 'db', db ) } )
 const controllers = require('./controllers/controllers')
 
 //Dashboard Endpoints
-app.get( '/api/dashboard', controllers.get_dashboard ) 
+app.get( '/api/dashboard', controllers.get_dashboard ) // get all leaderboards for the dashboard
 
 //Leaderboard Endpoints
 app.get( '/api/leaderboard/:id', controllers.get_leaderboard ) // not using yet
@@ -53,15 +53,14 @@ app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process
 
 // Will need to update sockets to connect with dummy data
 
-// io.on('connection', socket => {
-//     console.log('connection est. 2018')
+io.on('connection', socket => {
+    console.log('connection est. 2018')
 
-//     socket.on('send message', input => {
-//         socket.emit('response', { message:'Thank You' })
-//     })
-//     socket.on('another message', input => {
-//         socket.emit('response', { message:'No really, send help' })
-//     })
-// })
+    socket.on('update standings', input => {
+        console.log('hit')
+        socket.emit('response', { standings:'Heres your new standing punk' })
+    })
+
+})
 
 // exports = module.exports = app

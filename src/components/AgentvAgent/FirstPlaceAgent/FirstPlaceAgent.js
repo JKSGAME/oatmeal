@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './FirstPlaceAgent.css';
 
-import io from 'socket.io-client';
-const socket = io();
 
 class FirstPlaceAgent extends Component {
     constructor(){

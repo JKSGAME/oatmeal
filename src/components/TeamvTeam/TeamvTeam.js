@@ -7,19 +7,22 @@ import SecondPlaceTeam from './SecondPlaceTeam/SecondPlaceTeam';
 class TeamvTeam extends Component {
     constructor(){
         super()
+
     }
 
     
     render() {
     return (
       <div className="TeamvTeam">
+<<<<<<< HEAD
+            <FirstPlaceTeam />
+=======
         <div className="winning-team">
             <FirstPlaceTeam />
         </div>
         <div className="losing-team">
+>>>>>>> master
             <SecondPlaceTeam />
-        </div>
-        <button className='btn'>Create Challenge</button>
       </div>
     );
   }

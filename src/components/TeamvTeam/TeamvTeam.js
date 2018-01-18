@@ -13,10 +13,10 @@ class TeamvTeam extends Component {
     render() {
     return (
       <div className="TeamvTeam">
-        <div>
+        <div className="winning-team">
             <FirstPlaceTeam />
         </div>
-        <div>
+        <div className="losing-team">
             <SecondPlaceTeam />
         </div>
         <button className='btn'>Create Challenge</button>

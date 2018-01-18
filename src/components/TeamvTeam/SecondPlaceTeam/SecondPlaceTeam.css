@@ -1,35 +1,62 @@
 .SecondPlaceTeam{
     display: flex;
-    flex-direction: row;
-    height: 25vh;
-}
-
-.totalKPI{
-    width: 40%;
-	justify-content: space-around;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
 	align-items: center;
-	align-content: space-around;
-	border: solid black 1px;
+	align-content: center;
 }
 
-.rightColumn{
-    display: flex;
-    flex-direction: column;
+.team-data-2 {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
 	align-items: center;
-
-
+	align-content: center;
 }
 
-.loserList{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    justify-content: space-between;
-
+.SecondPlaceLeftColumn {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
 
-.listElements{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.SecondPlaceRightColumn {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team2-leaders {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team2-ranking-text {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team2-ranking-data {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }

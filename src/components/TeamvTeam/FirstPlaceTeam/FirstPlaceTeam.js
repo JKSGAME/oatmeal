@@ -1,51 +1,60 @@
 import React, { Component } from 'react';
 import './FirstPlaceTeam.css';
-
-import io from 'socket.io-client';
-const socket = io();
+import { connect } from 'react-redux'
+import { fetchData } from './../../../ducks/reducer'
 
 class FirstPlaceTeam extends Component {
-    constructor(){
-        super()
 
-    }
-
-    
     render() {
-    return (
-      <div className="FirstPlaceTeam">
-      {/* Will access information with something like leaderboard[0].name */}
-        <div className="totalKPI">Total KPI</div>
-        <div className="rightColumn">
-            <div>Team Name One</div>
-            <div className="teamLeaders">
-                <div className="leaderOne">
-                    <p>1st Place</p>
-                    <div>Image</div>
-                    <p> Team leaders name</p>
-                    <p>Team leader currnet KPI</p>
-                </div>
-                <div className="secondThird">
-                    <div>
-                        <p> 2nd Place</p>
-                        <div>Image</div>
-                        <p>2nd Place Name</p>
-                        <p>2nd place current KPI</p>
+        return (
+            <div className="FirstPlaceTeam">
+                <h1>team name{this.props.challengeData}</h1>
+                <div className="Team-data">
+                    <div className="FirstPlaceLeftColumn">
+                        <h1>kpi name{this.props.challengeData}</h1>
+                        <span>kpi total{this.props.challengeData}</span>
                     </div>
-                    <div>
-                    <p> 3rd Place</p>
-                        <div>Image</div>
-                        <p>3rd Place Name</p>
-                        <p>3rd place current KPI</p>
+                    <div className="FirstPlaceRightColumn">
+                        <button className="team1-user-first">
+                            <h1>1st Place</h1>
+                            <img src={this.props.challengeData} />
+                            <h1>name{this.props.challengeData}</h1>
+                            <h1>kpi total{this.props.challengeData}</h1>
+                        </button>
+                        <div className="team1-users-twoandthree">
+                            <button className="team1-second">
+                                <h1>2nd Place</h1>
+                                <div className="team1-second-userdata">
+                                    <img src={this.props.challengeData} />
+                                    <div className="team1-second-userInfo">
+                                        <h3>name{this.props.challengeData}</h3>
+                                        <h4>kpi total{this.props.challengeData}</h4>
+                                    </div>
+                                </div>
+                            </button>
+                            <div className="team1-thirdBox">
+                                <button className="team1-third">
+                                    <h1>3rd Place</h1>
+                                    <div className="team1-third-userdata">
+                                        <img src={this.props.challengeData} />
+                                        <div className="team1-third-userInfo">
+                                            <h3>name{this.props.challengeData}</h3>
+                                            <h4>kpi total{this.props.challengeData}</h4>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button>View More</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div ><button>Expand</button></div>
-        </div>
-       
-      </div>
-    );
-  }
+        );
+    }
 }
 
-export default FirstPlaceTeam;
+function mapStateToProps( state ) {
+    return { challengeData: state.challengeData }
+}
+  
+export default connect( mapStateToProps, { fetchData } )( FirstPlaceTeam )

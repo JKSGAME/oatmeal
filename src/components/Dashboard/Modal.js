@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Header, Image, Modal, Input, Dropdown, Divider, Grid, Segment, Form, TextArea } from 'semantic-ui-react';
-import GridColumn from 'semantic-ui-react/dist/commonjs/collections/Grid/GridColumn';
+import { Button, Header, Image, Modal, Input, Dropdown, Divider, Form, TextArea } from 'semantic-ui-react';
 
 class ModalExampleDimmer extends Component {
     constructor(){
@@ -10,12 +9,20 @@ class ModalExampleDimmer extends Component {
             open: false,
             challenges: [],
             teams: [],
+            modes: [],
+            kpis: [],
+            input: '',
             selectedType: '',
-            selectedTeam: ''
+            selectedTeam: '',
+            selectedMode: '',
+            selectedKPI: '',
+            timeStart: '',
+            timeEnd: '',
+            selectedRD: ''
         }
-        this.changeType = this.changeType.bind(this)
-        this.changeTeam = this.changeTeam.bind(this)
         this.submit = this.submit.bind(this)
+        this.dataGrabber = this.dataGrabber.bind(this)
+        this.addChallenge = this.addChallenge.bind(this)
     }
 
     show = dimmer => () => this.setState({ dimmer, open: true })
@@ -25,25 +32,54 @@ class ModalExampleDimmer extends Component {
         selectedType: '' 
     })
 
-    changeType(e, {value}) {
-        this.setState({
-            selectedType: value
-        })
-    }
-
-    changeTeam(e, {value}) {
-        this.setState({
-            selectedTeam: value
-        })
-    }
-
     submit() {
+        console.log(this.name.inputRef.value);
+        console.log(this.desc.ref.value);
+        console.log(this.targetValue.inputRef.value);
+        console.log(this.rewardValue.inputRef.value);
+        console.log('state', this.state);
+        this.addChallenge()
+        // send data to db, send data in fields, then this.name = ''
         this.setState({
             open: false,
             selectedTeam: '',
-            selectedType: ''
+            selectedType: '',
+            selectedMode: '',
+            selectedKPI: '',
+            timeStart: '',
+            timeEnd: '',
+            selectedRD: ''
         })
     }
+
+
+    dataGrabber( propName, value ) {
+        console.log('value', value);
+        this.setState({
+            [propName]: value
+        })
+    }
+
+    addChallenge() {
+        let chal = {
+            Name: this.name.inputRef.value,
+            Type: this.state.selectedType,
+            Team: this.state.selectedTeam,
+            TimeStart: this.state.timeStart,
+            TimeEnd: this.state.timeEnd,
+            Desc: this.desc.ref.value,
+            Mode: this.state.selectedMode,
+            KPI: this.state.selectedKPI,
+            TargetValue: this.targetValue.inputRef.value,
+            RewardValue: this.rewardValue.inputRef.value,
+            RewardDist: this.state.selectedRD
+        }
+
+        axios.post( '/api/create', chal ).then( res => {
+            console.log('res', res.data )
+          })
+    }
+
 
     componentDidMount() {
         axios.get('/api/challenges').then( res => {
@@ -57,16 +93,42 @@ class ModalExampleDimmer extends Component {
                 teams: res.data
             })
         })
+
+        axios.get('/api/modes').then( res => {
+                 this.setState({
+                modes: res.data
+            })
+        })
+
+        axios.get('/api/kpi').then( res => {
+                 this.setState({
+                kpis: res.data
+            })
+        })
     }
 
     render() {
-        const { open, dimmer, value, selectedTeam, selectedType } = this.state
+        const { open, dimmer, value, selectedTeam, selectedType, selectedMode, selectedKPI } = this.state
+
         const challengeType = this.state.challenges.map( ( e, i ) => {
-            return { id: e.id, key: e.challenge_type, text: e.challenge_type, value: e.challenge_type }
+            return { key: e.challenge_type, text: e.challenge_type, value: e.id }
         })
+
         const teamInfo = this.state.teams.map( ( e, i ) => {
-            return { id: e.id, key: e.team, text: e.team, value: e.team }
+            return { key: e.team, text: e.team, value: e.id }
         })
+
+        const modeInfo = this.state.modes.map( ( e, i ) => {
+            return { id: e.id, key: e.mode, text: e.mode, value: e.mode }
+        })
+
+        const kpiInfo = this.state.kpis.map( ( e, i ) => {
+            return { id: e.id, key: e.kpi, text: e.kpi, value: e.kpi }
+        })
+
+        const timeOption = [{ key: 0, text: '1:00', value: '1:00' }, { key: 1, text: '2:00', value: '2:00' }, { key: 2, text: '3:00', value: '3:00' }]
+        const rewardOption = [{ key: 0, text: 'Points', value: 'Points' }, { key: 1, text: 'Gift Card', value: 'Gift Card' }, { key: 2, text: 'PTO', value: 'PTO' }]
+
         return (
             <div>
                 <Button onClick={this.show('blurring')}>Create Challenge</Button>
@@ -74,22 +136,34 @@ class ModalExampleDimmer extends Component {
                     <Modal.Header>Create Challenge</Modal.Header>
                     <Modal.Content scrolling={true}>
                         <Modal.Description>
-                            <Input label={'Challenge Name'} placeholder='Type here' />
+                            <Input label={'Challenge Name'} placeholder='Type here' ref={name => this.name = name} />
                             <Divider hidden={true}/>
-                            <Dropdown placeholder='Select Challenge Type' floating search selection value={selectedType} onChange={this.changeType} options={challengeType} text={selectedType} labeled={true} label='Challenge'/>
-                            <Dropdown placeholder='Select Teams Involved' floating search selection value={selectedTeam} onChange={this.changeTeam} options={teamInfo} text={selectedTeam}/>
+                            <Dropdown placeholder='Select Challenge Type' floating search selection onChange={ (e, d) => this.dataGrabber( 'selectedType', d.value )} options={challengeType} text={challengeType.text} value={challengeType.value} labeled={true} />
+                            <Dropdown placeholder='Select Teams Involved' floating search selection value={teamInfo.value} onChange={ (e, d) => this.dataGrabber( 'selectedTeam', d.value )} options={teamInfo} text={teamInfo.text}/>
                             <Divider hidden={true} vertical/>
-                            <Dropdown placeholder='Time Start' floating search selection value={''} onChange={''} options={''} text={''}/>
-                            <Dropdown placeholder='Time End' floating search selection value={''} onChange={''} options={''} text={''}/>
+                            <Dropdown placeholder='Time Start' floating search selection options={timeOption} onChange={ (e, d) => this.dataGrabber( 'timeStart', d.value )} />
+                            <Dropdown placeholder='Time End' floating search selection options={timeOption} onChange={ (e, d) => this.dataGrabber( 'timeEnd', d.value )} />
                             <Divider hidden={true}/>
-                            <Form>
-                            <TextArea autoHeight placeholder='Leave a Description of the Challenge Here'/>
+                            <Form >
+                            <TextArea autoHeight placeholder='Leave a Description of the Challenge Here' ref={desc => this.desc = desc} />
                             </Form>
+                            <Divider hidden/>
                             <Divider/>
+                            <Divider hidden/>
+
+                            <Dropdown placeholder='Select Challenge Mode' floating search selection value={selectedMode} onChange={ (e, d) => this.dataGrabber( 'selectedMode', d.value )} options={modeInfo} text={selectedMode} labeled={true} />
+                            <Dropdown placeholder='Select KPI' floating search selection value={selectedKPI} onChange={ (e, d) => this.dataGrabber( 'selectedKPI', d.value )} options={kpiInfo} text={selectedKPI} labeled={true} label='Challenge' />
+                            <Input placeholder='Target-Value/Goal' ref={targetValue => this.targetValue = targetValue} />
+                            <Divider hidden/>
+                            <Divider/>
+                            <Divider hidden/>
+
+                            <Input placeholder='Reward Value' ref={rewardValue => this.rewardValue = rewardValue} />
+                            <Dropdown placeholder='Reward Distribution' floating search selection options={rewardOption} onChange={ (e, d) => this.dataGrabber( 'selectedRD', d.value )} />
                         </Modal.Description>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button color='black' onClick={this.close}>Cancel</Button>
+                        <Button color='black' onChange={this.close}>Cancel</Button>
                         <Button positive icon='checkmark' labelPosition='right' content="Submit Challenge" onClick={this.submit} />
                     </Modal.Actions>
                 </Modal>

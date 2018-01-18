@@ -42,20 +42,26 @@ app.get('/api/challenges', controllers.get_challenges)
 // Get team information from Team table
 app.get('/api/teams', controllers.get_team_info)
 
+// Get Mode info from Mode table
+app.get('/api/modes', controllers.get_mode)
 
-const io = socket( app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) );
+// Get KPI info from KPI table
+app.get('/api/kpi', controllers.get_kpi)
+
+
+app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) ;
 
 // Will need to update sockets to connect with dummy data
 
-io.on('connection', socket => {
-    console.log('connection est. 2018')
+// io.on('connection', socket => {
+//     console.log('connection est. 2018')
 
-    socket.on('send message', input => {
-        socket.emit('response', { message:'Thank You' })
-    })
-    socket.on('another message', input => {
-        socket.emit('response', { message:'No really, send help' })
-    })
-})
+//     socket.on('send message', input => {
+//         socket.emit('response', { message:'Thank You' })
+//     })
+//     socket.on('another message', input => {
+//         socket.emit('response', { message:'No really, send help' })
+//     })
+// })
 
 // exports = module.exports = app

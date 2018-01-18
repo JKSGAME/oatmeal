@@ -15,7 +15,7 @@ class DummyCrm extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/users').then(( res ) => {
+    axios.get('/api/users').then( ( res ) => {
       this.setState({
         users: res.data[0],
         teams: res.data[1]

@@ -1,38 +1,130 @@
 .FirstPlaceTeam{
     display: flex;
-    flex-direction: row;
-    height: 35vh
-
-}
-
-.totalKPI{
-    width: 40%;
-	justify-content: space-around;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
 	align-items: center;
-	align-content: space-around;
-	border: solid black 1px;
+	align-content: center;
 }
 
-.rightColumn{
+.Team-name {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
 	align-items: center;
-	align-content: space-around;
-
+	align-content: center;
 }
 
-.teamLeaders{
+.Team-data {
     display: flex;
-    flex-direction: row;
-    width: 60%;
-    justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
 	align-items: center;
-	align-content: space-around;
-
+	align-content: center;
 }
 
-.secondThird{
+.FirstPlaceLeftColumn {
     display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
+
+.FirstPlaceRightColumn {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-user-first {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-users-twoandthree {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-second {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-second-userdata {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-second-userInfo {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-thirdBox {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-third {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-third-userdata {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.team1-third-userInfo {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+
+
+
+

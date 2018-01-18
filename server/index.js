@@ -26,14 +26,16 @@ const controllers = require('./controllers/controllers')
 app.get( '/api/dashboard', controllers.get_dashboard ) // get all leaderboards for the dashboard
 
 //Leaderboard Endpoints
-app.get( '/api/leaderboard/:id', controllers.get_leaderboard ) //get individual leaderboards
+app.get( '/api/leaderboard/:id', controllers.get_leaderboard ) // not using yet
+app.get( '/api/teamvteam', controllers.teamvteam )
 
 //User Endpoints
 app.get( '/api/users', controllers.users_team_join )
-app.get( '/api/user/:id', controllers.get_user_info )
+app.get( '/api/user/:id', controllers.get_user_info ) // for specific user information
 
 //Challenge Endpoints
 app.post( '/api/create', controllers.create_challenge )
+
 // Getting Challenges from challenge_type table
 app.get('/api/challenges', controllers.get_challenges)
 

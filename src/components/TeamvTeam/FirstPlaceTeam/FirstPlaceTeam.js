@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import './FirstPlaceTeam.css';
-<<<<<<< HEAD
-
-=======
 import { connect } from 'react-redux'
 import { fetchData } from './../../../ducks/reducer'
->>>>>>> master
 
 class FirstPlaceTeam extends Component {
 
     render() {
         return (
             <div className="FirstPlaceTeam">
+            {console.log(this.props.challengeData)}
                 <h1>team name{this.props.challengeData}</h1>
                 <div className="Team-data">
                     <div className="FirstPlaceLeftColumn">

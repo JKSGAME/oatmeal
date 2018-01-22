@@ -49,7 +49,7 @@ app.get('/api/modes', controllers.get_mode)
 app.get('/api/kpi', controllers.get_kpi)
 
 
-app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) ;
+const io = socket ( app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) ) ;
 
 // Will need to update sockets to connect with dummy data
 

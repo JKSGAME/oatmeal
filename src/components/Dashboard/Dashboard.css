@@ -9,7 +9,22 @@
     width: auto;
 }
 
+.carousel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; 
+}
 
+.crm-btn{
+    height: 35px;
+    width: 150px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    background-color: light-gray;
+    border-radius: 5px;
+    border: none;
+  }
 
 .btn {
     height: 10vh;

@@ -20,45 +20,42 @@ massive( process.env.DB_CONNECTION ).then( db => { app.set( 'db', db ) } )
 //     resave: false
 // }))
 
-const controllers = require('./controllers/controllers')
+const dashboardControllers = require( './controllers/dashboard' )
+const challengesControllers = require( './controllers/challenges' )
+const leaderboardControllers = require( './controllers/leaderboard' )
+const usersControllers = require( './controllers/users' )
 
-//Dashboard Endpoints
-app.get( '/api/dashboard', controllers.get_dashboard ) // get all leaderboards for the dashboard
+// Dashboard Endpoints
+app.get( '/api/dashboard', dashboardControllers.get_dashboard ) // get all leaderboards for the dashboard
 
 //Leaderboard Endpoints
-app.get( '/api/leaderboard/:id', controllers.get_leaderboard ) // not using yet
-app.get( '/api/teamvteam', controllers.teamvteam )
+app.get( '/api/leaderboard/:id', leaderboardControllers.get_leaderboard ) // not using yet
+app.get( '/api/teamvteam', leaderboardControllers.teamvteam )
+app.get( '/api/agentvagent', leaderboardControllers.agentvagent ) // not using yet
 
-//User Endpoints
-app.get( '/api/users', controllers.users_team_join )
-app.get( '/api/user/:id', controllers.get_user_info ) // for specific user information
+// //User Endpoints
+app.get( '/api/users', usersControllers.users_team_join )
+app.get( '/api/user/:id', usersControllers.get_user_info ) // for specific user information
+app.get( '/api/teams', usersControllers.get_team_info )
 
-//Challenge Endpoints
-app.post( '/api/create', controllers.create_challenge )
-
-// Getting Challenges from challenge_type table
-app.get('/api/challenges', controllers.get_challenges)
-
-// Get team information from Team table
-app.get('/api/teams', controllers.get_team_info)
-
-// Get Mode info from Mode table
-app.get('/api/modes', controllers.get_mode)
-
-// Get KPI info from KPI table
-app.get('/api/kpi', controllers.get_kpi)
+// //Challenge Endpoints
+app.get( '/api/challenges', challengesControllers.get_challenges )
+app.get( '/api/challenge_type', challengesControllers.get_challenges_type )
+app.get( '/api/modes', challengesControllers.get_mode )
+app.get( '/api/kpi', challengesControllers.get_kpi )
+app.post( '/api/create', challengesControllers.create_challenge )
 
 
-app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) ;
+const io = socket ( app.listen ( process.env.SERVER_PORT, () => { console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) ) ;
 
 // Will need to update sockets to connect with dummy data
 
-io.on('connection', socket => {
-    console.log('connection est. 2018')
+io.on( 'connection', socket => {
+    console.log( 'connection est. 2018' )
 
-    socket.on('update standings', input => {
-        console.log('hit')
-        socket.emit('response', { standings:'Heres your new standing punk' })
+    socket.on( 'update standings', input => {
+        console.log( 'hit' )
+        socket.emit( 'response', { standings: 'Heres your new standing punk' } )
     })
 
 })

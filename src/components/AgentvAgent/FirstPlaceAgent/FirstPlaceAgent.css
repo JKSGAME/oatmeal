@@ -1,16 +1,17 @@
-.Leader{
+.AVA-FirstPlaceAgent {
     display: flex;
-    flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
 	align-items: center;
-	align-content: space-around;
-    border: solid black 1px;
-    height:35vh;
+	align-content: center;
 }
 
-.leaderAvatar{
-    height: 80%;
-    width: 30%;
-    border: solid black 2px;
+.AVA-first-data {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }

@@ -1,27 +1,48 @@
 import React, { Component } from 'react';
 import './FirstPlaceAgent.css';
+import { connect } from 'react-redux'
+import { fetchAVAData } from './../../../ducks/reducer'
 
 
 class FirstPlaceAgent extends Component {
-    constructor(){
-        super()
+
+  constructor( props ) {
+    super( props ) 
+
+    this.state = {
+
+        challengeData: []
 
     }
+  }
 
-    
-    render() {
+  componentDidMount() {
+    this.props.fetchAVAData()
+  }
+
+  componentWillReceiveProps( props ) {
+    this.setState({
+        challengeData: props.challengeData
+    })
+  }
+
+  render() {
+    console.log(this.state)
     return (
-      <div className="Leader">
-      {/* Will access information with something like leaderboard[0].name */}
-        <div className="leaderAvatar">will be image from db</div>
-        <div >
-            <div>Leaders Name</div>
-            <div>Leaders Team</div>
-            <div>Current KPI</div>
+      <div className="AVA-FirstPlaceAgent">
+        <img src="" alt="" />
+        <div className="AVA-first-data">
+          <h1>name</h1>
+          <h3>team</h3>
+          <span>kpi total</span>
         </div>
       </div>
     );
   }
 }
 
-export default FirstPlaceAgent;
+function mapStateToProps( state ) {
+  return { challengeData: state.challengeDataAVA }
+}
+
+export default connect( mapStateToProps, { fetchAVAData } )( FirstPlaceAgent )

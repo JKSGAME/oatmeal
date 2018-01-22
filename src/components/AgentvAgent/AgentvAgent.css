@@ -1,26 +1,17 @@
 .AgentvAgent{
     display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
 
-.topAgent{
-    height: 35vh;
-
-}
-
-.bottomAgent{
-    height: 25vh;
+.AVA-leaderboard-data {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    align-content: space-around;
-    
-}
-
-.inlineTemp{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }

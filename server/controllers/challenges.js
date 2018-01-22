@@ -34,6 +34,14 @@ module.exports = {
         db.get_kpis( [req.body] ).then( kpis => {
             res.send( kpis )
         })
+    },
+
+    get_durations ( req, res ) {
+        const db = req.app.get( 'db' )
+        db.get_duration( [req.body] ).then( duration => {
+            res.send( duration )
+        })
     }
+
 
 }

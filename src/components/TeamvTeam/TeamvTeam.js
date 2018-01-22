@@ -9,10 +9,20 @@ class TeamvTeam extends Component {
     render() {
     return (
       <div className="TeamvTeam">
+<<<<<<< HEAD
 
             <TVTFirstPlaceTeam />
             <TVTSecondPlaceTeam />
 
+=======
+        <div className="winning-team">
+    {/*<FirstPlaceTeam /> */}
+        </div>
+        <div className="losing-team">
+            {/*<SecondPlaceTeam />*/}
+        </div>
+      </div>
+>>>>>>> master
       </div>
     );
   }

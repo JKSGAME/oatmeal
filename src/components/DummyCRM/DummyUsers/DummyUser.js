@@ -25,7 +25,8 @@ class DummyUser extends Component {
   handleClickDials = () => {
     this.setState( prevState => {
        return { dials: prevState.dials + 1 }
-    })
+      })
+      console.log(this.state.dials)
   }
 
   render() {

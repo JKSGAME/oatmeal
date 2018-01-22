@@ -43,6 +43,7 @@ app.get( '/api/challenges', challengesControllers.get_challenges )
 app.get( '/api/challenge_type', challengesControllers.get_challenges_type )
 app.get( '/api/modes', challengesControllers.get_mode )
 app.get( '/api/kpi', challengesControllers.get_kpi )
+app.get( '/api/duration', challengesControllers.get_durations )
 app.post( '/api/create', challengesControllers.create_challenge )
 
 

@@ -14,15 +14,12 @@ class TeamvTeam extends Component {
     render() {
     return (
       <div className="TeamvTeam">
-<<<<<<< HEAD
-            <FirstPlaceTeam />
-=======
         <div className="winning-team">
-            <FirstPlaceTeam />
+    {/*<FirstPlaceTeam /> */}
         </div>
         <div className="losing-team">
->>>>>>> master
-            <SecondPlaceTeam />
+            {/*<SecondPlaceTeam />*/}
+        </div>
       </div>
     );
   }

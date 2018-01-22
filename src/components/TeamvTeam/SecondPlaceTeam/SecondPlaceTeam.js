@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import './SecondPlaceTeam.css';
-<<<<<<< HEAD
-
-
-=======
 import { connect } from 'react-redux'
 import { fetchData } from './../../../ducks/reducer'
->>>>>>> master
 
 class SecondPlaceTeam extends Component {
 

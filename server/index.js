@@ -48,8 +48,10 @@ app.get('/api/modes', controllers.get_mode)
 // Get KPI info from KPI table
 app.get('/api/kpi', controllers.get_kpi)
 
+// Get Duration info from Duration table
+app.get('/api/duration', controllers.get_durations)
 
-app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) ;
+const io = socket (app.listen ( process.env.SERVER_PORT, ()=>{ console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) );
 
 // Will need to update sockets to connect with dummy data
 

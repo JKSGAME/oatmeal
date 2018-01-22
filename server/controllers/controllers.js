@@ -26,8 +26,8 @@ module.exports = {
 
     create_challenge ( req, res ) {
         const db = req.app.get( 'db' )
-        let { Name, Type, Team, TimeStart, TimeEnd, Desc, Mode, KPI, TargetValue, RewardValue, RewardDist } = req.body
-        db.create_challenge([Name, Team, Type, Desc, TimeStart, TimeEnd, Mode, KPI, TargetValue, RewardValue, RewardDist]).then( challenge => {
+        let { Name, Type, Team, TimeStart, TimeEnd, Desc, Mode, KPI, TargetValue, RewardValue, RewardDist, Duration } = req.body
+        db.create_challenge([Name, Team, Type, Desc, Duration, TimeStart, TimeEnd, Mode, KPI, TargetValue, RewardValue, RewardDist]).then( challenge => {
             res.send( challenge )
         })
     },
@@ -84,6 +84,13 @@ module.exports = {
         const db = req.app.get( 'db' )
         db.get_kpis( [req.body] ).then( kpis => {
             res.send( kpis )
+        })
+    },
+
+    get_durations ( req, res ) {
+        const db = req.app.get( 'db' )
+        db.get_duration( [req.body] ).then( duration => {
+            res.send( duration )
         })
     }
 

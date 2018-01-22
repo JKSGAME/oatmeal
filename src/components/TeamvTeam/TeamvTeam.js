@@ -21,6 +21,7 @@ class TeamvTeam extends Component {
             {/*<SecondPlaceTeam />*/}
         </div>
       </div>
+      </div>
     );
   }
 }

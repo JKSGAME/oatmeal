@@ -20,6 +20,7 @@ class DummyCrm extends Component {
         users: res.data[0],
         teams: res.data[1]
       })
+      console.log(this.state.users)
     })
   }
 

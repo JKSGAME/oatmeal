@@ -8,6 +8,7 @@ class FirstPlaceTeam extends Component {
     render() {
         return (
             <div className="FirstPlaceTeam">
+            {console.log(this.props.challengeData)}
                 <h1>team name{this.props.challengeData}</h1>
                 <div className="Team-data">
                     <div className="FirstPlaceLeftColumn">

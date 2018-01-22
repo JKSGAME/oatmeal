@@ -10,7 +10,6 @@ const socket = io()
 class AgentvAgent extends Component {
     constructor(){
         super()
-
         this.state={
             standings: 'Current Standings'
         }
@@ -21,20 +20,20 @@ class AgentvAgent extends Component {
             this.setState( { standings: data.standings })
         })
     }
-
     changeStandings(){
         console.log('change standings a v a')
         socket.emit('update standings', { })
     }
-
     
     render() {
     return (
         <div className="AgentvAgent">
+        <div className="inlineTemp">
             <h1>{this.state.standings}</h1>
+            <button onClick={ ()=> this.changeStandings() } className="crm-btn">Change Standings</button>
+        </div>
         <div className= "topAgent">
             <FirstPlaceAgent />
-            <button onClick={ ()=> this.changeStandings() }>Change Standings</button>
         </div>
         <div className="bottomAgent">
             <SecondThirdAgent />

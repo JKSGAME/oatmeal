@@ -16,14 +16,15 @@ class DummyCrm extends Component {
       standings: "Initial Standings"
     }
 
+    
     socket.on('response', data =>{
-      console.log(data, "response data")
-      this.setState( {standings: data.standings})
+      console.log("response data")
+      let stringData = JSON.stringify(data.standings)
+      this.setState( {standings: stringData})
     })
     
-
   }
-
+  
   componentDidMount() {
     axios.get('/api/users').then( ( res ) => {
       this.setState({
@@ -33,7 +34,7 @@ class DummyCrm extends Component {
       console.log(this.state.users)
     })
   }
-
+  
   render() {
     return (
       <div className="DummyCrm">
@@ -44,7 +45,7 @@ class DummyCrm extends Component {
         <div className='dummy-user-layout'>
           <div className='dummy-data'>
             {this.state.users.map( ( e, i ) => {
-              return <DummyUser key={i} id = {e.id} name={e.name} team={this.state.teams[(e.team_id * 1) - 1].team} />
+              return <DummyUser key={i} id = {e.user_id} name={e.user_name} team={this.state.teams[(e.team_id * 1) - 1].team} />
             })}
           </div>
         </div>

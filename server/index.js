@@ -61,7 +61,7 @@ io.on( 'connection', socket => {
 
     socket.on( 'update standings', input => {
         console.log( input, "input" )
-        socket.emit( 'response', {standings: input} )
+        socket.broadcast.emit( 'response', {standings: input} )
 
     })
 

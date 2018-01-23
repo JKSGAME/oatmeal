@@ -1,1 +1,1 @@
-update leaderboard set standings = $1 where id = 1
+update leaderboard set standings = $1 

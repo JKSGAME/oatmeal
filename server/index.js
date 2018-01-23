@@ -39,7 +39,8 @@ app.get( '/api/agentvagent', leaderboardControllers.agentvagent ) // not using y
 app.put( '/api/leaderboard', leaderboardControllers.update_leaderboard)
 
 // //User Endpoints
-app.get( '/api/users', usersControllers.users_team_join )
+app.get( '/api/users', usersControllers.users_dummy )
+app.get( '/api/users_joined', usersControllers.users_team_join )
 app.get( '/api/user/:id', usersControllers.get_user_info ) // for specific user information
 app.get( '/api/teams', usersControllers.get_team_info )
 

@@ -10,7 +10,9 @@ const initialState = {
 
     challengeDataAVA: {},
 
-    photoUpload: {}
+    photoUpload: {},
+
+    standings: {}
 }
 
 // TVT = teamvteam
@@ -19,6 +21,7 @@ const initialState = {
 const FETCH_TVT_DATA = 'FETCH_TVT_DATA'
 const FETCH_AVA_DATA = 'FETCH_AVA_DATA'
 const UPLOAD_PHOTO = 'UPLOAD_PHOTO'
+const GET_STANDINGS = 'GET_STANDINGS'
 
 export function fetchAVAData( getData ) {
     let promise = axios.get( '/api/agentvagent', getData )
@@ -45,6 +48,12 @@ export function photoUpload( photoData ) {
     }
 }
 
+export function getStandings ( standings ){
+    return {
+        type: GET_STANDINGS,
+        payload: standings
+    }
+}
 export default function reducer ( state = initialState, action ) {
     switch ( action.type ) {
         case FETCH_AVA_DATA + '_FULFILLED':
@@ -53,6 +62,8 @@ export default function reducer ( state = initialState, action ) {
             return Object.assign( {}, state, { challengeDataTVT: action.payload } )
         case UPLOAD_PHOTO: 
             return Object.assign( {}, state, { photoUPload: action.payload } )
+        case GET_STANDINGS:
+            return Object.assign( {}, state, { standings: action.payload })
         default: 
             return state;
     }

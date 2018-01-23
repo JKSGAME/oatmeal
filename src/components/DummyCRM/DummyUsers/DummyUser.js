@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './DummyUser.css'
 
+import io from 'socket.io-client';
+const socket = io()
+
 class DummyUser extends Component {
 
   constructor( props ) {
@@ -33,10 +36,8 @@ class DummyUser extends Component {
       console.log(update, "update score")
 
       axios.put('/api/leaderboard/', update).then( res => {
-         console.log(res)})
-        // socket.emit( the new standings object as string )
+        socket.emit( 'update standings', update )})
       
-
     })
   }
 
@@ -48,27 +49,15 @@ class DummyUser extends Component {
       let id = this.props.id;
       let agentScore = {};
       agentScore[id] = {salesKPI: this.state.sales, dialsKPI: this.state.dials}
-      console.log(agentScore, "agentScore")
   
       axios.get('/api/leaderboard').then( standingsRes => {
-        console.log(standingsRes.data[0].standings, "response")
         let standings = eval("("+standingsRes.data[0].standings+")")
         let update = Object.assign({}, standings, agentScore)
-        console.log(update, "update score")
   
         axios.put('/api/leaderboard/', update).then( res => {
-           console.log(res)})
-          // socket.emit( update )
+          socket.emit( 'update standings', update )})
       })
   }
-
-  // handleClick = (propName, value) =>{
-  //   this.setState({
-  //     [propName]: value
-  //   })
-
-
-  // }
 
   render() {
 

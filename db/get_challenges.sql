@@ -1,1 +1,2 @@
-select * from challenges;
+select * from challenges
+-- where id = $1

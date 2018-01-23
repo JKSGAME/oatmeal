@@ -8,16 +8,15 @@ module.exports = {
         })
     },
 
-    users_team_join ( req, res ) {
+    users_dummy ( req, res ) {
         const db = req.app.get( 'db' )
         let status = 200
-        // db.get_users().then( users => {
-        //     db.get_teams().then( team => {
-        //         let response = [ users, team ]
-        //         res.status( status ).send( response )
-        //     })
-        // }).catch( console.log )
-        db.get_profile().then( profile => res.send( profile ) )
+        db.get_users().then( users => {
+            db.get_teams().then( team => {
+                let response = [ users, team ]
+                res.status( status ).send( response )
+            })
+        }).catch( console.log )
     },
 
     get_team_info ( req, res ) {
@@ -26,5 +25,11 @@ module.exports = {
             res.send( teams )
         })
     },
+
+    users_team_join ( req, res ) {
+        const db = req.app.get( 'db' )
+        let status = 200
+        db.get_profile().then( profile => res.send( profile ) )
+    }
 
 }

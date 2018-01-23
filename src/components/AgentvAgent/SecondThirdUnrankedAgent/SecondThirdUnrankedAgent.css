@@ -5,6 +5,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	border: 1px solid red;
+	width: 100%;
+	height: 100%;
 }
 
 .SecondThirdAgents {
@@ -14,6 +17,8 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	height: 100%;
+	width: 50%;
 }
 
 .SecondPlaceAgent {
@@ -23,6 +28,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	border: 1px solid orange;
+	height: 100%;
+	width: 50%;
 }
 
 .ThirdPlaceAgent {
@@ -32,6 +40,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	border: 1px solid orange;
+	height: 100%;
+	width: 50%;
 }
 
 .UnrankedAgents {
@@ -41,6 +52,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	border: 1px solid orange;
+	height: 100%;
+	width: 50%;
 }
 
 .AVA-unranked-data {
@@ -55,6 +69,15 @@
 .AVA-unranked-ranking {
     display: flex;
 	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.AVA-Unranked-lineItem {
+	display: flex;
+	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;

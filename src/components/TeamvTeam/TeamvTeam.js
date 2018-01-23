@@ -9,10 +9,18 @@ class TeamvTeam extends Component {
     render() {
     return (
       <div className="TeamvTeam">
-
-            <TVTFirstPlaceTeam />
-            <TVTSecondPlaceTeam />
-
+        <div className="TVT-title">
+          <h1>Challenge Name</h1>
+          <p>Challenge Description</p>
+        </div>
+        <div className="TVT-leaderboard-data">
+          <div className="TVT-FirstPlaceTeam-Placement">
+            <TVTFirstPlaceTeam/>
+          </div>
+          <div className="TVT-SecondPlaceTeam-Placement">
+            <TVTSecondPlaceTeam/>
+          </div>
+        </div>
       </div>
     );
   }

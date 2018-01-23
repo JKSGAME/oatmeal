@@ -3,26 +3,16 @@ module.exports = {
     teamvteam ( req, res ) {
         const db = req.app.get( 'db' )
         let status = 200
-        db.get_teams().then( team => {
-            db.get_users().then( user => {
-                db.get_challenges().then( challenges => {
-                    let response = [ team, user, challenges ]
-                    res.status( status ).send( response )
-                })
-            })
+        db.get_challenges().then( challenges => {
+            res.send( challenges )
         }).catch( console.log )
     },
 
     agentvagent ( req, res ) {
         const db = req.app.get( 'db' ) 
         let status = 200
-        db.get_teams().then( team => {
-            db.get_users().then( user => {
-                db.get_challenges().then( challenges => {
-                    let response = [ team, user, challenges ]
-                    res.status( status ).send( response )
-                })
-            })
+        db.get_challenges().then( challenges => {
+            res.send( challenges )
         }).catch( console.log )
     },
 

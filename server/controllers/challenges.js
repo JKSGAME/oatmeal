@@ -16,9 +16,19 @@ module.exports = {
 
     create_challenge ( req, res ) {
         const db = req.app.get( 'db' )
-        let { Name, Type, Team, TimeStart, TimeEnd, Desc, Mode, KPI, TargetValue, RewardValue, RewardDist } = req.body
-        db.create_challenge([Name, Team, Type, Desc, TimeStart, TimeEnd, Mode, KPI, TargetValue, RewardValue, RewardDist]).then( challenge => {
-            res.send( challenge )
+        let { Name, Type, Team, TimeStart, TimeEnd, Desc, Mode, KPI, TargetValue, RewardValue, RewardDist, Duration } = req.body
+        db.create_challenge([Name, Team, Type, Desc, Duration, TimeStart, TimeEnd, Mode, KPI, TargetValue, RewardValue, RewardDist]).then( challenge => {
+            console.log('challenge', challenge);
+            let { Name } = req.body
+            db.get_challenge_id_4_standing_obj( Name ).then( id => {
+                console.log('id', id)
+                let challenge_id = id[0].id
+                let standingObj = {}
+                db.create_standing_obj( challenge_id, standingObj ).then( standing => {
+                    let response = [ challenge, standing, id ]
+                    res.send( response )
+                })
+            })
         })
     },
 

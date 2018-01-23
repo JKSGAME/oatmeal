@@ -27,6 +27,7 @@ const usersControllers = require( './controllers/users' )
 
 // Dashboard Endpoints
 app.get( '/api/dashboard', dashboardControllers.get_dashboard ) // get all leaderboards for the dashboard
+app.get( '/api/fullChallengeTable', dashboardControllers.get_challenge_table ) // gets all challenge info including joined tables
 
 //Leaderboard Endpoints
 app.get( '/api/leaderboard/:id', leaderboardControllers.get_leaderboard ) // not using yet

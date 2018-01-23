@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Header, Image, Modal, Input, Dropdown, Divider, Form, TextArea, Checkbox, Label, Grid, Segment, Progress } from 'semantic-ui-react';
-import './Modal.css'
+import { Button, Header, Modal, Input, Dropdown, Divider, Form, TextArea, Grid, Segment, Progress } from 'semantic-ui-react';
+import './CreateChallengeModal.css'
 
-class ModalExampleDimmer extends Component {
+class CreateChallengeModal extends Component {
     constructor() {
         super()
         this.state = {
@@ -20,7 +20,8 @@ class ModalExampleDimmer extends Component {
             timeStart: '',
             timeEnd: '',
             selectedDur: '',
-            selectedRD: ''
+            selectedRD: '',
+            challengeType: []
         }
         this.submit = this.submit.bind(this)
         this.dataGrabber = this.dataGrabber.bind(this)
@@ -31,7 +32,13 @@ class ModalExampleDimmer extends Component {
     close = () => this.setState({
         open: false,
         selectedTeam: '',
-        selectedType: ''
+        selectedType: '',
+        selectedMode: '',
+        selectedKPI: '',
+        timeStart: '',
+        timeEnd: '',
+        selectedDur: '',
+        selectedRD: ''
     })
 
     submit() {
@@ -118,12 +125,18 @@ class ModalExampleDimmer extends Component {
                 duration: res.data
             })
         })
+
+        axios.get('/api/challenge_type').then(res => {
+            this.setState({
+                challengeType: res.data
+            })
+        })
     }
 
     render() {
-        const { open, dimmer, value, selectedTeam, selectedType, selectedMode, selectedKPI, input, drop } = this.state
+        const { open, dimmer, selectedTeam, selectedType, selectedMode, selectedKPI } = this.state
 
-        const challengeType = this.state.challenges.map((e, i) => {
+        const challengeType = this.state.challengeType.map((e, i) => {
             return { key: e.challenge_type, text: e.challenge_type, value: e.id }
         })
 
@@ -265,4 +278,4 @@ class ModalExampleDimmer extends Component {
     }
 }
 
-export default ModalExampleDimmer
+export default CreateChallengeModal

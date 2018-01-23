@@ -18,9 +18,6 @@ class Dashboard extends Component {
       standings: "Initial Standings"
     }
 
-    socket.on('response', data => {
-      this.setState({ standings: data.standings })
-    })
   }
 
   render() {
@@ -28,7 +25,6 @@ class Dashboard extends Component {
       <div className="Dashboard">
         <header>
           <h1>Welcome to the Dashboard</h1>
-          <h2>{this.state.standings}</h2>
         </header>
         <div className='carousel'>
           <button>Prev</button>

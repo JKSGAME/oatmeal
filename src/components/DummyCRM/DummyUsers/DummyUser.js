@@ -27,13 +27,10 @@ class DummyUser extends Component {
     let id = this.props.id;
     let agentScore = {};
     agentScore[id] = {salesKPI: this.state.sales, dialsKPI: this.state.dials}
-    console.log(agentScore, "agentScore")
 
     axios.get('/api/leaderboard').then( standingsRes => {
-      console.log(standingsRes.data[0].standings, "response")
       let standings = eval("("+standingsRes.data[0].standings+")")
       let update = Object.assign({}, standings, agentScore)
-      console.log(update, "update score")
 
       axios.put('/api/leaderboard/', update).then( res => {
         socket.emit( 'update standings', update )})

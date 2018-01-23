@@ -4,12 +4,8 @@ import './Dashboard.css'
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
 import Leaderboard from '../Leaderboard/Leaderboard';
-import Carousel from '../Carousel/Carousel';
-import io from 'socket.io-client';
-import AgentvAgent from '../AgentvAgent/AgentvAgent';
-import TeamvTeam from '../TeamvTeam/TeamvTeam';
+// import Carousel from '../Carousel/Carousel';
 
-const socket = io()
 
 class Dashboard extends Component {
   constructor() {

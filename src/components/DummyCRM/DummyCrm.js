@@ -3,14 +3,24 @@ import './DummyCrm.css'
 import DummyUser from './DummyUsers/DummyUser.js'
 import axios from 'axios'
 
+import io from 'socket.io-client';
+const socket = io()
+
 class DummyCrm extends Component {
 
   constructor(props) {
     super(props)
 
     this.state = {
-      users: []
+      users: [],
+      standings: "Initial Standings"
     }
+
+    socket.on('response', data =>{
+      console.log(data, "response data")
+      this.setState( {standings: data.standings})
+    })
+    
 
   }
 
@@ -29,6 +39,7 @@ class DummyCrm extends Component {
       <div className="DummyCrm">
         <header>
           <h1>Dummy CRM</h1>
+          <h2>{this.state.standings}</h2>
         </header>
         <div className='dummy-user-layout'>
           <div className='dummy-data'>

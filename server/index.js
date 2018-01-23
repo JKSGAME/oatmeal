@@ -60,8 +60,9 @@ io.on( 'connection', socket => {
     console.log( 'connection est. 2018' )
 
     socket.on( 'update standings', input => {
-        console.log( 'hit' )
-        socket.emit( 'response', { standings: 'Heres your new standing punk' } )
+        console.log( input, "input" )
+        socket.emit( 'response', {standings: input} )
+
     })
 
 })

@@ -33,9 +33,10 @@ app.get( '/api/dashboard', dashboardControllers.get_dashboard ) // get all leade
 app.get( '/api/fullChallengeTable', dashboardControllers.get_challenge_table ) // gets all challenge info including joined tables
 
 //Leaderboard Endpoints
-app.get( '/api/leaderboard/:id', leaderboardControllers.get_leaderboard ) // not using yet
+app.get( '/api/leaderboard', leaderboardControllers.get_leaderboard ) // not using yet
 app.get( '/api/teamvteam', leaderboardControllers.teamvteam )
 app.get( '/api/agentvagent', leaderboardControllers.agentvagent ) // not using yet
+app.put( '/api/leaderboard', leaderboardControllers.update_leaderboard)
 
 // //User Endpoints
 app.get( '/api/users', usersControllers.users_team_join )

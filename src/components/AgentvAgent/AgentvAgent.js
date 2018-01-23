@@ -8,8 +8,6 @@ const socket = io()
 
 class AgentvAgent extends Component {
 
-
-    
     render() {
     return (
         <div className="AgentvAgent">

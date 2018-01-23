@@ -5,8 +5,6 @@ import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
 import Leaderboard from '../Leaderboard/Leaderboard';
 
-import io from 'socket.io-client';
-const socket = io()
 
 class Dashboard extends Component {
   constructor(){

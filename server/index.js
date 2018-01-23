@@ -32,9 +32,10 @@ const usersControllers = require( './controllers/users' )
 app.get( '/api/dashboard', dashboardControllers.get_dashboard ) // get all leaderboards for the dashboard
 
 //Leaderboard Endpoints
-app.get( '/api/leaderboard/:id', leaderboardControllers.get_leaderboard ) // not using yet
+app.get( '/api/leaderboard', leaderboardControllers.get_leaderboard ) // not using yet
 app.get( '/api/teamvteam', leaderboardControllers.teamvteam )
 app.get( '/api/agentvagent', leaderboardControllers.agentvagent ) // not using yet
+app.put( '/api/leaderboard', leaderboardControllers.update_leaderboard)
 
 // //User Endpoints
 app.get( '/api/users', usersControllers.users_team_join )

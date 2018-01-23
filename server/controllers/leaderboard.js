@@ -34,4 +34,13 @@ module.exports = {
         })
     },
 
+    update_leaderboard (req, res) {
+        const db = req.app.get( 'db' )
+        let status = 200
+        console.log(req.body, "req.body")
+        db.update_leaderboard([req.body]). then( response => {
+            res.status( status ).send('Standings Updated')
+        })
+    }
+
 }

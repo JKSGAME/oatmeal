@@ -46,7 +46,6 @@ class CurrentChallengeModal extends Component {
             this.setState({
                 challenges: res.data
             })
-            console.log('state', this.state)
         })
     }
     

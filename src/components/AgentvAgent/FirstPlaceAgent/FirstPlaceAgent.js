@@ -5,8 +5,8 @@ import { fetchAVAData } from './../../../ducks/reducer'
 
 class FirstPlaceAgent extends Component {
 
-  constructor( props ) {
-    super( props ) 
+  constructor(props) {
+    super(props)
 
     this.state = {
 
@@ -19,9 +19,9 @@ class FirstPlaceAgent extends Component {
     this.props.fetchAVAData()
   }
 
-  componentWillReceiveProps( props ) {
+  componentWillReceiveProps(props) {
     this.setState({
-        challengeData: props.challengeData
+      challengeData: props.challengeData
     })
   }
 
@@ -43,8 +43,8 @@ class FirstPlaceAgent extends Component {
   }
 }
 
-function mapStateToProps( state ) {
+function mapStateToProps(state) {
   return { challengeData: state.challengeDataAVA }
 }
 
-export default connect( mapStateToProps, { fetchAVAData } )( FirstPlaceAgent )
+export default connect(mapStateToProps, { fetchAVAData })(FirstPlaceAgent)

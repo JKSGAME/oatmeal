@@ -4,7 +4,22 @@
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
-	align-content: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid green
+}
+
+.AVA-title {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+    align-content: center;
+    height: 10%;
+    width: 100%;
+    border: 1px solid black;
 }
 
 .AVA-leaderboard-data {
@@ -13,5 +28,30 @@
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
-	align-content: center;
+    align-content: center;
+    height: 90%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.AVA-FirstPlaceAgent-Placement {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+    align-content: center;
+    height: 55%;
+    width: 100%;
+}
+
+.AVA-SecondThirdUnrankedAgent-Placement {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+    align-content: center;
+    height: 45%;
+    width: 100%;
 }

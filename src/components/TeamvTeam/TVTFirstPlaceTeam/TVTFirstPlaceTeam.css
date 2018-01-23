@@ -5,6 +5,8 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	height: 100%;
+	width: 100%;
 }
 
 .Team-name {
@@ -14,6 +16,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 100%;
+	height: 10%;
+	border: 1px solid green;
 }
 
 .Team-data {
@@ -23,6 +28,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 100%;
+	height: 90%;
+	border: 1px solid orange;
 }
 
 .FirstPlaceLeftColumn {
@@ -32,6 +40,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 50%;
+	height: 100%;
+	border: 1px solid blue;
 }
 
 .FirstPlaceRightColumn {
@@ -41,6 +52,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 50%;
+	height: 100%;
+	border: 1px solid blue;
 }
 
 .team1-user-first {
@@ -50,6 +64,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 50%;
+	height: 100%;
+	border: 1px solid green;
 }
 
 .team1-users-twoandthree {
@@ -59,6 +76,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 50%;
+	height: 100%;
+	border: 1px solid green;
 }
 
 .team1-second {
@@ -68,6 +88,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 100%;
+	height: 45%;
+	border: 1px solid pink;
 }
 
 .team1-second-userdata {
@@ -95,6 +118,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 100%;
+	height: 55%;
+	border: 1px solid gray;
 }
 
 .team1-third {
@@ -104,6 +130,9 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	width: 100%;
+	height: 90%;
+	border: 1px solid pink;
 }
 
 .team1-third-userdata {

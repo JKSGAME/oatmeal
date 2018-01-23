@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Leaderboard.css';
+import { connect } from 'react-redux';
 import AgentvAgent from './../AgentvAgent/AgentvAgent';
+import { getStandings } from './../../ducks/reducer'
 // import TeamvTeam from './../TeamvTeam/TeamvTeam'
 
 class Leaderboard extends Component {
@@ -10,6 +12,7 @@ class Leaderboard extends Component {
     // }
     
     render() {
+        console.log (this.props.standings, "standings object on leaderboard")
     {/* Some sort of switch or jsx if statement here to determin which view will get rendered */}
     // return (
     //   <div className="Leaderboard">
@@ -24,4 +27,10 @@ class Leaderboard extends Component {
   }
 }
 
-export default Leaderboard;
+function mapStateToProps(state){
+    return{
+        standings: state.standings
+    }
+}
+
+export default connect (mapStateToProps, {getStandings})(Leaderboard);

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './DummyCrm.css'
-import DummyUser from './DummyUsers/DummyUser.js'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import DummyUser from './DummyUsers/DummyUser.js'
+import { getStandings } from './../../ducks/reducer'
+
 
 import io from 'socket.io-client';
 const socket = io()
@@ -15,14 +19,17 @@ class DummyCrm extends Component {
       users: [],
       standings: "Initial Standings"
     }
-
     
-    socket.on('response', data =>{
-      console.log("response data")
-      let stringData = JSON.stringify(data.standings)
-      this.setState( {standings: stringData})
+    
+    
+  }
+  componentDidUpdate(){
+  socket.on('response', data =>{
+    let newStandings = data.standings
+    this.props.getStandings({
+      standings: newStandings
     })
-    
+  })
   }
   
   componentDidMount() {
@@ -31,7 +38,6 @@ class DummyCrm extends Component {
         users: res.data[0],
         teams: res.data[1]
       })
-      console.log(this.state.users)
     })
   }
   
@@ -40,7 +46,7 @@ class DummyCrm extends Component {
       <div className="DummyCrm">
         <header>
           <h1>Dummy CRM</h1>
-          <h2>{this.state.standings}</h2>
+          <Link to='/'><button>Back to Dashboard</button></Link>
         </header>
         <div className='dummy-user-layout'>
           <div className='dummy-data'>
@@ -54,4 +60,11 @@ class DummyCrm extends Component {
   }
 }
 
-export default DummyCrm;
+function mapStateToProps(state){
+  return{
+    standings: state.standings
+  }
+}
+
+
+export default connect(mapStateToProps, {getStandings: getStandings})(DummyCrm);

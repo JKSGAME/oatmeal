@@ -1,0 +1,1 @@
+select id from challenges where name = $1;

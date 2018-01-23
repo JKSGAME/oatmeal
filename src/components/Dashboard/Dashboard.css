@@ -26,8 +26,8 @@
     border: none;
   }
 
-.btn {
-    height: 10vh;
-    width: 25vw;
-    align-self: center;
+.modals {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

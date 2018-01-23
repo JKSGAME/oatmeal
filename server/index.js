@@ -6,11 +6,14 @@ const express = require('express')
     , session = require('express-session')
     , massive = require('massive')
     , socket = require('socket.io')
+    , S3 = require('./S3/S3')
 
 const app = express();
     
 app.use( bodyParser.json() );
 app.use( cors() );
+
+S3(app)
 
 massive( process.env.DB_CONNECTION ).then( db => { app.set( 'db', db ) } )
 

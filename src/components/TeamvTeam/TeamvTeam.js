@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './TeamvTeam.css';
-import TVTFirstPlaceTeam from './FirstPlaceTeam/TVTFirstPlaceTeam';
-import TVTSecondPlaceTeam from './SecondPlaceTeam/TVTSecondPlaceTeam';
+import TVTFirstPlaceTeam from './TVTFirstPlaceTeam/TVTFirstPlaceTeam';
+import TVTSecondPlaceTeam from './TVTSecondPlaceTeam/TVTSecondPlaceTeam';
 
 
 class TeamvTeam extends Component {
@@ -9,20 +9,10 @@ class TeamvTeam extends Component {
     render() {
     return (
       <div className="TeamvTeam">
-<<<<<<< HEAD
 
             <TVTFirstPlaceTeam />
             <TVTSecondPlaceTeam />
 
-=======
-        <div className="winning-team">
-    {/*<FirstPlaceTeam /> */}
-        </div>
-        <div className="losing-team">
-            {/*<SecondPlaceTeam />*/}
-        </div>
-      </div>
->>>>>>> master
       </div>
     );
   }

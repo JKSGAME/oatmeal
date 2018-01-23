@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "proxy": "http://localhost:3005",
   "dependencies": {
+    "aws-sdk": "^2.185.0",
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",

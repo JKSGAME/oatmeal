@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD:src/components/TeamvTeam/TVTFirstPlaceTeam/TVTFirstPlaceTeam.js
 import './TVTFirstPlaceTeam.css';
 import { connect } from 'react-redux'
 import { fetchTVTData } from './../../../ducks/reducer'
@@ -12,11 +11,6 @@ class TVTFirstPlaceTeam extends Component {
         this.state = {
 
             challengeData: []
-=======
-import './FirstPlaceTeam.css';
-import { connect } from 'react-redux'
-import { fetchData } from './../../../ducks/reducer'
->>>>>>> master:src/components/TeamvTeam/FirstPlaceTeam/FirstPlaceTeam.js
 
         }
     }

@@ -33,7 +33,7 @@ class DummyCrm extends Component {
         <div className='dummy-user-layout'>
           <div className='dummy-data'>
             {this.state.users.map( ( e, i ) => {
-              return <DummyUser key={i} name={e.name} team={this.state.teams[(e.team_id * 1) - 1].team} />
+              return <DummyUser key={i} id = {e.id} name={e.name} team={this.state.teams[(e.team_id * 1) - 1].team} />
             })}
           </div>
         </div>

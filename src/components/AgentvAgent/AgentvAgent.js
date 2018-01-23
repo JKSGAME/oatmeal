@@ -4,7 +4,6 @@ import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
 
 import io from 'socket.io-client';
-const socket = io()
 
 class AgentvAgent extends Component {
     render() {

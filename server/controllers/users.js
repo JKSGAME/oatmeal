@@ -11,12 +11,13 @@ module.exports = {
     users_team_join ( req, res ) {
         const db = req.app.get( 'db' )
         let status = 200
-        db.get_users().then( users => {
-            db.get_teams().then( team => {
-                let response = [ users, team ]
-                res.status( status ).send( response )
-            })
-        }).catch( console.log )
+        // db.get_users().then( users => {
+        //     db.get_teams().then( team => {
+        //         let response = [ users, team ]
+        //         res.status( status ).send( response )
+        //     })
+        // }).catch( console.log )
+        db.get_profile().then( profile => res.send( profile ) )
     },
 
     get_team_info ( req, res ) {

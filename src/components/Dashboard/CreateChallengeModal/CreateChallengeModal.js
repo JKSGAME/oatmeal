@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Header, Modal, Input, Dropdown, Divider, Form, TextArea, Grid, Segment, Progress } from 'semantic-ui-react';
+import { Button, Header, Modal, Input, Dropdown, Divider, Form, TextArea, Grid, Segment } from 'semantic-ui-react';
 import './CreateChallengeModal.css'
 
 class CreateChallengeModal extends Component {
@@ -134,7 +134,7 @@ class CreateChallengeModal extends Component {
     }
 
     render() {
-        const { open, dimmer, selectedTeam, selectedType, selectedMode, selectedKPI } = this.state
+        const { open, dimmer, selectedMode, selectedKPI } = this.state
 
         const challengeType = this.state.challengeType.map((e, i) => {
             return { key: e.challenge_type, text: e.challenge_type, value: e.id }

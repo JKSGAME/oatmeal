@@ -1,6 +1,6 @@
 CREATE TABLE users (
-    id serial primary key,
-    name VARCHAR(30),
+    user_id serial primary key,
+    user_name VARCHAR(30),
     team_id TEXT,
     user_type_id INTEGER references user_type(id),
     has_permission BOOLEAN,
@@ -18,14 +18,14 @@ CREATE TABLE user_type (
     user_type VARCHAR(25)
 );
 INSERT INTO user_type (id, user_type) values
-(default, 'user'), (default, 'manager'), (default, 'admin')
+(default, 'User'), (default, 'Manager'), (default, 'Admin')
 
 CREATE TABLE challenge_type (
     id serial primary key,
     challenge_type VARCHAR(50)
 );
 INSERT INTO challenge_type (id, challenge_type) values
-(default, 'agent v agent'), (default, 'team v team')
+(default, 'Agent v Agent'), (default, 'Team v Team')
 
 CREATE TABLE team (
     id serial primary key,
@@ -53,7 +53,7 @@ CREATE TABLE duration (
     duration TEXT
 );
 INSERT INTO duration (id, duration) values
-(default, 'daily'), (default, 'weekly'), (default, 'monthly'), (default, 'yearly')
+(default, 'Daily'), (default, 'Weekly'), (default, 'Monthly'), (default, 'Yearly')
 
 CREATE TABLE modes (
     id serial primary key,

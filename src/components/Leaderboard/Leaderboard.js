@@ -18,7 +18,7 @@ class Leaderboard extends Component {
     // );
     return (
         <div className="Leaderboard">
-          <AgentvAgent />
+          <AgentvAgent/>
         </div>
       );
   }

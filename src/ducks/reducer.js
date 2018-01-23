@@ -8,11 +8,7 @@ const initialState = {
         challenges: ''
     },
 
-    challengeDataAVA: {
-        team: '',
-        user: '',
-        challenges: ''
-    },
+    challengeDataAVA: {},
 
     photoUpload: {}
 }

@@ -9,9 +9,7 @@ class TVTSecondPlaceTeam extends Component {
         super( props ) 
 
         this.state = {
-
             challengeData: []
-
         }
     }
 
@@ -29,28 +27,28 @@ class TVTSecondPlaceTeam extends Component {
         console.log(this.state)
         return (
             <div className="SecondPlaceTeam">
-                <h1>team name{this.props.challengeData}</h1>
+                <div className="Team-name">
+                    <h1>Blue Team{/* this.props.challengeData */}</h1>
+                </div>
                 <div className="Team-data-2">
                     <div className="SecondPlaceLeftColumn">
-                        <h1>kpi name{this.props.challengeData}</h1>
-                        <span>kpi total{this.props.challengeData}</span>
+                        <h1>kpi name{/* this.props.challengeData */}</h1>
+                        <span>kpi total{/* this.props.challengeData */}</span>
                     </div>
                     <div className="SecondPlaceRightColumn">
                         <div className="team2-leaders">
-                            <div className="team2-ranking-text">
-                                <h4>1st</h4>
-                                <h4>2nd</h4>
-                                <h4>3rd</h4>
-                            </div>
-                            <button className="team2-reanking-data"> {/* map over users and provide this info */}
-                                <img src={this.props.challengeData} alt=""/>
-                                <h4>name{this.props.challengeData}</h4>
-                                <span>kpi total{this.props.challengeData}</span>
-                            </button>
+                            {this.state.challengeData.map( ( e, i ) => {
+                                return <div key={i} className="TVT-team2-leaders">
+                                    <img src="" alt=""/>
+                                    <h4>Name</h4>
+                                    <h4>Team Name</h4>
+                                    <h4>KPI Total</h4>
+                                </div>
+                            })}
                         </div>
                         <button>View More</button>
                     </div>
-                </div>
+                </div> 
             </div>
         );
     }

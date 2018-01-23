@@ -3,16 +3,21 @@ import './AgentvAgent.css';
 import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
 
-import io from 'socket.io-client';
-
 class AgentvAgent extends Component {
     render() {
     return (
         <div className="AgentvAgent">
-            <h1>challenge name</h1>
+            <div className="AVA-title">
+                <h1>Challenge Name</h1>
+                <p>Challenge Description</p>
+            </div>
             <div className="AVA-leaderboard-data">
-                <FirstPlaceAgent/>
-                <SecondThirdUnrankedAgent/>
+                <div className="AVA-FirstPlaceAgent-Placement">
+                    <FirstPlaceAgent/>
+                </div>
+                <div className="AVA-SecondThirdUnrankedAgent-Placement">
+                    <SecondThirdUnrankedAgent/>
+                </div>
             </div>
         </div>
      

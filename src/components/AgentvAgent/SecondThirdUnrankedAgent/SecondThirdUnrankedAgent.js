@@ -32,29 +32,32 @@ class SecondThirdUnrankedAgent extends Component {
             <div className="SecondThirdUnranked">
                 <div className="SecondThirdAgents">
                     <div className="SecondPlaceAgent">
-                        <img src="" alt="" />
-                        <h2>name</h2>
-                        <h3>kpi</h3>
+                        <h2>2nd Place</h2>
+                        <img src="{/* http://www.freakingnews.com/pictures/51000/Jack-Black-with-Mouth-Eyes--51345.jpg */}" alt="jack black" />
+                        <h2>Jack Black</h2>
+                        <h3>Blue Team</h3>
+                        <h3>10</h3>
                     </div>
                     <div className="ThirdPlaceAgent">
-                        <img src="" alt="" />
-                        <h2>name</h2>
-                        <h3>kpi</h3>
+                        <h2>3rd Place</h2>
+                        <img src="{/* https://bloximages.chicago2.vip.townnews.com/siouxcityjournal.com/content/tncms/assets/v3/editorial/2/b5/2b524972-f4e0-5948-958a-769df73c8488/5824ac0ed836c.image.jpg?resize=1200%2C945 */}" alt="Will Forte" />
+                        <h2>Will Forte</h2>
+                        <h3>Green Team</h3>
+                        <h3>8</h3>
                     </div>
                 </div>
                 <div className="UnrankedAgents">
                     <div className="AVA-unranked-data">
                         <div className="AVA-unranked-ranking">
-                            <h4>4th</h4>
-                            <h4>5th</h4>
-                            <h4>6th</h4>
-                            <h4>7th</h4>
-                            <h4>8th</h4>
-                        </div>
-                        <div className="AVA-unranked-agent-info">
-                            <img src="" alt="" />
-                            <h4>name</h4>
-                            <h4>kpi total</h4>
+                            {this.state.challengeData.map( ( e, i ) => {
+                                return <div key={i} className="AVA-Unranked-lineItem">
+                                    <img src="" alt=""/>
+                                    <h4>4th:</h4>
+                                    <h4>Name</h4>
+                                    <h4>Team Name</h4>
+                                    <h4>KPI Total</h4>
+                                </div>
+                            })}
                         </div>
                     </div>
                     <button>View More</button>

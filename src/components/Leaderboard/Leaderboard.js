@@ -1,29 +1,56 @@
 import React, { Component } from 'react';
-import './Leaderboard.css';
+import axios from 'axios';
 import { connect } from 'react-redux';
-import AgentvAgent from './../AgentvAgent/AgentvAgent';
 import { getStandings } from './../../ducks/reducer'
-// import TeamvTeam from './../TeamvTeam/TeamvTeam'
+import AgentvAgent from './../AgentvAgent/AgentvAgent';
+import TeamvTeam from './../TeamvTeam/TeamvTeam'
+import Carousel from '../Carousel/Carousel';
+import './Leaderboard.css';
+import _ from "lodash";
 
 class Leaderboard extends Component {
-    // constructor(){
-    //     super()
+    constructor(){
+        super()
+        this.state={
+            challenges: {},
+        }
 
-    // }
+    }
+    componentDidMount(){
+        axios.get('/api/challenges').then( allChallenges =>{
+            this.setState({
+                challenges: allChallenges.data
+            })
+        })
+    }
     
     render() {
-        console.log (this.props.standings, "standings object on leaderboard")
-    {/* Some sort of switch or jsx if statement here to determin which view will get rendered */}
-    // return (
-    //   <div className="Leaderboard">
-    //     <TeamvTeam />
-    //   </div>
-    // );
-    return (
-        <div className="Leaderboard">
-          <AgentvAgent/>
+        let chalid = _.map(this.state.challenges, "challenge_type_id")
+        console.log(chalid.length, "chalid lenth")
+        let length = chalid.length
+        
+        return(
+            <div>
+            <Carousel length={length} > 
+                        
+            {(chalid.reverse()).map((e, i)=>{
+                if( e === 1){
+                    return(
+                        <div key = {e.id}>
+                            <TeamvTeam />
+                        </div>
+                    )
+                }else if ( e === 2){
+                    return( 
+                        <div key = {e.id}>
+                            <AgentvAgent />
+                        </div>
+                    )
+                }
+            })}
+            </Carousel> 
         </div>
-      );
+    )
   }
 }
 

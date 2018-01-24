@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Dashboard.css'
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
 import Leaderboard from '../Leaderboard/Leaderboard';
+// import Carousel from '../Carousel/Carousel';
 
 
 class Dashboard extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       standings: "Initial Standings"
@@ -23,12 +24,15 @@ class Dashboard extends Component {
         </header>
         <div className='carousel'>
           <button>Prev</button>
-          <Leaderboard />
+          {/* <Carousel> */}
+            <Leaderboard />
+            {/* <li>1</li> */}
+          {/* </Carousel> */}
           <button>Next</button>
         </div>
         <div className='modals'>
-        <CreateChallengeModal/>
-        <CurrentChallengeModal history={this.props.history}/>
+          <CreateChallengeModal />
+          <CurrentChallengeModal history={this.props.history} />
         </div>
         <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
       </div>

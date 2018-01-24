@@ -39,14 +39,14 @@ app.get( '/api/agentvagent', leaderboardControllers.agentvagent ) // not using y
 app.put( '/api/leaderboard', leaderboardControllers.update_leaderboard)
 
 // //User Endpoints
-app.get( '/api/users', usersControllers.users_dummy )
-app.get( '/api/users_joined', usersControllers.users_team_join )
-app.get( '/api/user/:id', usersControllers.get_user_info ) // for specific user information
-app.get( '/api/teams', usersControllers.get_team_info )
+app.get( '/api/users', usersControllers.users_dummy ) // Done testing
+app.get( '/api/users_joined', usersControllers.users_team_join ) 
+app.get( '/api/user/:id', usersControllers.get_user_info ) // for specific user information, Done testing
+app.get( '/api/teams', usersControllers.get_team_info ) // Done testing
 
 // //Challenge Endpoints
-app.get( '/api/challenges', challengesControllers.get_challenges )
-app.get( '/api/challenge_type', challengesControllers.get_challenges_type )
+app.get( '/api/challenges', challengesControllers.get_challenges ) // Done testing
+app.get( '/api/challenge_type', challengesControllers.get_challenges_type ) // Done testing
 app.get( '/api/modes', challengesControllers.get_mode )
 app.get( '/api/kpi', challengesControllers.get_kpi )
 app.get( '/api/duration', challengesControllers.get_durations )

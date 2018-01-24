@@ -22,13 +22,13 @@ class Dashboard extends Component {
         <header>
           <h1>Welcome to the Dashboard</h1>
         </header>
-        <div className='carousel'>
-          <button>Prev</button>
+        <div className='board'>
+          <button className="toggle_left" >Prev</button>
           {/* <Carousel> */}
             <Leaderboard />
             {/* <li>1</li> */}
           {/* </Carousel> */}
-          <button>Next</button>
+          <button className="toggle_right">Next</button>
         </div>
         <div className='modals'>
           <CreateChallengeModal />

@@ -40,7 +40,6 @@ class Carousel extends Component {
     //   bullets[this.state.current] = '^'
     return (
       <div className="Carousel">
-      {/* {bullets} */}
       {this.props.children[this.state.current]}
       </div>
     );

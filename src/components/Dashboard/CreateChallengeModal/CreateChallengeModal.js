@@ -185,7 +185,7 @@ class CreateChallengeModal extends Component {
                                 </Grid.Column>
 
                                 <Grid.Column>
-                                    <Segment.Group horizontal as='basic'>
+                                    <Segment.Group horizontal >
                                         <Grid columns={2} >
 
                                             <Grid.Column>

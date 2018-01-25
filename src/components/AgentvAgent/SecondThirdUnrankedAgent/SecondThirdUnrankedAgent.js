@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import './SecondThirdUnrankedAgent.css'
+import UsersModal from '../../UsersModal/UsersModal'
+import { connect } from 'react-redux'
+import { fetchAVAData } from './../../../ducks/reducer'
 import { bindActionCreators } from 'redux';
-import './SecondThirdUnrankedAgent.css';
-import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
 
 class SecondThirdUnrankedAgent extends Component {
+
+    show = dimmer => () => this.setState({ dimmer, open: true })
+    close = () => this.setState({ open: false })
 
     componentDidMount() {
         this.props.fetchUsers()
@@ -45,7 +50,7 @@ class SecondThirdUnrankedAgent extends Component {
                                     })}
                                 </div>
                             </div>
-                            <button>View More</button>
+                            <UsersModal/>
                         </div>
                     </div>
                 {/* } */}

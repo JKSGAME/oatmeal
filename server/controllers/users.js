@@ -30,6 +30,11 @@ module.exports = {
         const db = req.app.get( 'db' )
         let status = 200
         db.get_profile().then( profile => res.send( profile ) )
+    },
+
+    view_more ( req, res ) {
+        const db = req.app.get( 'db' )
+        db.view_more().then( data => res.send( data ) )
     }
 
 }

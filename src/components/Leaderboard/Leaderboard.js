@@ -3,7 +3,7 @@ import './Leaderboard.css';
 import { connect } from 'react-redux';
 import AgentvAgent from './../AgentvAgent/AgentvAgent';
 import { getStandings } from './../../ducks/reducer'
-// import TeamvTeam from './../TeamvTeam/TeamvTeam'
+// import TeamvTeam from '../TeamvTeam/TeamvTeam';
 
 class Leaderboard extends Component {
     // constructor(){
@@ -12,8 +12,7 @@ class Leaderboard extends Component {
     // }
     
     render() {
-        console.log (this.props.standings, "standings object on leaderboard")
-    {/* Some sort of switch or jsx if statement here to determin which view will get rendered */}
+    {/* Some sort of switch or jsx if statement here to determine which view will get rendered */}
     // return (
     //   <div className="Leaderboard">
     //     <TeamvTeam />

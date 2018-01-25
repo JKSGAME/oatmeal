@@ -1,30 +1,16 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import './TVTSecondPlaceTeam.css';
-import { connect } from 'react-redux'
-import { fetchTVTData } from './../../../ducks/reducer'
+import { connect } from 'react-redux';
+import { fetchTVTData, fetchUsers } from './../../../ducks/reducer';
 
 class TVTSecondPlaceTeam extends Component {
-
-    constructor( props ) {
-        super( props ) 
-
-        this.state = {
-            challengeData: []
-        }
-    }
 
     componentDidMount() {
         this.props.fetchTVTData()
     }
 
-    componentWillReceiveProps( props ) {
-        this.setState({
-            challengeData: props.challengeData
-        })
-    }
-
     render() {
-        console.log(this.state)
         return (
             <div className="SecondPlaceTeam">
                 <div className="Team-name">
@@ -32,17 +18,17 @@ class TVTSecondPlaceTeam extends Component {
                 </div>
                 <div className="Team-data-2">
                     <div className="SecondPlaceLeftColumn">
-                        <h1>kpi name{/* this.props.challengeData */}</h1>
-                        <span>kpi total{/* this.props.challengeData */}</span>
+                        <h1>{this.props.challengeData.length > 0 && this.props.challengeData[0].kpi}</h1>  {/* needs to filter with challenge data it should load */}
+                        <span>{this.props.users.length > 0 && this.props.users[0].dialsKPI}</span>         {/* needs to add all user kpi data together and filter kpi based on challenge */}
                     </div>
                     <div className="SecondPlaceRightColumn">
                         <div className="team2-leaders">
-                            {this.state.challengeData.map( ( e, i ) => {
+                            {this.props.users.map( ( e, i ) => {
                                 return <div key={i} className="TVT-team2-leaders">
                                     <img src="" alt=""/>
-                                    <h4>Name</h4>
-                                    <h4>Team Name</h4>
-                                    <h4>KPI Total</h4>
+                                    <h1>{this.props.users.length > 0 && this.props.users[0].name} </h1>
+                                    <h3>{this.props.users.length > 0 && this.props.users[0].team}</h3>
+                                    <h4>{this.props.users.length > 0 && this.props.users[0].standings.dialsKPI}</h4>
                                 </div>
                             })}
                         </div>
@@ -55,7 +41,15 @@ class TVTSecondPlaceTeam extends Component {
 }
 
 function mapStateToProps( state ) {
-    return { challengeData: state.challengeDataTVT }
+    return { 
+        challengeData: state.challengeDataTVT,
+        users: state.users
+    }
 }
   
-export default connect( mapStateToProps, { fetchTVTData } )( TVTSecondPlaceTeam )
+const mapDispatchToProps = dispatch => bindActionCreators({
+    fetchTVTData,
+    fetchUsers
+}, dispatch )
+
+export default connect( mapStateToProps, mapDispatchToProps )( TVTSecondPlaceTeam )

@@ -43,6 +43,7 @@ app.get( '/api/users', usersControllers.users_dummy ) // Done testing
 app.get( '/api/users_joined', usersControllers.users_team_join ) 
 app.get( '/api/user/:id', usersControllers.get_user_info ) // for specific user information, Done testing
 app.get( '/api/teams', usersControllers.get_team_info ) // Done testing
+app.get('/api/viewmore', usersControllers.view_more)
 
 // //Challenge Endpoints
 app.get( '/api/challenges', challengesControllers.get_challenges ) // Done testing

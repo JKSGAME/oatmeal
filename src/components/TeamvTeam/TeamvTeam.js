@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
 import './TeamvTeam.css';
 import { connect } from 'react-redux'
 import { fetchTVTData } from './../../ducks/reducer'
@@ -7,31 +8,16 @@ import TVTSecondPlaceTeam from './TVTSecondPlaceTeam/TVTSecondPlaceTeam';
 
 class TeamvTeam extends Component {
 
-  constructor( props ) {
-    super( props )
-
-    this.state = {
-      challengeData: []
-    }
-  }
-
   componentDidMount() {
     this.props.fetchTVTData()
   }
 
-  componentWillReceiveProps( props ) {
-    this.setState({
-      challengeData: props.challengeData
-    })
-  }
-
   render() {
-    console.log(this.state.challengeData)
   return (
         <div className="TeamvTeam">
           <div className="TVT-title">
-            <h1>{this.state.challengeData.length > 0 && this.state.challengeData[0].name}</h1>
-            <p>{this.state.challengeData.length > 0 && this.state.challengeData[0].description}</p>
+            <h1>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h1>
+            <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
           </div>
           <div className="TVT-leaderboard-data">
             <div className="TVT-FirstPlaceTeam-Placement">
@@ -49,4 +35,8 @@ function mapStateToProps( state ) {
   return { challengeData: state.challengeDataTVT }
 }
 
-export default connect( mapStateToProps, { fetchTVTData } )( TeamvTeam )
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchTVTData
+}, dispatch )
+
+export default connect( mapStateToProps, mapDispatchToProps )( TeamvTeam )

@@ -5,7 +5,7 @@ class Carousel extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            total: props.children.length,
+            total: 0,
             current: 0
         }
     }
@@ -13,11 +13,17 @@ class Carousel extends Component {
     componentDidMount() {
         const { children } = this.props
         this.setState({ total: children.length })
-        this.interval = setInterval(this.showNext, 10000)
+        this.interval = setInterval(this.showNext, 7000)
     }
 
     componentWillUnmount() {
         clearInterval(this.interval)
+    }
+
+    componentWillReceiveProps(props){
+        this.setState({
+            total: props.length
+        })
     }
 
     showNext = () => {
@@ -34,7 +40,6 @@ class Carousel extends Component {
     //   bullets[this.state.current] = '^'
     return (
       <div className="Carousel">
-      {/* {bullets} */}
       {this.props.children[this.state.current]}
       </div>
     );

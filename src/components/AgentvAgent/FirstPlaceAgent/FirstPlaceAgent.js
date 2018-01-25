@@ -31,7 +31,7 @@ class FirstPlaceAgent extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div>
         {/* { this.state.standings.length > 0 && */}

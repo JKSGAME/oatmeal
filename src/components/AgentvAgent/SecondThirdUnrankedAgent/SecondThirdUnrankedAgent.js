@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SecondThirdUnrankedAgent.css'
+import UsersModal from '../../UsersModal/UsersModal'
 import { connect } from 'react-redux'
 import { fetchAVAData } from './../../../ducks/reducer'
 
@@ -21,6 +22,9 @@ class SecondThirdUnrankedAgent extends Component {
         }
     }
 
+    show = dimmer => () => this.setState({ dimmer, open: true })
+    close = () => this.setState({ open: false })
+
     componentDidMount() {
         this.props.fetchAVAData()
     }
@@ -32,7 +36,7 @@ class SecondThirdUnrankedAgent extends Component {
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div>
                 {/* { this.state.standings.length > 0 && */}
@@ -40,14 +44,14 @@ class SecondThirdUnrankedAgent extends Component {
                         <div className="SecondThirdAgents">
                             <div className="SecondPlaceAgent">
                                 <h2>2nd Place</h2>
-                                <img src="{/* http://www.freakingnews.com/pictures/51000/Jack-Black-with-Mouth-Eyes--51345.jpg */}" alt="jack black" />
+                                {/* <img src="http://www.freakingnews.com/pictures/51000/Jack-Black-with-Mouth-Eyes--51345.jpg" alt="jack black" /> */}
                                 <h2>Jack Black</h2>
                                 <h3>Blue Team</h3>
                                 <h3>10</h3>
                             </div>
                             <div className="ThirdPlaceAgent">
                                 <h2>3rd Place</h2>
-                                <img src="{/* https://bloximages.chicago2.vip.townnews.com/siouxcityjournal.com/content/tncms/assets/v3/editorial/2/b5/2b524972-f4e0-5948-958a-769df73c8488/5824ac0ed836c.image.jpg?resize=1200%2C945 */}" alt="Will Forte" />
+                                {/* <img src="https://bloximages.chicago2.vip.townnews.com/siouxcityjournal.com/content/tncms/assets/v3/editorial/2/b5/2b524972-f4e0-5948-958a-769df73c8488/5824ac0ed836c.image.jpg?resize=1200%2C945" alt="Will Forte" /> */}
                                 <h2>Will Forte</h2>
                                 <h3>Green Team</h3>
                                 <h3>8</h3>
@@ -67,7 +71,7 @@ class SecondThirdUnrankedAgent extends Component {
                                     })}
                                 </div>
                             </div>
-                            <button>View More</button>
+                            <UsersModal/>
                         </div>
                     </div>
                 {/* } */}

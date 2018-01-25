@@ -26,7 +26,7 @@ class AgentvAgent extends Component {
       }
 
     render() {
-        console.log(this.state.challengeData)
+        // console.log(this.state.challengeData)
     return (
         <div className="AgentvAgent">
             <div className="AVA-title">

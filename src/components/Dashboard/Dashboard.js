@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import Fullscreen from 'react-full-screen';
 import './Dashboard.css'
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
 import Leaderboard from '../Leaderboard/Leaderboard';
-// import Carousel from '../Carousel/Carousel';
+
 
 
 class Dashboard extends Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
-      standings: "Initial Standings"
+      standings: "Initial Standings",
+      isFull: false,
     }
 
+  }
+  goFull = () => {
+    this.setState({ isFull: true })
   }
 
   render() {
@@ -22,13 +27,13 @@ class Dashboard extends Component {
         <header>
           <h1>Welcome to the Dashboard</h1>
         </header>
-        <div className='carousel'>
-          <button>Prev</button>
-          {/* <Carousel> */}
-            <Leaderboard />
-            {/* <li>1</li> */}
-          {/* </Carousel> */}
-          <button>Next</button>
+        <button onClick= {this.goFull}>Fullscreen</button>
+        <div className='board'>
+          <button className="toggle_left" >Prev</button>
+            <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
+              <Leaderboard />
+            </Fullscreen>
+          <button className="toggle_right">Next</button>
         </div>
         <div className='modals'>
           <CreateChallengeModal />

@@ -50,7 +50,7 @@ class DummyUser extends Component {
       axios.get('/api/leaderboard').then( standingsRes => {
         let standings = eval("("+standingsRes.data[0].standings+")")
         let update = Object.assign({}, standings, agentScore)
-  
+        console.log(update, "update standings")
         axios.put('/api/leaderboard/', update).then( res => {
           socket.emit( 'update standings', update )})
       })

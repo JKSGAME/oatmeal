@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getStandings } from './../../ducks/reducer'
+import Fullscreen from 'react-full-screen';
 import AgentvAgent from './../AgentvAgent/AgentvAgent';
 import TeamvTeam from './../TeamvTeam/TeamvTeam'
 import Carousel from '../Carousel/Carousel';
@@ -9,13 +10,16 @@ import './Leaderboard.css';
 import _ from "lodash";
 
 class Leaderboard extends Component {
-    constructor(){
+    constructor(props){
         super()
         this.state={
             challenges: {},
+        
         }
-
+        
     }
+
+
     componentDidMount(){
         axios.get('/api/challenges').then( allChallenges =>{
             this.setState({

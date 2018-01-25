@@ -1,59 +1,42 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import './FirstPlaceAgent.css';
-import { connect } from 'react-redux'
-import { fetchAVAData } from './../../../ducks/reducer'
+import { connect } from 'react-redux';
+import { fetchUsers } from './../../../ducks/reducer';
 
 class FirstPlaceAgent extends Component {
 
-  constructor( props ) {
-    super( props )
-
-    this.state = {
-
-        challengeData: [],
-        standings: {
-          name: 'Weird Al',
-          team: 'Red Team',
-          kpiTotal: 16
-        }
-
-    }
-  }
-
   componentDidMount() {
-    this.props.fetchAVAData()
-  }
-
-  componentWillReceiveProps( props ) {
-    this.setState({
-      challengeData: props.challengeData
-    })
+    this.props.fetchUsers()
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
-        {/* { this.state.standings.length > 0 && */}
           <div className="AVA-FirstPlaceAgent">
             <div className="AVA-FirstPlaceAgent-Image">
               <h1>1st Place</h1>
-              <img src="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwi5j-Wcke3YAhUHw2MKHXiTBxQQjRwIBw&url=https%3A%2F%2Fwww.rifftrax.com%2Friffer%2Fweird-al-yankovic&psig=AOvVaw2Ar04r_EUNCpr00RG1m_sA&ust=1516764220110342" alt="weird al" />
+              <img src="" alt="" />
             </div>
             <div className="AVA-first-data">
-              <h1>Weird Al</h1>
-              <h3>Red Team</h3>
-              <h4>16</h4>
+              <h1>{this.props.users.length > 0 && this.props.users[0].name} </h1>
+              <h3>{this.props.users.length > 0 && this.props.users[0].team}</h3>
+              <h4>{this.props.users.length > 0 && this.props.users[0].standings.dialsKPI}</h4>
             </div>
           </div>
-        {/* // } */}
       </div>
     );
   }
 }
 
 function mapStateToProps( state ) {
-  return { challengeData: state.challengeDataAVA }
+  return { 
+    users: state.users
+  }
 }
 
-export default connect( mapStateToProps, { fetchAVAData } )( FirstPlaceAgent )
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchUsers
+}, dispatch )
+
+export default connect( mapStateToProps, mapDispatchToProps )( FirstPlaceAgent )

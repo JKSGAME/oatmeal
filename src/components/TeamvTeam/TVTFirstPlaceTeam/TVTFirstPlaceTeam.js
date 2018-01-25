@@ -1,47 +1,32 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import './TVTFirstPlaceTeam.css';
-import { connect } from 'react-redux'
-import { fetchTVTData } from './../../../ducks/reducer'
+import { connect } from 'react-redux';
+import { fetchTVTData, fetchUsers } from './../../../ducks/reducer';
 
 class TVTFirstPlaceTeam extends Component {
-
-    constructor( props ) {
-        super( props ) 
-
-        this.state = {
-            challengeData: []
-        }
-    }
 
     componentDidMount() {
         this.props.fetchTVTData()
     }
 
-    componentWillReceiveProps( props ) {
-        this.setState({
-            challengeData: props.challengeData
-        })
-    }
-
     render() {
-        console.log(this.state)
         return (
             <div className="FirstPlaceTeam"> 
-            {console.log(this.props.challengeData)}
                 <div className="Team-name">
                     <h1>Red Team{/* this.props.challengeData */}</h1>
                 </div>
                 <div className="Team-data">
                     <div className="FirstPlaceLeftColumn">
-                        <h1>kpi name{/* this.props.challengeData */}</h1>
-                        <span>kpi total{/* this.props.challengeData */}</span>
+                        <h1>{this.props.challengeData.length > 0 && this.props.challengeData[0].kpi}</h1>  {/* needs to filter with challenge data it should load */}
+                        <span>{this.props.users.length > 0 && this.props.users[0].dialsKPI}</span>         {/* needs to add all user kpi data together and filter kpi based on challenge */}
                     </div>
                     <div className="FirstPlaceRightColumn">
                         <button className="team1-user-first">
                             <h1>1st Place</h1>
                             <img src='' alt="" />
-                            <h1>name{/* this.props.challengeData */}</h1>
-                            <h1>kpi total{/* this.props.challengeData */}</h1>
+                            <h1>{this.props.users.length > 0 && this.props.users[0].name}</h1>
+                            <h1>{this.props.users.length > 0 && this.props.users[0].dialsKPI}</h1>
                         </button>
                         <div className="team1-users-twoandthree">
                             <button className="team1-second">
@@ -49,8 +34,8 @@ class TVTFirstPlaceTeam extends Component {
                                 <div className="team1-second-userdata">
                                     <img src='' alt="" />
                                     <div className="team1-second-userInfo">
-                                        <h3>name{/* this.props.challengeData */}</h3>
-                                        <h4>kpi total{/* this.props.challengeData */}</h4>
+                                        <h3>{this.props.users.length > 0 && this.props.users[1].name}</h3>
+                                        <h4>{this.props.users.length > 0 && this.props.users[1].dialsKPI}</h4>
                                     </div>
                                 </div>
                             </button>
@@ -60,8 +45,8 @@ class TVTFirstPlaceTeam extends Component {
                                     <div className="team1-third-userdata">
                                         <img src='' alt="" />
                                         <div className="team1-third-userInfo">
-                                            <h3>name{/* this.props.challengeData */}</h3>
-                                            <h4>kpi total{/* this.props.challengeData */}</h4>
+                                            <h3>{this.props.users.length > 0 && this.props.users[2].name}</h3>
+                                            <h4>{this.props.users.length > 0 && this.props.users[2].dialsKPI}</h4>
                                         </div>
                                     </div>
                                 </button>
@@ -76,7 +61,15 @@ class TVTFirstPlaceTeam extends Component {
 }
 
 function mapStateToProps( state ) {
-    return { challengeData: state.challengeDataTVT }
+    return { 
+        challengeData: state.challengeDataTVT,
+        users: state.users 
+    }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    fetchTVTData,
+    fetchUsers
+}, dispatch )
   
-export default connect( mapStateToProps, { fetchTVTData } )( TVTFirstPlaceTeam )
+export default connect( mapStateToProps, mapDispatchToProps )( TVTFirstPlaceTeam )

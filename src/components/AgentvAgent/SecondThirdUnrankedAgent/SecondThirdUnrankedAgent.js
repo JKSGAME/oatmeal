@@ -1,68 +1,46 @@
 import React, { Component } from 'react';
-import './SecondThirdUnrankedAgent.css'
-import { connect } from 'react-redux'
-import { fetchAVAData } from './../../../ducks/reducer'
-
+import { bindActionCreators } from 'redux';
+import './SecondThirdUnrankedAgent.css';
+import { connect } from 'react-redux';
+import { fetchUsers } from './../../../ducks/reducer';
 
 class SecondThirdUnrankedAgent extends Component {
-    
-    constructor( props ) {
-        super( props ) 
-
-        this.state = {
-
-            challengeData: [],
-            standings: {
-                name: 'Weird Al',
-                team: 'Red Team',
-                kpiTotal: 16
-            }
-
-        }
-    }
 
     componentDidMount() {
-        this.props.fetchAVAData()
-    }
-
-    componentWillReceiveProps( props ) {
-        this.setState({
-            challengeData: props.challengeData
-        })
+        this.props.fetchUsers()
     }
 
     render() {
-        console.log(this.state)
         return (
             <div>
-                {/* { this.state.standings.length > 0 && */}
+                {/* { this.props.users.length > 0 && */}
                     <div className="SecondThirdUnranked">
                         <div className="SecondThirdAgents">
                             <div className="SecondPlaceAgent">
                                 <h2>2nd Place</h2>
-                                <img src="{/* http://www.freakingnews.com/pictures/51000/Jack-Black-with-Mouth-Eyes--51345.jpg */}" alt="jack black" />
-                                <h2>Jack Black</h2>
-                                <h3>Blue Team</h3>
-                                <h3>10</h3>
+                                <img src="" alt="" />
+                                <h1>{this.props.users.length > 0 && this.props.users[1].name} </h1>
+                                <h3>{this.props.users.length > 0 && this.props.users[1].team}</h3>
+                                <h4>{this.props.users.length > 0 && this.props.users[1].standings.dialsKPI}</h4>
                             </div>
                             <div className="ThirdPlaceAgent">
                                 <h2>3rd Place</h2>
-                                <img src="{/* https://bloximages.chicago2.vip.townnews.com/siouxcityjournal.com/content/tncms/assets/v3/editorial/2/b5/2b524972-f4e0-5948-958a-769df73c8488/5824ac0ed836c.image.jpg?resize=1200%2C945 */}" alt="Will Forte" />
-                                <h2>Will Forte</h2>
-                                <h3>Green Team</h3>
-                                <h3>8</h3>
+                                <img src="" alt="" />
+                                <h1>{this.props.users.length > 0 && this.props.users[2].name} </h1>
+                                <h3>{this.props.users.length > 0 && this.props.users[2].team}</h3>
+                                <h4>{this.props.users.length > 0 && this.props.users[2].standings.dialsKPI}</h4>
                             </div>
                         </div>
                         <div className="UnrankedAgents">
                             <div className="AVA-unranked-data">
                                 <div className="AVA-unranked-ranking">
-                                    {this.state.challengeData.map( ( e, i ) => {
+                                    {this.props.users.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                                         return <div key={i} className="AVA-Unranked-lineItem">
                                             <img src="" alt=""/>
                                             <h4>4th:</h4>
-                                            <h4>Name</h4>
-                                            <h4>Team Name</h4>
-                                            <h4>KPI Total</h4>
+                                            <h1>{this.props.users.length > 0 && this.props.users[i].name} </h1>
+                                            <h3>{this.props.users.length > 0 && this.props.users[i].team}</h3>
+                                            <h4>{this.props.users.length > 0 && this.props.users[i].standings.dialsKPI}</h4>
                                         </div>
                                     })}
                                 </div>
@@ -77,7 +55,13 @@ class SecondThirdUnrankedAgent extends Component {
 }
 
 function mapStateToProps( state ) {
-    return { challengeData: state.challengeDataAVA }
+    return { 
+        users: state.users
+    }
   }
   
-  export default connect( mapStateToProps, { fetchAVAData } )( SecondThirdUnrankedAgent )
+  const mapDispatchToProps = dispatch => bindActionCreators({
+    fetchUsers
+  }, dispatch )
+  
+  export default connect( mapStateToProps, mapDispatchToProps )( SecondThirdUnrankedAgent )

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DummyUser from './DummyUsers/DummyUser.js'
 import { getStandings } from './../../ducks/reducer'
+import { Button, Header, Modal, Input, Dropdown, Divider, Form, TextArea, Grid, Segment } from 'semantic-ui-react';
 
 
 import io from 'socket.io-client';
@@ -17,12 +18,21 @@ class DummyCrm extends Component {
 
     this.state = {
       users: [],
-      standings: "Initial Standings"
+      standings: "Initial Standings",
+      challenges: [],
+      challengeId: ''
     }
-    
-    
+    this.handleChange = this.handleChange.bind(this)
     
   }
+
+  handleChange(e, d) {
+    console.log('d',d);
+    this.setState({
+      challengeId: d.value
+    })
+  }
+
   componentDidUpdate(){
   socket.on('response', data =>{
     let newStandings = data.standings
@@ -39,14 +49,29 @@ class DummyCrm extends Component {
         teams: res.data[1]
       })
     })
+
+    axios.get('/api/fullChallengeTable').then(res => {
+      this.setState({
+          challenges: res.data
+      })
+  })
   }
   
   render() {
+    console.log(this.state);
+    const { challenges } = this.state
+
+    const challengeDropdown = challenges.map( ( e, i ) => {
+      return { key: e.challenge_id, text: e.name, value: e.challenge_id, id: e.name }
+    })
     return (
       <div className="DummyCrm">
         <header>
           <h1>Dummy CRM</h1>
           <Link to='/'><button>Back to Dashboard</button></Link>
+          <div>
+          <Dropdown placeholder='Select Challenge' floating search selection options={challengeDropdown} text={challengeDropdown.text} value={challengeDropdown.value} onChange={this.handleChange}/>
+          </div>
         </header>
         <div className='dummy-user-layout'>
           <div className='dummy-data'>

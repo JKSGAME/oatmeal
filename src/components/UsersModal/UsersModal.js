@@ -48,7 +48,7 @@ class UsersModal extends Component {
             let userArr = []
             res.data.map( (e, i) => {
                 let standingsObj = eval('(' + e.standings + ')')
-                userArr.push({
+                return userArr.push({
                     userId: e.user_id,
                     name: e.user_name,
                     team: e.team,

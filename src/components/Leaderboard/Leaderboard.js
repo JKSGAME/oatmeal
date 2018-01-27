@@ -29,7 +29,6 @@ class Leaderboard extends Component {
     
     render() {
         let chalid = _.map(this.state.challenges, "challenge_type_id")
-        console.log(chalid.length, "chalid lenth")
         let length = chalid.length
         
         return(

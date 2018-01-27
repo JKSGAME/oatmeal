@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getStandings } from './../../ducks/reducer'
-import Fullscreen from 'react-full-screen';
 import AgentvAgent from './../AgentvAgent/AgentvAgent';
 import TeamvTeam from './../TeamvTeam/TeamvTeam'
 import Carousel from '../Carousel/Carousel';
@@ -40,13 +39,13 @@ class Leaderboard extends Component {
             {(chalid.reverse()).map((e, i)=>{
                 if( e === 1){
                     return(
-                        <div key = {e.id}>
+                        <div key = {e}>
                             <TeamvTeam />
                         </div>
                     )
                 }else if ( e === 2){
                     return( 
-                        <div key = {e.id}>
+                        <div key = {e}>
                             <AgentvAgent />
                         </div>
                     )

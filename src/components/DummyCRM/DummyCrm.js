@@ -7,8 +7,8 @@ import DummyUser from './DummyUsers/DummyUser.js'
 import { getStandings } from './../../ducks/reducer'
 
 
-import io from 'socket.io-client';
-const socket = io()
+// import io from 'socket.io-client';
+// const socket = io()
 
 class DummyCrm extends Component {
 
@@ -23,14 +23,14 @@ class DummyCrm extends Component {
     
     
   }
-  componentDidUpdate(){
-  socket.on('response', data =>{
-    let newStandings = data.standings
-    this.props.getStandings({
-      standings: newStandings
-    })
-  })
-  }
+  // componentDidUpdate(){
+  // socket.on('response', data =>{
+  //   let newStandings = data.standings
+  //   this.props.getStandings({
+  //     standings: newStandings
+  //   })
+  // })
+  // }
   
   componentDidMount() {
     axios.get('/api/users').then( ( res ) => {

@@ -4,13 +4,26 @@ import './FirstPlaceAgent.css';
 import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
 
+import io from 'socket.io-client';
+const socket = io()
+
+
 class FirstPlaceAgent extends Component {
 
   componentDidMount() {
+    console.log('hit')
     this.props.fetchUsers()
+
+      socket.on('response', data =>{
+        console.log(data, "here it is")
+        let newStandings = data.standings
+        console.log(newStandings, "from socket")
+      })
+      
   }
 
   render() {
+    (console.log(this.props, "first place"))
     return (
       <div>
           <div className="AVA-FirstPlaceAgent">

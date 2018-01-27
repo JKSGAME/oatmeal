@@ -19,7 +19,6 @@ class CurrentChallengeModal extends Component {
     }
 
     show = dimmer => () => this.setState({ dimmer, open: true })
-
     close = () => this.setState({ open: false })
 
     handleSort = clickedColumn => () => {
@@ -50,12 +49,12 @@ class CurrentChallengeModal extends Component {
     }
     
     render() {
-        const { open, dimmer, column, direction } = this.state
+        const { open, column, direction } = this.state
 
         return (
             <div className='CurrentChallengeModal'>
                 <Button onClick={this.show('blurred')}>Current Challenges</Button>
-                <Modal dimmer={dimmer} open={open} onClose={this.close}>
+                <Modal dimmer open={open} onClose={this.close}>
                     <Modal.Header>Current Challenges</Modal.Header>
                     <Modal.Content >
                         <Modal.Description>

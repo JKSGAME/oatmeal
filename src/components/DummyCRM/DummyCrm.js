@@ -8,8 +8,8 @@ import { getStandings } from './../../ducks/reducer'
 import { Button, Header, Modal, Input, Dropdown, Divider, Form, TextArea, Grid, Segment } from 'semantic-ui-react';
 
 
-// import io from 'socket.io-client';
-// const socket = io()
+import io from 'socket.io-client';
+const socket = io()
 
 class DummyCrm extends Component {
 

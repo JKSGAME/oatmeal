@@ -13,7 +13,7 @@ const app = express();
 app.use( bodyParser.json() );
 app.use( cors() );
 
-S3(app)
+S3( app )
 
 massive( process.env.DB_CONNECTION ).then( db => { app.set( 'db', db ) } )
 
@@ -33,7 +33,7 @@ app.get( '/api/dashboard', dashboardControllers.get_dashboard ) // get all leade
 app.get( '/api/fullChallengeTable', dashboardControllers.get_challenge_table ) // gets all challenge info including joined tables
 
 //Leaderboard Endpoints
-app.get( '/api/leaderboard', leaderboardControllers.get_leaderboard ) // not using yet
+app.get( '/api/leaderboard/:id', leaderboardControllers.get_leaderboard ) // not using yet
 app.get( '/api/teamvteam', leaderboardControllers.teamvteam )
 app.get( '/api/agentvagent', leaderboardControllers.agentvagent ) // not using yet
 app.put( '/api/leaderboard', leaderboardControllers.update_leaderboard)
@@ -61,10 +61,17 @@ const io = socket ( app.listen ( process.env.SERVER_PORT, () => { console.log( `
 io.on( 'connection', socket => {
     console.log( 'connection est. 2018' )
 
+    let room = ''
+    socket.on( 'join room', data => {
+        console.log( 'Room joined', data.room )
+        let room = data.room
+        socket.join( room )
+        io.to( room ).emit( 'room joined' )
+    })
+
     socket.on( 'update standings', input => {
         console.log( input, "input" )
-        socket.broadcast.emit( 'response', {standings: input} )
-
+        io.to( room ).emit( 'response', {standings: input} )
     })
 
 })

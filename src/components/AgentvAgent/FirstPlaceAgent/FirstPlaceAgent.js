@@ -3,6 +3,9 @@ import { bindActionCreators } from 'redux';
 import './FirstPlaceAgent.css';
 import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
+import io from 'socket.io-client'
+
+const socket = io()
 
 import io from 'socket.io-client';
 const socket = io()
@@ -13,17 +16,15 @@ class FirstPlaceAgent extends Component {
   componentDidMount() {
     console.log('hit')
     this.props.fetchUsers()
-
-      socket.on('response', data =>{
-        console.log(data, "here it is")
-        let newStandings = data.standings
-        console.log(newStandings, "from socket")
-      })
-      
+    
+    socket.on('response', data =>{
+      let standings = data.standings
+      console.log(standings, "new freaking standings")
+    })
   }
 
   render() {
-    (console.log(this.props, "first place"))
+    console.log(this.props)
     return (
       <div>
           <div className="AVA-FirstPlaceAgent">
@@ -44,12 +45,12 @@ class FirstPlaceAgent extends Component {
 
 function mapStateToProps( state ) {
   return { 
-    users: state.users
+    users: state.users,
   }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchUsers
+  fetchUsers,
 }, dispatch )
 
 export default connect( mapStateToProps, mapDispatchToProps )( FirstPlaceAgent )

@@ -13,7 +13,7 @@ class DummyUser extends Component {
 
     this.state = {
       sales: 1,
-      dials: 1, 
+      dials: 1
     }
 
     this.handleClickSales = this.handleClickSales.bind( this )
@@ -23,25 +23,23 @@ class DummyUser extends Component {
 
   componentWillReceiveProps( nextProps ) {
     let standings = _.map(this.props.standings, "standings")
-    // console.log(standings);
     let standingsNew = eval( " ( "+standings[0]+" ) " )
-    // console.log(standingsNew, "this.is the standings obj")
-    if( standingsNew !== {} ) {
-      let person = this.props.id;
-      for ( person in standingsNew){
-        let individual = standingsNew[person]
-        console.log( individual)
-        // this.setState({
-        //   sales: _.map(individual, 0),
-        // })
-        // console.log(this.state.sales)
-
-        // for (dialsKPI in individual){
-        //   this.setState({
-        //     dials: 'dialsKPI'
-        // })}
-      }
-     }
+    let empty = _.isEmpty(standingsNew)
+    if( empty ) {
+      this.setState({
+        dials: 0,
+        sales: 0
+      })
+    } else {
+      let personId = this.props.id
+      let individualKPI = _.at( standingsNew, personId )
+      let dials = _.map( individualKPI, 'dialsKPI' )
+      let sales = _.map( individualKPI, 'salesKPI' )
+      this.setState({
+        dials: dials[0],
+        sales: sales[0]
+      })
+    }
   }
 
   handleClickSales = () => {
@@ -51,38 +49,41 @@ class DummyUser extends Component {
     let id = this.props.id;
     let agentScore = {};
     agentScore[id] = { salesKPI: this.state.sales, dialsKPI: this.state.dials }
-
-    axios.get( '/api/leaderboard' ).then( standingsRes => {
-      let standings = eval("("+standingsRes.data[0].standings+")")
+    axios.get( `/api/leaderboard/${this.props.challengeId}`).then( res => {
+      let standings = eval("("+res.data[0].standings+")")
       let update = Object.assign( {}, standings, agentScore )
-
-      axios.put( '/api/leaderboard/', update ).then( res => {
-        socket.emit( 'update standings', update )
+      // let updateString = JSON.stringify( update )
+      axios.put( `/api/updateleaderboard/${this.props.challengeId}`, update ).then( res => {
+        console.log(res)
+        // socket.emit( 'update standings', update )
       })
     })
+
   }
 
   handleClickDials = () => {
     this.setState( prevState => {
        return { dials: prevState.dials + 1 }
       })
-
-      let id = this.props.id;
-      let agentScore = {};
-      agentScore[id] = { salesKPI: this.state.sales, dialsKPI: this.state.dials }
-  
-      axios.get('/api/leaderboard').then( standingsRes => {
-        let standings = eval( " ( "+standingsRes.data[0].standings+" ) " )
-        let update = Object.assign( {}, standings, agentScore )
-        console.log( update, "update standings" )
-        axios.put( '/api/leaderboard/', update ).then( res => {
-          io.to( this.props.challengeId ).emit( 'update standings', update )
-        })
+    let id = this.props.id;
+    let agentScore = {};
+    agentScore[id] = { salesKPI: this.state.sales, dialsKPI: this.state.dials }
+    axios.get( `/api/leaderboard/${this.props.challengeId}`).then( res => {
+      let standings = eval('('+res.data[0].standings+')')
+      console.log(standings)
+      let update = Object.assign( {}, standings, agentScore )
+      console.log(update);
+      // let updateString = JSON.stringify( update )
+      // console.log(updateString);
+      axios.put( `/api/updateleaderboard/${this.props.challengeId}`, update ).then( res => {
+        console.log(res)
+        // socket.emit( 'update standings', update )
       })
+    })
+
   }
 
   render() {
-    // console.log(this.state)
     return (
       <div className="DummyUser">
         <header className="DummyTitle">

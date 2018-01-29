@@ -23,25 +23,23 @@ class DummyUser extends Component {
 
   componentWillReceiveProps( nextProps ) {
     let standings = _.map(this.props.standings, "standings")
-    // console.log(standings);
     let standingsNew = eval( " ( "+standings[0]+" ) " )
-    // console.log(standingsNew, "this.is the standings obj")
-    if( standingsNew !== {} ) {
-      let person = this.props.id;
-      for ( person in standingsNew){
-        let individual = standingsNew[person]
-        console.log( individual)
-        // this.setState({
-        //   sales: _.map(individual, 0),
-        // })
-        // console.log(this.state.sales)
-
-        // for (dialsKPI in individual){
-        //   this.setState({
-        //     dials: 'dialsKPI'
-        // })}
-      }
-     }
+    let empty = _.isEmpty(standingsNew)
+    if( empty ) {
+      this.setState({
+        dials: 0,
+        sales: 0
+      })
+    } else {
+      let personId = this.props.id
+      let individualKPI = _.at( standingsNew, personId )
+      let dials = _.map( individualKPI, 'dialsKPI' )
+      let sales = _.map( individualKPI, 'salesKPI' )
+      this.setState({
+        dials: dials,
+        sales: sales
+      })
+    }
   }
 
   handleClickSales = () => {
@@ -82,7 +80,9 @@ class DummyUser extends Component {
   }
 
   render() {
-    // console.log(this.state)
+    // console.log(this.props.id, "USER ID")
+    // console.log(this.state.sales, "sales on state")
+
     return (
       <div className="DummyUser">
         <header className="DummyTitle">

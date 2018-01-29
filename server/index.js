@@ -36,7 +36,7 @@ app.get( '/api/fullChallengeTable', dashboardControllers.get_challenge_table ) /
 app.get( '/api/leaderboard/:id', leaderboardControllers.get_leaderboard ) // not using yet
 app.get( '/api/teamvteam', leaderboardControllers.teamvteam )
 app.get( '/api/agentvagent', leaderboardControllers.agentvagent ) // not using yet
-app.put( '/api/leaderboard', leaderboardControllers.update_leaderboard)
+app.put( '/api/updateleaderboard/:id', leaderboardControllers.update_leaderboard)
 
 // //User Endpoints
 app.get( '/api/users', usersControllers.users_dummy ) // Done testing

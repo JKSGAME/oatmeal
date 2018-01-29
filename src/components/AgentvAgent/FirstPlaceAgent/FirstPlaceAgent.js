@@ -5,11 +5,15 @@ import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
 import io from 'socket.io-client'
 
+
 const socket = io()
+
+
 
 class FirstPlaceAgent extends Component {
 
   componentDidMount() {
+    console.log('hit')
     this.props.fetchUsers()
     
     socket.on('response', data =>{

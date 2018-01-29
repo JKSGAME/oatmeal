@@ -1,1 +1,1 @@
-update leaderboard set standings = $1 where challenge_id = $2
+update leaderboard set standings = $2 where challenge_id = $1

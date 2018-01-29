@@ -37,8 +37,8 @@ class DummyCrm extends Component {
       challengeId: d.value,
     })
 
-    axios.get( `/api/leaderboard/${d.value}` ).then( async res => {
-      await this.setState({
+    axios.get( `/api/leaderboard/${d.value}` ).then( res => {
+      this.setState({
         standings: res.data
       })
     })
@@ -47,7 +47,7 @@ class DummyCrm extends Component {
   
   componentDidUpdate(){
 
-    console.log( this.state.standings )
+    // console.log( this.state.standings )
     
     let standingsNew = _.map( this.state.challenges, 'challenge_id' ) 
     let roomId = this.state.challengeId
@@ -92,7 +92,7 @@ class DummyCrm extends Component {
   }
   
   render() {
-    console.log(this.state.standings)
+    // console.log(this.state.standings)
     const { challenges } = this.state
 
     const challengeDropdown = challenges.map( ( e, i ) => {

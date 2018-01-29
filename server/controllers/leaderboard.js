@@ -29,8 +29,8 @@ module.exports = {
         const db = req.app.get( 'db' )
         let status = 200
         console.log(req.body, "req.body")
-        db.update_leaderboard(req.params.id, [req.body]). then( response => {
-            res.status( status ).send('Standings Updated')
+        db.update_leaderboard( [req.params.id, req.body] ). then( response => {
+            res.status( status ).send( response )
         })
     }
 

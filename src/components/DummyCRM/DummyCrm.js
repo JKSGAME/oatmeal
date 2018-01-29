@@ -37,8 +37,8 @@ class DummyCrm extends Component {
       challengeId: d.value,
     })
 
-    axios.get( `/api/leaderboard/${d.value}` ).then( async res => {
-      await this.setState({
+    axios.get( `/api/leaderboard/${d.value}` ).then( res => {
+      this.setState({
         standings: res.data
       })
     })

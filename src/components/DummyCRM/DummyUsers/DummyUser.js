@@ -21,8 +21,34 @@ class DummyUser extends Component {
 
   }
 
-  componentWillReceiveProps( props ) {
+  componentWillReceiveProps( nextProps ) {
+    console.log(this.props)
     let standings = _.map(this.props.standings, "standings")
+    // console.log(standings);
+    let standingsNew = eval( " ( "+standings[0]+" ) " )
+    // console.log(standingsNew, "this.is the standings obj")
+    if( this.props.standings !== {} ) {
+      let person = this.props.id;
+      for ( person in standingsNew){
+      // console.log( standingsNew[person] )
+      let individual = standingsNew[person]
+        this.setState({
+          sales: _.map(individual, "salesKPI" ),
+          dials: _.map(individual, "dialsKPI" )
+        })
+      }
+     }
+    //   else {
+    //   this.setState({
+    //     sales: 0,
+    //     dials: 0
+    //   })
+    // }
+  }
+
+
+  // componentWillReceiveProps( props ) {
+  //   let standings = _.map(this.props.standings, "standings")
     // let standings = eval("("+this.props.standings[0].standings+")")
    
 
@@ -43,7 +69,7 @@ class DummyUser extends Component {
     //     dials: 0
     //   })
     // }
-  }
+  // }
 
   handleClickSales = () => {
     this.setState( prevState => {
@@ -83,14 +109,14 @@ class DummyUser extends Component {
   }
 
   render() {
-    let standings = _.map(this.props.standings, "standings")
-    console.log(standings);
-    let standingsNew = eval( " ( "+standings[0]+" ) " )
-    console.log(standingsNew)
-    let userStandings = _.map(standingsNew, `${this.props.id}`)
-    console.log( userStandings)
-    // let finalStandings = _.map(userStandings, '1')
-    // console.log( finalStandings)
+    // let standings = _.map(this.props.standings, "standings")
+    // console.log(standings);
+    // let standingsNew = eval( " ( "+standings[0]+" ) " )
+    // console.log(standingsNew)
+    // let userStandings = _.map(standingsNew, `${this.props.id}`)
+    // console.log( userStandings)
+    // // let finalStandings = _.map(userStandings, '1')
+    // // console.log( finalStandings)
 
     return (
       <div className="DummyUser">

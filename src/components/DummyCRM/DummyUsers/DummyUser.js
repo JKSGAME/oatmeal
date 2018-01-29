@@ -21,23 +21,24 @@ class DummyUser extends Component {
 
   }
 
-  componentWillReceiveProps( props ) {
+  componentWillReceiveProps( nextProps ) {
+    console.log(this.props)
     let standings = _.map(this.props.standings, "standings")
-    // let standings = eval("("+this.props.standings[0].standings+")")
-   
-
-    // let receivedStandings = _.map( this.props.standings, '' )
-    // if( this.props.standings !== {} ) {
-    //   ( this.props.standings ).map( ( e, i ) =>{
-    //     console.log(e, "user e")
-    //     if( this.props.id === e.id ){
-    //       this.setState({
-    //         sales: e.salesKPI,
-    //         dials: e.dialsKPI
-    //       })
-    //     } 
-    //   })
-    // } else {
+    // console.log(standings);
+    let standingsNew = eval( " ( "+standings[0]+" ) " )
+    // console.log(standingsNew, "this.is the standings obj")
+    if( this.props.standings !== {} ) {
+      let person = this.props.id;
+      for ( person in standingsNew){
+      // console.log( standingsNew[person] )
+      let individual = standingsNew[person]
+        this.setState({
+          sales: _.map(individual, "salesKPI" ),
+          dials: _.map(individual, "dialsKPI" )
+        })
+      }
+     }
+    //   else {
     //   this.setState({
     //     sales: 0,
     //     dials: 0
@@ -83,12 +84,7 @@ class DummyUser extends Component {
   }
 
   render() {
-    let standings = _.map(this.props.standings, "standings")
-    console.log(standings);
-    let standingsNew = eval( " ( "+standings[0]+" ) " )
-    console.log(standingsNew)
-    let userStandings = _.map(standingsNew, `${this.props.id}`)
-    console.log( userStandings)
+    
     // let finalStandings = _.map(userStandings, '1')
     // console.log( finalStandings)
 

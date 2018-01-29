@@ -83,7 +83,31 @@ class DummyUser extends Component {
 
   }
 
+  handleClick = ( propName, value ) => {
+    this.setState({
+       [propName]: value 
+      })
+    let id = this.props.id;
+    let agentScore = {};
+    agentScore[id] = { salesKPI: this.state.sales, dialsKPI: this.state.dials }
+    axios.get( `/api/leaderboard/${this.props.challengeId}`).then( res => {
+      let standings = eval('('+res.data[0].standings+')')
+      console.log(standings)
+      let update = Object.assign( {}, standings, agentScore )
+      console.log(update);
+      // let updateString = JSON.stringify( update )
+      // console.log(updateString);
+      axios.put( `/api/updateleaderboard/${this.props.challengeId}`, update ).then( res => {
+        console.log(res)
+        // socket.emit( 'update standings', update )
+      })
+    })
+
+  }
+
   render() {
+    console.log(this.state)
+    let { sales, dials } = this.state
     return (
       <div className="DummyUser">
         <header className="DummyTitle">
@@ -94,8 +118,8 @@ class DummyUser extends Component {
             <h3>Current Sales: { this.state.sales }</h3>
             <h3>Current Dials: { this.state.dials }</h3>
         </span>
-        <button className='btn-sales-add' onClick={ e => this.handleClickSales( e ) }>Sales + 1</button>
-        <button className='btn-dials-add' onClick={ e => this.handleClickDials( e ) }>Dials + 1</button>
+        <button className='btn-sales-add' onClick={ ( e ) => this.handleClick( "sales", sales + 1 ) }>Sales + 1</button>
+        <button className='btn-dials-add' onClick={ ( e ) => this.handleClick( "dials", dials + 1 ) }>Dials + 1</button>
       </div>
     );
   }

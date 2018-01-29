@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DummyUser from './DummyUsers/DummyUser.js'
 import { getStandings } from './../../ducks/reducer'
-import { Button, Header, Modal, Input, Dropdown, Divider, Form, TextArea, Grid, Segment } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import _ from 'lodash'
 
 
@@ -49,6 +49,7 @@ class DummyCrm extends Component {
 
     // console.log( this.state.standings )
     
+
     let standingsNew = _.map( this.state.challenges, 'challenge_id' ) 
     let roomId = this.state.challengeId
     

@@ -39,13 +39,13 @@ class Leaderboard extends Component {
                 if( e === 1){
                     return(
                         <div key = {e}>
-                            <TeamvTeam />
+                            <AgentvAgent />    
                         </div>
                     )
                 }else if ( e === 2){
                     return( 
                         <div key = {e}>
-                            <AgentvAgent />
+                            <TeamvTeam />
                         </div>
                     )
                 }

@@ -13,7 +13,6 @@ class AgentvAgent extends Component {
       }
 
     render() {
-        (console.log(this.props.challengeData, "notes of the props"))
     return (
         <div className="AgentvAgent">
             <div className="AVA-title">

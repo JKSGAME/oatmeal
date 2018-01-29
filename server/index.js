@@ -64,7 +64,7 @@ io.on( 'connection', socket => {
     let room = ''
     socket.on( 'join room', data => {
         console.log( 'Room joined', data.room )
-        let room = data.room
+        room = data.room
         socket.join( room )
         io.to( room ).emit( 'room joined' )
     })

@@ -8,41 +8,67 @@ import Carousel from '../Carousel/Carousel';
 import './Leaderboard.css';
 import _ from "lodash";
 
+import io from 'socket.io-client'
+const socket = io()
+
 class Leaderboard extends Component {
-    constructor(props){
-        super()
+    constructor( props ){
+        super( props )
         this.state={
             challenges: {},
+            standings: {}
         
-        }
-        
+        } 
+
+        this.updateStandings = this.updateStandings.bind( this )
     }
 
-
     componentDidMount(){
-        axios.get('/api/challenges').then( allChallenges =>{
+
+        axios.get( '/api/challenges' ).then( allChallenges =>{
             this.setState({
                 challenges: allChallenges.data
             })
         })
+        console.log(this.props)
+        let roomId = this.props.challengeId
+            if ( roomId > 0 ) {
+            socket.emit( 'join room', {
+                room: roomId
+            })
+            }
+
+        socket.on( 'response', res => {
+            this.updateStandings( res )
+        })
+    }
+
+    updateStandings( standings ) {
+        console.log(standings)
+        this.setState({
+            standings: standings
+        })
     }
     
+
+    
     render() {
-        let chalid = _.map(this.state.challenges, "challenge_type_id")
-        let length = chalid.length
+        let chalTypeId = _.map( this.state.challenges, "challenge_type_id" )
+        console.log(this.state.challenges)
+        let length = chalTypeId.length
         
         return(
             <div>
             <Carousel length={length} > 
                         
-            {(chalid.reverse()).map((e, i)=>{
-                if( e === 1){
+            { ( chalTypeId.reverse() ).map( ( e, i )=>{
+                if ( e === 1 ){
                     return(
                         <div key = {e}>
                             <TeamvTeam />
                         </div>
                     )
-                }else if ( e === 2){
+                } else if ( e === 2 ){
                     return( 
                         <div key = {e}>
                             <AgentvAgent />
@@ -56,10 +82,10 @@ class Leaderboard extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps( state ){
     return{
         standings: state.standings
     }
 }
 
-export default connect (mapStateToProps, {getStandings})(Leaderboard);
+export default connect( mapStateToProps, { getStandings } )( Leaderboard );

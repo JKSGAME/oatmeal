@@ -13,17 +13,14 @@ const socket = io()
 class FirstPlaceAgent extends Component {
 
   componentDidMount() {
-    console.log('hit')
     this.props.fetchUsers()
     
     socket.on('response', data =>{
       let standings = data.standings
-      console.log(standings, "new freaking standings")
     })
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
           <div className="AVA-FirstPlaceAgent">

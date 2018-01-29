@@ -21,6 +21,7 @@ class SecondThirdUnrankedAgent extends Component {
     componentDidMount() {
         // this.props.fetchUsers()
         axios.get('/api/viewmore').then(res => {
+            console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
                 let standingsObj = eval('(' + e.standings + ')')
@@ -42,7 +43,7 @@ class SecondThirdUnrankedAgent extends Component {
     }
 
     render() {
-        
+        console.log(this.state.users);
         return (
             <div>
                 {/* { this.props.users.length > 0 && */}

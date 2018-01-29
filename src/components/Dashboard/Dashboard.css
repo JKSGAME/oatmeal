@@ -9,24 +9,27 @@
     width: 100vw;
 }
 
-.board{
+/* .board{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap; 
+} */
+
+.chal-box-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100vw;
 }
 
-.toggle_right{
-    background: lightgray;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: none;
-}
-
-.toggle_left{
-    background: lightgray;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: none;
+.chal-box {
+    border: 1px solid black;
+    height: 20vh;
+    width: 30vh;
+    margin: 10px 0;
+    padding: 10px 0;
 }
 
 .crm-btn{

@@ -73,7 +73,7 @@ class AgentvAgent extends Component {
             <div className="AVA-leaderboard-data">
                 <div className="AVA-FirstPlaceAgent-Placement">
                     {/* <FirstPlaceAgent/> */}
-                    <AgentRanking/>
+                    <AgentRanking standings={this.state.standings}/>
                 </div>
                 <div className="AVA-SecondThirdUnrankedAgent-Placement">
                     {/* <SecondThirdUnrankedAgent/> */}

@@ -53,23 +53,11 @@ class AgentvAgent extends Component {
     }
 
     render() {
-<<<<<<< HEAD
-    return (
-        <div className="AgentvAgent">
-            <div className="AVA-title">
-                <h2>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h2>
-                <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
-            </div>
-            <div className="AVA-leaderboard-data">
-                <div className="AVA-FirstPlaceAgent-Placement">
-                    <FirstPlaceAgent standings={this.state.standings}/>
-=======
         return (
             <div className="AgentvAgent">
                 <div className="AVA-title">
                     <h2>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h2>
                     <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
->>>>>>> 870d608598486bf44731dfb6420dae5865f8ab2e
                 </div>
                 <div className="AVA-leaderboard-data">
                     <div className="AVA-FirstPlaceAgent-Placement">

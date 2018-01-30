@@ -22,7 +22,7 @@ class DummyUser extends Component {
 
   componentWillReceiveProps( nextProps ) {
     let standings = _.map(nextProps.standings, "standings")
-    let standingsNew = eval( " ( "+standings[0]+" ) " )
+    let standingsNew = JSON.parse(standings[0])
     
     let empty = _.isEmpty(standingsNew)
     if( empty ) {
@@ -50,7 +50,7 @@ class DummyUser extends Component {
         let id = this.props.id;
         let agentScore = {};
         agentScore[id] = { salesKPI: this.state.sales, dialsKPI: this.state.dials }
-        let standings = eval("("+res.data[0].standings+")")
+        let standings = JSON.parse(res.data[0].standings)
         let update = Object.assign( {}, standings, agentScore )
         axios.put( `/api/updateleaderboard/${this.props.challengeId}`, update ).then( res => {
           let roomId = this.props.challengeId

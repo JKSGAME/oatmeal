@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import './TestMerge.css';
+import './AgentRanking.css';
 import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
 import io from 'socket.io-client'
@@ -15,7 +15,7 @@ const socket = io()
 
 
 
-class FirstPlaceAgent extends Component {
+class AgentRanking extends Component {
     constructor() {
         super()
         this.state = {
@@ -200,4 +200,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     fetchUsers,
 }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(FirstPlaceAgent)
+export default connect(mapStateToProps, mapDispatchToProps)(AgentRanking)

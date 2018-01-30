@@ -9,9 +9,9 @@ import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
 import { Sidebar, Menu, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import TestMerge from './TestMerge/TestMerge';
 
 import io from 'socket.io-client'
+import AgentRanking from './AgentRanking/AgentRanking';
 const socket = io()
 
 class AgentvAgent extends Component {
@@ -29,29 +29,23 @@ class AgentvAgent extends Component {
     componentDidMount() {
         this.props.fetchAVAData()
         let roomId = 1
-        console.log(this.props.challengeId)
         if ( roomId > 0 ) {
-        
             socket.emit( 'join room', {
                 room: roomId
             })
         }
         
         socket.on( 'response', res => {
-            console.log(res)
-            console.log( _.at(res, "standings") , "response on socket")
-            let standings = _.at(res, "standings")
+            let standings = _.at( res, "standings" )
             this.setState({
                 standings: standings[0]
             })
         })
         let empty = _.isEmpty(this.state.standings)
         if( empty ) {
-            axios.get(`/api/leaderboard/${1}`, ).then( res =>{
-                let standings = _.map(res.data, "standings")
-                console.log( standings )
+            axios.get( `/api/leaderboard/${1}`, ).then( res => {
+                let standings = _.map( res.data, "standings" )
                 let standingsNew = eval( " ( "+standings[0]+" ) " )
-                console.log(standingsNew)
                 this.setState({
                     standings: standingsNew
                 })
@@ -60,15 +54,9 @@ class AgentvAgent extends Component {
         }
 
     }
-        
-
-    // componentWillReceiveProps(props) {
-    //     console.log(this.props, 'hit')
-    // }
-    
 
     render() {
-        console.log(this.state.standings)
+
     return (
         <div className="AgentvAgent">
         <div className='navBar'>
@@ -85,14 +73,15 @@ class AgentvAgent extends Component {
             <div className="AVA-leaderboard-data">
                 <div className="AVA-FirstPlaceAgent-Placement">
                     {/* <FirstPlaceAgent/> */}
-                    <TestMerge/>
+                    <AgentRanking/>
                 </div>
                 <div className="AVA-SecondThirdUnrankedAgent-Placement">
                     {/* <SecondThirdUnrankedAgent/> */}
                 </div>
+                </div>
             </div>
-        </div>
-    )}
+        )
+    }
 }
 
 function mapStateToProps( state ) {

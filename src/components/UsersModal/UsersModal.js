@@ -47,14 +47,12 @@ class UsersModal extends Component {
             // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
-                let standingsObj = eval('(' + e.standings + ')')
                 return userArr.push({
                     index: i,
                     userId: e.user_id,
                     name: e.user_name,
                     team: e.team,
                     kpi: e.kpi,
-                    standings: standingsObj[e.user_id],
                     challengeTypeId: e.challenge_type_id
                 })
             })
@@ -101,7 +99,7 @@ class UsersModal extends Component {
                                         <Table.Cell>{i + 1}</Table.Cell>
                                         <Table.Cell>{e.name}</Table.Cell>
                                         <Table.Cell>{e.team}</Table.Cell>
-                                        <Table.Cell>{e.standings.salesKPI}</Table.Cell>
+                                        {/* <Table.Cell>{e.standings.salesKPI}</Table.Cell> */}
                                         </Table.Row>
                                     })}
                                 </Table.Body>

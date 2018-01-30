@@ -24,14 +24,12 @@ class SecondThirdUnrankedAgent extends Component {
             console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
-                let standingsObj = eval('(' + e.standings + ')')
                 return userArr.push({
                     index: i,
                     userId: e.user_id,
                     name: e.user_name,
                     team: e.team,
                     kpi: e.kpi,
-                    standings: standingsObj[e.user_id],
                     photos: e.photos
                 })
             })
@@ -55,9 +53,9 @@ class SecondThirdUnrankedAgent extends Component {
                                     return <div key={i} className="SecondPlaceAgent">
                                         <img className='prof-pic' src={e.photos} alt=""/>
                                         <h4>2nd place:</h4>
-                                        <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                                        {/* <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
                                         <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                        <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
+                                        <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4> */}
                                     </div>
                                 }
                                 })}
@@ -68,9 +66,9 @@ class SecondThirdUnrankedAgent extends Component {
                                     return <div key={i} className="ThirdPlaceAgent">
                                         <img className='prof-pic' src={e.photos} alt=""/>
                                         <h4>3rd place:</h4>
-                                        <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                                        {/* <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
                                         <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                        <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
+                                        <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4> */}
                                     </div>
                                 }
                                 })}
@@ -84,9 +82,9 @@ class SecondThirdUnrankedAgent extends Component {
                                         return <div key={i} className="AVA-Unranked-lineItem">
                                             <img className='prof-pic' src={e.photos} alt=""/>
                                             <h4>{i + 1}th place</h4>
-                                            <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                                            {/* <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
                                             <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                            <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
+                                            <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4> */}
                                         </div>
                                     }
                                     })}

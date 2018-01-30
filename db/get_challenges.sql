@@ -1,2 +1,2 @@
 select * from challenges
--- where id = $1
+where id = $1

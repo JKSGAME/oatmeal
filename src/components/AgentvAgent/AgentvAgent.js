@@ -6,14 +6,52 @@ import { fetchAVAData } from './../../ducks/reducer';
 import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
 
+import io from 'socket.io-client'
+const socket = io()
+
 class AgentvAgent extends Component {
+
+    constructor( props ) {
+        super( props )
+
+        this.state = {
+            standings: {}
+        }
+
+    this.updateStandings = this.updateStandings.bind( this )
+
+    }
 
     componentDidMount() {
         this.props.fetchAVAData()
-      }
+    }
+
+    componentWillReceiveProps() {
+
+        let roomId = this.props.challengeId
+        if ( roomId > 0 ) {
+            socket.emit( 'join room', {
+                room: roomId
+            })
+        }
+    
+        socket.on( 'response', res => {
+            this.updateStandings( res )
+        })
+    }
+
+    updateStandings( standings ) {
+        console.log(standings, "standings obj on ava")
+        this.setState({
+            standings: standings
+        })
+    }
+
+
+    
 
     render() {
-        // (console.log(this.props.challengeData, "notes of the props"))
+        console.log(this.props.chalid)
     return (
         <div className="AgentvAgent">
             <div className="AVA-title">

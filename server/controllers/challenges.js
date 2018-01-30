@@ -2,7 +2,7 @@ module.exports = {
 
     get_challenges ( req, res ) {
         const db = req.app.get( 'db' ) 
-        db.get_challenges().then( challenges => {
+        db.get_challenges( [req.params.id] ).then( challenges => {
             res.send( challenges )
         })
     },

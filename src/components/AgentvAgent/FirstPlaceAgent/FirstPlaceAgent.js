@@ -15,29 +15,27 @@ class FirstPlaceAgent extends Component {
   constructor() {
     super()
     this.state = {
-      sortedUsers: []
+      sortedUsers: [],
+      standings: {}
     }
   }
   componentDidMount() {
-    // console.log('hit')
     this.props.fetchUsers()
 
     socket.on('response', data => {
       let standings = data.standings
-      console.log(standings, "new freaking standings")
     })
 
     axios.get('/api/viewmore').then(res => {
       let userArr = []
       res.data.map((e, i) => {
-        let standingsObj = eval('(' + e.standings + ')')
+        //let standings = this.state.standings
         return userArr.push({
           index: i,
           userId: e.user_id,
           name: e.user_name,
           team: e.team,
           kpi: e.kpi,
-          standings: standingsObj[e.user_id],
           photos: e.photos
         })
       })
@@ -49,7 +47,6 @@ class FirstPlaceAgent extends Component {
   }
 
   render() {
-    // console.log(this.props)
     return (
       <div>
         {/* <div className="AVA-FirstPlaceAgent">
@@ -70,9 +67,9 @@ class FirstPlaceAgent extends Component {
                   <img src={e.photos} alt="" />
                 </div>
                 <div className='AVA-first-data'>
-                <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                {/* <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
                 <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
+                <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4> */}
                 </div>
               </div>
             }

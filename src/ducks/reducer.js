@@ -58,7 +58,8 @@ export function fetchUsers() {
     return async function (dispatch) {
         const promise = await axios.get('/api/viewmore')
         const newPromise = promise.data.map( ( e, i ) => {
-            let standingsObj = eval('(' + e.standings + ')')
+            // let standingsObj = eval('(' + e.standings + ')')
+            let standingsObj = JSON.parse(e.standings)
             return {
                 userId: e.user_id,
                 name: e.user_name,

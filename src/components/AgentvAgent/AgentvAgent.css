@@ -7,7 +7,13 @@
     align-content: center;
     height: 100%;
     width: 100%;
-    border: 1px solid green
+    border: 1px solid green;
+    overflow-x: hidden; 
+}
+
+.navBar {
+    height: 5.92vh;
+    width: 100vw;
 }
 
 .AVA-title {
@@ -54,4 +60,16 @@
     align-content: center;
     height: 45%;
     width: 100%;
+}
+
+@media (max-width: 425px) {
+    ViewMoreModal {
+        display: none;
+    }
+}
+
+@media (min-width: 425px) {
+	 MobileModal {
+	  display: none;
+	}
 }

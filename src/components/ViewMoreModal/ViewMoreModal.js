@@ -5,7 +5,7 @@ import { Button, Modal, Table } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom';
 // users in state might need to be put in redux, for other componenets to have sorted da
 
-class UsersModal extends Component {
+class ViewMoreModal extends Component {
 
     constructor() {
         super()
@@ -47,7 +47,8 @@ class UsersModal extends Component {
             // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
-                let standingsObj = eval('(' + e.standings + ')')
+                // let standingsObj = eval('(' + e.standings + ')')
+                let standingsObj = JSON.parse(e.standings)
                 return userArr.push({
                     index: i,
                     userId: e.user_id,
@@ -72,15 +73,15 @@ class UsersModal extends Component {
         // console.log('state in render', this.state);
 
         return (
-            <div className='UsersModal'>
+            <div className='ViewMoreModal'>
                 <Button onClick={this.show('blurred')}>View More</Button>
                 <Modal dimmer open={open} onClose={this.close}>
                     <Modal.Header>Full Current Standings List</Modal.Header>
                     <Modal.Content >
                         <Modal.Description>
-                            <Table selectable sortable celled size='large'>
+                            <Table selectable sortable celled size='small' compact stackable  >
                                 <Table.Header>
-                                    <Table.Row>
+                                    <Table.Row >
                                         <Table.HeaderCell sorted={column === 'position' ? direction : null} onClick={this.handleSort('position')}>
                                             Position
                                         </Table.HeaderCell>
@@ -117,4 +118,4 @@ class UsersModal extends Component {
     }
 }
 
-export default UsersModal;
+export default ViewMoreModal;

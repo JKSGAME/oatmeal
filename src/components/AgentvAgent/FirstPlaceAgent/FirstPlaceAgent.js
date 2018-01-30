@@ -33,12 +33,17 @@ class FirstPlaceAgent extends Component {
       })
       let orderedUsers = _.orderBy(userArr, ['standings[0].salesKPI'], ['desc'])
       // FIX HARD CODING OF KPI TYPE
+      // DO FIRST STEP OF LIST ANIMATION HERE BY LOOPING OVER ORDERED USERS
       console.log(orderedUsers, "user array")
       this.setState({
         sortedUsers: orderedUsers,
       })
     })
   }
+
+  // WILL USE A COMPONENTDIDUPDATE(PREVIOUSPROPS)  TO COMPARE PREVIOUS DOM POSITION TO
+  // NEW DOM LOCATIONS  THEN INVERT.  WILL USE REQUESTANIMATION FRAME TO ENSURE CHANGES 
+  // MAKE IT BEFORE THE DOM IS REPAINTED
 
 
   render() {

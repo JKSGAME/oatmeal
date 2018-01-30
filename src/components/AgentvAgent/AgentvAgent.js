@@ -35,8 +35,6 @@ class AgentvAgent extends Component {
         }
         
         socket.on( 'response', res => {
-            console.log(res)
-            console.log( _.at(res, "standings") , "response on socket")
             let standings = _.at(res, "standings")
             this.setState({
                 standings: standings[0]
@@ -46,9 +44,7 @@ class AgentvAgent extends Component {
         if( empty ) {
             axios.get(`/api/leaderboard/${1}`, ).then( res =>{
                 let standings = _.map(res.data, "standings")
-                console.log( standings )
                 let standingsNew = eval( " ( "+standings[0]+" ) " )
-                console.log(standingsNew)
                 this.setState({
                     standings: standingsNew
                 })
@@ -65,7 +61,6 @@ class AgentvAgent extends Component {
     
 
     render() {
-        console.log(this.state.standings)
     return (
         <div className="AgentvAgent">
             <div className="AVA-title">

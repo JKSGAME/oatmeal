@@ -13,7 +13,7 @@ class Carousel extends Component {
     componentDidMount() {
         const { children } = this.props
         this.setState({ total: children.length })
-        this.interval = setInterval(this.showNext, 7000)
+        this.interval = setInterval(this.showNext, 70000)
     }
 
     componentWillUnmount() {

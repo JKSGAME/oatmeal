@@ -26,7 +26,6 @@ class AgentRanking extends Component {
     close = () => this.setState({ open: false })
 
     componentDidMount() {
-        // this.props.fetchUsers()
 
         socket.on('response', data => {
             let standings = data.standings

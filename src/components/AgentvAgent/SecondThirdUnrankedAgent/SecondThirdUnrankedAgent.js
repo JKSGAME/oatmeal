@@ -18,82 +18,82 @@ class SecondThirdUnrankedAgent extends Component {
     show = dimmer => () => this.setState({ dimmer, open: true })
     close = () => this.setState({ open: false })
 
-    componentDidMount() {
+    componentWillReceiveProps(nextProps) {
         axios.get('/api/viewmore').then(res => {
-            let userArr = []
-            res.data.map( (e, i) => {
-                return userArr.push({
-                    index: i,
-                    userId: e.user_id,
-                    name: e.user_name,
-                    team: e.team,
-                    kpi: e.kpi,
-                    photos: e.photos,
-                    standings: _.at(this.props.standings, e.user_id)
-
-                })
+          let userArr = []
+          res.data.map((e, i) => {
+            return userArr.push({
+              index: i,
+              userId: e.user_id,
+              name: e.user_name,
+              team: e.team,
+              kpi: e.kpi,
+              photos: e.photos,
+              standings: _.at(nextProps.standings, e.user_id)
             })
-            let orderedUsers = _.orderBy(userArr, ['standings[0].salesKPI'], ['desc'])
-            // FIX HARD CODING OF KPI TYPE
-            this.setState({
-                sortedUsers: orderedUsers
-            })
+          })
+          let orderedUsers = _.orderBy(userArr, ['standings[0].salesKPI'], ['desc'])
+          // FIX HARD CODING OF KPI TYPE
+          console.log(orderedUsers, "user array")
+          this.setState({
+            sortedUsers: orderedUsers,
+          })
         })
-    }
+      }
 
     render() {
         return (
             <div>
-                {/* { this.props.users.length > 0 && */}
-                    <div className="SecondThirdUnranked">
-                        <div className="SecondThirdAgents">
-                            {/* <div className="SecondPlaceAgent"> */}
-                            {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                if(i === 1) {
-                                    return <div key={i} className="SecondPlaceAgent">
-                                        <img className='prof-pic' src={e.photos} alt=""/>
-                                        <h4>2nd place:</h4>
-                                        {/* <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
-                                        <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                        <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4> */}
-                                    </div>
-                                }
-                                })}
-                            {/* </div> */}
-                            {/* <div className="ThirdPlaceAgent"> */}
-                            {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                if(i === 2) {
-                                    return <div key={i} className="ThirdPlaceAgent">
-                                        <img className='prof-pic' src={e.photos} alt=""/>
-                                        <h4>3rd place:</h4>
-                                        {/* <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
-                                        <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                        <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4> */}
-                                    </div>
-                                }
-                                })}
-                            {/* </div> */}
-                        </div>
-                        <div className="UnrankedAgents">
-                            <div className="AVA-unranked-data">
-                                <div className="AVA-unranked-ranking">
-                                    {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                    if(i > 2 && i < 5) {
-                                        return <div key={i} className="AVA-Unranked-lineItem">
-                                            <img className='prof-pic' src={e.photos} alt=""/>
-                                            <h4>{i + 1}th place</h4>
-                                            {/* <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
-                                            <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                            <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4> */}
-                                        </div>
-                                    }
-                                    })}
+                <div className="SecondThirdUnranked">
+                    <div className="SecondThirdAgents">
+                        <div className="SecondPlaceAgent">
+                        {console.log(this.state.sortedUsers)}
+                        {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                            if(i === 1) {
+                                return <div key={i} className="SecondPlaceAgent">
+                                    {console.log(this.state.sortedUsers[i].standings[0].salesKPI, "2ND PPLACE")}
+                                    <img className='prof-pic' src={e.photos} alt=""/>
+                                    <h4>2nd place:</h4>
+                                    <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                                    <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
+                                    <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings[0].salesKPI}</h4>
                                 </div>
-                            </div>
-                            <UsersModal/>
+                            }
+                            })}
+                        </div>
+                        <div className="ThirdPlaceAgent">
+                        {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                            if(i === 2) {
+                                return <div key={i} className="ThirdPlaceAgent">
+                                    <img className='prof-pic' src={e.photos} alt=""/>
+                                    <h4>3rd place:</h4>
+                                    <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                                    <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
+                                    <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings[0].salesKPI}</h4>
+                                </div>
+                            }
+                            })}
                         </div>
                     </div>
-                {/* } */}
+                    <div className="UnrankedAgents">
+                        <div className="AVA-unranked-data">
+                            <div className="AVA-unranked-ranking">
+                                {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                                if(i > 2 && i < 5) {
+                                    return <div key={i} className="AVA-Unranked-lineItem">
+                                        <img className='prof-pic' src={e.photos} alt=""/>
+                                        <h4>{i + 1}th place</h4>
+                                        <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                                        <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
+                                        <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings[0].salesKPI}</h4>
+                                    </div>
+                                }
+                                })}
+                            </div>
+                        </div>
+                        <UsersModal/>
+                    </div>
+                </div>
             </div>
         );
     }

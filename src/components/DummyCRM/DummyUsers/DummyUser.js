@@ -23,11 +23,7 @@ class DummyUser extends Component {
   componentWillReceiveProps( nextProps ) {
     let standings = _.map(nextProps.standings, "standings")
     let standingsNew = eval( " ( "+standings[0]+" ) " )
-<<<<<<< HEAD
-
-=======
     
->>>>>>> master
     let empty = _.isEmpty(standingsNew)
     if( empty ) {
       this.setState({
@@ -81,13 +77,8 @@ class DummyUser extends Component {
             <h3>Current Sales: { this.state.sales }</h3>
             <h3>Current Dials: { this.state.dials }</h3>
         </span>
-<<<<<<< HEAD
-        <button className='btn-sales-add' onClick={  e  => this.handleClick( "sales", sales + 1 ) }>Sales + 1</button>
-        <button className='btn-dials-add' onClick={  e  => this.handleClick( "dials", dials + 1 ) }>Dials + 1</button>
-=======
         <button className='btn-sales-add' onClick={ e => this.handleClick( "sales", sales + 1 ) }>Sales + 1</button>
         <button className='btn-dials-add' onClick={ e => this.handleClick( "dials", dials + 1 ) }>Dials + 1</button>
->>>>>>> master
       </div>
     );
   }

@@ -19,9 +19,7 @@ class SecondThirdUnrankedAgent extends Component {
     close = () => this.setState({ open: false })
 
     componentDidMount() {
-        // this.props.fetchUsers()
         axios.get('/api/viewmore').then(res => {
-            console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
                 return userArr.push({
@@ -30,10 +28,13 @@ class SecondThirdUnrankedAgent extends Component {
                     name: e.user_name,
                     team: e.team,
                     kpi: e.kpi,
-                    photos: e.photos
+                    photos: e.photos,
+                    standings: _.at(this.props.standings, e.user_id)
+
                 })
             })
-            let orderedUsers = _.orderBy(userArr, ['standings.salesKPI'], ['desc'])
+            let orderedUsers = _.orderBy(userArr, ['standings[0].salesKPI'], ['desc'])
+            // FIX HARD CODING OF KPI TYPE
             this.setState({
                 sortedUsers: orderedUsers
             })
@@ -41,7 +42,6 @@ class SecondThirdUnrankedAgent extends Component {
     }
 
     render() {
-        console.log(this.state.users);
         return (
             <div>
                 {/* { this.props.users.length > 0 && */}

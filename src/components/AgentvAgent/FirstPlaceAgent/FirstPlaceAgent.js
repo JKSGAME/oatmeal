@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
 import axios from 'axios';
 import _ from 'lodash';
+import { Card, Icon, Image, Header } from 'semantic-ui-react'
 
 
 

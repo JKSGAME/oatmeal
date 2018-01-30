@@ -6,14 +6,21 @@ import AgentvAgent from './../AgentvAgent/AgentvAgent';
 import TeamvTeam from './../TeamvTeam/TeamvTeam'
 import './Leaderboard.css';
 import _ from "lodash";
+import Fullscreen from 'react-full-screen';
+
 
 class Leaderboard extends Component {
     constructor( props ){
         super( props )
         this.state={
-            challenges: {}      
+            challenges: {},
+            isFull: false,   
         } 
     }
+
+    // goFull = () => {
+    //   this.setState({ isFull: true })
+    // }
 
     componentDidMount(){
 
@@ -23,14 +30,12 @@ class Leaderboard extends Component {
             })
         })        
     }
-      
+
+    
     render() {
         let chalid = _.map( this.state.challenges, "id" )
-        console.log(chalid[0], "chalid on leaderboard")
         let chalTypeId = _.map( this.state.challenges, "challenge_type_id" )
-        console.log(chalid[0]);
         let leaderboard = function( chalTypeId ) {
-            console.log(chalTypeId)
             if ( chalTypeId === 1 ) {
                 return <AgentvAgent challengeId={chalid[0]} />    
             } else if ( chalTypeId === 2 ) {
@@ -38,6 +43,12 @@ class Leaderboard extends Component {
             }
         }
         return (
+            // {/* <button onClick= {this.goFull}>Fullscreen</button> */}
+            // {/* <div className='board'> */}
+            //     {/* <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
+            //       <Leaderboard />
+            //     </Fullscreen> */}
+            // {/* </div> */}
             <div>
                { leaderboard( chalTypeId[0] ) }
             </div>

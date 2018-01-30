@@ -26,29 +26,23 @@ class AgentvAgent extends Component {
     componentDidMount() {
         this.props.fetchAVAData()
         let roomId = 1
-        console.log(this.props.challengeId)
         if ( roomId > 0 ) {
-        
             socket.emit( 'join room', {
                 room: roomId
             })
         }
         
         socket.on( 'response', res => {
-            console.log(res)
-            console.log( _.at(res, "standings") , "response on socket")
-            let standings = _.at(res, "standings")
+            let standings = _.at( res, "standings" )
             this.setState({
                 standings: standings[0]
             })
         })
         let empty = _.isEmpty(this.state.standings)
         if( empty ) {
-            axios.get(`/api/leaderboard/${1}`, ).then( res =>{
-                let standings = _.map(res.data, "standings")
-                console.log( standings )
+            axios.get( `/api/leaderboard/${1}`, ).then( res => {
+                let standings = _.map( res.data, "standings" )
                 let standingsNew = eval( " ( "+standings[0]+" ) " )
-                console.log(standingsNew)
                 this.setState({
                     standings: standingsNew
                 })
@@ -57,31 +51,25 @@ class AgentvAgent extends Component {
         }
 
     }
-        
-
-    // componentWillReceiveProps(props) {
-    //     console.log(this.props, 'hit')
-    // }
-    
 
     render() {
-        console.log(this.state.standings)
-    return (
-        <div className="AgentvAgent">
-            <div className="AVA-title">
-                <h2>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h2>
-                <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
-            </div>
-            <div className="AVA-leaderboard-data">
-                <div className="AVA-FirstPlaceAgent-Placement">
-                    <FirstPlaceAgent standings={this.state.standings}/>
+        return (
+            <div className="AgentvAgent">
+                <div className="AVA-title">
+                    <h2>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h2>
+                    <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
                 </div>
-                <div className="AVA-SecondThirdUnrankedAgent-Placement">
-                    <SecondThirdUnrankedAgent standings={this.state.standings}/>
+                <div className="AVA-leaderboard-data">
+                    <div className="AVA-FirstPlaceAgent-Placement">
+                        <FirstPlaceAgent standings={this.state.standings}/>
+                    </div>
+                    <div className="AVA-SecondThirdUnrankedAgent-Placement">
+                        <SecondThirdUnrankedAgent standings={this.state.standings}/>
+                    </div>
                 </div>
             </div>
-        </div>
-    )}
+        )
+    }
 }
 
 function mapStateToProps( state ) {

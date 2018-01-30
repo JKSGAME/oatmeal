@@ -35,9 +35,11 @@ class AgentvAgent extends Component {
         }
         
         socket.on( 'response', res => {
-            console.log( res , "response on socket")
+            console.log(res)
+            console.log( _.at(res, "standings") , "response on socket")
+            let standings = _.at(res, "standings")
             this.setState({
-                standings: res
+                standings: standings[0]
             })
         })
         let empty = _.isEmpty(this.state.standings)

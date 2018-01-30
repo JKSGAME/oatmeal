@@ -3,11 +3,9 @@ import { bindActionCreators } from 'redux';
 import './FirstPlaceAgent.css';
 import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
-import io from 'socket.io-client'
 import axios from 'axios';
 import _ from 'lodash';
 
-const socket = io()
 
 
 
@@ -19,11 +17,10 @@ class FirstPlaceAgent extends Component {
       standings: {}
     }
   }
-  componentDidMount() {
+  componentWillReceiveProps(nextProps) {
     axios.get('/api/viewmore').then(res => {
       let userArr = []
       res.data.map((e, i) => {
-        console.log(e)
         return userArr.push({
           index: i,
           userId: e.user_id,
@@ -31,7 +28,7 @@ class FirstPlaceAgent extends Component {
           team: e.team,
           kpi: e.kpi,
           photos: e.photos,
-          standings: _.at(this.props.standings, e.user_id)
+          standings: _.at(nextProps.standings, e.user_id)
         })
       })
       let orderedUsers = _.orderBy(userArr, ['standings[0].salesKPI'], ['desc'])
@@ -45,7 +42,6 @@ class FirstPlaceAgent extends Component {
 
 
   render() {
-    console.log(this.state.sortedUsers[0])
     return (
       <div>
         <div className="AVA-FirstPlaceAgent">
@@ -56,10 +52,11 @@ class FirstPlaceAgent extends Component {
           <div className="AVA-first-data">
           <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].name} </h1>
               <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].team}</h3>
-              <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].standings[0].dialsKPI}</h4>
+              {console.log(this.state.sortedUsers[0])}
+              <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].standings[0].salesKPI}</h4>
             </div>
-          {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-            if (i === 0) {
+          {/* {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more.  */}
+            {/* if (i === 0) {
               return <div key={i} className="AVA-FirstPlaceAgent">
                 <h1>1st place:</h1>
                 <div className="AVA-FirstPlaceAgent-Image"></div>
@@ -72,7 +69,7 @@ class FirstPlaceAgent extends Component {
                 </div>
               </div>
             }
-          })}
+          })} */}
         </div>
       </div>
     );

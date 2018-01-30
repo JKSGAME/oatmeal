@@ -62,7 +62,7 @@ class FirstPlaceAgent extends Component {
             if (i === 0) {
               return <div key={i} className="AVA-FirstPlaceAgent">
                 <h1>1st place:</h1>
-                <div className="AVA-FirstPlaceAgent-Image">
+                <div className="AVA-FirstPlaceAgent-Image"></div>
                   <img src={e.photos} alt="" />
                 </div>
                 <div className='AVA-first-data'>

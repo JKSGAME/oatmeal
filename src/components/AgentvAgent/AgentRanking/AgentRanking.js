@@ -25,27 +25,20 @@ class AgentRanking extends Component {
     show = dimmer => () => this.setState({ dimmer, open: true })
     close = () => this.setState({ open: false })
 
-    componentDidMount() {
-        // this.props.fetchUsers()
 
-        socket.on('response', data => {
-            let standings = data.standings
-            console.log(standings, "new freaking standings")
-        })
-
-        axios.get('/api/viewmore').then(res => {
+    componentWillReceiveProps( nextProps ) {
+        axios.get( '/api/viewmore' ).then( res => {
             let userArr = []
-            res.data.map((e, i) => {
-                let standingsObj = JSON.parse(e.standings)
-                return userArr.push({
-                    index: i,
-                    userId: e.user_id,
-                    name: e.user_name,
-                    team: e.team,
-                    kpi: e.kpi,
-                    standings: standingsObj[e.user_id],
-                    photos: e.photos
-                })
+            res.data.map( ( e, i ) => {
+            return userArr.push({
+                index: i,
+                userId: e.user_id,
+                name: e.user_name,
+                team: e.team,
+                kpi: e.kpi,
+                photos: e.photos,
+                standings: _.at( nextProps.standings, e.user_id )
+            })
             })
             let orderedUsers = () => {
                 let arr = []
@@ -65,6 +58,7 @@ class AgentRanking extends Component {
     }
 
     render() {
+        // console.log(this.props.standings)
         let { sortedUsers } = this.state
         let dynamicKPI = (i) => {
              if ( sortedUsers[0] && sortedUsers[0].kpi === 'Sales') {

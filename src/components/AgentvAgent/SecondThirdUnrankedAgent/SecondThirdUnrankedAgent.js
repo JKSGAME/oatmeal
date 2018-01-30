@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './SecondThirdUnrankedAgent.css'
-import UsersModal from '../../UsersModal/UsersModal'
-import { connect } from 'react-redux'
-import { fetchAVAData } from './../../../ducks/reducer'
+import './SecondThirdUnrankedAgent.css';
+import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
+import { connect } from 'react-redux';
+import { fetchAVAData } from './../../../ducks/reducer';
 import { bindActionCreators } from 'redux';
 import { fetchUsers } from './../../../ducks/reducer';
 import _ from 'lodash';
-import axios from 'axios'
+import axios from 'axios';
 
 class SecondThirdUnrankedAgent extends Component {
     constructor() {
@@ -91,7 +91,7 @@ class SecondThirdUnrankedAgent extends Component {
                                 })}
                             </div>
                         </div>
-                        <UsersModal/>
+                        <ViewMoreModal/>
                     </div>
                 </div>
             </div>
@@ -99,14 +99,14 @@ class SecondThirdUnrankedAgent extends Component {
     }
 }
 
-function mapStateToProps( state ) {
-    return { 
+function mapStateToProps(state) {
+    return {
         users: state.users
     }
-  }
-  
-  const mapDispatchToProps = dispatch => bindActionCreators({
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
     fetchUsers
-  }, dispatch )
-  
-  export default connect( mapStateToProps, mapDispatchToProps )( SecondThirdUnrankedAgent )
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(SecondThirdUnrankedAgent)

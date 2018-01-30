@@ -7,7 +7,13 @@
     align-content: center;
     height: 100%;
     width: 100%;
-    border: 1px solid green
+    border: 1px solid green;
+    overflow-x: hidden; 
+}
+
+.navBar {
+    height: 5.92vh;
+    width: 100vw;
 }
 
 .AVA-title {
@@ -41,17 +47,6 @@
 	justify-content: center;
 	align-items: center;
     align-content: center;
-    height: 55%;
-    width: 100%;
-}
-
-.AVA-SecondThirdUnrankedAgent-Placement {
-    display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-    align-content: center;
-    height: 45%;
+    height: 100%;
     width: 100%;
 }

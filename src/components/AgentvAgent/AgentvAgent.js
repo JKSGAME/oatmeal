@@ -7,8 +7,11 @@ import _ from "lodash";
 import axios from 'axios';
 import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
+import { Sidebar, Menu, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 import io from 'socket.io-client'
+import AgentRanking from './AgentRanking/AgentRanking';
 const socket = io()
 
 class AgentvAgent extends Component {
@@ -53,19 +56,28 @@ class AgentvAgent extends Component {
     }
 
     render() {
-        return (
-            <div className="AgentvAgent">
-                <div className="AVA-title">
-                    <h2>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h2>
-                    <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
+
+    return (
+        <div className="AgentvAgent">
+        <div className='navBar'>
+          <Sidebar as={Menu} direction='top' visible inverted width='wide'>
+          <Link to='/' ><Menu.Item name='home'><Icon name='home'/>Home</Menu.Item></Link>
+            {/* <Menu.Item name='gamepad'><Icon name='gamepad' />Games</Menu.Item>
+            <Menu.Item name='camera'><Icon name='camera' />Channels</Menu.Item> */}
+          </Sidebar>
+      </div>
+            <div className="AVA-title">
+                <h2>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h2>
+                <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
+            </div>
+            <div className="AVA-leaderboard-data">
+                <div className="AVA-FirstPlaceAgent-Placement">
+                    {/* <FirstPlaceAgent/> */}
+                    <AgentRanking/>
                 </div>
-                <div className="AVA-leaderboard-data">
-                    <div className="AVA-FirstPlaceAgent-Placement">
-                        <FirstPlaceAgent standings={this.state.standings}/>
-                    </div>
-                    <div className="AVA-SecondThirdUnrankedAgent-Placement">
-                        <SecondThirdUnrankedAgent standings={this.state.standings}/>
-                    </div>
+                <div className="AVA-SecondThirdUnrankedAgent-Placement">
+                    {/* <SecondThirdUnrankedAgent/> */}
+                </div>
                 </div>
             </div>
         )

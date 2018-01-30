@@ -1,3 +1,48 @@
+.AVA-FirstPlaceAgent {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	border: 1px solid red;
+	width: 100%;
+	height: 100%;
+}
+
+.ui.card.AVA-first-place-agent {
+	margin: 4px 0;
+}
+
+.first-place-img {
+	height: 30vh;
+
+}
+
+.AVA-FirstPlaceAgent-Image {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	border: 1px solid orange;
+	height: 100%;
+	width: 50%;
+}
+
+.AVA-first-data {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	border: 1px solid orange;
+	height: 100%;
+	width: 50%;
+}
+
 .SecondThirdUnranked {
     display: flex;
 	flex-direction: row;
@@ -124,5 +169,11 @@
 @media (min-width: 425px) {
 	.SecondThirdUnranked .ui.card {
 		display: none;
+	}
+}
+
+@media (min-width: 425px) {
+	.ui.card.AVA-first-place-agent {
+	  display: none;
 	}
 }

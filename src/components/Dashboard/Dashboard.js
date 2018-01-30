@@ -29,7 +29,7 @@ class Dashboard extends Component {
     const { challenges } = this.state
     const curChal = challenges.map( ( e, i ) => {
       return (
-        <div className='chal-box' key={i}>
+        <div className='chal-box' key={e.name}>
           <h3>{e.name}</h3>
           <h4>Challenge mode: {e.mode}</h4>
           <h4>End time: {e.time_end}</h4>

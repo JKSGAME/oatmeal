@@ -3,4 +3,6 @@
     width: 100%;
     border: solid black 1px;
     align-self: center;
+    max-width: 100%;
+    overflow: hidden;
 }

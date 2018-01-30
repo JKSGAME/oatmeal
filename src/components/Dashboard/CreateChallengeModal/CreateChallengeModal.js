@@ -178,7 +178,7 @@ class CreateChallengeModal extends Component {
                                         <Header size='small'>Challenge Type</Header>
                                         <Dropdown placeholder='Select Challenge Type' floating search selection onChange={(e, d) => this.dataGrabber('selectedType', d.value)} options={challengeType} text={challengeType.text} value={challengeType.value} labeled={true} />
                                         <Header size='small'>Teams</Header>
-                                        <Dropdown placeholder='Select Teams Involved' floating search multiple selection  onChange={(e, d) => {
+                                        <Dropdown placeholder='Select Teams Involved' floating search selection  onChange={(e, d) => {
                                             console.log('d.value', d.value);
                                             this.dataGrabber('selectedTeam', d.value)}} options={teamInfo} text={teamInfo.text} />
 

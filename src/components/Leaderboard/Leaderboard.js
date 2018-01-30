@@ -8,84 +8,41 @@ import Carousel from '../Carousel/Carousel';
 import './Leaderboard.css';
 import _ from "lodash";
 
-import io from 'socket.io-client'
-const socket = io()
-
 class Leaderboard extends Component {
     constructor( props ){
         super( props )
         this.state={
-            challenges: {},
-            standings: {}
-        
+            challenges: {}      
         } 
-
-        this.updateStandings = this.updateStandings.bind( this )
     }
 
     componentDidMount(){
 
-        axios.get( '/api/challenges' ).then( allChallenges =>{
+        axios.get( '/api/challenges/1' ).then( allChallenges => {
             this.setState({
                 challenges: allChallenges.data
             })
-        })
-        console.log(this.props)
-        let roomId = this.props.challengeId
-            if ( roomId > 0 ) {
-            socket.emit( 'join room', {
-                room: roomId
-            })
-            }
-
-        socket.on( 'response', res => {
-            this.updateStandings( res )
-        })
+        })        
     }
-
-    updateStandings( standings ) {
-        console.log(standings)
-        this.setState({
-            standings: standings
-        })
-    }
-    
-
-    
+      
     render() {
+        let chalid = _.map( this.state.challenges, "id" )
         let chalTypeId = _.map( this.state.challenges, "challenge_type_id" )
-        console.log(this.state.challenges)
-        let length = chalTypeId.length
-        
-        return(
+        console.log(chalid);
+        let leaderboard = function( chalTypeId ) {
+            console.log(chalTypeId)
+            if ( chalTypeId === 1 ) {
+                return <AgentvAgent challengeId={chalid} />    
+            } else if ( chalTypeId === 2 ) {
+                return <TeamvTeam challengeId={chalid} />
+            }
+        }
+        return (
             <div>
-            <Carousel length={length} > 
-                        
-            { ( chalTypeId.reverse() ).map( ( e, i )=>{
-                if ( e === 1 ){
-                    return(
-                        <div key = {e}>
-                            <TeamvTeam />
-                        </div>
-                    )
-                } else if ( e === 2 ){
-                    return( 
-                        <div key = {e}>
-                            <AgentvAgent />
-                        </div>
-                    )
-                }
-            })}
-            </Carousel> 
-        </div>
-    )
-  }
-}
-
-function mapStateToProps( state ){
-    return{
-        standings: state.standings
+               { leaderboard( chalTypeId[0] ) }
+            </div>
+        )
     }
 }
 
-export default connect( mapStateToProps, { getStandings } )( Leaderboard );
+export default Leaderboard

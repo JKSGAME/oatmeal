@@ -14,7 +14,7 @@ class CreateChallengeModal extends Component {
             kpis: [],
             duration: [],
             selectedType: '',
-            selectedTeam: '',
+            selectedTeam: [],
             selectedMode: '',
             selectedKPI: '',
             timeStart: '',
@@ -31,7 +31,7 @@ class CreateChallengeModal extends Component {
     show = dimmer => () => this.setState({ dimmer, open: true })
     close = () => this.setState({
         open: false,
-        selectedTeam: '',
+        selectedTeam: [],
         selectedType: '',
         selectedMode: '',
         selectedKPI: '',
@@ -52,7 +52,7 @@ class CreateChallengeModal extends Component {
         // send data to db, send data in fields, then this.name = ''
         this.setState({
             open: false,
-            selectedTeam: '',
+            selectedTeam: [],
             selectedType: '',
             selectedMode: '',
             selectedKPI: '',
@@ -178,7 +178,9 @@ class CreateChallengeModal extends Component {
                                         <Header size='small'>Challenge Type</Header>
                                         <Dropdown placeholder='Select Challenge Type' floating search selection onChange={(e, d) => this.dataGrabber('selectedType', d.value)} options={challengeType} text={challengeType.text} value={challengeType.value} labeled={true} />
                                         <Header size='small'>Teams</Header>
-                                        <Dropdown placeholder='Select Teams Involved' floating search selection value={teamInfo.value} onChange={(e, d) => this.dataGrabber('selectedTeam', d.value)} options={teamInfo} text={teamInfo.text} />
+                                        <Dropdown placeholder='Select Teams Involved' floating search multiple selection  onChange={(e, d) => {
+                                            console.log('d.value', d.value);
+                                            this.dataGrabber('selectedTeam', d.value)}} options={teamInfo} text={teamInfo.text} />
 
                                     </Segment>
 

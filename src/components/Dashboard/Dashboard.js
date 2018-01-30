@@ -5,6 +5,7 @@ import './Dashboard.css'
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
 import Leaderboard from '../Leaderboard/Leaderboard';
+import axios from 'axios'
 
 
 
@@ -14,6 +15,7 @@ class Dashboard extends Component {
     this.state = {
       standings: "Initial Standings",
       isFull: false,
+      challenges: []
     }
 
   }
@@ -21,19 +23,39 @@ class Dashboard extends Component {
     this.setState({ isFull: true })
   }
 
+  componentDidMount() {
+    axios.get('/api/fullChallengeTable').then(res => {
+        this.setState({
+            challenges: res.data
+        })
+    })
+}
+
   render() {
+    const { challenges } = this.state
+    const curChal = challenges.map( (e, i) => {
+      return (
+        <div className='chal-box' key={i}>
+          <h3>{e.name}</h3>
+          <h4>Challenge mode: {e.mode}</h4>
+          <h4>End time: {e.time_end}</h4>
+          <h4>KPI: {e.kpi}</h4>
+        </div>
+      )
+    })
     return (
       <div className="Dashboard">
         <header>
           <h1>Welcome to the Dashboard</h1>
         </header>
-        <button onClick= {this.goFull}>Fullscreen</button>
-        <div className='board'>
-          <button className="toggle_left" >Prev</button>
-            <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
+        {/* <button onClick= {this.goFull}>Fullscreen</button> */}
+        {/* <div className='board'> */}
+            {/* <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
               <Leaderboard />
-            </Fullscreen>
-          <button className="toggle_right">Next</button>
+            </Fullscreen> */}
+        {/* </div> */}
+        <div className='chal-box-wrapper'>
+        {curChal}
         </div>
         <div className='modals'>
           <CreateChallengeModal />

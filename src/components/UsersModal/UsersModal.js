@@ -3,7 +3,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import { Button, Modal, Table } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom';
-
+// users in state might need to be put in redux, for other componenets to have sorted da
 
 class UsersModal extends Component {
 
@@ -47,13 +47,13 @@ class UsersModal extends Component {
             // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
-                let standingsObj = eval('(' + e.standings + ')')
                 return userArr.push({
+                    index: i,
                     userId: e.user_id,
                     name: e.user_name,
                     team: e.team,
                     kpi: e.kpi,
-                    standings: standingsObj[e.user_id]
+                    challengeTypeId: e.challenge_type_id
                 })
             })
             let orderedUsers = _.orderBy(userArr, ['standings.salesKPI'], ['desc'])
@@ -94,14 +94,14 @@ class UsersModal extends Component {
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
-                                    {_.map(this.state.users, ({ userId, name, team, kpi, position, standings }) => (
-                                        <Table.Row key={userId} onClick={() => this.props.history.push('/leaderboard/:id')}>
-                                        <Table.Cell>{position}</Table.Cell>
-                                        <Table.Cell>{name}</Table.Cell>
-                                        <Table.Cell>{team}</Table.Cell>
-                                        <Table.Cell>{standings.salesKPI}</Table.Cell>
+                                    {this.state.users.map(  (e, i)  => {
+                                       return  <Table.Row key={e.userId} onClick={() => this.props.history.push('/leaderboard/:id')}>
+                                        <Table.Cell>{i + 1}</Table.Cell>
+                                        <Table.Cell>{e.name}</Table.Cell>
+                                        <Table.Cell>{e.team}</Table.Cell>
+                                        {/* <Table.Cell>{e.standings.salesKPI}</Table.Cell> */}
                                         </Table.Row>
-                                    ))}
+                                    })}
                                 </Table.Body>
                             </Table>
                         </Modal.Description>

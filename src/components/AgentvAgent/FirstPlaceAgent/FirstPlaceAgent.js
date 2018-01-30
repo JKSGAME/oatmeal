@@ -3,28 +3,24 @@ import { bindActionCreators } from 'redux';
 import './FirstPlaceAgent.css';
 import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
-import io from 'socket.io-client'
 import axios from 'axios';
 import _ from 'lodash';
 
-const socket = io()
 
 
 
 class FirstPlaceAgent extends Component {
-  constructor(props) {
-    super(props)
+  constructor( props ) {
+    super( props )
     this.state = {
       sortedUsers: [],
       standings: {}
     }
   }
-  componentWillReceiveProps( props ) {
-    console.log(this.props.standings);
-    axios.get('/api/viewmore').then(res => {
+  componentWillReceiveProps( nextProps ) {
+    axios.get( '/api/viewmore' ).then( res => {
       let userArr = []
-      res.data.map((e, i) => {
-        console.log(e)
+      res.data.map( ( e, i ) => {
         return userArr.push({
           index: i,
           userId: e.user_id,
@@ -32,12 +28,18 @@ class FirstPlaceAgent extends Component {
           team: e.team,
           kpi: e.kpi,
           photos: e.photos,
-          standings: _.at(this.props.standings, e.user_id)
+          standings: _.at( nextProps.standings, e.user_id )
         })
       })
-      let orderedUsers = _.orderBy(userArr, ['standings[0].salesKPI'], ['desc'])
-      // FIX HARD CODING OF KPI TYPE
-      console.log(orderedUsers, "user array")
+      // kpi needs to be deined (passed in from dashboard)
+      let kpiTest = 'Sales'
+      let orderedUsers = []
+      console.log(orderedUsers)
+      if ( kpiTest === 'Sales' ) {
+        return orderedUsers = _.orderBy( userArr, ['standings[0].salesKPI'], ['desc'] )
+      } else if ( kpiTest === 'Dials' ) {
+        return orderedUsers = _.orderBy( userArr, ['standings[0].dialsKPI'], ['desc'] )
+      }
       this.setState({
         sortedUsers: orderedUsers,
       })
@@ -46,7 +48,16 @@ class FirstPlaceAgent extends Component {
 
 
   render() {
-    console.log(this.state.sortedUsers[0])
+    console.log(this.state.sortedUsers)
+    // kpi needs to be defined (passed in from dashboard)
+    let kpiTest = 'Sales'
+    let kpiTotal = function( kpiTest ) {
+      if( kpiTest === 'Sales' ) {
+        return <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].standings[0].salesKPI}</h4>
+      } else if ( kpiTest === 'Dials' ) {
+        return <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].standings[0].dialsKPI}</h4>
+      }
+    }
     return (
       <div>
         <div className="AVA-FirstPlaceAgent">
@@ -57,10 +68,10 @@ class FirstPlaceAgent extends Component {
           <div className="AVA-first-data">
           <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].name} </h1>
               <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].team}</h3>
-              <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].standings[0].salesKPI}</h4>
+              { kpiTotal( kpiTest ) } 
             </div>
-          {/* {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-            if (i === 0) {
+          {/* {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more.  */}
+            {/* if (i === 0) {
               return <div key={i} className="AVA-FirstPlaceAgent">
                 <h1>1st place:</h1>
                 <div className="AVA-FirstPlaceAgent-Image"></div>
@@ -76,11 +87,11 @@ class FirstPlaceAgent extends Component {
           })} */}
         </div>
       </div>
-    );
+    )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps( state ) {
   return {
     users: state.users,
   }
@@ -88,6 +99,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchUsers,
-}, dispatch)
+}, dispatch )
 
-export default connect(mapStateToProps, mapDispatchToProps)(FirstPlaceAgent)
+export default connect( mapStateToProps, mapDispatchToProps )( FirstPlaceAgent )

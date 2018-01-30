@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import Fullscreen from 'react-full-screen';
 import './Dashboard.css'
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
@@ -14,15 +13,9 @@ class Dashboard extends Component {
     super()
     this.state = {
       standings: "Initial Standings",
-      isFull: false,
       challenges: []
     }
-
   }
-
-  // goFull = () => {
-  //   this.setState({ isFull: true })
-  // }
 
   componentDidMount() {
     axios.get('/api/fullChallengeTable').then(res => {
@@ -49,18 +42,13 @@ class Dashboard extends Component {
         <header>
           <h1>Welcome to the Dashboard</h1>
         </header>
-        {/* <button onClick= {this.goFull}>Fullscreen</button> */}
-        {/* <div className='board'> */}
-            {/* <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
-              <Leaderboard />
-            </Fullscreen> */}
-        {/* </div> */}
+
         <div className='chal-box-wrapper'>
         {curChal}
         </div>
         <div className='modals'>
           <CreateChallengeModal />
-          <CurrentChallengeModal history={this.props.history} />
+          <CurrentChallengeModal history={this.props.history} challengeName={curChal.name} challengeDesc={curChal.desc} />
         </div>
         <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
       </div>

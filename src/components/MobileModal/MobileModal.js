@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import { Button, Modal, Table, Grid, Segment } from 'semantic-ui-react';
+import { Button, Modal, Grid, Segment } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom';
 // users in state might need to be put in redux, for other componenets to have sorted da
 
@@ -50,7 +50,7 @@ class MobileModal extends Component {
     }
 
     render() {
-        const { open, column } = this.state
+        const { open } = this.state
 
         return (
             <div className='MobileModal'>
@@ -63,15 +63,7 @@ class MobileModal extends Component {
                                 <Grid.Row columns={1} only='mobile'>
                                     <Grid.Column>
                                         {this.state.users.map((e, i) => {
-                                            //    return  <Table.Row key={e.userId} onClick={() => this.props.history.push('/leaderboard/:id')}>
-                                            //     <Table.Cell>{i + 1}</Table.Cell>
-                                            //     <Table.Cell>{e.name}</Table.Cell>
-                                            //     <Table.Cell>{e.team}</Table.Cell>
-                                            //     <Table.Cell>{e.standings.salesKPI}</Table.Cell>
-                                            // </Table.Row>
-
                                            return <Segment key={e.userId}><p>{i + 1} {e.name} {e.kpi}: {e.standings.dialsKPI}</p></Segment>
-
                                         })}
                                     </Grid.Column>
                                 </Grid.Row>

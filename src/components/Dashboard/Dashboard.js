@@ -37,7 +37,7 @@ class Dashboard extends Component {
     const curChal = challenges.map( (e, i) => {
       console.log('e',e);
       return (
-        <div className='chal-box'>
+        <div className='chal-box' key={e.user_id}>
           <h3>{e.name}</h3>
           <h4>Challenge mode: {e.mode}</h4>
           <h4>End time: {e.time_end}</h4>

@@ -52,8 +52,7 @@ class FirstPlaceAgent extends Component {
   }
 
   render() {
-    console.log('sorted', this.state.sortedUsers);
-    // console.log(this.props)
+
     return (
       <div>
         {/* <div className="AVA-FirstPlaceAgent">

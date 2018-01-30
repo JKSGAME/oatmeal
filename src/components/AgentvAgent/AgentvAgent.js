@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import { fetchAVAData } from './../../ducks/reducer';
 import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
-import { Sidebar, Menu, Icon, Grid, Segment } from 'semantic-ui-react'
+import { Sidebar, Menu, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import TestMerge from './TestMerge/TestMerge';
 
 class AgentvAgent extends Component {
 
@@ -30,10 +31,11 @@ class AgentvAgent extends Component {
             </div>
             <div className="AVA-leaderboard-data">
                 <div className="AVA-FirstPlaceAgent-Placement">
-                    <FirstPlaceAgent/>
+                    {/* <FirstPlaceAgent/> */}
+                    <TestMerge/>
                 </div>
                 <div className="AVA-SecondThirdUnrankedAgent-Placement">
-                    <SecondThirdUnrankedAgent/>
+                    {/* <SecondThirdUnrankedAgent/> */}
                 </div>
             </div>
         </div>

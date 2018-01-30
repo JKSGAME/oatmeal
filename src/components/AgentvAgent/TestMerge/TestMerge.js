@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import './SecondThirdUnrankedAgent.css';
-import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
-import { connect } from 'react-redux';
-import { fetchAVAData } from './../../../ducks/reducer';
 import { bindActionCreators } from 'redux';
+import './TestMerge.css';
+import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
-import _ from 'lodash';
+import io from 'socket.io-client'
 import axios from 'axios';
-import { Card, Icon, Image, Header } from 'semantic-ui-react';
-import MobileModal from '../../MobileModal/MobileModal';
+import _ from 'lodash';
+import { Card, Icon, Image, Header } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive';
+import MobileModal from '../../MobileModal/MobileModal';
+import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
 
-class SecondThirdUnrankedAgent extends Component {
+const socket = io()
+
+
+
+class FirstPlaceAgent extends Component {
     constructor() {
         super()
         this.state = {
@@ -23,11 +27,15 @@ class SecondThirdUnrankedAgent extends Component {
 
     componentDidMount() {
         // this.props.fetchUsers()
+
+        socket.on('response', data => {
+            let standings = data.standings
+            console.log(standings, "new freaking standings")
+        })
+
         axios.get('/api/viewmore').then(res => {
-            // console.log('res.data', res.data);
             let userArr = []
             res.data.map((e, i) => {
-                // let standingsObj = eval('(' + e.standings + ')')
                 let standingsObj = JSON.parse(e.standings)
                 return userArr.push({
                     index: i,
@@ -39,17 +47,56 @@ class SecondThirdUnrankedAgent extends Component {
                     photos: e.photos
                 })
             })
-            let orderedUsers = _.orderBy(userArr, ['standings.dialsKPI'], ['desc'])
+            let orderedUsers = () => {
+                let arr = []
+                if (userArr[0].kpi === 'Dials') {
+                    return arr = _.orderBy(userArr, ['standings.dialsKPI'], ['desc'])
+                }
+                else if (userArr[0].kpi === 'Sales') {
+                    return arr = _.orderBy(userArr, ['standings.salesKPI'], ['desc'])
+                }
+                return arr
+            }
             this.setState({
-                sortedUsers: orderedUsers
+                sortedUsers: orderedUsers(),
+                info: res.data
             })
         })
     }
 
     render() {
-        // console.log(this.state.users);
+        let { sortedUsers } = this.state
+        let dynamicKPI = (i) => {
+             if ( sortedUsers[0] && sortedUsers[0].kpi === 'Sales') {
+                 console.log(sortedUsers[0]);
+                return sortedUsers[i].standings.salesKPI
+            }
+            else if (sortedUsers[0] && sortedUsers[0].kpi === 'Dials') {
+                    return sortedUsers[i].standings.dialsKPI
+                }
+        }
         return (
             <div>
+        {/* {console.log('sorted', this.state.sortedUsers[0].kpi)} */}
+                
+            <div className='AVA-FirstPlaceAgent'>
+                {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                    if (i === 0) {
+                        return <Card key={e.userId} className='AVA-first-place-agent'>
+                            <Header as='h1'>1st Place</Header>
+                            <Image className='first-place-img' centered size='small' src={e.photos} />
+                            <Card.Content>
+                                <Card.Header>{e.name}</Card.Header>
+                                <Card.Description>
+                                    <p>Team: {e.team}</p>
+                                    {e.kpi}: {dynamicKPI(i)}
+                                </Card.Description>
+                            </Card.Content>
+                        </Card>
+                    }
+                })}
+            </div>
+            <div >
                 {/* { this.props.users.length > 0 && */}
                 <div className="SecondThirdUnranked">
                     <div className="SecondThirdAgents">
@@ -70,7 +117,7 @@ class SecondThirdUnrankedAgent extends Component {
                                         <Card.Content>
                                             <Card.Header>{e.name}</Card.Header>
                                             <Card.Description><p>Team: {e.team}</p>
-                                                {e.kpi}: {e.standings.dialsKPI}</Card.Description>
+                                                {e.kpi}: {dynamicKPI(i)}</Card.Description>
                                         </Card.Content>
                                     </Card>
                                 </div>
@@ -94,7 +141,7 @@ class SecondThirdUnrankedAgent extends Component {
                                         <Card.Content>
                                             <Card.Header>{e.name}</Card.Header>
                                             <Card.Description><p>Team: {e.team}</p>
-                                                {e.kpi}: {e.standings.dialsKPI}</Card.Description>
+                                                {e.kpi}: {dynamicKPI(i)}</Card.Description>
                                         </Card.Content>
                                     </Card>
                                 </div>
@@ -114,14 +161,13 @@ class SecondThirdUnrankedAgent extends Component {
                                         //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
                                         //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
                                         // </div>
-                                        return <div className="AVA-Unranked-lineItem">
-                                            <Card key={e.userId}>
+                                        return <div key={e.userId} className="AVA-Unranked-lineItem">
+                                            <Card >
                                                 <Card.Content>
                                                     <Header as='h6'>{i + 1}th Place</Header>
                                                     <Card.Description>
                                                         <h6 className='h6-name'>{e.name}</h6>
-                                                        {/* change to dials later */}
-                                                        {e.kpi}: {e.standings.dialsKPI}</Card.Description>
+                                                        {e.kpi}: {dynamicKPI(i)}</Card.Description>
                                                 </Card.Content>
                                             </Card>
                                         </div>
@@ -139,18 +185,19 @@ class SecondThirdUnrankedAgent extends Component {
                 </div>
                 {/* } */}
             </div>
-        );
+            </div>
+              )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        users: state.users
+        users: state.users,
     }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    fetchUsers
+    fetchUsers,
 }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(SecondThirdUnrankedAgent)
+export default connect(mapStateToProps, mapDispatchToProps)(FirstPlaceAgent)

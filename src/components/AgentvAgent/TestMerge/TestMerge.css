@@ -1,0 +1,179 @@
+.AVA-FirstPlaceAgent {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	border: 1px solid red;
+	width: 100%;
+	height: 100%;
+}
+
+.ui.card.AVA-first-place-agent {
+	margin: 4px 0;
+}
+
+.first-place-img {
+	height: 30vh;
+
+}
+
+.AVA-FirstPlaceAgent-Image {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	border: 1px solid orange;
+	height: 100%;
+	width: 50%;
+}
+
+.AVA-first-data {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	border: 1px solid orange;
+	height: 100%;
+	width: 50%;
+}
+
+.SecondThirdUnranked {
+    display: flex;
+	flex-direction: row;
+	flex-direction: column;
+	/* flex-wrap: nowrap; */
+	justify-content: center;
+	align-items: center;
+	/* border: 1px solid red; */
+	height: 25%;
+	width: auto;
+}
+
+.SecondThirdAgents {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 50%;
+}
+
+.SecondPlaceAgent>.ui.card {
+	margin-bottom: 2px;
+}
+
+.SecondPlaceAgent {
+	display: flex;
+	align-items: center;
+	/* border: 1px solid orange; */
+	height: 100%;
+	width: 50%;
+}
+
+.ThirdPlaceAgent {
+	display: flex;
+	align-self: center;
+	/* flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center; */
+	/* border: 1px solid orange; */
+	height: 100%;
+	width: 50%;
+}
+
+.ui.card.SecondPlaceAgent {
+	margin: none !important;
+}
+
+.UnrankedAgents {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	/* border: 1px solid orange; */
+	height: 100%;
+	width: 50%;
+}
+
+.AVA-unranked-data {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.AVA-unranked-ranking {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	margin-bottom: 4px;
+}
+
+.AVA-Unranked-lineItem {
+	height: 10vh;
+	margin: 2px 0;
+}
+
+.AVA-unranked-agent-info {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.prof-pic {
+	height: 50px;
+	width: 50px;
+}
+
+.AVA-Unranked-lineItem .ui.card>.content, .ui.cards>.card>.content {
+	padding: 0;
+	height: 10vh;;
+}
+
+.AVA-Unranked-lineItem .ui.card>.content>.header, .ui.cards>.card>.content>.header  {
+	margin: 4px 0;
+	margin-bottom: 0;
+}
+
+.AVA-Unranked-lineItem .ui.card>.content>.header+.description, .ui.card>.content>.meta+.description, .ui.cards>.card>.content>.header+.description, .ui.cards>.card>.content>.meta+.description {
+	margin: 0;
+}
+
+.h6-name {
+	margin: 0;
+}
+
+.ui.header:first-child {
+    margin-top: 0.5em;
+}
+
+@media (min-width: 425px) {
+	.SecondThirdUnranked .ui.card {
+		display: none;
+	}
+}
+
+@media (min-width: 425px) {
+	.ui.card.AVA-first-place-agent {
+	  display: none;
+	}
+}

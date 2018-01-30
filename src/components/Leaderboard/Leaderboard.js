@@ -4,62 +4,45 @@ import { connect } from 'react-redux';
 import { getStandings } from './../../ducks/reducer'
 import AgentvAgent from './../AgentvAgent/AgentvAgent';
 import TeamvTeam from './../TeamvTeam/TeamvTeam'
-import Carousel from '../Carousel/Carousel';
 import './Leaderboard.css';
 import _ from "lodash";
 
 class Leaderboard extends Component {
-    constructor(props){
-        super()
+    constructor( props ){
+        super( props )
         this.state={
-            challenges: {},
-        
-        }
-        
+            challenges: {}      
+        } 
     }
 
-
     componentDidMount(){
-        axios.get('/api/challenges').then( allChallenges =>{
+
+        axios.get( `/api/challenges/${1}` ).then( allChallenges => {
             this.setState({
                 challenges: allChallenges.data
             })
-        })
+        })        
     }
-    
+      
     render() {
-        let chalid = _.map(this.state.challenges, "challenge_type_id")
-        let length = chalid.length
-        
-        return(
+        let chalid = _.map( this.state.challenges, "id" )
+        console.log(chalid[0], "chalid on leaderboard")
+        let chalTypeId = _.map( this.state.challenges, "challenge_type_id" )
+        console.log(chalid[0]);
+        let leaderboard = function( chalTypeId ) {
+            console.log(chalTypeId)
+            if ( chalTypeId === 1 ) {
+                return <AgentvAgent challengeId={chalid[0]} />    
+            } else if ( chalTypeId === 2 ) {
+                return <TeamvTeam challengeId={chalid[0]} />
+            }
+        }
+        return (
             <div>
-            <Carousel length={length} > 
-                        
-            {(chalid.reverse()).map((e, i)=>{
-                if( e === 1){
-                    return(
-                        <div key = {e}>
-                            <AgentvAgent />    
-                        </div>
-                    )
-                }else if ( e === 2){
-                    return( 
-                        <div key = {e}>
-                            <TeamvTeam />
-                        </div>
-                    )
-                }
-            })}
-            </Carousel> 
-        </div>
-    )
-  }
-}
-
-function mapStateToProps(state){
-    return{
-        standings: state.standings
+               { leaderboard( chalTypeId[0] ) }
+            </div>
+        )
     }
 }
 
-export default connect (mapStateToProps, {getStandings})(Leaderboard);
+export default Leaderboard

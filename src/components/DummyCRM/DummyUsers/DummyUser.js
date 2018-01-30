@@ -21,10 +21,8 @@ class DummyUser extends Component {
   }
 
   componentWillReceiveProps( nextProps ) {
-    console.log(nextProps.standings[0])
     let standings = _.map(nextProps.standings, "standings")
     let standingsNew = eval( " ( "+standings[0]+" ) " )
-    console.log(standingsNew)
     
     let empty = _.isEmpty(standingsNew)
     if( empty ) {
@@ -55,13 +53,13 @@ class DummyUser extends Component {
         let standings = eval("("+res.data[0].standings+")")
         let update = Object.assign( {}, standings, agentScore )
         axios.put( `/api/updateleaderboard/${this.props.challengeId}`, update ).then( res => {
-          // let roomId = this.props.challengeId
-          // if ( roomId > 0 ) {
-          //   socket.emit( 'join room', {
-          //     room: roomId
-          //   })
-          // }
-          // io.to(this.props.challengeId).emit( 'update standings', update )
+          let roomId = this.props.challengeId
+          if ( roomId > 0 ) {
+            socket.emit( 'join room', {
+              room: roomId
+            })
+          }
+          socket.emit( 'update standings', update )
         })
       })
 
@@ -79,8 +77,8 @@ class DummyUser extends Component {
             <h3>Current Sales: { this.state.sales }</h3>
             <h3>Current Dials: { this.state.dials }</h3>
         </span>
-        <button className='btn-sales-add' onClick={ ( e ) => this.handleClick( "sales", sales + 1 ) }>Sales + 1</button>
-        <button className='btn-dials-add' onClick={ ( e ) => this.handleClick( "dials", dials + 1 ) }>Dials + 1</button>
+        <button className='btn-sales-add' onClick={ e => this.handleClick( "sales", sales + 1 ) }>Sales + 1</button>
+        <button className='btn-dials-add' onClick={ e => this.handleClick( "dials", dials + 1 ) }>Dials + 1</button>
       </div>
     );
   }

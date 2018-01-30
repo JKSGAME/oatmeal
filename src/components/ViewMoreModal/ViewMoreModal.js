@@ -47,7 +47,6 @@ class ViewMoreModal extends Component {
             // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
-                // let standingsObj = eval('(' + e.standings + ')')
                 let standingsObj = JSON.parse(e.standings)
                 return userArr.push({
                     index: i,
@@ -55,7 +54,6 @@ class ViewMoreModal extends Component {
                     name: e.user_name,
                     team: e.team,
                     kpi: e.kpi,
-                    standings: standingsObj[e.user_id],
                     challengeTypeId: e.challenge_type_id
                 })
             })
@@ -102,7 +100,7 @@ class ViewMoreModal extends Component {
                                         <Table.Cell>{i + 1}</Table.Cell>
                                         <Table.Cell>{e.name}</Table.Cell>
                                         <Table.Cell>{e.team}</Table.Cell>
-                                        <Table.Cell>{e.standings.salesKPI}</Table.Cell>
+                                        {/* <Table.Cell>{e.standings.salesKPI}</Table.Cell> */}
                                         </Table.Row>
                                     })}
                                 </Table.Body>

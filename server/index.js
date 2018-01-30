@@ -46,7 +46,7 @@ app.get( '/api/teams', usersControllers.get_team_info ) // Done testing
 app.get('/api/viewmore', usersControllers.view_more)
 
 // //Challenge Endpoints
-app.get( '/api/challenges', challengesControllers.get_challenges ) // Done testing
+app.get( '/api/challenges/:id', challengesControllers.get_challenges ) // Done testing
 app.get( '/api/challenge_type', challengesControllers.get_challenges_type ) // Done testing
 app.get( '/api/modes', challengesControllers.get_mode )
 app.get( '/api/kpi', challengesControllers.get_kpi )
@@ -64,7 +64,7 @@ io.on( 'connection', socket => {
     let room = ''
     socket.on( 'join room', data => {
         console.log( 'Room joined', data.room )
-        let room = data.room
+        room = data.room
         socket.join( room )
         io.to( room ).emit( 'room joined' )
     })

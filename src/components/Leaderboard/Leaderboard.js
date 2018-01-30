@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getStandings } from './../../ducks/reducer'
 import AgentvAgent from './../AgentvAgent/AgentvAgent';
 import TeamvTeam from './../TeamvTeam/TeamvTeam'
-import Carousel from '../Carousel/Carousel';
 import './Leaderboard.css';
 import _ from "lodash";
 
@@ -18,7 +17,7 @@ class Leaderboard extends Component {
 
     componentDidMount(){
 
-        axios.get( '/api/challenges/1' ).then( allChallenges => {
+        axios.get( `/api/challenges/${1}` ).then( allChallenges => {
             this.setState({
                 challenges: allChallenges.data
             })
@@ -27,14 +26,15 @@ class Leaderboard extends Component {
       
     render() {
         let chalid = _.map( this.state.challenges, "id" )
+        console.log(chalid[0], "chalid on leaderboard")
         let chalTypeId = _.map( this.state.challenges, "challenge_type_id" )
-        console.log(chalid);
+        console.log(chalid[0]);
         let leaderboard = function( chalTypeId ) {
             console.log(chalTypeId)
             if ( chalTypeId === 1 ) {
-                return <AgentvAgent challengeId={chalid} />    
+                return <AgentvAgent challengeId={chalid[0]} />    
             } else if ( chalTypeId === 2 ) {
-                return <TeamvTeam challengeId={chalid} />
+                return <TeamvTeam challengeId={chalid[0]} />
             }
         }
         return (

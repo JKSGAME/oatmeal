@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import './AgentvAgent.css';
 import { connect } from 'react-redux';
 import { fetchAVAData } from './../../ducks/reducer';
+import _ from "lodash";
+import axios from 'axios';
 import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
 
@@ -15,43 +17,53 @@ class AgentvAgent extends Component {
         super( props )
 
         this.state = {
-            standings: {}
+            standings: {},
         }
 
-    this.updateStandings = this.updateStandings.bind( this )
 
     }
 
     componentDidMount() {
         this.props.fetchAVAData()
-    }
-
-    componentWillReceiveProps() {
-
-        let roomId = this.props.challengeId
+        let roomId = 1
+        console.log(this.props.challengeId)
         if ( roomId > 0 ) {
+        
             socket.emit( 'join room', {
                 room: roomId
             })
         }
-    
+        
         socket.on( 'response', res => {
-            this.updateStandings( res )
+            console.log( res , "response on socket")
+            this.setState({
+                standings: res
+            })
         })
+        let empty = _.isEmpty(this.state.standings)
+        if( empty ) {
+            axios.get(`/api/leaderboard/${1}`, ).then( res =>{
+                let standings = _.map(res.data, "standings")
+                console.log( standings )
+                let standingsNew = eval( " ( "+standings[0]+" ) " )
+                console.log(standingsNew)
+                this.setState({
+                    standings: standingsNew
+                })
+            })
+            
+        }
+
     }
+        
 
-    updateStandings( standings ) {
-        console.log(standings, "standings obj on ava")
-        this.setState({
-            standings: standings
-        })
-    }
-
-
+    // componentWillReceiveProps(props) {
+    //     console.log(this.props, 'hit')
+    // }
     
 
     render() {
-        console.log(this.props.chalid)
+        console.log(this.state.standings)
     return (
         <div className="AgentvAgent">
             <div className="AVA-title">
@@ -60,10 +72,10 @@ class AgentvAgent extends Component {
             </div>
             <div className="AVA-leaderboard-data">
                 <div className="AVA-FirstPlaceAgent-Placement">
-                    <FirstPlaceAgent/>
+                    <FirstPlaceAgent standings={this.state.standings}/>
                 </div>
                 <div className="AVA-SecondThirdUnrankedAgent-Placement">
-                    <SecondThirdUnrankedAgent/>
+                    <SecondThirdUnrankedAgent standings={this.state.standings}/>
                 </div>
             </div>
         </div>

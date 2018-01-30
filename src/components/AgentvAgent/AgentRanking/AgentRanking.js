@@ -25,8 +25,7 @@ class AgentRanking extends Component {
     show = dimmer => () => this.setState({ dimmer, open: true })
     close = () => this.setState({ open: false })
 
-    componentDidMount() {
-        // this.props.fetchUsers()
+    componentWillReceiveProps( props ) {
 
         socket.on('response', data => {
             let standings = data.standings

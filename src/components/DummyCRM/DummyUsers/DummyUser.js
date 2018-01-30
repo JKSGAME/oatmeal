@@ -46,7 +46,7 @@ class DummyUser extends Component {
     this.setState({
        [propName]: value 
       })
-      axios.get( `/api/leaderboard/${this.props.challengeId}`).then( res => {
+      axios.get( `/api/leaderboard/${this.props.challengeId}` ).then( res => {
         let id = this.props.id;
         let agentScore = {};
         agentScore[id] = { salesKPI: this.state.sales, dialsKPI: this.state.dials }

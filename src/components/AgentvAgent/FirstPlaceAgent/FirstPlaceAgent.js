@@ -19,7 +19,8 @@ class FirstPlaceAgent extends Component {
       standings: {}
     }
   }
-  componentDidMount() {
+  componentWillReceiveProps( props ) {
+    console.log(this.props.standings);
     axios.get('/api/viewmore').then(res => {
       let userArr = []
       res.data.map((e, i) => {
@@ -56,9 +57,9 @@ class FirstPlaceAgent extends Component {
           <div className="AVA-first-data">
           <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].name} </h1>
               <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].team}</h3>
-              <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].standings[0].dialsKPI}</h4>
+              <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[0].standings[0].salesKPI}</h4>
             </div>
-          {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+          {/* {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
             if (i === 0) {
               return <div key={i} className="AVA-FirstPlaceAgent">
                 <h1>1st place:</h1>
@@ -72,7 +73,7 @@ class FirstPlaceAgent extends Component {
                 </div>
               </div>
             }
-          })}
+          })} */}
         </div>
       </div>
     );

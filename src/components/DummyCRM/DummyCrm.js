@@ -139,11 +139,11 @@ class DummyCrm extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps( state ){
   return{
     standings: state.standings
   }
 }
 
 
-export default connect(mapStateToProps, {getStandings: getStandings})(DummyCrm);
+export default connect( mapStateToProps, { getStandings: getStandings } )( DummyCrm );

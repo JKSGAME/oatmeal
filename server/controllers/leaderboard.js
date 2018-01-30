@@ -11,7 +11,7 @@ module.exports = {
     agentvagent ( req, res ) {
         const db = req.app.get( 'db' ) 
         let status = 200
-        db.get_challenges().then( challenges => {
+        db.get_challenges2().then( challenges => {
             res.send( challenges )
         }).catch( console.log )
     },

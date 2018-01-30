@@ -19,9 +19,10 @@ class Dashboard extends Component {
     }
 
   }
-  goFull = () => {
-    this.setState({ isFull: true })
-  }
+
+  // goFull = () => {
+  //   this.setState({ isFull: true })
+  // }
 
   componentDidMount() {
     axios.get('/api/fullChallengeTable').then(res => {
@@ -33,7 +34,7 @@ class Dashboard extends Component {
 
   render() {
     const { challenges } = this.state
-    const curChal = challenges.map( (e, i) => {
+    const curChal = challenges.map( ( e, i ) => {
       return (
         <div className='chal-box' key={i}>
           <h3>{e.name}</h3>
@@ -42,7 +43,7 @@ class Dashboard extends Component {
           <h4>KPI: {e.kpi}</h4>
         </div>
       )
-    })
+  })
     return (
       <div className="Dashboard">
         <header>

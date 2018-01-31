@@ -6,12 +6,14 @@ import { fetchUsers } from './../../../ducks/reducer';
 import io from 'socket.io-client'
 import axios from 'axios';
 import _ from 'lodash';
+import FlipMove from 'react-flip-move';
 import { Card, Icon, Image, Header } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive';
 import MobileModal from '../../MobileModal/MobileModal';
 import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
 
 const socket = io()
+
 
 class AgentRanking extends Component {
     constructor(props) {
@@ -21,12 +23,13 @@ class AgentRanking extends Component {
             info: []
         }
     }
+
     show = dimmer => () => this.setState({ dimmer, open: true })
     close = () => this.setState({ open: false })
 
-
     componentWillReceiveProps(nextProps) {
-        axios.get(`/api/viewmore/${this.props.challengeId}`).then(res => {
+        console.log(nextProps)
+        axios.get(`/api/viewmore/${nextProps.challengeId}`).then(res => {
             let userArr = []
             res.data.map((e, i) => {
                 return userArr.push({
@@ -58,7 +61,6 @@ class AgentRanking extends Component {
             })
         })
     }
-
     render() {
         let { sortedUsers, info } = this.state
         let dynamicKPI = (i) => {
@@ -70,118 +72,126 @@ class AgentRanking extends Component {
             }
         }
         let dynamicName = () => sortedUsers[0] && this.props.challengeId === sortedUsers[0].chalid ? <h2>{info[0].name}</h2> : <h2>No Challenges Here</h2>
-        let dynamicDesc = () =>  sortedUsers[0] && this.props.challengeId === sortedUsers[0].chalid ? <p>{info[0].description}</p> : <p>No Desc Here</p>
+        let dynamicDesc = () => sortedUsers[0] && this.props.challengeId === sortedUsers[0].chalid ? <p>{info[0].description}</p> : <p>No Desc Here</p>
         return (
             <div>
                 <div className="AVA-title">
-                {dynamicName()}
-                {dynamicDesc()}
+                    {dynamicName()}
+                    {dynamicDesc()}
                 </div>
                 <div className='AVA-FirstPlaceAgent'>
-                    {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                        if (i === 0) {
-                            return <Card key={e.userId} className='AVA-first-place-agent'>
-                                <Header as='h1'>1st Place</Header>
-                                <Image className='first-place-img' centered size='small' src={e.photos} />
-                                <Card.Content>
-                                    <Card.Header>{e.name}</Card.Header>
-                                    <Card.Description>
-                                        <p>Team: {e.team}</p>
-                                        {e.kpi}: {dynamicKPI(i)}
-                                    </Card.Description>
-                                </Card.Content>
-                            </Card>
-                        }
-                    })}
+                    <FlipMove>
+                        {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                            if (i === 0) {
+                                return <Card key={e.userId} className='AVA-first-place-agent'>
+                                    <Header as='h1'>1st Place</Header>
+                                    <Image className='first-place-img' centered size='small' src={e.photos} />
+                                    <Card.Content>
+                                        <Card.Header>{e.name}</Card.Header>
+                                        <Card.Description>
+                                            <p>Team: {e.team}</p>
+                                            {e.kpi}: {dynamicKPI(i)}
+                                        </Card.Description>
+                                    </Card.Content>
+                                </Card>
+                            }
+                        })}
+                    </FlipMove>
                 </div>
                 <div >
                     {/* { this.props.users.length > 0 && */}
                     <div className="SecondThirdUnranked">
                         <div className="SecondThirdAgents">
-                            {/* <div className="SecondPlaceAgent"> */}
-                            {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                if (i === 1) {
-                                    // return <div key={i} className="SecondPlaceAgent">
-                                    //     <img className='prof-pic' src={e.photos} alt=""/>
-                                    //     <h4>2nd place:</h4>
-                                    //     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
-                                    //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                    //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
-                                    // </div>
-                                    return <div className='SecondPlaceAgent' key={e.userId}>
-                                        <Card >
-                                            <Header as='h5'>2nd Place</Header>
-                                            <Image size='small' src={e.photos} />
-                                            <Card.Content>
-                                                <Card.Header>{e.name}</Card.Header>
-                                                <Card.Description><p>Team: {e.team}</p>
-                                                    {e.kpi}: {dynamicKPI(i)}</Card.Description>
-                                            </Card.Content>
-                                        </Card>
-                                    </div>
-                                }
-                            })}
-                            {/* </div> */}
-                            {/* <div className="ThirdPlaceAgent"> */}
-                            {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                if (i === 2) {
-                                    // return <div key={i} className="ThirdPlaceAgent">
-                                    //     <img className='prof-pic' src={e.photos} alt=""/>
-                                    //     <h4>3rd place:</h4>
-                                    //     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
-                                    //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                    //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
-                                    // </div>
-                                    return <div className='SecondPlaceAgent' key={e.userId}>
-                                        <Card  >
-                                            <Header as='h5'>3rd Place</Header>
-                                            <Image size='small' src={e.photos} />
-                                            <Card.Content>
-                                                <Card.Header>{e.name}</Card.Header>
-                                                <Card.Description><p>Team: {e.team}</p>
-                                                    {e.kpi}: {dynamicKPI(i)}</Card.Description>
-                                            </Card.Content>
-                                        </Card>
-                                    </div>
-                                }
-                            })}
-                            {/* </div> */}
-                        </div>
-                        <div className="UnrankedAgents">
-                            <div className="AVA-unranked-data">
-                                <div className="AVA-unranked-ranking">
+                            <div className="SecondPlaceAgent">
+                                <FlipMove>
                                     {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                        if (i > 2 && i < 6) {
-                                            // return <div key={i} className="AVA-Unranked-lineItem">
+                                        if (i === 1) {
+                                            // return <div key={i} className="SecondPlaceAgent">
                                             //     <img className='prof-pic' src={e.photos} alt=""/>
-                                            //     <h4>{i + 1}th place</h4>
+                                            //     <h4>2nd place:</h4>
                                             //     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
                                             //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
                                             //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
                                             // </div>
-                                            return <div key={e.userId} className="AVA-Unranked-lineItem">
+                                            return <div className='SecondPlaceAgent' key={e.userId}>
                                                 <Card >
+                                                    <Header as='h4'>2nd Place</Header>
+                                                    <Image size='small' src={e.photos} />
                                                     <Card.Content>
-                                                        <Header as='h6'>{i + 1}th Place</Header>
-                                                        <Card.Description>
-                                                            <h6 className='h6-name'>{e.name}</h6>
+                                                        <Card.Header>{e.name}</Card.Header>
+                                                        <Card.Description><p>Team: {e.team}</p>
                                                             {e.kpi}: {dynamicKPI(i)}</Card.Description>
                                                     </Card.Content>
                                                 </Card>
                                             </div>
                                         }
                                     })}
-                                </div>
+                                </FlipMove>
                             </div>
-                            <MediaQuery query=" ( max-width: 425px) ">
-                                <MobileModal />
-                            </MediaQuery>
-                            <MediaQuery query=" ( min-width: 426px) ">
-                                <ViewMoreModal />
-                            </MediaQuery>
+                            <div className="ThirdPlaceAgent">
+                                <FlipMove>
+                                    {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                                        if (i === 2) {
+                                            // return <div key={i} className="ThirdPlaceAgent">
+                                            //     <img className='prof-pic' src={e.photos} alt=""/>
+                                            //     <h4>3rd place:</h4>
+                                            //     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                                            //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
+                                            //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
+                                            // </div>
+                                            return <div className='SecondPlaceAgent' key={e.userId}>
+                                                <Card  >
+                                                    <Header as='h4'>3rd Place</Header>
+                                                    <Image size='small' src={e.photos} />
+                                                    <Card.Content>
+                                                        <Card.Header>{e.name}</Card.Header>
+                                                        <Card.Description><p>Team: {e.team}</p>
+                                                            {e.kpi}: {dynamicKPI(i)}</Card.Description>
+                                                    </Card.Content>
+                                                </Card>
+                                            </div>
+                                        }
+                                    })}
+                                </FlipMove>
+                            </div>
                         </div>
+                        <div className="UnrankedAgents">
+                            <div className="AVA-unranked-data">
+                                <div className="AVA-unranked-ranking">
+                                    <FlipMove>
+                                        {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                                            if (i > 2 && i < 6) {
+                                                // return <div key={i} className="AVA-Unranked-lineItem">
+                                                //     <img className='prof-pic' src={e.photos} alt=""/>
+                                                //     <h4>{i + 1}th place</h4>
+                                                //     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
+                                                //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
+                                                //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
+                                                // </div>
+                                                return <div key={e.userId} className="AVA-Unranked-lineItem">
+                                                    <Card >
+                                                        <Card.Content>
+                                                            <Header as='h6'>{i + 1}th Place</Header>
+                                                            <Card.Description>
+                                                                <h6 className='h6-name'>{e.name}</h6>
+                                                                {e.kpi}: {dynamicKPI(i)}</Card.Description>
+                                                        </Card.Content>
+                                                    </Card>
+                                                </div>
+                                            }
+                                        })}
+                                    </FlipMove>
+                                </div>
+                                <MediaQuery query=" ( max-width: 425px) ">
+                                    <MobileModal />
+                                </MediaQuery>
+                                <MediaQuery query=" ( min-width: 426px) ">
+                                    <ViewMoreModal />
+                                </MediaQuery>
+                            </div>
+                        </div>
+                        {/* } */}
                     </div>
-                    {/* } */}
                 </div>
             </div>
         )
@@ -193,9 +203,7 @@ function mapStateToProps(state) {
         users: state.users,
     }
 }
-
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchUsers,
 }, dispatch)
-
 export default connect(mapStateToProps, mapDispatchToProps)(AgentRanking)

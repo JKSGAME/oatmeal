@@ -67,6 +67,7 @@
 
 .SecondPlaceAgent>.ui.card {
 	margin-bottom: 2px;
+	height: 35vh;
 }
 
 .SecondPlaceAgent {
@@ -166,13 +167,13 @@
     margin-top: 0.5em;
 }
 
-@media (min-width: 425px) {
+@media (min-width: 426px) {
 	.SecondThirdUnranked .ui.card {
 		display: none;
 	}
 }
 
-@media (min-width: 425px) {
+@media (min-width: 426px) {
 	.ui.card.AVA-first-place-agent {
 	  display: none;
 	}

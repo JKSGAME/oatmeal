@@ -79,7 +79,7 @@ export default function reducer ( state = initialState, action ) {
         case FETCH_TVT_DATA + '_FULFILLED':
             return Object.assign( {}, state, { challengeDataTVT: action.payload } )
         case UPLOAD_PHOTO: 
-            return Object.assign( {}, state, { photoUPload: action.payload } )
+            return Object.assign( {}, state, { photoUpload: action.payload } )
         case GET_STANDINGS:
             return Object.assign( {}, state, { standings: action.payload } )
         case FETCH_USERS:

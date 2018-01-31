@@ -48,6 +48,7 @@ class AgentRanking extends Component {
                 }
                 return arr
             }
+            // console.log('ordered', orderedUsers());
             this.setState({
                 sortedUsers: orderedUsers(),
                 info: res.data
@@ -58,13 +59,14 @@ class AgentRanking extends Component {
     render() {
         // console.log(this.props.standings)
         let { sortedUsers } = this.state
+        // console.log(sortedUsers[0].standings[0] && sortedUsers[0].kpi === 'Sales');
+        console.log(sortedUsers[0]);
         let dynamicKPI = (i) => {
-             if ( sortedUsers[0] && sortedUsers[0].kpi === 'Sales' ) {
-                 console.log(sortedUsers[0]);
-                return sortedUsers[i].standings.salesKPI
+             if ( sortedUsers[0].standings[0] && sortedUsers[0].kpi === 'Sales') {
+                return sortedUsers[i].standings[0].salesKPI
             }
-            else if ( sortedUsers[0] && sortedUsers[0].kpi === 'Dials' ) {
-                    return sortedUsers[i].standings.dialsKPI
+            else if (sortedUsers[0].standings[0] && sortedUsers[0].kpi === 'Dials') {
+                    return sortedUsers[i].standings[0].dialsKPI
                 }
         }
         return (

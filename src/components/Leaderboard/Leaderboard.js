@@ -28,7 +28,7 @@ class Leaderboard extends Component {
             this.setState({
                 challenges: allChallenges.data
             })
-        })        
+        })
     }
 
     

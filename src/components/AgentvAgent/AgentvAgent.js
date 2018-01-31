@@ -26,7 +26,7 @@ class AgentvAgent extends Component {
 
     }
 
-    componentDidMount() {
+    componentDidMount(props) {
         this.props.fetchAVAData()
         let roomId = this.props.challengeId
         if ( roomId > 0 ) {

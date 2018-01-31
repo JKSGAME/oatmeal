@@ -19,7 +19,7 @@ class SecondThirdUnrankedAgent extends Component {
     close = () => this.setState({ open: false })
 
     componentWillReceiveProps(nextProps) {
-        axios.get('/api/viewmore').then(res => {
+        axios.get('/api/viewmore/1').then(res => {
           let userArr = []
           res.data.map((e, i) => {
             return userArr.push({
@@ -34,7 +34,6 @@ class SecondThirdUnrankedAgent extends Component {
           })
           let orderedUsers = _.orderBy(userArr, ['standings[0].salesKPI'], ['desc'])
           // FIX HARD CODING OF KPI TYPE
-          console.log(orderedUsers, "user array")
           this.setState({
             sortedUsers: orderedUsers,
           })
@@ -47,11 +46,11 @@ class SecondThirdUnrankedAgent extends Component {
                 <div className="SecondThirdUnranked">
                     <div className="SecondThirdAgents">
                         <div className="SecondPlaceAgent">
-                        {console.log(this.state.sortedUsers)}
+                        {/* MAP OVER OBJECT ONCE TO GET 1ST, 2ND, 3RD AND UNRANKED 
+                            set transformations in requestAnimationFrams look up what is possible*/}
                         {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                             if(i === 1) {
                                 return <div key={i} className="SecondPlaceAgent">
-                                    {console.log(this.state.sortedUsers[i].standings[0].salesKPI, "2ND PPLACE")}
                                     <img className='prof-pic' src={e.photos} alt=""/>
                                     <h4>2nd place:</h4>
                                     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>

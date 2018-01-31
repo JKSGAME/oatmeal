@@ -96,7 +96,7 @@ class CreateChallengeModal extends Component {
 
 
     componentDidMount() {
-        axios.get('/api/challenges').then(res => {
+        axios.get('/api/challenges/1').then(res => {
             this.setState({
                 challenges: res.data
             })

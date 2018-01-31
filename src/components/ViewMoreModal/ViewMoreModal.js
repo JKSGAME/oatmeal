@@ -43,7 +43,7 @@ class ViewMoreModal extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/viewmore').then(res => {
+        axios.get('/api/viewmore/1').then(res => {
             // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {

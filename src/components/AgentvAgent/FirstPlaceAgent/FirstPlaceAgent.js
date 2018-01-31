@@ -19,7 +19,7 @@ class FirstPlaceAgent extends Component {
     }
   }
   componentWillReceiveProps( nextProps ) {
-    axios.get( '/api/viewmore' ).then( res => {
+    axios.get( '/api/viewmore/1' ).then( res => {
       let userArr = []
       res.data.map( ( e, i ) => {
         return userArr.push({
@@ -46,6 +46,10 @@ class FirstPlaceAgent extends Component {
       })
     })
   }
+
+  // WILL USE A COMPONENTDIDUPDATE(PREVIOUSPROPS)  TO COMPARE PREVIOUS DOM POSITION TO
+  // NEW DOM LOCATIONS  THEN INVERT.  WILL USE REQUESTANIMATION FRAME TO ENSURE CHANGES 
+  // MAKE IT BEFORE THE DOM IS REPAINTED
 
 
   render() {

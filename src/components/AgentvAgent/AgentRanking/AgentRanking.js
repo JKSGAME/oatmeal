@@ -13,8 +13,6 @@ import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
 
 const socket = io()
 
-
-
 class AgentRanking extends Component {
     constructor() {
         super()
@@ -22,37 +20,31 @@ class AgentRanking extends Component {
             sortedUsers: []
         }
     }
-    show = dimmer => () => this.setState({ dimmer, open: true })
-    close = () => this.setState({ open: false })
+    show = dimmer => () => this.setState( { dimmer, open: true } )
+    close = () => this.setState( { open: false } )
 
-    componentWillReceiveProps( props ) {
 
-        socket.on('response', data => {
-            let standings = data.standings
-            console.log(standings, "new freaking standings")
-        })
-
-        axios.get('/api/viewmore').then(res => {
+    componentWillReceiveProps( nextProps ) {
+        axios.get( `/api/viewmore/${this.props.challengeId}`,  ).then( res => {
             let userArr = []
-            res.data.map((e, i) => {
-                let standingsObj = JSON.parse(e.standings)
-                return userArr.push({
-                    index: i,
-                    userId: e.user_id,
-                    name: e.user_name,
-                    team: e.team,
-                    kpi: e.kpi,
-                    standings: standingsObj[e.user_id],
-                    photos: e.photos
-                })
+            res.data.map( ( e, i ) => {
+            return userArr.push({
+                index: i,
+                userId: e.user_id,
+                name: e.user_name,
+                team: e.team,
+                kpi: e.kpi,
+                photos: e.photos,
+                standings: _.at( nextProps.standings, e.user_id )
+            })
             })
             let orderedUsers = () => {
                 let arr = []
-                if (userArr[0].kpi === 'Dials') {
-                    return arr = _.orderBy(userArr, ['standings.dialsKPI'], ['desc'])
+                if ( userArr[0].kpi === 'Dials' ) {
+                    return arr = _.orderBy( userArr, ['standings.dialsKPI'], ['desc'] )
                 }
-                else if (userArr[0].kpi === 'Sales') {
-                    return arr = _.orderBy(userArr, ['standings.salesKPI'], ['desc'])
+                else if ( userArr[0].kpi === 'Sales' ) {
+                    return arr = _.orderBy( userArr, ['standings.salesKPI'], ['desc'] )
                 }
                 return arr
             }
@@ -64,13 +56,14 @@ class AgentRanking extends Component {
     }
 
     render() {
+        // console.log(this.props.standings)
         let { sortedUsers } = this.state
         let dynamicKPI = (i) => {
-             if ( sortedUsers[0] && sortedUsers[0].kpi === 'Sales') {
+             if ( sortedUsers[0] && sortedUsers[0].kpi === 'Sales' ) {
                  console.log(sortedUsers[0]);
                 return sortedUsers[i].standings.salesKPI
             }
-            else if (sortedUsers[0] && sortedUsers[0].kpi === 'Dials') {
+            else if ( sortedUsers[0] && sortedUsers[0].kpi === 'Dials' ) {
                     return sortedUsers[i].standings.dialsKPI
                 }
         }
@@ -79,8 +72,8 @@ class AgentRanking extends Component {
         {/* {console.log('sorted', this.state.sortedUsers[0].kpi)} */}
                 
             <div className='AVA-FirstPlaceAgent'>
-                {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                    if (i === 0) {
+                {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                    if ( i === 0 ) {
                         return <Card key={e.userId} className='AVA-first-place-agent'>
                             <Header as='h1'>1st Place</Header>
                             <Image className='first-place-img' centered size='small' src={e.photos} />
@@ -100,8 +93,8 @@ class AgentRanking extends Component {
                 <div className="SecondThirdUnranked">
                     <div className="SecondThirdAgents">
                         {/* <div className="SecondPlaceAgent"> */}
-                        {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                            if (i === 1) {
+                        {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                            if ( i === 1 ) {
                                 // return <div key={i} className="SecondPlaceAgent">
                                 //     <img className='prof-pic' src={e.photos} alt=""/>
                                 //     <h4>2nd place:</h4>
@@ -124,8 +117,8 @@ class AgentRanking extends Component {
                         })}
                         {/* </div> */}
                         {/* <div className="ThirdPlaceAgent"> */}
-                        {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                            if (i === 2) {
+                        {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                            if ( i === 2 ) {
                                 // return <div key={i} className="ThirdPlaceAgent">
                                 //     <img className='prof-pic' src={e.photos} alt=""/>
                                 //     <h4>3rd place:</h4>
@@ -151,8 +144,8 @@ class AgentRanking extends Component {
                     <div className="UnrankedAgents">
                         <div className="AVA-unranked-data">
                             <div className="AVA-unranked-ranking">
-                                {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                    if (i > 2 && i < 6) {
+                                {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
+                                    if ( i > 2 && i < 6 ) {
                                         // return <div key={i} className="AVA-Unranked-lineItem">
                                         //     <img className='prof-pic' src={e.photos} alt=""/>
                                         //     <h4>{i + 1}th place</h4>
@@ -189,7 +182,7 @@ class AgentRanking extends Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps( state ) {
     return {
         users: state.users,
     }
@@ -197,6 +190,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchUsers,
-}, dispatch)
+}, dispatch )
 
-export default connect(mapStateToProps, mapDispatchToProps)(AgentRanking)
+export default connect( mapStateToProps, mapDispatchToProps )( AgentRanking )

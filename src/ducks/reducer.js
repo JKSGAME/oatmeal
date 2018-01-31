@@ -56,7 +56,7 @@ export function getStandings ( standings ) {
 
 export function fetchUsers() {
     return async function (dispatch) {
-        const promise = await axios.get('/api/viewmore')
+        const promise = await axios.get('/api/viewmore/1')
         const newPromise = promise.data.map( ( e, i ) => {
             return {
                 userId: e.user_id,

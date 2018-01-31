@@ -27,7 +27,7 @@ class Dashboard extends Component {
 
   render() {
     const { challenges } = this.state
-    const curChal = challenges.map( ( e, i ) => {
+    let curChal = challenges.map( ( e, i ) => {
       return (
         <div className='chal-box' key={e.name}>
           <h3>{e.name}</h3>

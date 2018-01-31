@@ -24,11 +24,11 @@ class Leaderboard extends Component {
 
     componentDidMount(){
 
-        axios.get( `/api/challenges/${1}` ).then( allChallenges => {
+        axios.get( `/api/challenges/${this.props.match.params.id}` ).then( allChallenges => {
             this.setState({
                 challenges: allChallenges.data
             })
-        })        
+        })
     }
 
     

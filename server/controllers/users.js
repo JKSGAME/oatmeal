@@ -34,8 +34,8 @@ module.exports = {
 
     view_more ( req, res ) {
         const db = req.app.get( 'db' )
-        // let {}
-        db.view_more2().then( data => res.send( data ) )
+        let { id } = req.params.id
+        db.view_more2( [id] ).then( data => res.send( data ) )
     }
 
 }

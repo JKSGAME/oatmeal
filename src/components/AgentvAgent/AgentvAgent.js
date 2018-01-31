@@ -26,9 +26,10 @@ class AgentvAgent extends Component {
 
     }
 
-    componentDidMount() {
+    componentDidMount(props) {
+        console.log(this.props.challengeId)
         this.props.fetchAVAData()
-        let roomId = 1
+        let roomId = this.props.challengeId
         if ( roomId > 0 ) {
             socket.emit( 'join room', {
                 room: roomId
@@ -43,7 +44,7 @@ class AgentvAgent extends Component {
         })
         let empty = _.isEmpty(this.state.standings)
         if( empty ) {
-            axios.get( `/api/leaderboard/${1}`, ).then( res => {
+            axios.get( `/api/leaderboard/${this.props.challengeId}`, ).then( res => {
                 let standings = _.map( res.data, "standings" )
                 let standingsNew = eval( " ( "+standings[0]+" ) " )
                 this.setState({

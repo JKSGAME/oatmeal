@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import './AgentRanking.css';
 import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
-import io from 'socket.io-client'
+import FlipMove from 'react-flip-move'
 import axios from 'axios';
 import _ from 'lodash';
 import { Card, Icon, Image, Header } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive';
 import MobileModal from '../../MobileModal/MobileModal';
 import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
-
-const socket = io()
 
 
 
@@ -27,6 +26,7 @@ class AgentRanking extends Component {
 
 
     componentWillReceiveProps( nextProps ) {
+        console.log(nextProps.standings)
         axios.get( '/api/viewmore' ).then( res => {
             let userArr = []
             res.data.map( ( e, i ) => {
@@ -54,11 +54,11 @@ class AgentRanking extends Component {
                 sortedUsers: orderedUsers(),
                 info: res.data
             })
+
         })
     }
 
     render() {
-        // console.log(this.props.standings)
         let { sortedUsers } = this.state
         let dynamicKPI = (i) => {
              if ( sortedUsers[0] && sortedUsers[0].kpi === 'Sales') {
@@ -72,12 +72,14 @@ class AgentRanking extends Component {
         return (
             <div>
         {/* {console.log('sorted', this.state.sortedUsers[0].kpi)} */}
-                
+
             <div className='AVA-FirstPlaceAgent'>
+            <FlipMove>
                 {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                     if (i === 0) {
                         return <Card key={e.userId} className='AVA-first-place-agent'>
                             <Header as='h1'>1st Place</Header>
+
                             <Image className='first-place-img' centered size='small' src={e.photos} />
                             <Card.Content>
                                 <Card.Header>{e.name}</Card.Header>
@@ -89,12 +91,16 @@ class AgentRanking extends Component {
                         </Card>
                     }
                 })}
+                </FlipMove>
             </div>
+            
+
             <div >
                 {/* { this.props.users.length > 0 && */}
                 <div className="SecondThirdUnranked">
                     <div className="SecondThirdAgents">
                         {/* <div className="SecondPlaceAgent"> */}
+                        <FlipMove>
                         {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                             if (i === 1) {
                                 // return <div key={i} className="SecondPlaceAgent">
@@ -117,8 +123,10 @@ class AgentRanking extends Component {
                                 </div>
                             }
                         })}
+                        </FlipMove>
                         {/* </div> */}
                         {/* <div className="ThirdPlaceAgent"> */}
+                        <FlipMove>
                         {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                             if (i === 2) {
                                 // return <div key={i} className="ThirdPlaceAgent">
@@ -141,11 +149,13 @@ class AgentRanking extends Component {
                                 </div>
                             }
                         })}
+                        </FlipMove>
                         {/* </div> */}
                     </div>
                     <div className="UnrankedAgents">
                         <div className="AVA-unranked-data">
                             <div className="AVA-unranked-ranking">
+                            <FlipMove>
                                 {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                                     if (i > 2 && i < 6) {
                                         // return <div key={i} className="AVA-Unranked-lineItem">
@@ -161,12 +171,14 @@ class AgentRanking extends Component {
                                                     <Header as='h6'>{i + 1}th Place</Header>
                                                     <Card.Description>
                                                         <h6 className='h6-name'>{e.name}</h6>
-                                                        {e.kpi}: {dynamicKPI(i)}</Card.Description>
+                                                        {e.kpi}: {dynamicKPI(i)}
+                                                    </Card.Description>
                                                 </Card.Content>
                                             </Card>
                                         </div>
                                     }
                                 })}
+                            </FlipMove>
                             </div>
                         </div>
                         <MediaQuery query=" ( max-width: 425px) ">
@@ -179,6 +191,7 @@ class AgentRanking extends Component {
                 </div>
                 {/* } */}
             </div>
+
             </div>
               )
     }

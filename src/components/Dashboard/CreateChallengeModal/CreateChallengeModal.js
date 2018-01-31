@@ -65,7 +65,6 @@ class CreateChallengeModal extends Component {
 
 
     dataGrabber(propName, value) {
-        // console.log('value', value);
         this.setState({
             [propName]: value
         })
@@ -162,7 +161,7 @@ class CreateChallengeModal extends Component {
         return (
             <div>
                 <Button onClick={this.show('blurring')}>Create Challenge</Button>
-                <Modal dimmer={dimmer} open={open} onClose={this.close} size={'large'}>
+                <Modal dimmer={dimmer} open={open} onClose={this.close} size='large'>
                     <Modal.Header>Create Challenge</Modal.Header>
                     <Modal.Content scrolling={true}>
                         <Modal.Description>

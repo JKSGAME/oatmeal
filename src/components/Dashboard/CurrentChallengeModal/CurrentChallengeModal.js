@@ -50,6 +50,8 @@ class CurrentChallengeModal extends Component {
     
     render() {
         const { open, column, direction } = this.state
+        console.log(this.state.challenges)
+
 
         return (
             <div className='CurrentChallengeModal'>
@@ -88,8 +90,8 @@ class CurrentChallengeModal extends Component {
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
-                                    {_.map(this.state.challenges, ({ name, challenge_type, team, kpi, mode, time_start, time_end, duration }) => (
-                                        <Table.Row key={name} onClick={() => this.props.history.push(`/leaderboard/${this.props.challengeId}`)}>
+                                    {_.map(this.state.challenges, ({ name, challenge_type, team, kpi, mode, time_start, time_end, duration, challenge_id }) => (
+                                        <Table.Row key={name} onClick={() => this.props.history.push(`/leaderboard/${challenge_id}`)}>
                                         <Table.Cell>{name}</Table.Cell>
                                         <Table.Cell>{challenge_type}</Table.Cell>
                                         <Table.Cell>{team}</Table.Cell>

@@ -2,20 +2,20 @@ require('dotenv').config({
     path: './../../.env'
 })
 
-const AWS = require('aws-sdk')
+const AWS = require( 'aws-sdk' )
 
 AWS.config.update({
-    accessKeyId: process.env.AWS_ACCESSKEY,
-    secretAccessKey: process.env.AWS_SECRETKEY,
-    region: process.env.AWS_REGION
+    accessKeyId: process.env.AWS_S3_ACCESS,
+    secretAccessKey: process.env.AWS_S3_SECRET,
+    region: process.env.AWS_S3_REGION
 })
 
 const S3 = new AWS.S3()
 
-function uploadPhoto(req, res) {
+function uploadPhoto( req, res ) {
     console.log('photo in back', req.body.filename, process.env.AWS_ACCESSKEY)
     let photo = req.body,
-        buf = new Buffer(photo.file.replace(/^data:image\/\w+;base64,/, ""), 'base64'),
+        buf = new Buffer( photo.file.replace( /^data:image\/\w+;base64,/, "" ), 'base64' ),
         params = {
             Bucket: process.env.AWS_S3_BUCKET,
             Body: buf,
@@ -26,14 +26,15 @@ function uploadPhoto(req, res) {
 
     console.log(buf)
 
-    S3.upload(params, (err, data) => {
+    S3.upload( params, ( err, data ) => {
+        // db call insert 
         console.log(err, data)
         let response, code
-        err ? (resopnse = err, code = 500) : (response = data, code = 200)
-        res.status(code).send(response)
+        err ? ( response = err, code = 500 ) : ( response = data, code = 200 )
+        res.status( code ).send( response )
     })
 }
 
-module.exports = function (app) {
-    app.post('/api/photoUpload', uploadPhoto)
+module.exports = function ( app ) {
+    app.post( '/api/photoUpload', uploadPhoto )
 }

@@ -1,0 +1,1 @@
+select * from reward_type

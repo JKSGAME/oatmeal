@@ -67,7 +67,7 @@ class AgentvAgent extends Component {
                 <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
             </div>
             <div className="AVA-leaderboard-data">
-                <div className="AVA-FirstPlaceAgent-Placement">
+                <div className="AVA-FirstPlaceAgent-Placement"></div>
                     {/* <FirstPlaceAgent/> */}
                     <AgentRanking standings={this.state.standings} challengeId={this.props.challengeId}/>
                 </div>

@@ -89,7 +89,7 @@ class CurrentChallengeModal extends Component {
                                 </Table.Header>
                                 <Table.Body>
                                     {_.map(this.state.challenges, ({ name, challenge_type, team, kpi, mode, time_start, time_end, duration }) => (
-                                        <Table.Row key={name} onClick={() => this.props.history.push('/leaderboard/:id')}>
+                                        <Table.Row key={name} onClick={() => this.props.history.push(`/leaderboard/${this.props.challengeId}`)}>
                                         <Table.Cell>{name}</Table.Cell>
                                         <Table.Cell>{challenge_type}</Table.Cell>
                                         <Table.Cell>{team}</Table.Cell>

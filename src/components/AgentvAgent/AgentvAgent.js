@@ -25,8 +25,8 @@ class AgentvAgent extends Component {
 
 
     }
-
-    componentDidMount(props) {
+    
+    componenDidMount() {
         console.log(this.props.challengeId)
         this.props.fetchAVAData()
         let roomId = this.props.challengeId
@@ -37,14 +37,15 @@ class AgentvAgent extends Component {
         }
         
         socket.on( 'response', res => {
-            let standings = _.at( res, "standings" )
+            console.log( res, "coming from socket")
+            let standings = _.at( res.standings, "standings" )
             this.setState({
                 standings: standings[0]
             })
         })
         let empty = _.isEmpty(this.state.standings)
         if( empty ) {
-            axios.get( `/api/leaderboard/${this.props.challengeId}`, ).then( res => {
+            axios.get( `/api/leaderboard/${this.props.challengeId}` ).then( res => {
                 let standings = _.map( res.data, "standings" )
                 let standingsNew = eval( " ( "+standings[0]+" ) " )
                 this.setState({
@@ -57,6 +58,7 @@ class AgentvAgent extends Component {
     }
 
     render() {
+        console.log(this.props.challengeId)
 
     return (
         <div className="AgentvAgent">
@@ -74,7 +76,7 @@ class AgentvAgent extends Component {
             <div className="AVA-leaderboard-data">
                 <div className="AVA-FirstPlaceAgent-Placement">
                     {/* <FirstPlaceAgent/> */}
-                    <AgentRanking standings={this.state.standings}/>
+                    <AgentRanking standings={this.state.standings} challengeId={this.props.challengeId}/>
                 </div>
                 <div className="AVA-SecondThirdUnrankedAgent-Placement">
                     {/* <SecondThirdUnrankedAgent/> */}

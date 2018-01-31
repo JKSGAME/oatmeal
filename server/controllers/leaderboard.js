@@ -19,7 +19,6 @@ module.exports = {
     get_leaderboard ( req, res ) {
         const db = req.app.get( 'db' )
         let status = 200
-        console.log(req.params.id)
         db.get_leaderboard( [req.params.id] ).then( leaderboard => {
             res.status( status ).send( leaderboard )
         })

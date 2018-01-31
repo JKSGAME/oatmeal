@@ -14,7 +14,7 @@ class Leaderboard extends Component {
         super( props )
         this.state={
             challenges: {},
-            isFull: false,   
+            isFull: false,  
         } 
     }
 
@@ -22,13 +22,13 @@ class Leaderboard extends Component {
     //   this.setState({ isFull: true })
     // }
 
-    componentDidMount(){
+    componentDidMount() {
 
-        axios.get( `/api/challenges/${1}` ).then( allChallenges => {
+        axios.get( `/api/challenges/${this.props.match.params.id}` ).then( allChallenges => {
             this.setState({
                 challenges: allChallenges.data
             })
-        })        
+        })
     }
 
     

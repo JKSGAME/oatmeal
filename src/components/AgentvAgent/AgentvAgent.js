@@ -56,7 +56,7 @@ class AgentvAgent extends Component {
     }
 
     render() {
-        console.log(this.props.challengeId)
+        console.log(this.props.challengeData)
 
     return (
         <div className="AgentvAgent">
@@ -67,14 +67,13 @@ class AgentvAgent extends Component {
             <Menu.Item name='camera'><Icon name='camera' />Channels</Menu.Item> */}
           </Sidebar>
       </div>
-            <div className="AVA-title">
+            {/* <div className="AVA-title">
                 <h2>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h2>
                 <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
-            </div>
+            </div> */}
             <div className="AVA-leaderboard-data">
                 <div className="AVA-FirstPlaceAgent-Placement">
-                    {/* <FirstPlaceAgent/> */}
-                    <AgentRanking standings={this.state.standings} challengeId={this.props.challengeId}/>
+                    <AgentRanking standings={this.state.standings} challengeId={this.props.challengeId} challengeData={this.props.challengeData}/>
                 </div>
                 <div className="AVA-SecondThirdUnrankedAgent-Placement">
                     {/* <SecondThirdUnrankedAgent/> */}

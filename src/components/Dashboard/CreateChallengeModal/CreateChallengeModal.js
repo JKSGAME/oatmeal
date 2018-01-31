@@ -169,7 +169,7 @@ class CreateChallengeModal extends Component {
 
                             <Input label={'Challenge Name'} placeholder='Type here' ref={name => this.name = name} />
                             <Divider hidden={true} />
-                            <Grid columns={2}>
+                            <Grid stackable columns={2}>
 
                                 <Grid.Column>
 
@@ -228,7 +228,7 @@ class CreateChallengeModal extends Component {
                             <Divider />
                             <Divider hidden />
 
-                            <Grid columns={3}>
+                            <Grid stackable columns={3}>
                                 <Grid.Column>
                                     <Segment basic>
                                         <Header size='small'>Challenge Mode</Header>
@@ -254,7 +254,7 @@ class CreateChallengeModal extends Component {
                             <Divider />
                             <Divider hidden />
 
-                            <Grid columns={2}>
+                            <Grid stackable columns={2}>
                                 <Grid.Column>
                                     <Segment basic>
                                         <Header size='small'>Reward Value</Header>

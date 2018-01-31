@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import './AgentRanking.css';
 import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
-import FlipMove from 'react-flip-move'
+import io from 'socket.io-client'
 import axios from 'axios';
 import _ from 'lodash';
+import FlipMove from 'react-flip-move';
 import { Card, Icon, Image, Header } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive';
 import MobileModal from '../../MobileModal/MobileModal';
 import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
+
+const socket = io()
 
 
 class AgentRanking extends Component {
@@ -20,12 +22,13 @@ class AgentRanking extends Component {
             sortedUsers: []
         }
     }
+
     show = dimmer => () => this.setState( { dimmer, open: true } )
     close = () => this.setState( { open: false } )
 
-
     componentWillReceiveProps( nextProps ) {
-        axios.get( `/api/viewmore/${this.props.challengeId}`,  ).then( res => {
+        console.log(nextProps)
+        axios.get( `/api/viewmore/${nextProps.challengeId}`  ).then( res => {
             let userArr = []
             res.data.map( ( e, i ) => {
             return userArr.push({
@@ -41,10 +44,10 @@ class AgentRanking extends Component {
             let orderedUsers = () => {
                 let arr = []
                 if ( userArr[0].kpi === 'Dials' ) {
-                    return arr = _.orderBy( userArr, ['standings.dialsKPI'], ['desc'] )
+                    return arr = _.orderBy( userArr, ['standings[0].dialsKPI'], ['desc'] )
                 }
                 else if ( userArr[0].kpi === 'Sales' ) {
-                    return arr = _.orderBy( userArr, ['standings.salesKPI'], ['desc'] )
+                    return arr = _.orderBy( userArr, ['standings[0].salesKPI'], ['desc'] )
                 }
                 return arr
             }
@@ -53,14 +56,12 @@ class AgentRanking extends Component {
                 sortedUsers: orderedUsers(),
                 info: res.data
             })
-
         })
     }
-
     render() {
         let { sortedUsers } = this.state
         // console.log(sortedUsers[0].standings[0] && sortedUsers[0].kpi === 'Sales');
-        console.log(this.state.sortedUsers);
+        console.log(sortedUsers);
         let dynamicKPI = (i) => {
              if ( sortedUsers[0].standings[0] && sortedUsers[0].kpi === 'Sales') {
                 return sortedUsers[i].standings[0].salesKPI
@@ -72,14 +73,13 @@ class AgentRanking extends Component {
         return (
             <div>
         {/* {console.log('sorted', this.state.sortedUsers[0].kpi)} */}
-
+            
             <div className='AVA-FirstPlaceAgent'>
             <FlipMove>
                 {this.state.sortedUsers.map( ( e, i ) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                     if ( i === 0 ) {
                         return <Card key={e.userId} className='AVA-first-place-agent'>
                             <Header as='h1'>1st Place</Header>
-
                             <Image className='first-place-img' centered size='small' src={e.photos} />
                             <Card.Content>
                                 <Card.Header>{e.name}</Card.Header>
@@ -93,8 +93,6 @@ class AgentRanking extends Component {
                 })}
                 </FlipMove>
             </div>
-            
-
             <div >
                 {/* { this.props.users.length > 0 && */}
                 <div className="SecondThirdUnranked">
@@ -171,14 +169,13 @@ class AgentRanking extends Component {
                                                     <Header as='h6'>{i + 1}th Place</Header>
                                                     <Card.Description>
                                                         <h6 className='h6-name'>{e.name}</h6>
-                                                        {e.kpi}: {dynamicKPI(i)}
-                                                    </Card.Description>
+                                                        {e.kpi}: {dynamicKPI(i)}</Card.Description>
                                                 </Card.Content>
                                             </Card>
                                         </div>
                                     }
                                 })}
-                            </FlipMove>
+                                </FlipMove>
                             </div>
                         </div>
                         <MediaQuery query=" ( max-width: 425px) ">
@@ -191,20 +188,16 @@ class AgentRanking extends Component {
                 </div>
                 {/* } */}
             </div>
-
             </div>
               )
     }
 }
-
 function mapStateToProps( state ) {
     return {
         users: state.users,
     }
 }
-
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchUsers,
 }, dispatch )
-
 export default connect( mapStateToProps, mapDispatchToProps )( AgentRanking )

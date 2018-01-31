@@ -50,7 +50,7 @@ class DummyUser extends Component {
         let id = this.props.id;
         let agentScore = {};
         agentScore[id] = { salesKPI: this.state.sales, dialsKPI: this.state.dials }
-        let standings = eval("("+res.data[0].standings+")")
+        let standings = eval ( '(' +res.data[0].standings+ ')' )
         let update = Object.assign( {}, standings, agentScore )
         axios.put( `/api/updateleaderboard/${this.props.challengeId}`, update ).then( res => {
           let roomId = this.props.challengeId
@@ -62,9 +62,8 @@ class DummyUser extends Component {
           socket.emit( 'update standings', update )
         })
       })
-
   }
-
+  
   render() {
     let { sales, dials } = this.state
     return (

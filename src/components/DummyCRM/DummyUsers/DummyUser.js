@@ -22,7 +22,7 @@ class DummyUser extends Component {
 
   componentWillReceiveProps( nextProps ) {
     let standings = _.map(nextProps.standings, "standings")
-    let standingsNew = eval ( '(' +standings[0] + ')' )
+    let standingsNew = eval("("+standings[0]+")")
     
     let empty = _.isEmpty(standingsNew)
     if( empty ) {
@@ -62,9 +62,8 @@ class DummyUser extends Component {
           socket.emit( 'update standings', update )
         })
       })
-
   }
-
+  
   render() {
     let { sales, dials } = this.state
     return (

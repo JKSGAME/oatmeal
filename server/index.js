@@ -70,9 +70,10 @@ io.on( 'connection', socket => {
     })
 
     socket.on( 'update standings', input => {
-        console.log( input, "input" )
+        console.log( input, "input" ) 
         io.to( room ).emit( 'response', {standings: input} )
     })
+
 
 })
 

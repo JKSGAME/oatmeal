@@ -9,34 +9,32 @@ import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
 import { Sidebar, Menu, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-
 import io from 'socket.io-client'
 import AgentRanking from './AgentRanking/AgentRanking';
+
 const socket = io()
 
-class AgentvAgent extends Component {
 
+class AgentvAgent extends Component {
     constructor( props ) {
         super( props )
-
         this.state = {
             standings: {},
         }
-
-
     }
-
-    componentDidMount(props) {
-        this.props.fetchAVAData()
+    componentDidMount() {
+        // this.props.fetchAVAData()
         let roomId = this.props.challengeId
+        console.log(roomId)
         if ( roomId > 0 ) {
             socket.emit( 'join room', {
-                room: roomId
+                room: roomId,
             })
         }
         
-        socket.on( 'response', res => {
-            let standings = _.at( res, "standings" )
+        socket.on( 'response', data => {
+            console.log("hit")
+            let standings = _.at( data, "standings" )
             this.setState({
                 standings: standings[0]
             })
@@ -52,12 +50,9 @@ class AgentvAgent extends Component {
             })
             
         }
-
     }
-
     render() {
-        console.log(this.props.challengeId)
-
+        console.log(this.state.standings)
     return (
         <div className="AgentvAgent">
         <div className='navBar'>
@@ -84,7 +79,6 @@ class AgentvAgent extends Component {
         )
     }
 }
-
 function mapStateToProps( state ) {
     return { challengeData: state.challengeDataAVA }
   }
@@ -92,5 +86,4 @@ function mapStateToProps( state ) {
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchAVAData
 }, dispatch )
-
 export default connect( mapStateToProps, mapDispatchToProps )( AgentvAgent )

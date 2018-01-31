@@ -41,7 +41,6 @@ class DummyCrm extends Component {
       this.setState({
         standings: res.data
       })
-      console.log(res.data)
       let roomId = d.value
         if ( roomId > 0 ) {
           socket.emit( 'join room', {

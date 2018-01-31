@@ -19,7 +19,7 @@ class FirstPlaceAgent extends Component {
     }
   }
   componentWillReceiveProps( nextProps ) {
-    axios.get( '/api/viewmore' ).then( res => {
+    axios.get( '/api/viewmore/1' ).then( res => {
       let userArr = []
       res.data.map( ( e, i ) => {
         return userArr.push({

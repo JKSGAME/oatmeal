@@ -49,7 +49,7 @@ class Leaderboard extends Component {
             //       <Leaderboard />
             //     </Fullscreen> */}
             // {/* </div> */}
-            <div>
+            <div className="Leaderboard">
                { leaderboard( chalTypeId[0] ) }
             </div>
         )

@@ -76,7 +76,7 @@ class Dashboard extends Component {
             </div>
           </div>
           <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
-        </div>
+          </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
           <CreateBadgeModal />

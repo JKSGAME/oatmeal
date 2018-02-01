@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import plus from "./../../../icon/plusgrey.png"
 import { Button, Header, Modal, Input, Dropdown, Divider, Form, TextArea, Grid, Segment } from 'semantic-ui-react';
 import './CreateChallengeModal.css'
 
@@ -160,8 +161,13 @@ class CreateChallengeModal extends Component {
 
         return (
             <div>
-                <Button onClick={this.show('blurring')}>Create Challenge</Button>
-                <Modal dimmer={dimmer} open={open} onClose={this.close} size='large'>
+                <Button id="create" onClick={this.show('blurring')}>Create Challenge <br/>
+                <br/>
+                    <div>
+                        <img src={plus} alt="plus icon"/>
+                    </div>
+                </Button>
+                <Modal dimmer={dimmer} open={open} onClose={this.close} size={'large'}>
                     <Modal.Header>Create Challenge</Modal.Header>
                     <Modal.Content scrolling={true}>
                         <Modal.Description>

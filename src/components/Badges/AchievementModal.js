@@ -31,7 +31,7 @@ class AchievementModal extends Component {
         console.log('rewardvalue', this.rewardValue.inputRef.value);
         console.log('scoretarget', this.scoreTarget.inputRef.value);
         console.log('state', this.state);
-        // this.addAchievement()
+        this.addAchievement()
         // send data to db, send data in fields, then this.name = ''
         this.setState({
             selectedScoreType: '',
@@ -44,13 +44,13 @@ class AchievementModal extends Component {
     addAchievement() {
         // 7 items to send to db through axios call, questions about photo id and badge type id, check naming convention
         let achievement = {
-            Name: this.name.inputRef.value,
-            BadgeImage: this.state.selectedPhoto,
-            Desc: this.desc.ref.value,
-            ScoreType: this.state.selectedScoreType,
-            ScoreTarget: this.scoreTarget.inputRef.value,
-            RewardType: this.state.selectedRewardType,
-            RewardValue: this.rewardValue.inputRef.value
+            name: this.name.inputRef.value,
+            description: this.desc.ref.value,
+            photo: this.state.selectedPhoto,
+            score_type_id: this.state.selectedScoreType,
+            score_target: this.scoreTarget.inputRef.value,
+            reward_type_id: this.state.selectedRewardType,
+            reward_value: this.rewardValue.inputRef.value
         }
 
         axios.post('/api/create_achievement_badge', achievement).then(res => {
@@ -93,7 +93,7 @@ class AchievementModal extends Component {
         })
 
         const photoInfo = photos.map((e, i) => {
-            return { id: e.id, key: e.id, text: e.id, value: e.id, photo: e.photo }
+            return { id: e.id, key: e.id, text: e.id, value: e.photo }
         })
 
         return (

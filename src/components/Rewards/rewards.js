@@ -7,42 +7,32 @@ export default class Rewards extends Component {
         return(
             <div className="rewards">
                 <div className="reward-totals">
-                    <h3>Totals:</h3>
-                    <div className="rewards-rankings">
-                        <div className="reward-left">
-                            <div className="points-display">
-                                <h2>Points: </h2>
-                                <h2>1575</h2>
-                            </div>
-                            <div className="pto-display">
-                                <h2>PTO: </h2>
-                                <h2>1.5 Days</h2>
-                            </div>
-                        </div>
-                        <div className="ranking-right">
-                            <div className="points-ranking">
-                                <h2>Rank: </h2>
-                                <h2>7</h2>
-                            </div>
-                            <div className="pto-ranking">
-                                <h2>Rank: </h2>
-                                <h2>7</h2>
-                            </div>
-                        </div>
+                    <h1 className="reward-total-header">Totals:</h1>
+                    <div className="points-display">
+                        <h2>Points: 1575</h2>
+                    </div>
+                    <div className="pto-display">
+                        <h2>PTO: 1.5 Days</h2>
+                    </div>
+                    <div className="points-ranking">
+                        <h2>Rank: 7</h2>
+                    </div>
+                    <div className="pto-ranking">
+                        <h2>Rank: 16</h2>
                     </div>
                 </div>
                 <div className="reward-competitions">
-                    <h1 className="reward-competitions-header">Competitions</h1>
+                    <h1 className="reward-header">Competitions</h1>
                         <div className="gold-medals">
-                            <img src="" alt=""/>
+                            <h3>Gold</h3>
                             <h4>2</h4>
                         </div>
                         <div className="silver-medals">
-                            <img src="" alt=""/>
+                            <h3>Silver</h3>
                             <h4>5</h4>
                         </div>
                         <div className="bronze-medals">
-                            <img src="" alt=""/>
+                            <h3>Bronze</h3>
                             <h4>7</h4>
                         </div>
                     <div className="reward-comp-1">
@@ -62,8 +52,8 @@ export default class Rewards extends Component {
                     </div>
                 </div>
                 <div className="reward-achievements">
-                    <h1>Achievements</h1>
-                    <h3>% Earned</h3>
+                    <h1 className="reward-header">Achievements</h1>
+                    <h3 className="reward-earned">% Earned</h3>
                     <div className="reward-achievement-1">
                         <h2>Name</h2>
                         <h3>Rank</h3>
@@ -81,8 +71,8 @@ export default class Rewards extends Component {
                     </div>
                 </div>
                 <div className="reward-trophies">
-                    <h1>Trophies</h1>
-                    <h3>% Earned</h3>
+                    <h1 className="reward-header">Trophies</h1>
+                    <h3 className="reward-earned">% Earned</h3>
                     <div className="reward-trophy-1">
                         <h2>Name</h2>
                         <h3>Rank</h3>

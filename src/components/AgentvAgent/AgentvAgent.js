@@ -52,7 +52,6 @@ class AgentvAgent extends Component {
         }
     }
     render() {
-        console.log(this.state.standings)
     return (
         <div className="AgentvAgent">
         <div className='navBar'>

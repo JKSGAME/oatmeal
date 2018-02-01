@@ -66,7 +66,6 @@ class CreateChallengeModal extends Component {
 
 
     dataGrabber(propName, value) {
-        // console.log('value', value);
         this.setState({
             [propName]: value
         })

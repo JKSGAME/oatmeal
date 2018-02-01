@@ -60,7 +60,7 @@ app.get( '/api/get_trophies_scoreType', badgesControllers.get_trophies_scoreType
 app.get( '/api/get_trophies_subtype', badgesControllers.get_trophies_subtype )
 app.get( '/api/get_reward_type', badgesControllers.get_reward_type )
 app.get( '/api/get_badge_photos', badgesControllers.get_badge_photos ) // all photos
-app.get( '/api/get_badge_photo', badgesControllers.get_badge_photo )  // one photo
+app.get( '/api/get_badge_photo', badgesControllers.get_badge_photo )  // one photo by id 
 app.get( '/api/get_achievements_badges', badgesControllers.get_achievement_badges )
 app.get( '/api/get_trophy_badges', badgesControllers.get_trophy_badges )
 app.post( '/api/create_achievement_badge', badgesControllers.create_achievement_badge )

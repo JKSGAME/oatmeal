@@ -32,7 +32,7 @@ class TrophyModal extends Component {
         console.log('rewardvalue', this.rewardValue.inputRef.value);
         console.log('scoretarget', this.scoreTarget.inputRef.value);
         console.log('state', this.state);
-        // this.addTrophy()
+        this.addTrophy()
         // send data to db, send data in fields, then this.name = ''
         this.setState({
         selectedScoreType: '',
@@ -46,17 +46,17 @@ class TrophyModal extends Component {
     addTrophy() {
         // 8 items to send to db through axios call
         let trophy = {
-            Name: this.name.inputRef.value,
-            BadgeImage: this.state.selectedPhoto,
-            Desc: this.desc.ref.value,
-            ScoreType: this.state.selectedScoreType,
-            ScoreSubType: this.state.selectedScoreSubType,
-            ScoreTarget: this.scoreTarget.inputRef.value,
-            RewardType: this.state.selectedRewardType,
-            RewardValue: this.rewardValue.inputRef.value
+            name: this.name.inputRef.value,
+            description: this.desc.ref.value,
+            photo: this.state.selectedPhoto,
+            score_type_id: this.state.selectedScoreType,
+            score_subtype_id: this.state.selectedScoreSubType,
+            score_target: this.scoreTarget.inputRef.value,
+            reward_type_id: this.state.selectedRewardType,
+            reward_value: this.rewardValue.inputRef.value
         }
 
-        axios.post( 'api/create_trophy_badge', trophy ).then(res => {
+        axios.post( '/api/create_trophy_badge', trophy ).then(res => {
             console.log('res', res.data)
         })
     }
@@ -71,7 +71,7 @@ class TrophyModal extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/get_achievement_scoreType').then(res => this.setState({ scoreTypes: res.data }))
+        axios.get('/api/get_trophies_scoreType').then(res => this.setState({ scoreTypes: res.data }))
 
         axios.get('/api/get_reward_type').then(res => {
             this.setState({ rewards: res.data })
@@ -103,7 +103,7 @@ class TrophyModal extends Component {
         })
 
         const photoInfo = photos.map((e, i) => {
-            return { id: e.id, key: e.id, text: e.id, value: e.photo, photo: e.photo }
+            return { id: e.id, key: e.id, text: e.id, value: e.photo }
         })
 
         return (

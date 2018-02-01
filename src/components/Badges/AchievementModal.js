@@ -32,7 +32,12 @@ class AchievementModal extends Component {
         let { scoreTypes, rewards } = this.state
         console.log(this.state);
 
-        // const scoreTypeInfo = scoreTypes.map( ( e, i ) => { id: e. , key: e. , text: e. , value: e. , })
+        const rewardsInfo = rewards.map( ( e, i ) => { 
+            return {id: e.id, key: e.id, text: e.reward_type, value: e.id }
+        })
+        const scoreTypeInfo = scoreTypes.map( ( e, i ) => {
+            return { id: e.id, key: e.id, text: e.score_type, value: e.id } } )
+
         return (
             <div>
                 <Popup wide on='hover' position='bottom left' trigger={<Button onClick={this.show2('false')}>Achievement</Button>} >
@@ -54,13 +59,14 @@ class AchievementModal extends Component {
 
                                 <Segment basic>
                                     <Header size='small'>Badge Image</Header>
-                                    <Card>
+                                    <Dropdown floating search selection />
+                                    {/* <Card>
                                         <Card.Content>
                                         <DropzoneComponent config={componentConfig}
                        eventHandlers={eventHandlers}
                        djsConfig={djsConfig}/>
                                         </Card.Content>
-                                    </Card>
+                                    </Card> */}
                                 </Segment>
                             </Segment.Group>
 
@@ -78,7 +84,7 @@ class AchievementModal extends Component {
                             <Segment.Group horizontal >
                                 <Segment basic  >
                                     <Header size='small'>Score Type</Header>
-                                    <Dropdown placeholder='Score Type' floating search selection />
+                                    <Dropdown placeholder='Score Type' floating search selection options={scoreTypeInfo} />
                                 </Segment>
 
                                 <Segment basic  >
@@ -91,7 +97,7 @@ class AchievementModal extends Component {
 
                                 <Segment basic>
                                     <Header size='small'>Reward Type</Header>
-                                    <Dropdown placeholder='Reward Type' floating search selection />
+                                    <Dropdown placeholder='Reward Type' floating search selection options={rewardsInfo}/>
                                 </Segment>
                                 <Segment basic>
                                     <Header size='small'>Reward Value</Header>

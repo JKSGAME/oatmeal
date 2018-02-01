@@ -27,6 +27,7 @@ const dashboardControllers = require( './controllers/dashboard' )
 const challengesControllers = require( './controllers/challenges' )
 const leaderboardControllers = require( './controllers/leaderboard' )
 const usersControllers = require( './controllers/users' )
+const badgesControllers = require( './controllers/badges' )
 
 // Dashboard Endpoints
 app.get( '/api/dashboard', dashboardControllers.get_dashboard ) // get all leaderboards for the dashboard

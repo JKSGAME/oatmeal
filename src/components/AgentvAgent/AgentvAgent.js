@@ -54,26 +54,19 @@ class AgentvAgent extends Component {
     render() {
     return (
         <div className="AgentvAgent">
-        <div className='navBar'>
-          <Sidebar as={Menu} direction='top' visible inverted width='wide'>
-          <Link to='/' ><Menu.Item name='home'><Icon name='home'/>Home</Menu.Item></Link>
-            {/* <Menu.Item name='gamepad'><Icon name='gamepad' />Games</Menu.Item>
-            <Menu.Item name='camera'><Icon name='camera' />Channels</Menu.Item> */}
-          </Sidebar>
-      </div>
-            {/* <div className="AVA-title">
-                <h2>{this.props.challengeData.length > 0 && this.props.challengeData[0].name}</h2>
-                <p>{this.props.challengeData.length > 0 && this.props.challengeData[0].description}</p>
-            </div> */}
+            <div className='navBar'>
+                <Sidebar as={Menu} direction='top' visible inverted width='wide'>
+                    <Link to='/' ><Menu.Item name='home'><Icon name='home'/>Home</Menu.Item></Link>
+                        {/* <Menu.Item name='gamepad'><Icon name='gamepad' />Games</Menu.Item>
+                        <Menu.Item name='camera'><Icon name='camera' />Channels</Menu.Item> */}
+                </Sidebar>
+            </div>
             <div className="AVA-leaderboard-data">
                 <div className="AVA-FirstPlaceAgent-Placement">
                     <AgentRanking standings={this.state.standings} challengeId={this.props.challengeId} challengeData={this.props.challengeData}/>
                 </div>
-                <div className="AVA-SecondThirdUnrankedAgent-Placement">
-                    {/* <SecondThirdUnrankedAgent/> */}
-                </div>
-                </div>
             </div>
+        </div>
         )
     }
 }

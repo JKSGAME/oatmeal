@@ -2,17 +2,17 @@ module.exports = {
 
     create_achievement_badge ( req, res ) {
         const db = req.app.get( 'db' )
-        let { Name, Description, Photo_id, Badge_Type_id, Score_Type_id, Score_Target, Reward_Type_id, Reward_Value } = req.body
-        db.create_achievement_badge( [Name, Description, Photo_id, Badge_Type_id, Score_Type_id, Score_SubType_id, Score_Target, Reward_Type_id, Reward_Value] ).then( badge => {
-            res.send( res )
+        let { name, description, photo, score_type_id, score_target, reward_type_id, reward_value } = req.body
+        db.create_achievement_badge( [name, description, photo, 1, score_type_id, null, score_target, reward_type_id, reward_value] ).then( badge => {
+            res.send( badge )
         })
     },
 
     create_trophy_badge ( req, res ) {
         const db = req.app.get( 'db' ) 
-        let { Name, Description, Photo_id, Badge_Type_id, Score_Type_id, Score_SubType_id, Score_Target, Reward_Type_id, Reward_Value } = req.body
-        db.create_trophy_badge( [Name, Description, Photo_id, Badge_Type_id, Score_Type_id, Score_SubType_id, Score_Target, Reward_Type_id, Reward_Value] ).then( badge => {
-            res.send( res )
+        let { name, description, photo, score_type_id, score_subtype_id, score_target, reward_type_id, reward_value } = req.body
+        db.create_trophy_badge( [name, description, photo, 2, score_type_id, score_subtype_id, score_target, reward_type_id, reward_value] ).then( badge => {
+            res.send( badge )
         })
     },
 
@@ -55,6 +55,20 @@ module.exports = {
         const db = req.app.get( 'db' ) 
         db.get_badge_photo( [req.body] ).then( photo => {
             res.send( photo )
+        })
+    },
+
+    get_achievement_badges ( req, res ) {
+        const db = req.app.get( 'db' )
+        db.get_achievement_badges( [req.body] ).then( badges => {
+            res.send( badges )
+        })
+    },
+
+    get_trophy_badges ( req, res ) {
+        const db = req.app.get( 'db' )
+        db.get_trophy_badges( [req.body] ).then( badges => {
+            res.send( badges )
         })
     }
 

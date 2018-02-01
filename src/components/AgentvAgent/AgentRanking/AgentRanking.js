@@ -74,35 +74,37 @@ class AgentRanking extends Component {
         let dynamicName = () => sortedUsers[0] && this.props.challengeId === sortedUsers[0].chalid ? <h2>{info[0].name}</h2> : <h2>No Challenges Here</h2>
         let dynamicDesc = () => sortedUsers[0] && this.props.challengeId === sortedUsers[0].chalid ? <p>{info[0].description}</p> : <p>No Desc Here</p>
         return (
-            <div>
+            <div className="agent-ranking">
                 <div className="AVA-title">
                     {dynamicName()}
                     {dynamicDesc()}
                 </div>
-                <div className='AVA-FirstPlaceAgent'>
+                {/* <div className='AVA-FirstPlaceAgent'> */}
                     <FlipMove>
                         {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                             if (i === 0) {
-                                return <Card key={e.userId} className='AVA-first-place-agent'>
-                                    <Header as='h1'>1st Place</Header>
-                                    <Image className='first-place-img' centered size='small' src={e.photos} />
-                                    <Card.Content>
-                                        <Card.Header>{e.name}</Card.Header>
-                                        <Card.Description>
-                                            <p>Team: {e.team}</p>
+                                return <div key={e.userId} className='AVA-first-place-agent'>
+                                    <div className="first-place-left">
+                                        <h1 as='h1'>1st Place</h1>
+                                        <img className='first-place-img' centered size='small' src={e.photos} />
+                                    </div>
+                                    <div className="first-place-right">
+                                        <h2>{e.name}</h2>
+                                        <div>
+                                            <h3>Team: {e.team}</h3>
                                             {e.kpi}: {dynamicKPI(i)}
-                                        </Card.Description>
-                                    </Card.Content>
-                                </Card>
+                                        </div>
+                                    </div>
+                                </div>
                             }
                         })}
                     </FlipMove>
-                </div>
-                <div >
+                {/* </div> */}
+                
                     {/* { this.props.users.length > 0 && */}
                     <div className="SecondThirdUnranked">
                         <div className="SecondThirdAgents">
-                            <div className="SecondPlaceAgent">
+                            {/* <div className="SecondPlaceAgent"> */}
                                 <FlipMove>
                                     {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                                         if (i === 1) {
@@ -113,22 +115,23 @@ class AgentRanking extends Component {
                                             //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
                                             //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
                                             // </div>
-                                            return <div className='SecondPlaceAgent' key={e.userId}>
-                                                <Card >
-                                                    <Header as='h4'>2nd Place</Header>
+                                            // <div className='SecondPlaceAgent' key={e.userId}>
+                                            return <div className="SecondPlaceAgent" key={e.userId} >
+                                                    <h4 as='h4'>2nd Place</h4>
                                                     <Image size='small' src={e.photos} />
-                                                    <Card.Content>
-                                                        <Card.Header>{e.name}</Card.Header>
-                                                        <Card.Description><p>Team: {e.team}</p>
-                                                            {e.kpi}: {dynamicKPI(i)}</Card.Description>
-                                                    </Card.Content>
-                                                </Card>
-                                            </div>
+                                                    <div>
+                                                        <div>{e.name}</div>
+                                                        <div><p>Team: {e.team}</p>
+                                                            {e.kpi}: {dynamicKPI(i)}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            // </div>
                                         }
                                     })}
                                 </FlipMove>
-                            </div>
-                            <div className="ThirdPlaceAgent">
+                            {/* </div> */}
+                            {/* <div className="ThirdPlaceAgent"> */}
                                 <FlipMove>
                                     {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                                         if (i === 2) {
@@ -139,21 +142,21 @@ class AgentRanking extends Component {
                                             //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
                                             //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
                                             // </div>
-                                            return <div className='SecondPlaceAgent' key={e.userId}>
-                                                <Card  >
-                                                    <Header as='h4'>3rd Place</Header>
+                                            //  <div className='SecondPlaceAgent' key={e.userId}>
+                                             return <div className='ThirdPlaceAgent'  key={e.userId}>
+                                                    <div as='h4'>3rd Place</div>
                                                     <Image size='small' src={e.photos} />
-                                                    <Card.Content>
-                                                        <Card.Header>{e.name}</Card.Header>
-                                                        <Card.Description><p>Team: {e.team}</p>
-                                                            {e.kpi}: {dynamicKPI(i)}</Card.Description>
-                                                    </Card.Content>
-                                                </Card>
-                                            </div>
+                                                    <div>
+                                                        <div>{e.name}</div>
+                                                        <div><p>Team: {e.team}</p>
+                                                            {e.kpi}: {dynamicKPI(i)}</div>
+                                                    </div>
+                                                </div>
+                                            // </div>
                                         }
                                     })}
                                 </FlipMove>
-                            </div>
+                            {/* </div> */}
                         </div>
                         <div className="UnrankedAgents">
                             <div className="AVA-unranked-data">
@@ -168,17 +171,14 @@ class AgentRanking extends Component {
                                                 //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
                                                 //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
                                                 // </div>
-                                                return <div key={e.userId} className="AVA-Unranked-lineItem">
-                                                    <Card >
-                                                        <Card.Content>
-                                                            <Header as='h6'>{i + 1}th Place</Header>
-                                                            <Card.Description>
+                                                return <div key={e.userId} className="AVA-unranked-agent-info">
+                                                            <div as='h6'>{i + 1}th Place</div>
+                                                            <div>
                                                                 <h6 className='h6-name'>{e.name}</h6>
-                                                                {e.kpi}: {dynamicKPI(i)}</Card.Description>
-                                                        </Card.Content>
-                                                    </Card>
-                                                </div>
-                                            }
+                                                                {e.kpi}: {dynamicKPI(i)}
+                                                            </div>
+                                                        </div>
+                                           }
                                         })}
                                     </FlipMove>
                                 </div>
@@ -193,7 +193,7 @@ class AgentRanking extends Component {
                         {/* } */}
                     </div>
                 </div>
-            </div>
+          
         )
     }
 }

@@ -7,8 +7,8 @@
     align-content: center;
     height: 100%;
     width: 100%;
-    border: 1px solid green;
-    overflow-x: hidden; 
+
+
 }
 
 .navBar {
@@ -23,9 +23,10 @@
 	justify-content: center;
 	align-items: center;
     align-content: center;
-    height: 10%;
+    height: 5%;
     width: 100%;
-    border: 1px solid black;
+    margin-bottom: 15px
+
 }
 
 .AVA-leaderboard-data {
@@ -35,9 +36,9 @@
 	justify-content: center;
 	align-items: center;
     align-content: center;
-    height: 90%;
+    height: 100%;
     width: 100%;
-    border: 1px solid black;
+
 }
 
 .AVA-FirstPlaceAgent-Placement {

@@ -50,7 +50,6 @@ class CurrentChallengeModal extends Component {
     
     render() {
         const { open, column, direction } = this.state
-        console.log(this.state.challenges)
 
 
         return (

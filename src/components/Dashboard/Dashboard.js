@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import './Dashboard.css'
-import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
-import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
+import { Link } from 'react-router-dom';
+import './Dashboard.css';
+import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal';
+import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
 import Leaderboard from '../Leaderboard/Leaderboard';
-import axios from 'axios'
+import CreateBadgeModal from '../Badges/CreateBadgeModal';
+import axios from 'axios';
 
 
 
@@ -47,6 +48,7 @@ class Dashboard extends Component {
         <div className='modals'>
           <CreateChallengeModal />
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
+          <CreateBadgeModal />
         </div>
         <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
       </div>

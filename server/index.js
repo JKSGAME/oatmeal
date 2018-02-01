@@ -55,12 +55,14 @@ app.get( '/api/duration', challengesControllers.get_durations )
 app.post( '/api/create', challengesControllers.create_challenge )
 
 // Badges
-app.post( '/api/create_achievement_badge', badgesControllers.create_achievement_badge )
-app.post( 'api/create_trophy_badge', badgesControllers.create_trophy_badge )
 app.get( '/api/get_achievement_scoreType', badgesControllers.get_achievement_scoreType )
-app.get( '/api/get_reward_type', badgesControllers.get_reward_type )
 app.get( '/api/get_trophies_scoreType', badgesControllers.get_trophies_scoreType )
 app.get( '/api/get_trophies_subtype', badgesControllers.get_trophies_subtype )
+app.get( '/api/get_reward_type', badgesControllers.get_reward_type )
+app.get( '/api/get_badge_photos', badgesControllers.get_badge_photos) // all photos
+app.get( '/api/get_badge_photo', badgesControllers.get_badge_photo)  // one photo
+app.post( '/api/create_achievement_badge', badgesControllers.create_achievement_badge )
+app.post( 'api/create_trophy_badge', badgesControllers.create_trophy_badge )
 
 
 const io = socket ( app.listen ( process.env.SERVER_PORT, () => { console.log( `listening on ${process.env.SERVER_PORT} ¯\_(ツ)_/¯ ` ) } ) ) ;

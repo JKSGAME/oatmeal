@@ -59,7 +59,6 @@ class Dashboard extends Component {
       <div className="flex-row">
         <div className="sidebar">
           <div className="icon-column"></div>
-          
         </div>
         <div className="Dashboard">
           <header>

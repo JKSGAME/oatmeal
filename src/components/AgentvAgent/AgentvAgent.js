@@ -7,10 +7,12 @@ import _ from "lodash";
 import axios from 'axios';
 import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
 import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
-import { Sidebar, Menu, Icon } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import io from 'socket.io-client'
+import { Sidebar, Menu, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import Fullscreen from 'react-full-screen';
+import io from 'socket.io-client';
 import AgentRanking from './AgentRanking/AgentRanking';
+import fullicon from '../../icon/fullscreen.png';
 
 const socket = io()
 
@@ -20,6 +22,7 @@ class AgentvAgent extends Component {
         super( props )
         this.state = {
             standings: {},
+            isFull: false, 
         }
     }
     componentDidMount() {
@@ -47,25 +50,29 @@ class AgentvAgent extends Component {
                 this.setState({
                     standings: standingsNew
                 })
-            })
-            
+            })   
         }
     }
+
+    goFull = () => {
+        this.setState({ isFull: true })
+    }
+
     render() {
     return (
-        <div className="AgentvAgent">
-            <div className='navBar'>
-                <Sidebar as={Menu} direction='top' visible inverted width='wide' icon='labeled'>
-                    <Link to='/' ><Menu.Item name='home'><Icon name='home'/></Menu.Item></Link>
-                        {/* <Menu.Item name='gamepad'><Icon name='gamepad' />Games</Menu.Item>
-                        <Menu.Item name='camera'><Icon name='camera' />Channels</Menu.Item> */}
-                </Sidebar>
-            </div>
-            <div className="AVA-leaderboard-data">
-                <div className="AVA-FirstPlaceAgent-Placement">
-                    <AgentRanking standings={this.state.standings} challengeId={this.props.challengeId} challengeData={this.props.challengeData}/>
+        <div>
+            <button onClick= {this.goFull} className="fullscreen-button">
+                <img src={fullicon} className="fullscreen-icon" />
+            </button>
+            <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
+                <div className="AgentvAgent">
+                    <div className="AVA-leaderboard-data">
+                        <div className="AVA-FirstPlaceAgent-Placement">
+                                <AgentRanking standings={this.state.standings} challengeId={this.props.challengeId} challengeData={this.props.challengeData}/>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </Fullscreen>
         </div>
         )
     }

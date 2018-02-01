@@ -1,3 +1,17 @@
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.sidebar{
+    height: 100vh;
+    width: 5%;
+    background-color: #06324f;
+}
+
+
+
+
 .Dashboard {
 	display: flex;
 	flex-direction: column;
@@ -9,30 +23,53 @@
     width: 100vw;
 }
 
-/* .board{
+.dashboard-container{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap; 
-} */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 50vh;
+    width: 70%;
+    background-color: #dbe1e5; 
+}
 
 .chal-box-wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    height: 70vh;
-    width: 100vw;
+    align-content: center;
+    height: 80vh;
+    width: 90%;
+
 }
 
 .chal-box {
     /* border: 1px solid black; */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     height: 20vh;
     width: 30vh;
     margin: 10px 0;
     padding: 10px 0;
+    background-color: white;
 }
 
+
+.create-challenge{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    height: 20vh;
+    width: 30vh;
+    margin: 10px 0;
+    padding: 10px 0;
+    background-color: white;
+
+}
+h3, h4{
+    color: black;
+}
 .crm-btn{
     height: 35px;
     width: 150px;

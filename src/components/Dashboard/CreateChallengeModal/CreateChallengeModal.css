@@ -2,3 +2,31 @@
     border: none !important;
     box-shadow: none !important;
 }
+
+#create {
+    cursor: pointer;
+    display: inline-block;
+    height: 20vh;
+    width: 30vh;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    background: transparent;
+    color: #aebfc6;
+    font-size: 20px;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-seri;
+    margin: -10px .25em 0 0;
+    text-shadow: none;
+    font-weight: 400;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: .28571429rem;
+    
+}
+
+img{
+    width: 7vh;
+    height: 7vh;
+}

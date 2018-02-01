@@ -55,8 +55,8 @@ class AgentvAgent extends Component {
     return (
         <div className="AgentvAgent">
             <div className='navBar'>
-                <Sidebar as={Menu} direction='top' visible inverted width='wide'>
-                    <Link to='/' ><Menu.Item name='home'><Icon name='home'/>Home</Menu.Item></Link>
+                <Sidebar as={Menu} direction='top' visible inverted width='wide' icon='labeled'>
+                    <Link to='/' ><Menu.Item name='home'><Icon name='home'/></Menu.Item></Link>
                         {/* <Menu.Item name='gamepad'><Icon name='gamepad' />Games</Menu.Item>
                         <Menu.Item name='camera'><Icon name='camera' />Channels</Menu.Item> */}
                 </Sidebar>

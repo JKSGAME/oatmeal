@@ -6,6 +6,7 @@ import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal
 import Leaderboard from '../Leaderboard/Leaderboard';
 import CreateBadgeModal from '../Badges/CreateBadgeModal';
 import axios from 'axios';
+import Sidebar from './Sidebar/Sidebar'
 
 
 
@@ -62,6 +63,7 @@ class Dashboard extends Component {
           <div className="icon-column"></div>
         </div>
         <div className="Dashboard">
+        <Sidebar/>
           <header>
             <h1>Challenges</h1>
           </header>

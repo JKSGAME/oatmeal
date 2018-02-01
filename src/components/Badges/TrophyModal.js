@@ -32,14 +32,33 @@ class TrophyModal extends Component {
         console.log('rewardvalue', this.rewardValue.inputRef.value);
         console.log('scoretarget', this.scoreTarget.inputRef.value);
         console.log('state', this.state);
-        // this.addChallenge()
+        // this.addTrophy()
         // send data to db, send data in fields, then this.name = ''
-        // this.setState({
-        // selectedScoreType: '',
-        // selectedScoreSubType: '',
-        // selectedRewardType: '',
-        // selectedPhoto: ''
-        // })
+        this.setState({
+        selectedScoreType: '',
+        selectedScoreSubType: '',
+        selectedRewardType: '',
+        selectedPhoto: ''
+        })
+        this.props.function3()
+    }
+
+    addTrophy() {
+        // 8 items to send to db through axios call
+        let trophy = {
+            Name: this.name.inputRef.value,
+            BadgeImage: this.state.selectedPhoto,
+            Desc: this.desc.ref.value,
+            ScoreType: this.state.selectedScoreType,
+            ScoreSubType: this.state.selectedScoreSubType,
+            ScoreTarget: this.scoreTarget.inputRef.value,
+            RewardType: this.state.selectedRewardType,
+            RewardValue: this.rewardValue.inputRef.value
+        }
+
+        axios.post( 'api/create_trophy_badge', trophy ).then(res => {
+            console.log('res', res.data)
+        })
     }
 
     // figure out how to get the url and id to send to db

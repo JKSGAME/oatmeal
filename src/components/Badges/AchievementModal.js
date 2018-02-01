@@ -93,7 +93,7 @@ class AchievementModal extends Component {
         })
 
         const photoInfo = photos.map((e, i) => {
-            return { id: e.id, key: e.id, text: e.id, value: e.id, photo: e.photo }
+            return { id: e.id, key: e.id, text: e.id, value: e.photo }
         })
 
         return (

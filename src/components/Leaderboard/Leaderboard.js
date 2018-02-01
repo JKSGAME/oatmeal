@@ -6,21 +6,18 @@ import AgentvAgent from './../AgentvAgent/AgentvAgent';
 import TeamvTeam from './../TeamvTeam/TeamvTeam'
 import './Leaderboard.css';
 import _ from "lodash";
-import Fullscreen from 'react-full-screen';
+import Sidebar from './../Dashboard/Sidebar/Sidebar'
 
 
 class Leaderboard extends Component {
     constructor( props ){
         super( props )
         this.state={
-            challenges: {},
-            isFull: false,  
+            challenges: {}, 
         } 
     }
 
-    // goFull = () => {
-    //   this.setState({ isFull: true })
-    // }
+
 
     componentDidMount() {
 
@@ -43,14 +40,11 @@ class Leaderboard extends Component {
             }
         }
         return (
-            // {/* <button onClick= {this.goFull}>Fullscreen</button> */}
-            // {/* <div className='board'> */}
-            //     {/* <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
-            //       <Leaderboard />
-            //     </Fullscreen> */}
-            // {/* </div> */}
             <div className="Leaderboard">
-               { leaderboard( chalTypeId[0] ) }
+                <Sidebar color="#06324F"/>
+                <div className='board'>
+                    { leaderboard( chalTypeId[0] ) }
+                </div> 
             </div>
         )
     }

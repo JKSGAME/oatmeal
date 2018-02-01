@@ -3,16 +3,14 @@ import { bindActionCreators } from 'redux';
 import './AgentRanking.css';
 import { connect } from 'react-redux';
 import { fetchUsers } from './../../../ducks/reducer';
-import io from 'socket.io-client'
 import axios from 'axios';
 import _ from 'lodash';
 import FlipMove from 'react-flip-move';
-import { Card, Icon, Image, Header } from 'semantic-ui-react'
+import { Image } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive';
 import MobileModal from '../../MobileModal/MobileModal';
 import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
 
-const socket = io()
 
 
 class AgentRanking extends Component {
@@ -54,7 +52,7 @@ class AgentRanking extends Component {
                 console.log('arr', arr);
                 return arr
             }
-            let chalnadesc = []
+
             this.setState({
                 sortedUsers: orderedUsers(),
                 info: res.data
@@ -108,14 +106,6 @@ class AgentRanking extends Component {
                                 <FlipMove>
                                     {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                                         if (i === 1) {
-                                            // return <div key={i} className="SecondPlaceAgent">
-                                            //     <img className='prof-pic' src={e.photos} alt=""/>
-                                            //     <h4>2nd place:</h4>
-                                            //     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
-                                            //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                            //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
-                                            // </div>
-                                            // <div className='SecondPlaceAgent' key={e.userId}>
                                             return <div className="SecondPlaceAgent" key={e.userId} >
                                                     <h4 as='h4'>2nd Place</h4>
                                                     <Image size='small' src={e.photos} />
@@ -135,14 +125,6 @@ class AgentRanking extends Component {
                                 <FlipMove>
                                     {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                                         if (i === 2) {
-                                            // return <div key={i} className="ThirdPlaceAgent">
-                                            //     <img className='prof-pic' src={e.photos} alt=""/>
-                                            //     <h4>3rd place:</h4>
-                                            //     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
-                                            //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                            //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
-                                            // </div>
-                                            //  <div className='SecondPlaceAgent' key={e.userId}>
                                              return <div className='ThirdPlaceAgent'  key={e.userId}>
                                                     <div as='h4'>3rd Place</div>
                                                     <Image size='small' src={e.photos} />
@@ -164,13 +146,6 @@ class AgentRanking extends Component {
                                     <FlipMove>
                                         {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
                                             if (i > 2 && i < 6) {
-                                                // return <div key={i} className="AVA-Unranked-lineItem">
-                                                //     <img className='prof-pic' src={e.photos} alt=""/>
-                                                //     <h4>{i + 1}th place</h4>
-                                                //     <h1>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].name} </h1>
-                                                //     <h3>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].team}</h3>
-                                                //     <h4>{this.state.sortedUsers.length > 0 && this.state.sortedUsers[i].standings.salesKPI}</h4>
-                                                // </div>
                                                 return <div key={e.userId} className="AVA-unranked-agent-info">
                                                             <div as='h6'>{i + 1}th Place</div>
                                                             <div>

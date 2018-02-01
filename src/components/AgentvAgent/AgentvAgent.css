@@ -11,9 +11,20 @@
 
 }
 
-.navBar {
-    height: 5.92vh;
-    width: 100vw;
+.fullscreen-button{
+    position: fixed;
+    top: 3vh;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: solid black 2px;
+}
+
+.fullscreen-icon{
+    width: 30px;
+    height: 30px;
 }
 
 .AVA-title {
@@ -50,4 +61,10 @@
     align-content: center;
     height: 100%;
     width: 100%;
+}
+
+@media (max-width: 425px){
+    .fullscreen-button{
+        display: none;
+    }
 }

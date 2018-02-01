@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import './Dashboard.css'
+import {logo} from '../../icon/bowl.png'
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
 import Leaderboard from '../Leaderboard/Leaderboard';
@@ -27,28 +28,58 @@ class Dashboard extends Component {
 
   render() {
     const { challenges } = this.state
+    let chalLength = challenges.length
     let curChal = challenges.map( ( e, i ) => {
-      return (
-        <div className='chal-box' key={e.name} onClick={() => this.props.history.push(`/leaderboard/${e.challenge_id}`)}>
-          <h3>{e.name}</h3>
-          <h4>Challenge mode: {e.mode}</h4>
-          <h4>KPI: {e.kpi}</h4>
+      return(
+        <div>
+          <div className='chal-box' key={e.name} onClick={() => this.props.history.push(`/leaderboard/${e.challenge_id}`)}>
+            <h3>{e.name}</h3>
+            <h4>Challenge mode: {e.mode}</h4>
+            <h4>KPI: {e.kpi}</h4>
+          </div>
         </div>
       )
     })
-    return (
-      <div className="Dashboard">
-        <header>
-          <h1>Welcome to the Dashboard</h1>
-        </header>
-        <div className='chal-box-wrapper'>
-        {curChal}
-        </div>
-        <div className='modals'>
+
+    let remaining =  () => {
+      let buttonArr = [];
+      for(let i = chalLength; i< 5; i++){
+      buttonArr.push(
+        <div className="create-challenge">
           <CreateChallengeModal />
-          <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
         </div>
-        <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
+      )}
+        return buttonArr
+    }
+
+
+    
+
+    return (
+      <div className="flex-row">
+        <div className="sidebar">
+          <div className="icon-column">
+          </div>
+
+        </div>
+        <div className="Dashboard">
+          <header>
+            <h1>Welcome to the Dashboard</h1>
+          </header>
+          <div className="dashboard-container">
+            <div className='chal-box-wrapper'>
+              { curChal }
+              { remaining() }
+              <div className="create-challenge">
+                  <CreateChallengeModal />
+              </div>
+            </div>
+          </div>
+            <div className='modals'>
+              <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
+            </div>
+          <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
+        </div>
       </div>
     );
   }

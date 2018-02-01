@@ -59,7 +59,6 @@ class Dashboard extends Component {
       <div className="flex-row">
         <div className="sidebar">
           <div className="icon-column"></div>
-          </div>
 
         </div>
         <div className="Dashboard">
@@ -76,6 +75,7 @@ class Dashboard extends Component {
             </div>
           </div>
           <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
+          </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
           <CreateBadgeModal />

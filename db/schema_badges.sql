@@ -2,7 +2,7 @@ CREATE TABLE badges (
     id serial primary key,
     name VARCHAR(50),
     description TEXT,
-    photo TEXT,
+    photo_id INTEGER references photos(id),
     badge_type_id INTEGER references badge_type(id),
     score_type_id INTEGER references score_type(id),
     score_subtype_id INTEGER references score_subtype(id),
@@ -10,6 +10,11 @@ CREATE TABLE badges (
     reward_type_id INTEGER references reward_type(id),
     reward_value INTEGER
 );
+
+CREATE TABLE photos (
+    id serial primary key,
+    photos TEXT
+)
 
 CREATE TABLE score_type (
     id serial primary key,

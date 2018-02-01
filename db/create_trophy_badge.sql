@@ -1,7 +1,7 @@
 INSERT INTO badges (
     name,
     description,
-    photo,
+    photo_id,
     badge_type_id,
     score_type_id,
     score_subtype_id,

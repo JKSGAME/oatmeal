@@ -1,0 +1,1 @@
+select id, photo from photos

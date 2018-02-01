@@ -2,7 +2,7 @@ module.exports = {
 
     create_achievement_badge ( req, res ) {
         const db = req.app.get( 'db' )
-        let { Name, Description, Photo_id, Badge_Type_id, Score_Type_id, Score_SubType_id, Score_Target, Reward_Type_id, Reward_Value } = req.body
+        let { Name, Description, Photo_id, Badge_Type_id, Score_Type_id, Score_Target, Reward_Type_id, Reward_Value } = req.body
         db.create_achievement_badge( [Name, Description, Photo_id, Badge_Type_id, Score_Type_id, Score_SubType_id, Score_Target, Reward_Type_id, Reward_Value] ).then( badge => {
             res.send( res )
         })

@@ -6,12 +6,13 @@ import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal
 import Leaderboard from '../Leaderboard/Leaderboard';
 import CreateBadgeModal from '../Badges/CreateBadgeModal';
 import axios from 'axios';
+import Sidebar from './Sidebar/Sidebar'
 
 
 
 class Dashboard extends Component {
-  constructor( props ) {
-    super( props )
+  constructor(props) {
+    super(props)
     this.state = {
       standings: "Initial Standings",
       challenges: []
@@ -19,18 +20,18 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    axios.get( '/api/fullChallengeTable' ).then( res => {
+    axios.get('/api/fullChallengeTable').then(res => {
       this.setState({
-          challenges: res.data
+        challenges: res.data
       })
     })
-}
+  }
 
   render() {
     const { challenges } = this.state
     let chalLength = challenges.length
-    let curChal = challenges.map( ( e, i ) => {
-      return(
+    let curChal = challenges.map((e, i) => {
+      return (
         <div>
           <div className='chal-box' key={e.name} onClick={() => this.props.history.push(`/leaderboard/${e.challenge_id}`)}>
             <h3>{e.name}</h3>
@@ -41,19 +42,20 @@ class Dashboard extends Component {
       )
     })
 
-    let remaining =  () => {
+    let remaining = () => {
       let buttonArr = [];
-      for(let i = chalLength; i< 5; i++){
-      buttonArr.push(
-        <div className="create-challenge">
-          <CreateChallengeModal />
-        </div>
-      )}
-        return buttonArr
+      for (let i = chalLength; i < 5; i++) {
+        buttonArr.push(
+          <div className="create-challenge">
+            <CreateChallengeModal />
+          </div>
+        )
+      }
+      return buttonArr
     }
 
 
-    
+
 
     return (
       <div className="flex-row">
@@ -61,15 +63,16 @@ class Dashboard extends Component {
           <div className="icon-column"></div>
         </div>
         <div className="Dashboard">
+        <Sidebar/>
           <header>
             <h1>Challenges</h1>
           </header>
           <div className="dashboard-container">
             <div className='chal-box-wrapper'>
-              { curChal }
-              { remaining() }
+              {curChal}
+              {remaining()}
               <div className="create-challenge">
-                  <CreateChallengeModal />
+                <CreateChallengeModal />
               </div>
             </div>
           </div>

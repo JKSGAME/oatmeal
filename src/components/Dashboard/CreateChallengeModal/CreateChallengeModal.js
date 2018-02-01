@@ -89,7 +89,7 @@ class CreateChallengeModal extends Component {
             RewardDist: this.state.selectedRD
         }
 
-        axios.post('/api/create', chal).then(res => {
+        axios.post( '/api/create', chal ).then(res => {
             console.log('res', res.data)
         })
     }

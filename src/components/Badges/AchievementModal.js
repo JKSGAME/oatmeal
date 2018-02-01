@@ -14,12 +14,29 @@ class AchievementModal extends Component {
         rewards: [],
         selectedScoreType: '',
         selectedRewardType: '',
+        selectedPhoto: ''
     }
 
     show2 = () => this.props.function()
     close2 = () => this.props.function2()
 
     dataGrabber = (propName, value) => { this.setState({ [propName]: value }) }
+
+    submit = () => {
+        // console.log(this.name.inputRef.value);
+        console.log('rewardvalue', this.name.inputRef.value);
+        console.log('desc', this.desc.ref.value);
+        console.log('rewardvalue', this.rewardValue.inputRef.value);
+        console.log('scoretarget', this.scoreTarget.inputRef.value);
+        console.log('state', this.state);
+        // this.addChallenge()
+        // send data to db, send data in fields, then this.name = ''
+        this.setState({
+        selectedScoreType: '',
+        selectedRewardType: '',
+        selectedPhoto: ''
+        })
+    }
 
     componentDidMount() {
         axios.get('/api/get_achievement_scoreType').then( res => this.setState( { scoreTypes: res.data } ) )
@@ -54,12 +71,12 @@ class AchievementModal extends Component {
 
                                 <Segment basic>
                                     <Header size='small'>Badge Name</Header>
-                                    <Input placeholder='Name' />
+                                    <Input placeholder='Name' ref={name => this.name = name}/>
                                 </Segment>
 
                                 <Segment basic>
                                     <Header size='small'>Badge Image</Header>
-                                    <Dropdown floating search selection />
+                                    <Dropdown floating search selection onChange={(e, d) => this.dataGrabber('selectedPhoto', d.value)}/>
                                     {/* <Card>
                                         <Card.Content>
                                         <DropzoneComponent config={componentConfig}
@@ -76,7 +93,7 @@ class AchievementModal extends Component {
                                 <Form>
                                     <Form.Field>
                                         <label>Badge Description</label>
-                                        <TextArea autoHeight placeholder='Leave a Description of the Badge Here' />
+                                        <TextArea autoHeight placeholder='Leave a Description of the Badge Here'  ref={desc => this.desc = desc}/>
                                     </Form.Field>
                                 </Form>
                             </Segment>
@@ -84,12 +101,12 @@ class AchievementModal extends Component {
                             <Segment.Group horizontal >
                                 <Segment basic  >
                                     <Header size='small'>Score Type</Header>
-                                    <Dropdown placeholder='Score Type' floating search selection options={scoreTypeInfo} />
+                                    <Dropdown placeholder='Score Type' floating search selection options={scoreTypeInfo} onChange={(e, d) => this.dataGrabber('selectedScoreType', d.value)}/>
                                 </Segment>
 
                                 <Segment basic  >
                                     <Header size='small'>Score Target</Header>
-                                    <Input placeholder='Score Target' />
+                                    <Input placeholder='Score Target'  ref={scoreTarget => this.scoreTarget = scoreTarget}/>
                                 </Segment>
                             </Segment.Group>
 
@@ -97,11 +114,11 @@ class AchievementModal extends Component {
 
                                 <Segment basic>
                                     <Header size='small'>Reward Type</Header>
-                                    <Dropdown placeholder='Reward Type' floating search selection options={rewardsInfo}/>
+                                    <Dropdown placeholder='Reward Type' floating search selection options={rewardsInfo} onChange={(e, d) => this.dataGrabber('selectedRewardType', d.value)}/>
                                 </Segment>
                                 <Segment basic>
                                     <Header size='small'>Reward Value</Header>
-                                    <Input placeholder='Reward Value' />
+                                    <Input placeholder='Reward Value' ref={rewardValue => this.rewardValue = rewardValue}/>
                                 </Segment>
 
                             </Segment.Group>
@@ -110,7 +127,7 @@ class AchievementModal extends Component {
                     </Modal.Content>
                     <Modal.Actions>
                         <Button color='black' onClick={this.props.function2}>Back</Button>
-                        <Button color='black'>Submit</Button>
+                        <Button color='black' onClick={this.submit} >Submit</Button>
                         {/* <Button color='black' onClick={this.props.function3}>Close</Button> */}
                     </Modal.Actions>
                 </Modal>

@@ -10,8 +10,8 @@ import axios from 'axios';
 
 
 class Dashboard extends Component {
-  constructor( props ) {
-    super( props )
+  constructor(props) {
+    super(props)
     this.state = {
       standings: "Initial Standings",
       challenges: []
@@ -19,18 +19,18 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    axios.get( '/api/fullChallengeTable' ).then( res => {
+    axios.get('/api/fullChallengeTable').then(res => {
       this.setState({
-          challenges: res.data
+        challenges: res.data
       })
     })
-}
+  }
 
   render() {
     const { challenges } = this.state
     let chalLength = challenges.length
-    let curChal = challenges.map( ( e, i ) => {
-      return(
+    let curChal = challenges.map((e, i) => {
+      return (
         <div>
           <div className='chal-box' key={e.name} onClick={() => this.props.history.push(`/leaderboard/${e.challenge_id}`)}>
             <h3>{e.name}</h3>
@@ -41,25 +41,25 @@ class Dashboard extends Component {
       )
     })
 
-    let remaining =  () => {
+    let remaining = () => {
       let buttonArr = [];
-      for(let i = chalLength; i< 5; i++){
-      buttonArr.push(
-        <div className="create-challenge">
-          <CreateChallengeModal />
-        </div>
-      )}
-        return buttonArr
+      for (let i = chalLength; i < 5; i++) {
+        buttonArr.push(
+          <div className="create-challenge">
+            <CreateChallengeModal />
+          </div>
+        )
+      }
+      return buttonArr
     }
 
 
-    
+
 
     return (
       <div className="flex-row">
         <div className="sidebar">
           <div className="icon-column"></div>
-          </div>
 
         </div>
         <div className="Dashboard">
@@ -68,14 +68,15 @@ class Dashboard extends Component {
           </header>
           <div className="dashboard-container">
             <div className='chal-box-wrapper'>
-              { curChal }
-              { remaining() }
+              {curChal}
+              {remaining()}
               <div className="create-challenge">
-                  <CreateChallengeModal />
+                <CreateChallengeModal />
               </div>
             </div>
           </div>
           <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
+        </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
           <CreateBadgeModal />

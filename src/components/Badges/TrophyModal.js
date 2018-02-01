@@ -9,21 +9,13 @@ var eventHandlers = { addedfile: (file) => console.log(file) }
 
 class TrophyModal extends Component {
     state = {
-            challenges: [],
-            teams: [],
-            modes: [],
-            kpis: [],
-            duration: [],
-            selectedType: '',
-            selectedTeam: [],
-            selectedMode: '',
-            selectedKPI: '',
-            timeStart: '',
-            timeEnd: '',
-            selectedDur: '',
-            selectedRD: '',
-            challengeType: []
-        }
+        scoreTypes: [],
+        rewards: [],
+        scoreSubTypes: [],
+        selectedScoreType: '',
+        selectedScoreSubType: '',
+        selectedRewardType: ''
+    }
     
 
     show2 = () => this.props.function()

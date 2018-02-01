@@ -60,11 +60,10 @@ class Dashboard extends Component {
       <div className="flex-row">
         <div className="sidebar">
           <div className="icon-column"></div>
-
         </div>
         <div className="Dashboard">
           <header>
-            <h1>Welcome to the Dashboard</h1>
+            <h1>Challenges</h1>
           </header>
           <div className="dashboard-container">
             <div className='chal-box-wrapper'>
@@ -75,11 +74,11 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
-          <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
-          </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
           <CreateBadgeModal />
+        </div>
+          <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
         </div>
       </div>
     );

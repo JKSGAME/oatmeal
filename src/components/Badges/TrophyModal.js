@@ -4,9 +4,9 @@ import DropzoneComponent from 'react-dropzone-component'
 import axios from 'axios'
 
 
-var componentConfig = { postUrl: 'no-url' };
-var djsConfig = { autoProcessQueue: false }
-var eventHandlers = { addedfile: (file) => console.log(file) }
+// var componentConfig = { postUrl: 'no-url' };
+// var djsConfig = { autoProcessQueue: false }
+// var eventHandlers = { addedfile: (file) => console.log(file) }
 
 class TrophyModal extends Component {
     state = {
@@ -103,7 +103,7 @@ class TrophyModal extends Component {
         })
 
         const photoInfo = photos.map((e, i) => {
-            return { id: e.id, key: e.id, text: e.id, value: e.photo, photo: e.photo }
+            return { id: e.id, key: e.id, text: e.id, value: e.photo }
         })
 
         return (

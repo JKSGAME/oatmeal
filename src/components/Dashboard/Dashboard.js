@@ -65,7 +65,7 @@ class Dashboard extends Component {
         <div className="Dashboard">
         <Sidebar/>
           <header>
-            <h1>Challenges</h1>
+            <h1>Dashboard</h1>
           </header>
           <div className="dashboard-container">
             <div className='chal-box-wrapper'>

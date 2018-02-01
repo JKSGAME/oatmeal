@@ -146,33 +146,27 @@
 	width: 50px;
 }
 
-.AVA-Unranked-lineItem .ui.card>.content, .ui.cards>.card>.content {
-	padding: 0;
-	height: 10vh;;
-}
 
-.AVA-Unranked-lineItem .ui.card>.content>.header, .ui.cards>.card>.content>.header  {
-	margin: 4px 0;
-	margin-bottom: 0;
-}
-
-.AVA-Unranked-lineItem .ui.card>.content>.header+.description, .ui.card>.content>.meta+.description, .ui.cards>.card>.content>.header+.description, .ui.cards>.card>.content>.meta+.description {
-	margin: 0;
-}
-
-.h6-name {
-	margin: 0;
-}
-
-.ui.header:first-child {
-    margin-top: 0.5em;
-}
 
 
 @media (min-width: 426px) {
 	.agent-ranking{
-		width: 70%;
+		width: 60%;
 		height: 90%
+	}
+
+
+	.AVA-title > h2{
+		margin-top: 3vh;
+		font-size: 32px;
+		font-weight: 600;
+		
+	}
+
+	.AVA-title > p {
+		font-size: 20px;
+		font-weight: 300;
+
 	}
 	/* .AVA-FirstPlaceAgent {
 		display: flex;
@@ -202,12 +196,12 @@
 	}
 	
 	.first-place-left{
-		width: 50%;
+		width: 100%;
 
 	}
 	
 	.first-place-right{
-		width: 50%
+		width: 100%
 	}
 	
 	.first-place-img {
@@ -258,13 +252,18 @@
 		flex-direction: column;
 		flex-wrap: nowrap;
 		justify-content: space-around;
-
 		align-content: center; 
 		height: 30vh;
 		width: 100%; 
+		padding-left: 18%;
+		padding-right: 18%;
 		margin-right: 5px;
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	}
+
+	.SecondPlaceAgent > h4{
+		width: 100%;
 	}
 	
 	.ThirdPlaceAgent {
@@ -277,6 +276,8 @@
 		align-content: center; 
 		height: 30vh;
 		width: 100%; 
+		padding-left: 18%;
+		padding-right: 18%;
 		margin-left: 5px;
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
@@ -284,6 +285,9 @@
 		
 	}
 	
+	.ThirdPlaceAgent > h4{
+		width: 100%
+	}
 	
 	.UnrankedAgents {
 		display: flex;

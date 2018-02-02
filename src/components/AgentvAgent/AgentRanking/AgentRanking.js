@@ -10,9 +10,6 @@ import { Image } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive'
 import MobileModal from '../../MobileModal/MobileModal'
 import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal'
-
-
-
 class AgentRanking extends Component {
     constructor(props) {
         super(props)
@@ -21,10 +18,8 @@ class AgentRanking extends Component {
             info: []
         }
     }
-
     show = dimmer => () => this.setState({ dimmer, open: true })
     close = () => this.setState({ open: false })
-
     componentWillReceiveProps(nextProps) {
         axios.get(`/api/viewmore/${nextProps.challengeId}`).then(res => {
             let userArr = []
@@ -50,7 +45,6 @@ class AgentRanking extends Component {
                 }
                 return arr
             }
-
             this.setState({
                 sortedUsers: orderedUsers(),
                 info: res.data
@@ -96,7 +90,6 @@ class AgentRanking extends Component {
                 </FlipMove>
             
                 <div className="SecondThirdUnranked">
-
                     <div className="SecondThirdAgents">
                     <FlipMove>
                             {this.state.sortedUsers.map((e, i) => {   
@@ -117,7 +110,6 @@ class AgentRanking extends Component {
                                 }
                             })}
                         </FlipMove>
-
                         <FlipMove>
                             {this.state.sortedUsers.map((e, i) => { 
                                 if (i === 2) {
@@ -164,7 +156,6 @@ class AgentRanking extends Component {
                         <MediaQuery query=" ( min-width: 426px) ">
                             <ViewMoreModal chalid={this.state.info[0] && this.state.info[0].challenge_id}/>
                         </MediaQuery>
-
                     </div>
                 </div>
             </div>
@@ -172,7 +163,6 @@ class AgentRanking extends Component {
         )
     }
 }
-
 function mapStateToProps(state) {
     return {
         users: state.users,

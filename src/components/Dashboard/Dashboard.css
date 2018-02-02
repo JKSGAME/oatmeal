@@ -4,7 +4,43 @@
     flex-wrap: nowrap;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-left: 205px;
+    margin-top: -10px;
+}
 
+.logo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.logo-bowl {
+    height: 72px;
+    width: 72px;
+}
+
+logotext {
+    font-size: 65px;
+    font-family: 'Jura', sans-serif;
+    color: black;
+    margin-right: 620px;
+}
+
+/* .sign-out {
+    background: none;
+    color: black;
+    border-radius: 40px/24px;
+    border: 1px solid black;
+} */
+
+.dashboard-header {
+    font-size: 45px;
+}
 
 .Dashboard {
 	display: flex;
@@ -47,6 +83,9 @@
 }
 
 .chal-box {
+    /* border: 1px solid black; */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
     align-content: center;
     height: 25vh;
     width: 21vw;

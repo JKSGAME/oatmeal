@@ -4,7 +4,7 @@ import axios from 'axios'
 import './BadgeDisplayModal.css'
 
 
-class ModalExampleDimmer extends Component {
+class BadgeDisplayModal extends Component {
     state = {
         achievements: [],
         trophies: []
@@ -18,7 +18,7 @@ class ModalExampleDimmer extends Component {
         const { achievements, trophies } = this.state
         const achievementInfo = achievements.map((e, i) => {
             return (
-                <div className='achievement-column'>
+                <div className='achievement-column' key={e.id}>
                     < Card >
                         <Card.Content>
                             <Segment.Group horizontal>
@@ -41,7 +41,7 @@ class ModalExampleDimmer extends Component {
 
         const trophyInfo = trophies.map( ( e, i ) => {
             return (
-                <div className='trophy-column'>
+                <div className='trophy-column' key={e.id}>
                 < Card >
                 <Card.Content>
                     <Segment.Group horizontal>
@@ -93,4 +93,4 @@ class ModalExampleDimmer extends Component {
     }
 }
 
-export default ModalExampleDimmer
+export default BadgeDisplayModal

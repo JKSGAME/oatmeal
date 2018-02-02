@@ -7,7 +7,7 @@ class Header extends Component {
         return(
             <div className= "logo-flex">
                 <img className="logo" src={bowl}/>
-                <h1>Oatmeal</h1>
+                <h1 className="brandname">Oatmeal</h1>
             </div>
         )
     }

@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import './DummyCrm.css'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DummyUser from './DummyUsers/DummyUser.js'
 import { getStandings } from './../../ducks/reducer'
-import { Dropdown } from 'semantic-ui-react';
-import _ from 'lodash'
-
+import { Dropdown } from 'semantic-ui-react'
+import Sidebar from '../Dashboard/Sidebar/Sidebar'
 
 import io from 'socket.io-client';
+
 const socket = io()
 
 class DummyCrm extends Component {
@@ -107,9 +106,9 @@ class DummyCrm extends Component {
     })
     return (
       <div className="DummyCrm">
+      <Sidebar/>
         <header>
           <h1>Dummy CRM</h1>
-          <Link to='/'><button>Back to Dashboard</button></Link>
           <div>
           <Dropdown placeholder='Select Challenge' floating search selection 
             options={challengeDropdown} 

@@ -23,12 +23,11 @@ class MobileModal extends Component {
     show = dimmer => () => this.setState({ dimmer, open: true })
     close = () => this.setState({ open: false })
 
-    componentDidMount() {
-        axios.get('/api/viewmore').then(res => {
+    componentWillReceiveProps(nextProps) {
+        axios.get(`/api/viewmore/${nextProps.chalid}`).then(res => {
             // console.log('res.data', res.data);
             let userArr = []
             res.data.map((e, i) => {
-                // let standingsObj = eval('(' + e.standings + ')')
                 let standingsObj = JSON.parse(e.standings)
                 return userArr.push({
                     index: i,
@@ -40,17 +39,35 @@ class MobileModal extends Component {
                     challengeTypeId: e.challenge_type_id
                 })
             })
-            let orderedUsers = _.orderBy(userArr, ['standings.dialsKPI'], ['desc'])
+            let orderedUsers = () => {
+                let arr = []
+                if (userArr[0].kpi === 'Sales') {
+                    return arr = _.orderBy(userArr, ['standings.salesKPI'], ['desc'])
+                }
+                else if (userArr[0].kpi === 'Dials') {
+                    return arr = _.orderBy(userArr, ['standings.dialsKPI'], ['desc'])
+                }
+                return arr
+            }
             this.setState({
                 list: res.data,
-                users: orderedUsers,
+                users: orderedUsers(),
                 kpiTitle: res.data[0].kpi
             })
         })
     }
 
     render() {
-        const { open } = this.state
+        const { open, users } = this.state
+
+        let dynamicKPI = (i) => {
+            if (users[0].kpi && users[0].kpi === 'Sales') {
+                return users[i].standings.salesKPI
+            }
+            else if (users[0].kpi && users[0].kpi === 'Dials') {
+                return users[i].standings.dialsKPI
+            }
+        }
 
         return (
             <div className='MobileModal'>
@@ -62,8 +79,8 @@ class MobileModal extends Component {
                             <Grid>
                                 <Grid.Row columns={1} only='mobile'>
                                     <Grid.Column>
-                                        {this.state.users.map((e, i) => {
-                                           return <Segment key={e.userId}><p>{i + 1} {e.name} {e.kpi}: {e.standings.dialsKPI}</p></Segment>
+                                        {users.map((e, i) => {
+                                           return <Segment key={e.userId}><p>{i + 1} {e.name} {e.kpi}: {dynamicKPI(i)}</p></Segment>
                                         })}
                                     </Grid.Column>
                                 </Grid.Row>

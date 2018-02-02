@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Popup, Button, Header, Modal, Dropdown, Input, Form, TextArea, Segment, Divider, Card, Image } from 'semantic-ui-react'
-import DropzoneComponent from 'react-dropzone-component'
+import { Popup, Button, Header, Modal, Dropdown, Input, Form, TextArea, Segment, Divider, Image } from 'semantic-ui-react'
+// import DropzoneComponent from 'react-dropzone-component'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 // var componentConfig = { postUrl: 'no-url' };
@@ -33,7 +34,7 @@ class TrophyModal extends Component {
         console.log('rewardvalue', this.rewardValue.inputRef.value);
         console.log('scoretarget', this.scoreTarget.inputRef.value);
         console.log('state', this.state);
-        this.addTrophy()
+        // this.addTrophy()
         // send data to db, send data in fields, then this.name = ''
         this.setState({
             selectedScoreType: '',
@@ -72,21 +73,23 @@ class TrophyModal extends Component {
     subtypeCheck = (e, d) => {
         let subtypeArr = []
         if (d.value === 1) {
-            this.state.scoreSubTypes.map((f, i) => {
+            return this.state.scoreSubTypes.map((f, i) => {
                 if (f.id <= 3) {
-                    subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
-                }
+                    return subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
+                }   
+                return 'empty'
             })
         }
         else if (d.value === 2) {
             this.state.scoreSubTypes.map((f, i) => {
                 if (f.id >= 4) {
-                    subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
+                    return subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
                 }
+                return 'empty'
             })
         } else {
             this.state.scoreSubTypes.map((f, i) => {
-                    subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
+                    return subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
             })
         }
         this.setState({
@@ -131,7 +134,7 @@ class TrophyModal extends Component {
           </Popup.Content>
                 </Popup>
                 <Modal dimmer size='large' open={this.props.childOpen}  >
-                    <Modal.Header>Trophy Badge <Button floated='right' icon='cancel' color='red' onClick={this.props.function3} ></Button></Modal.Header>
+                    <Modal.Header>Trophy Badge <Link to='/'><Button floated='right' icon='cancel' color='red' ></Button></Link></Modal.Header>
                     <Modal.Content >
                         <Modal.Description>
                             <Segment.Group horizontal>
@@ -201,7 +204,7 @@ class TrophyModal extends Component {
                     </Modal.Content>
                     <Modal.Actions>
                         <Button color='black' onClick={this.props.function2}>Back</Button>
-                        <Button color='black' onClick={this.submit}>Submit</Button>
+                        <Link to='/'><Button color='black' onClick={this.submit}>Submit</Button></Link>
                         {/* <Button color='black' onClick={this.props.function3}>Close</Button> */}
                     </Modal.Actions>
                 </Modal>

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './Dashboard.css';
-import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import './Dashboard.css'
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
-import CreateBadgeModal from '../Badges/CreateBadgeModal';
-import axios from 'axios';
+import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
+import axios from 'axios'
 import Sidebar from './Sidebar/Sidebar'
 import bowl from './../../assets/Logomakr_3mQyLR.png'
 import Header from './../Header/Header'
@@ -47,7 +46,7 @@ class Dashboard extends Component {
       let buttonArr = [];
       for (let i = chalLength; i < 5; i++) {
         buttonArr.push(
-          <div className="create-challenge" key={i}>
+          <div className="create-challenge-off" key={i}>
             <CreateChallengeModal />
           </div>
         )
@@ -60,8 +59,9 @@ class Dashboard extends Component {
 
     return (
       <div className="flex-row">
+        <div className="Dashboard">
         <div className="sidebar">
-          <div className="icon-column"></div>
+          <Sidebar/>
         </div>
         <div className="Dashboard">
         <Sidebar/>
@@ -87,9 +87,10 @@ class Dashboard extends Component {
           </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
-          <CreateBadgeModal />
-        </div>
-        </div>
+
+          </div>
+            <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
+          </div>
       </div>
     );
   }

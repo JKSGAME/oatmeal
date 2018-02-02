@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import _ from 'lodash';
-import { Button, Modal, Table } from 'semantic-ui-react';
+import React, { Component } from 'react'
+import axios from 'axios'
+import _ from 'lodash'
+import { Button, Modal, Table } from 'semantic-ui-react'
 // import { Link } from 'react-router-dom';
 // users in state might need to be put in redux, for other componenets to have sorted da
 
@@ -42,32 +42,53 @@ class ViewMoreModal extends Component {
         })
     }
 
-    componentDidMount() {
-        axios.get('/api/viewmore').then(res => {
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+        axios.get(`/api/viewmore/${nextProps.chalid}`).then(res => {
             // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
+                let standingsObj = JSON.parse(e.standings)
                 return userArr.push({
                     index: i,
                     userId: e.user_id,
                     name: e.user_name,
                     team: e.team,
                     kpi: e.kpi,
+                    standings: standingsObj[e.user_id],
                     challengeTypeId: e.challenge_type_id
                 })
             })
-            let orderedUsers = _.orderBy(userArr, ['standings.salesKPI'], ['desc'])
+            console.log(userArr, 'userarr');
+            let orderedUsers = () => {
+                let arr = []
+                if (userArr[0].kpi === 'Sales') {
+                    return arr = _.orderBy(userArr, ['standings.salesKPI'], ['desc'])
+                }
+                else if (userArr[0].kpi === 'Dials') {
+                    return arr = _.orderBy(userArr, ['standings.dialsKPI'], ['desc'])
+                }
+                return arr
+            }
             this.setState({
                 list: res.data,
-                users: orderedUsers,
+                users: orderedUsers(),
                 kpiTitle: res.data[0].kpi
             })
         })
     }
     
     render() {
-        const { open, column, direction, kpiTitle } = this.state
-        // console.log('state in render', this.state);
+        const { open, column, direction, kpiTitle, users } = this.state
+        console.log('users', users);
+        let dynamicKPI = (i) => {
+            if (users[0].kpi && users[0].kpi === 'Sales') {
+                return users[i].standings.salesKPI
+            }
+            else if (users[0].kpi && users[0].kpi === 'Dials') {
+                return users[i].standings.dialsKPI
+            }
+        }
 
         return (
             <div className='ViewMoreModal'>
@@ -94,12 +115,12 @@ class ViewMoreModal extends Component {
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
-                                    {this.state.users.map(  (e, i)  => {
-                                       return  <Table.Row key={e.userId} onClick={() => this.props.history.push('/leaderboard/:id')}>
+                                    {users.map(  (e, i)  => {
+                                       return  <Table.Row key={e.userId} >
                                         <Table.Cell>{i + 1}</Table.Cell>
                                         <Table.Cell>{e.name}</Table.Cell>
                                         <Table.Cell>{e.team}</Table.Cell>
-                                        {/* <Table.Cell>{e.standings.salesKPI}</Table.Cell> */}
+                                        <Table.Cell>{dynamicKPI(i)}</Table.Cell>
                                         </Table.Row>
                                     })}
                                 </Table.Body>

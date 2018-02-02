@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Button, Modal, Grid } from 'semantic-ui-react'
-import AchievementModal from './AchievementModal';
-import TrophyModal from './TrophyModal';
+import AchievementModal from './AchievementModal'
+import TrophyModal from './TrophyModal'
+import Sidebar from '../Dashboard/Sidebar/Sidebar'
+import { Link } from 'react-router-dom'
 
 class CreateBadgeModal extends Component {
-  state = { open: false, childOpen: false, child2Open: false }
+  state = { open: true, childOpen: false, child2Open: false }
 
   show = dimmer => () => this.setState({ dimmer, open: true })
   show2 = dimmer => () => this.setState({ dimmer, childOpen: true })
@@ -18,8 +20,8 @@ class CreateBadgeModal extends Component {
 
     return (
       <div>
-        <Button onClick={this.show('false')}>Create Badge</Button>
-        <Modal dimmer size='tiny' open={open} onClose={this.close2}>
+        <Sidebar/>
+        <Modal dimmer size='tiny' open={open} >
           <Modal.Header>Create a Badge!</Modal.Header>
           <Modal.Content >
             <Modal.Description>
@@ -40,7 +42,7 @@ class CreateBadgeModal extends Component {
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
-            <Button color='black' onClick={this.close}>Close</Button>
+            <Link to='/'><Button color='black' >Close</Button></Link>
           </Modal.Actions>
         </Modal>
       </div>

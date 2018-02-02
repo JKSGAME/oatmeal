@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import './Dashboard.css'
-import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
-import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './Dashboard.css';
+import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal';
+import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
+import axios from 'axios';
 import Sidebar from './Sidebar/Sidebar'
 import bowl from './../../assets/Logomakr_3mQyLR.png'
 import Header from './../Header/Header'
@@ -64,17 +64,8 @@ class Dashboard extends Component {
           <Sidebar/>
         </div>
         <div className="Dashboard">
-        <Sidebar/>
-        {/* <header>
-          <div className="logo">
-            <img className="logo-bowl" src={bowl}/>
-            <logotext>Oatmeal</logotext>
-          </div>
-          {/* <button>Sign Out</button> */}
-        {/* </header> */}
-          <Header/>
           <div>
-            <h1 className="dashboard-header">Dashboard</h1>
+            <h1>Dashboard</h1>
           </div>
           <div className="dashboard-container">
             <div className='chal-box-wrapper'>
@@ -91,6 +82,7 @@ class Dashboard extends Component {
           </div>
             <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
           </div>
+         </div> 
       </div>
       </div>
     );

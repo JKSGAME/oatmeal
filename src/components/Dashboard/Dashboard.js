@@ -53,18 +53,25 @@ class Dashboard extends Component {
     return (
       <div className="flex-row">
         <div className="Dashboard">
-        <div className="sidebar">
-          <Sidebar challengeId={this.state.challenges.challenge_id} history={this.props.history} />
-        </div>
-          <header>
-            <h1>Dashboard</h1>
-          </header>
-          <div className="dashboard-container">
-            <div className='chal-box-wrapper'>
-              {curChal}
-              {remaining()}
-              <div className="create-challenge">
-                <CreateChallengeModal />
+          <div className="sidebar">
+            <Sidebar history={this.props.history} challengeid={this.props.challenge_id}/>
+          </div>
+
+          <div className="logo-location">
+            <Header />
+          </div>
+
+          <div className="dash">
+            <h2>Dashboard</h2>
+            <div className="dashboard-container">
+              <div className='chal-box-wrapper'>
+                {curChal}
+                {remaining()}
+                <div className="create-challenge">
+                  <div className="create-content">  
+                    <CreateChallengeModal />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

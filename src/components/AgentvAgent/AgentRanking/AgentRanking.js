@@ -119,7 +119,8 @@ class AgentRanking extends Component {
                                                     <Image className='thirdPlaceImg' size='small' src={e.photos} />
                                                     <div>
                                                         <h6>{e.name}</h6>
-                                                        <div><p>Team: {e.team}</p>
+                                                        <div>
+                                                            <p>Team: {e.team}</p>
                                                             <p>{e.kpi}: {dynamicKPI(i)}</p>
                                                         </div>
                                                     </div>

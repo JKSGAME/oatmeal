@@ -198,8 +198,9 @@
         width: 100%;
     }
     
-    .ui.small.image.secondPlaceImg {
+    .img.ui.small.image.secondPlaceImg {
         margin-bottom: 6px;
+        margin-right: 0 !important;
     }
     
     .SecondPlaceAgent {

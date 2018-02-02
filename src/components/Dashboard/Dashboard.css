@@ -4,11 +4,7 @@
     flex-wrap: nowrap;
 }
 
-/* .sidebar{
-    height: 100vh;
-    width: 5%;
-    background-color: #06324f;
-} */
+
 
 
 
@@ -91,3 +87,10 @@ h3, h4{
     justify-content: space-between;
 }
 
+@media (max-width: 425px){
+    .sidebar{
+        display: none;
+    }
+
+    
+}

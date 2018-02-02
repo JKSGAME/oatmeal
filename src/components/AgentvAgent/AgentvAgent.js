@@ -5,10 +5,6 @@ import { connect } from 'react-redux';
 import { fetchAVAData } from './../../ducks/reducer';
 import _ from "lodash";
 import axios from 'axios';
-import FirstPlaceAgent from './FirstPlaceAgent/FirstPlaceAgent';
-import SecondThirdUnrankedAgent from './SecondThirdUnrankedAgent/SecondThirdUnrankedAgent';
-import { Sidebar, Menu, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import Fullscreen from 'react-full-screen';
 import io from 'socket.io-client';
 import AgentRanking from './AgentRanking/AgentRanking';
@@ -28,7 +24,6 @@ class AgentvAgent extends Component {
     componentDidMount() {
         // this.props.fetchAVAData()
         let roomId = this.props.challengeId
-        console.log(roomId)
         if ( roomId > 0 ) {
             socket.emit( 'join room', {
                 room: roomId,
@@ -62,7 +57,7 @@ class AgentvAgent extends Component {
     return (
         <div>
             <button onClick= {this.goFull} className="fullscreen-button">
-                <img src={fullicon} className="fullscreen-icon" />
+                <img src={fullicon} className="fullscreen-icon" alt='full screen option'/>
                 <p>Fullscreen</p>
             </button>
             <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>

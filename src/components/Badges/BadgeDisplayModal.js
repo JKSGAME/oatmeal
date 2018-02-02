@@ -18,7 +18,7 @@ class BadgeDisplayModal extends Component {
         const { achievements, trophies } = this.state
         const achievementInfo = achievements.map((e, i) => {
             return (
-                <div className='achievement-column' key={e.id}>
+                <div className='achievement-column' key={e.name}>
                     < Card >
                         <Card.Content>
                             <Segment.Group horizontal>
@@ -41,7 +41,7 @@ class BadgeDisplayModal extends Component {
 
         const trophyInfo = trophies.map( ( e, i ) => {
             return (
-                <div className='trophy-column' key={e.id}>
+                <div className='trophy-column' key={e.name}>
                 < Card >
                 <Card.Content>
                     <Segment.Group horizontal>

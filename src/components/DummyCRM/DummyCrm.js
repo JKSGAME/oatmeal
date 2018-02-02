@@ -56,7 +56,7 @@ class DummyCrm extends Component {
     // console.log( this.state.standings )
     
 
-    let standingsNew = _.map( this.state.challenges, 'challenge_id' ) 
+    // let standingsNew = _.map( this.state.challenges, 'challenge_id' ) 
     let roomId = this.state.challengeId
     
     

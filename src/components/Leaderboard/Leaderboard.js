@@ -5,6 +5,7 @@ import TeamvTeam from './../TeamvTeam/TeamvTeam'
 import './Leaderboard.css'
 import _ from "lodash"
 import Sidebar from './../Dashboard/Sidebar/Sidebar'
+import Header from '../Header/Header'
 
 
 class Leaderboard extends Component {
@@ -36,6 +37,9 @@ class Leaderboard extends Component {
             <div className="Leaderboard">
                 <div  className="sidebar">
                     <Sidebar />
+                </div>
+                <div className='logo-location2'>
+                    <Header/>
                 </div>
                 <div className='board'>
                     { leaderboard( chalTypeId[0] ) }

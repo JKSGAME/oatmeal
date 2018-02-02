@@ -5,8 +5,6 @@ import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal';
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
 import axios from 'axios';
 import Sidebar from './Sidebar/Sidebar'
-import bowl from './../../assets/Logomakr_3mQyLR.png'
-import Header from './../Header/Header'
 
 
 
@@ -54,7 +52,7 @@ class Dashboard extends Component {
       return buttonArr
     }
 
-    
+
 
 
     return (
@@ -63,10 +61,9 @@ class Dashboard extends Component {
         <div className="sidebar">
           <Sidebar/>
         </div>
-        <div className="Dashboard">
-          <div>
+          <header>
             <h1>Dashboard</h1>
-          </div>
+          </header>
           <div className="dashboard-container">
             <div className='chal-box-wrapper'>
               {curChal}
@@ -80,9 +77,7 @@ class Dashboard extends Component {
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
 
           </div>
-            <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
           </div>
-         </div> 
       </div>
     );
   }

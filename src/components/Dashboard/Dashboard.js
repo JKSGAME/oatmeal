@@ -6,6 +6,8 @@ import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
 import CreateBadgeModal from '../Badges/CreateBadgeModal';
 import axios from 'axios';
 import Sidebar from './Sidebar/Sidebar'
+import bowl from './../../assets/Logomakr_3mQyLR.png'
+import Header from './../Header/Header'
 
 
 
@@ -53,7 +55,7 @@ class Dashboard extends Component {
       return buttonArr
     }
 
-
+    
 
 
     return (
@@ -63,9 +65,17 @@ class Dashboard extends Component {
         </div>
         <div className="Dashboard">
         <Sidebar/>
-          <header>
-            <h1>Dashboard</h1>
-          </header>
+        {/* <header>
+          <div className="logo">
+            <img className="logo-bowl" src={bowl}/>
+            <logotext>Oatmeal</logotext>
+          </div>
+          {/* <button>Sign Out</button> */}
+        {/* </header> */}
+          <Header/>
+          <div>
+            <h1 className="dashboard-header">Dashboard</h1>
+          </div>
           <div className="dashboard-container">
             <div className='chal-box-wrapper'>
               {curChal}

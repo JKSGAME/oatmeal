@@ -51,7 +51,6 @@ class CurrentChallengeModal extends Component {
     render() {
         const { open, column, direction } = this.state
 
-
         return (
             <div className='CurrentChallengeModal'>
                 <Button onClick={this.show('blurred')}>Current Challenges</Button>

@@ -9,7 +9,7 @@ class CreateBadgeModal extends Component {
   show = dimmer => () => this.setState({ dimmer, open: true })
   show2 = dimmer => () => this.setState({ dimmer, childOpen: true })
   show3 = dimmer => () => this.setState({ dimmer, child2Open: true })
-  close = () => this.setState({ open: false, childOpen: false })
+  close = () => this.setState({ open: false, childOpen: false, child2Open: false })
   close2 = () => this.setState({ childOpen: false, open: true })
   close3 = () => this.setState({ child2Open: false, open: true })
 

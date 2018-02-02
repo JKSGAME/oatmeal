@@ -1,0 +1,31 @@
+.achievement-segment .ui.basic.segment {
+    flex: inherit !important;
+}
+
+.trophy-segment .ui.basic.segment {
+    flex: inherit !important;
+}
+
+.achievement-column > .ui.card, .ui.cards>.card {
+    width: 377px;
+}
+
+.achievement-column .ui.image {
+    margin: 0;
+}
+
+.trophy-column .ui.image {
+    margin: 0;
+}
+
+.trophy-column > .ui.card, .ui.cards>.card {
+    width: 377px;
+}
+
+.achievement-column > .ui.card>.content, .ui.cards>.card>.content {
+    padding: 0;
+}
+
+.trophy-column > .ui.card>.content, .ui.cards>.card>.content {
+    padding: 0;
+}

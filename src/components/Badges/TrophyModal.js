@@ -18,7 +18,8 @@ class TrophyModal extends Component {
         selectedScoreSubType: '',
         selectedRewardType: '',
         selectedPhoto: '',
-        photoUrl: ''
+        photoUrl: '',
+        displaySubTypes: []
     }
 
 
@@ -35,10 +36,10 @@ class TrophyModal extends Component {
         this.addTrophy()
         // send data to db, send data in fields, then this.name = ''
         this.setState({
-        selectedScoreType: '',
-        selectedScoreSubType: '',
-        selectedRewardType: '',
-        selectedPhoto: ''
+            selectedScoreType: '',
+            selectedScoreSubType: '',
+            selectedRewardType: '',
+            selectedPhoto: ''
         })
         this.props.function3()
     }
@@ -56,40 +57,56 @@ class TrophyModal extends Component {
             reward_value: this.rewardValue.inputRef.value
         }
 
-        axios.post( '/api/create_trophy_badge', trophy ).then(res => {
+        axios.post('/api/create_trophy_badge', trophy).then(res => {
             console.log('res', res.data)
         })
     }
 
-    // figure out how to get the url and id to send to db
     imageClick = (e, d) => {
-        console.log('d', d);
         this.setState({
             selectedPhoto: d.value,
             photoUrl: d.value
         })
     }
 
-    componentDidMount() {
-        axios.get('/api/get_trophies_scoreType').then(res => this.setState({ scoreTypes: res.data }))
-
-        axios.get('/api/get_reward_type').then(res => {
-            this.setState({ rewards: res.data })
-        })
-
-        axios.get('/api/get_badge_photos').then(res => {
-            console.log('photos', res.data);
-            this.setState({ photos: res.data })
-        })
-
-        axios.get('/api/get_trophies_subtype').then(res => {
-            this.setState({ scoreSubTypes: res.data })
+    subtypeCheck = (e, d) => {
+        let subtypeArr = []
+        if (d.value === 1) {
+            this.state.scoreSubTypes.map((f, i) => {
+                if (f.id <= 3) {
+                    subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
+                }
+            })
+        }
+        else if (d.value === 2) {
+            this.state.scoreSubTypes.map((f, i) => {
+                if (f.id >= 4) {
+                    subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
+                }
+            })
+        } else {
+            this.state.scoreSubTypes.map((f, i) => {
+                    subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
+            })
+        }
+        this.setState({
+            selectedScoreType: d.value,
+            displaySubTypes: subtypeArr
         })
     }
 
-    render() {
-        let { scoreTypes, rewards, scoreSubTypes, photos } = this.state
+    componentDidMount() {
+        axios.get('/api/get_trophies_scoreType').then(res => this.setState({ scoreTypes: res.data }))
 
+        axios.get('/api/get_reward_type').then(res => this.setState({ rewards: res.data }))
+
+        axios.get('/api/get_badge_photos').then(res => this.setState({ photos: res.data }))
+
+        axios.get('/api/get_trophies_subtype').then(res => this.setState({ scoreSubTypes: res.data }))
+    }
+
+    render() {
+        let { scoreTypes, rewards, photos, displaySubTypes } = this.state
         const rewardsInfo = rewards.map((e, i) => {
             return { id: e.id, key: e.id, text: e.reward_type, value: e.id }
         })
@@ -98,8 +115,8 @@ class TrophyModal extends Component {
             return { id: e.id, key: e.id, text: e.score_type, value: e.id }
         })
 
-        const scoreSubTypeInfo = scoreSubTypes.map((e, i) => {
-            return { id: e.id, key: e.id, text: e.score_subtype, value: e.id }
+        const scoreSubTypeInfo = displaySubTypes.map((e, i) => {
+            return { id: e.id, key: e.id, text: e.text, value: e.id }
         })
 
         const photoInfo = photos.map((e, i) => {
@@ -154,7 +171,7 @@ class TrophyModal extends Component {
                             <Segment.Group horizontal >
                                 <Segment basic  >
                                     <Header size='small'>Score Type</Header>
-                                    <Dropdown placeholder='Score Type' floating search selection options={scoreTypeInfo} onChange={(e, d) => this.dataGrabber('selectedScoreType', d.value)} />
+                                    <Dropdown placeholder='Score Type' floating search selection options={scoreTypeInfo} onChange={(e, d) => this.subtypeCheck(e, d)} />
                                 </Segment>
 
                                 <Segment>

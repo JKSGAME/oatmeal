@@ -14,7 +14,6 @@ class SideBar extends Component {
         <Sidebar as={Menu} width='thin' visible icon='labeled' vertical inverted >
           <Link to='/' ><Menu.Item name='home'><Icon name='home' /></Menu.Item></Link>
           <Link to=''><Menu.Item name='profile'><Icon name='user circle outline' /></Menu.Item></Link>
-          {/* gift */}
           <Link to='/rewards'><Menu.Item name='camera'><Icon name='dollar' /></Menu.Item></Link>
           <Menu.Item name='badges' onClick={this.show('false')} ><Icon name='trophy' /><BadgeDisplayModal open={this.state.open} close={this.close} /></Menu.Item>
         </Sidebar>

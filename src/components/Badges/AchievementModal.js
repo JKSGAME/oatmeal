@@ -59,7 +59,6 @@ class AchievementModal extends Component {
     }
 
     imageClick = (e, d) => {
-        console.log('d', d);
         this.setState({
             selectedPhoto: d.value,
         })
@@ -67,18 +66,11 @@ class AchievementModal extends Component {
 
     componentDidMount() {
         axios.get('/api/get_achievement_scoreType').then(res => this.setState({ scoreTypes: res.data }))
-        axios.get('/api/get_reward_type').then(res => {
-            this.setState({ rewards: res.data })
-        })
 
-        axios.get('/api/get_badge_photos').then(res => {
-            console.log('photos', res.data);
-            this.setState({ photos: res.data })
-        })
+        axios.get('/api/get_reward_type').then(res => this.setState({ rewards: res.data }))
 
-        // axios.get( '/api/get_badge_photo').then( res => {
-        //     console.log('photo', res.data);
-        //     this.setState( { photo: res.data } ) } )
+        axios.get('/api/get_badge_photos').then(res => this.setState({ photos: res.data }))
+
     }
 
     render() {

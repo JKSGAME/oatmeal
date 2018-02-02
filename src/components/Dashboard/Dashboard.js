@@ -92,6 +92,7 @@ class Dashboard extends Component {
             <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
           </div>
       </div>
+      </div>
     );
   }
 }

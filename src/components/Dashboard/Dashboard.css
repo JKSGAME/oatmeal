@@ -6,9 +6,6 @@
 
 
 
-
-
-
 .Dashboard {
 	display: flex;
 	flex-direction: column;
@@ -48,28 +45,48 @@
 }
 
 .chal-box {
-    /* border: 1px solid black; */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    align-content: center;
     height: 25vh;
     width: 21vw;
     margin: 10px 0;
     padding: 10px 0;
+
     background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+
 }
 
 
 .create-challenge{
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     height: 25vh;
     width: 21vw;
     margin: 10px 0;
     padding: 10px 0;
+    
     background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    
 
 }
+
+.create-challenge-off{
+    height: 25vh;
+    width: 21vw;
+    margin: 10px 0;
+    padding: 10px 0;
+    
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+
+}
+
 h3, h4{
     color: black;
 }
+
 .crm-btn{
     height: 35px;
     width: 150px;
@@ -87,10 +104,117 @@ h3, h4{
     justify-content: space-between;
 }
 
+
 @media (max-width: 425px){
     .sidebar{
         display: none;
     }
 
+    .flex-row{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+        overflow-y: visible;
+        background-color: #dbe1e5;
+
+    }
     
+    
+    
+    .Dashboard {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+        
+        height: 100%;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    header{
+        margin-bottom: 20px;
+    }
+    
+    .dashboard-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        height: 100vh;
+        width: 100vw;
+
+        background-color: #dbe1e5;
+
+    }
+    
+    .chal-box-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+
+        height: 100%;
+        width: 100%;
+       
+    
+    }
+    
+    .chal-box {
+        height: 25vh;
+        width: 90vw;
+        padding: 10px 0;
+        
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+    }
+    
+    
+    .create-challenge{
+        height: 25vh;
+        width: 90vw;
+        padding: 10px 0;
+
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+    
+    
+    }
+
+    .create-challenge-off{
+        display:none;
+    
+    }
+    h3, h4{
+        color: black;
+    }
+    .crm-btn{
+        height: 35px;
+        width: 150px;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        background-color: lightgray;
+        border-radius: 5px;
+        border: none;
+      }
+    
+    .modals {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
 }

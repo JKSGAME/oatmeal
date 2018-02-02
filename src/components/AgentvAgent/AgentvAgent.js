@@ -63,6 +63,7 @@ class AgentvAgent extends Component {
         <div>
             <button onClick= {this.goFull} className="fullscreen-button">
                 <img src={fullicon} className="fullscreen-icon" />
+                <p>Fullscreen</p>
             </button>
             <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
                 <div className="AgentvAgent">

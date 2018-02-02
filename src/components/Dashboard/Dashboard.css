@@ -4,7 +4,7 @@
     flex-wrap: nowrap;
 }
 
-header {
+/* header {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -38,9 +38,9 @@ logotext {
     border: 1px solid black;
 } */
 
-.dashboard-header {
+/* .dashboard-header {
     font-size: 45px;
-}
+}  */
 
 .Dashboard {
 	display: flex;
@@ -52,7 +52,7 @@ logotext {
 
     height: 100vh;
     width: 100vw;
-    margin-left: 10vw;
+    margin-left: 3.5vw;
 }
 
 

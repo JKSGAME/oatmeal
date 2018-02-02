@@ -97,12 +97,12 @@ class AgentRanking extends Component {
                                     return <div className="SecondPlaceAgent" key={e.userId} >
                                                 <div className="secondPlace">
                                                     <div className='rank'>2nd Place</div>
-                                                    <Image size='small' src={e.photos} />
+                                                    <Image className='secondPlaceImg' size='small' src={e.photos} />
                                                     <div>
-                                                        <span>{e.name}</span>
+                                                        <h6>{e.name}</h6>
                                                         <div>
                                                             <p>Team: {e.team}</p>
-                                                            <div>{e.kpi}: {dynamicKPI(i)}</div>
+                                                            <p>{e.kpi}: {dynamicKPI(i)}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -116,11 +116,12 @@ class AgentRanking extends Component {
                                     return <div className='ThirdPlaceAgent'  key={e.userId}>
                                                 <div className="thirdPlace">
                                                     <div className='rank'>3rd Place</div>
-                                                    <Image size='small' src={e.photos} />
+                                                    <Image className='thirdPlaceImg' size='small' src={e.photos} />
                                                     <div>
-                                                        <span>{e.name}</span>
-                                                        <div><p>Team: {e.team}</p>
-                                                            <div>{e.kpi}: {dynamicKPI(i)}</div>
+                                                        <h6>{e.name}</h6>
+                                                        <div>
+                                                            <p>Team: {e.team}</p>
+                                                            <p>{e.kpi}: {dynamicKPI(i)}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -149,13 +150,15 @@ class AgentRanking extends Component {
                             })}
                         </FlipMove>
                         </div>
-                        
+                        <FlipMove>
+
                         <MediaQuery query=" ( max-width: 425px) ">
                             <MobileModal chalid={this.state.info[0] && this.state.info[0].challenge_id}/>
                         </MediaQuery>
                         <MediaQuery query=" ( min-width: 426px) ">
                             <ViewMoreModal chalid={this.state.info[0] && this.state.info[0].challenge_id}/>
                         </MediaQuery>
+                        </FlipMove>
                     </div>
                 </div>
             </div>

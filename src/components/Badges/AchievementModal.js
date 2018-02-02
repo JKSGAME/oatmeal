@@ -3,6 +3,7 @@ import { Popup, Button, Header, Modal, Dropdown, Input, Form, TextArea, Segment,
 // import DropzoneComponent from 'react-dropzone-component'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import './Badges.css'
 
 
 // var componentConfig = { postUrl: 'no-url' };
@@ -91,7 +92,7 @@ class AchievementModal extends Component {
 
         return (
             <div>
-                <Popup wide on='hover' position='bottom left' trigger={<Button onClick={this.show2('false')}>Achievement</Button>} >
+                <Popup wide on='hover' position='bottom left' trigger={<Button className='achievBtn hvr-grow' onClick={this.show2('false')}>Achievement</Button>} >
                     <Popup.Content>
                         An achievement badge is given to those who hit a specified benchmark. Set some easy benchmarks and get harder while increasing their reward. Ex: Name: 5 sales in a week. Reward: 50 points.
               </Popup.Content>

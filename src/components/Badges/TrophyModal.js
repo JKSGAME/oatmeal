@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Popup, Button, Header, Modal, Dropdown, Input, Form, TextArea, Segment, Divider, Image } from 'semantic-ui-react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import './Badges.css'
 
 
 // var componentConfig = { postUrl: 'no-url' };
@@ -72,7 +73,7 @@ class TrophyModal extends Component {
     subtypeCheck = (e, d) => {
         let subtypeArr = []
         if (d.value === 1) {
-            return this.state.scoreSubTypes.map((f, i) => {
+            this.state.scoreSubTypes.map((f, i) => {
                 if (f.id <= 3) {
                     return subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
                 }   
@@ -127,7 +128,7 @@ class TrophyModal extends Component {
 
         return (
             <div>
-                <Popup wide on='hover' position='bottom right' trigger={<Button content='Trophy' onClick={this.show2('false')} />} >
+                <Popup wide on='hover' position='bottom right' trigger={<Button className='hvr-grow' content='Trophy' onClick={this.show2('false')} />} >
                     <Popup.Content>
                         A trophy badge is given to those who win challenges or duels. Rewards should be based on difficulty of the win. Ex. First to 10 dials Reward: 100 points.
           </Popup.Content>
@@ -145,7 +146,7 @@ class TrophyModal extends Component {
 
                                 <Segment basic>
                                     <Header size='small'>Badge Image</Header>
-                                    <Dropdown floating search selection options={photoInfo} onChange={this.imageClick} />
+                                    <Dropdown placeholder='Select an Image' floating search selection options={photoInfo} onChange={this.imageClick} />
                                 </Segment>
                                 <Segment>
                                     <Image src={this.state.selectedPhoto} size='small' />

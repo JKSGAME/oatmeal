@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import _ from 'lodash';
-import { Button, Modal, Grid, Segment } from 'semantic-ui-react';
-// import { Link } from 'react-router-dom';
-// users in state might need to be put in redux, for other componenets to have sorted da
+import React, { Component } from 'react'
+import axios from 'axios'
+import _ from 'lodash'
+import { Button, Modal, Grid, Segment } from 'semantic-ui-react'
+import FlipMove from 'react-flip-move'
+import './MobileModal.css'
 
 class MobileModal extends Component {
 
@@ -25,7 +25,6 @@ class MobileModal extends Component {
 
     componentWillReceiveProps(nextProps) {
         axios.get(`/api/viewmore/${nextProps.chalid}`).then(res => {
-            // console.log('res.data', res.data);
             let userArr = []
             res.data.map((e, i) => {
                 let standingsObj = JSON.parse(e.standings)
@@ -71,7 +70,7 @@ class MobileModal extends Component {
 
         return (
             <div className='MobileModal'>
-                <Button onClick={this.show('blurred')}>View More</Button>
+                <Button className='mobileViewMoreBtn' basic onClick={this.show('blurred')}>View More</Button>
                 <Modal dimmer open={open} onClose={this.close}>
                     <Modal.Header>Full Current Standings List</Modal.Header>
                     <Modal.Content >
@@ -79,9 +78,11 @@ class MobileModal extends Component {
                             <Grid>
                                 <Grid.Row columns={1} only='mobile'>
                                     <Grid.Column>
+                                   
                                         {users.map((e, i) => {
-                                           return <Segment key={e.userId}><p>{i + 1} {e.name} {e.kpi}: {dynamicKPI(i)}</p></Segment>
+                                           return <Segment key={e.userId}> <FlipMove><p>{i + 1} {e.name} {e.kpi}: {dynamicKPI(i)}</p></FlipMove></Segment>
                                         })}
+                                        
                                     </Grid.Column>
                                 </Grid.Row>
                             </Grid>

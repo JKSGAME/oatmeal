@@ -16,14 +16,11 @@
     /* margin-left: 10vw; */
     background-color:#dbe5f1;
 }
-
 .logo-location{ 
     position: fixed;
     top: 2%;
     left: 20%;
-
 }
-
 .dash{
     display:flex;
     flex-direction: column;
@@ -31,7 +28,6 @@
     margin-top: -45%;
     margin-left: 10vw;
 }
-
 .dash > h2 {
     font-size: 40px;
     font-weight: 400;
@@ -43,10 +39,8 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-
     height: 57vh;
     width: 70vw;
-
     border-radius: 8px;
     background-color: #89a2b2;
 }
@@ -73,7 +67,6 @@
 }
 .card-content{
     margin-top: 15%;
-
 }
 .create-challenge{
     height: 25vh;
@@ -96,7 +89,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     border-radius: 5px;
 }
-
 .create-content{
     margin-top: 5%;
 }
@@ -124,6 +116,26 @@ h4{
     flex-direction: row;
     justify-content: space-between;
 }
+
+/* Float */
+.hvr-float {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .hvr-float:hover, .hvr-float:focus, .hvr-float:active {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+
 @media (max-width: 425px){
     .sidebar{
         display: none;

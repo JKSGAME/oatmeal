@@ -1,16 +1,21 @@
-h1 {
-    font-size: 165px;
-    font-family: 'Jura', sans-serif;
-    color: black;
-}
-
-.logo {
-    height: 72px;
-    width: 72px;
-}
-
-div {
+.logo-flex{
+    width: 50vw;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
+
+brandname {
+    font-size: 60px;
+    font-family: 'Jura', sans-serif;
+    color: black;
+
+    margin-top: -6px;
+    margin-left: -3px;
+}
+
+.logo {
+    height: 54px;
+    width: 54px;
+}
+

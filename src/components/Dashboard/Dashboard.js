@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import './Dashboard.css';
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal';
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
-
-import CreateBadgeModal from '../Badges/CreateBadgeModal';
 import axios from 'axios';
 import Sidebar from './Sidebar/Sidebar'
 

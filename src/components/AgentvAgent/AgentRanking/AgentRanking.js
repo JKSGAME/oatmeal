@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import './AgentRanking.css';
-import { connect } from 'react-redux';
-import { fetchUsers } from './../../../ducks/reducer';
-import axios from 'axios';
-import _ from 'lodash';
-import FlipMove from 'react-flip-move';
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import './AgentRanking.css'
+import { connect } from 'react-redux'
+import { fetchUsers } from './../../../ducks/reducer'
+import axios from 'axios'
+import _ from 'lodash'
+import FlipMove from 'react-flip-move'
 import { Image } from 'semantic-ui-react'
-import MediaQuery from 'react-responsive';
-import MobileModal from '../../MobileModal/MobileModal';
-import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal';
+import MediaQuery from 'react-responsive'
+import MobileModal from '../../MobileModal/MobileModal'
+import ViewMoreModal from '../../ViewMoreModal/ViewMoreModal'
 
 
 
@@ -26,7 +26,6 @@ class AgentRanking extends Component {
     close = () => this.setState({ open: false })
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         axios.get(`/api/viewmore/${nextProps.challengeId}`).then(res => {
             let userArr = []
             res.data.map((e, i) => {
@@ -49,7 +48,6 @@ class AgentRanking extends Component {
                 else if (userArr[0].kpi === 'Dials') {
                     return arr = _.orderBy(userArr, ['standings[0].dialsKPI'], ['desc'])
                 }
-                console.log('arr', arr);
                 return arr
             }
 
@@ -83,7 +81,7 @@ class AgentRanking extends Component {
                             return <div key={e.userId} className='AVA-first-place-agent'>
                                         <div className="first-place-left">
                                             <h1 as='h1'>1st Place</h1>
-                                            <img className='first-place-img' centered size='small' src={e.photos} />
+                                            <img className='first-place-img' size='small' src={e.photos} alt='winner'/>
                                         </div>
                                         <div className="first-place-right">
                                             <h2>{e.name}</h2>
@@ -161,10 +159,10 @@ class AgentRanking extends Component {
                         </div>
                         
                         <MediaQuery query=" ( max-width: 425px) ">
-                            <MobileModal />
+                            <MobileModal chalid={this.state.info[0] && this.state.info[0].challenge_id}/>
                         </MediaQuery>
                         <MediaQuery query=" ( min-width: 426px) ">
-                            <ViewMoreModal />
+                            <ViewMoreModal chalid={this.state.info[0] && this.state.info[0].challenge_id}/>
                         </MediaQuery>
 
                     </div>

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import AgentvAgent from './../AgentvAgent/AgentvAgent';
+import React, { Component } from 'react'
+import axios from 'axios'
+import AgentvAgent from './../AgentvAgent/AgentvAgent'
 import TeamvTeam from './../TeamvTeam/TeamvTeam'
-import './Leaderboard.css';
-import _ from "lodash";
+import './Leaderboard.css'
+import _ from "lodash"
 import Sidebar from './../Dashboard/Sidebar/Sidebar'
 
 

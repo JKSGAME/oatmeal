@@ -1,17 +1,14 @@
 .AgentvAgent{
     display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
     align-content: center;
     height: 100%;
     width: 100%;
     background-color: #dbe1e5;
-
-
 }
-
 .fullscreen-button{
     position: fixed;
    
@@ -24,51 +21,43 @@
     border: none;
     text-align: right;
 }
-
 .fullscreen-icon{
     width: 20px;
     height: 20px;
     margin-right: -4px;
     
 }
-
-
 .AVA-title {
     display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
     align-content: center;
     height: 5%;
     width: 100%;
     margin-bottom: 15px
-
 }
-
 .AVA-leaderboard-data {
     display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
     align-content: center;
     height: 100%;
     width: 100%;
-
 }
-
 .AVA-FirstPlaceAgent-Placement {
     display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
     align-content: center;
     height: 100%;
     width: 100%;
 }
-
 @media (max-width: 425px){
     .fullscreen-button{
         display: none;

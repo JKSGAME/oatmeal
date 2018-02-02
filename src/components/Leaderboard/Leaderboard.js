@@ -5,8 +5,6 @@ import TeamvTeam from './../TeamvTeam/TeamvTeam'
 import './Leaderboard.css'
 import _ from "lodash"
 import Sidebar from './../Dashboard/Sidebar/Sidebar'
-
-
 class Leaderboard extends Component {
     constructor( props ){
         super( props )
@@ -14,18 +12,13 @@ class Leaderboard extends Component {
             challenges: {}, 
         } 
     }
-
-
-
     componentDidMount() {
-
         axios.get( `/api/challenges/${this.props.match.params.id}` ).then( allChallenges => {
             this.setState({
                 challenges: allChallenges.data
             })
         })
     }
-
     
     render() {
         let chalid = _.map( this.state.challenges, "id" )
@@ -49,5 +42,4 @@ class Leaderboard extends Component {
         )
     }
 }
-
 export default Leaderboard

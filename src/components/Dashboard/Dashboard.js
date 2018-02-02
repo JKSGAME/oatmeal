@@ -5,11 +5,6 @@ import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal';
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
 import axios from 'axios';
 import Sidebar from './Sidebar/Sidebar'
-import bowl from './../../assets/Logomakr_3mQyLR.png'
-import Header from './../Header/Header'
-
-
-
 class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -18,7 +13,6 @@ class Dashboard extends Component {
       challenges: []
     }
   }
-
   componentDidMount() {
     axios.get('/api/fullChallengeTable').then(res => {
       this.setState({
@@ -26,7 +20,6 @@ class Dashboard extends Component {
       })
     })
   }
-
   render() {
     const { challenges } = this.state
     let chalLength = challenges.length
@@ -41,7 +34,6 @@ class Dashboard extends Component {
         </div>
       )
     })
-
     let remaining = () => {
       let buttonArr = [];
       for (let i = chalLength; i < 5; i++) {
@@ -53,20 +45,15 @@ class Dashboard extends Component {
       }
       return buttonArr
     }
-
-    
-
-
     return (
       <div className="flex-row">
         <div className="Dashboard">
         <div className="sidebar">
           <Sidebar/>
         </div>
-        <div className="Dashboard">
-          <div>
+          <header>
             <h1>Dashboard</h1>
-          </div>
+          </header>
           <div className="dashboard-container">
             <div className='chal-box-wrapper'>
               {curChal}
@@ -78,14 +65,10 @@ class Dashboard extends Component {
           </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
-
           </div>
-            <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
           </div>
-         </div> 
       </div>
     );
   }
 }
-
 export default Dashboard;

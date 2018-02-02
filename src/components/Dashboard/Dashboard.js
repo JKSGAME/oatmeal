@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Dashboard.css';
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal';
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
+import Header from '../Header/Header'
 import axios from 'axios';
 import Sidebar from './Sidebar/Sidebar'
 class Dashboard extends Component {
@@ -27,9 +28,11 @@ class Dashboard extends Component {
       return (
         <div key={e.id}>
           <div className='chal-box' key={e.name} onClick={() => this.props.history.push(`/leaderboard/${e.challenge_id}`)}>
-            <h3>{e.name}</h3>
-            <h4>Challenge mode: {e.mode}</h4>
-            <h4>KPI: {e.kpi}</h4>
+            <div className="card-content">
+              <h3>{e.name}</h3>
+              <h4>Challenge mode: {e.mode}</h4><br/>
+              <h4>KPI: {e.kpi}</h4>
+            </div>
           </div>
         </div>
       )
@@ -39,7 +42,9 @@ class Dashboard extends Component {
       for (let i = chalLength; i < 5; i++) {
         buttonArr.push(
           <div className="create-challenge-off" key={i}>
-            <CreateChallengeModal />
+            <div className="create-content">
+              <CreateChallengeModal />
+            </div>
           </div>
         )
       }

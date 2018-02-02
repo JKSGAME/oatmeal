@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import _ from 'lodash'
 import { Button, Modal, Table } from 'semantic-ui-react'
+import './ViewMoreModal.css'
 // import { Link } from 'react-router-dom';
 // users in state might need to be put in redux, for other componenets to have sorted da
 
@@ -88,7 +89,7 @@ class ViewMoreModal extends Component {
 
         return (
             <div className='ViewMoreModal'>
-                <Button onClick={this.show('blurred')}>View More</Button>
+                <Button className='viewMoreBtn' basic onClick={this.show('blurred')}>View More</Button>
                 <Modal dimmer open={open} onClose={this.close}>
                     <Modal.Header>Full Current Standings List</Modal.Header>
                     <Modal.Content >
@@ -112,7 +113,7 @@ class ViewMoreModal extends Component {
                                 </Table.Header>
                                 <Table.Body>
                                     {users.map(  (e, i)  => {
-                                       return  <Table.Row key={e.userId} >
+                                       return <Table.Row key={e.userId} >
                                         <Table.Cell>{i + 1}</Table.Cell>
                                         <Table.Cell>{e.name}</Table.Cell>
                                         <Table.Cell>{e.team}</Table.Cell>

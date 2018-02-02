@@ -49,7 +49,7 @@ class Dashboard extends Component {
       <div className="flex-row">
         <div className="Dashboard">
         <div className="sidebar">
-          <Sidebar/>
+          <Sidebar challengeId={this.state.challenges.challenge_id} history={this.props.history} />
         </div>
           <header>
             <h1>Dashboard</h1>
@@ -62,9 +62,6 @@ class Dashboard extends Component {
                 <CreateChallengeModal />
               </div>
             </div>
-          </div>
-        <div className='modals'>
-          <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
           </div>
           </div>
       </div>

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { fetchAVAData } from './../../ducks/reducer';
 import _ from "lodash";
 import axios from 'axios';
-import { Sidebar, Menu, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Fullscreen from 'react-full-screen';
 import io from 'socket.io-client';

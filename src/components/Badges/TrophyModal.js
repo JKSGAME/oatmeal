@@ -72,7 +72,7 @@ class TrophyModal extends Component {
     subtypeCheck = (e, d) => {
         let subtypeArr = []
         if (d.value === 1) {
-            return this.state.scoreSubTypes.map((f, i) => {
+            this.state.scoreSubTypes.map((f, i) => {
                 if (f.id <= 3) {
                     return subtypeArr.push({ id: f.id, key: f.id, text: f.score_subtype, value: f.id })
                 }   
@@ -109,6 +109,7 @@ class TrophyModal extends Component {
 
     render() {
         let { scoreTypes, rewards, photos, displaySubTypes } = this.state
+        console.log('scoresub', this.state.scoreSubTypes)
         const rewardsInfo = rewards.map((e, i) => {
             return { id: e.id, key: e.id, text: e.reward_type, value: e.id }
         })
@@ -118,6 +119,7 @@ class TrophyModal extends Component {
         })
 
         const scoreSubTypeInfo = displaySubTypes.map((e, i) => {
+            console.log('e', e);
             return { id: e.id, key: e.id, text: e.text, value: e.id }
         })
 
@@ -145,7 +147,7 @@ class TrophyModal extends Component {
 
                                 <Segment basic>
                                     <Header size='small'>Badge Image</Header>
-                                    <Dropdown floating search selection options={photoInfo} onChange={this.imageClick} />
+                                    <Dropdown placeholder='Select an Image' floating search selection options={photoInfo} onChange={this.imageClick} />
                                 </Segment>
                                 <Segment>
                                     <Image src={this.state.selectedPhoto} size='small' />

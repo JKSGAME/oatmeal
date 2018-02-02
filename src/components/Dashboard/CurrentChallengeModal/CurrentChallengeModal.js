@@ -10,7 +10,6 @@ class CurrentChallengeModal extends Component {
     constructor() {
         super()
         this.state = {
-            open: false,
             challenges: [],
             column: null,
             direction: null
@@ -53,8 +52,7 @@ class CurrentChallengeModal extends Component {
 
         return (
             <div className='CurrentChallengeModal'>
-                <Button onClick={this.show('blurred')}>Current Challenges</Button>
-                <Modal dimmer open={open} onClose={this.close}>
+                <Modal dimmer open={this.props.open} onClose={this.props.close}>
                     <Modal.Header>Current Challenges</Modal.Header>
                     <Modal.Content >
                         <Modal.Description>
@@ -105,9 +103,7 @@ class CurrentChallengeModal extends Component {
                         </Modal.Description>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button color='black' onClick={this.close}>
-                            Close
-            </Button>
+                        <Button color='black' onClick={this.props.close}>Close</Button>
                     </Modal.Actions>
                 </Modal>
             </div>

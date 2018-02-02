@@ -1,0 +1,16 @@
+h1 {
+    font-size: 165px;
+    font-family: 'Jura', sans-serif;
+    color: black;
+}
+
+.logo {
+    height: 72px;
+    width: 72px;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}

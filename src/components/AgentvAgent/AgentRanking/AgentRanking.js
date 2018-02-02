@@ -83,7 +83,7 @@ class AgentRanking extends Component {
                             return <div key={e.userId} className='AVA-first-place-agent'>
                                         <div className="first-place-left">
                                             <h1 as='h1'>1st Place</h1>
-                                            <img className='first-place-img' centered size='small' src={e.photos} />
+                                            <img className='first-place-img' centered size='small' src={e.photos} alt='winner'/>
                                         </div>
                                         <div className="first-place-right">
                                             <h2>{e.name}</h2>

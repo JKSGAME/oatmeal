@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './Dashboard.css';
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
-import CreateBadgeModal from '../Badges/CreateBadgeModal';
 import axios from 'axios';
 import Sidebar from './Sidebar/Sidebar'
 
@@ -77,7 +75,6 @@ class Dashboard extends Component {
           </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
-          <CreateBadgeModal />
         </div>
         </div>
       </div>

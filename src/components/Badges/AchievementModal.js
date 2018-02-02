@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Popup, Button, Header, Modal, Dropdown, Input, Form, TextArea, Segment, Divider, Image } from 'semantic-ui-react'
 // import DropzoneComponent from 'react-dropzone-component'
-import axios from 'axios';
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 // var componentConfig = { postUrl: 'no-url' };
@@ -31,7 +32,7 @@ class AchievementModal extends Component {
         console.log('rewardvalue', this.rewardValue.inputRef.value);
         console.log('scoretarget', this.scoreTarget.inputRef.value);
         console.log('state', this.state);
-        this.addAchievement()
+        // this.addAchievement()
         // send data to db, send data in fields, then this.name = ''
         this.setState({
             selectedScoreType: '',
@@ -96,7 +97,7 @@ class AchievementModal extends Component {
               </Popup.Content>
                 </Popup>
                 <Modal dimmer size='small' open={this.props.childOpen}  >
-                    <Modal.Header>Achievement Badge<Button floated='right' icon='cancel' color='red' onClick={this.props.function3} ></Button></Modal.Header>
+                    <Modal.Header>Achievement Badge<Link to='/'><Button floated='right' icon='cancel' color='red' onClick={this.props.function3} ></Button></Link></Modal.Header>
                     <Modal.Content >
                         <Modal.Description>
 
@@ -163,7 +164,7 @@ class AchievementModal extends Component {
                     </Modal.Content>
                     <Modal.Actions>
                         <Button color='black' onClick={this.props.function2}>Back</Button>
-                        <Button color='black' onClick={this.submit} >Submit</Button>
+                        <Link to='/'><Button color='black' onClick={this.submit} >Submit</Button></Link>
                         {/* <Button color='black' onClick={this.props.function3}>Close</Button> */}
                     </Modal.Actions>
                 </Modal>

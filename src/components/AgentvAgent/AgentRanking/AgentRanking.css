@@ -1,330 +1,266 @@
 .agent-ranking{
-	width: 90vw;
-	height: 100%;
-	margin-bottom: 30px;
-	margin-top: 3vh;
-
+    width: 90vw;
+    height: 100%;
+    margin-bottom: 30px;
+    margin-top: 3vh;
 }
-
-
-
 .AVA-title > h2{
-	font-size: 32px;
-	font-weight: 600;	
+    font-size: 32px;
+    font-weight: 600;   
 }
-
 .AVA-title > p {
-	font-size: 20px;
-	font-weight: 300;
+    font-size: 20px;
+    font-weight: 300;
 }
-
 .AVA-first-place-agent{
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: center;
-	align-content: center;
-
-	height: 50vh;
-	width: 100%;
-	margin-bottom: 2vh;
-	padding-top: 10px;
-
-	background-color: white;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-	border-radius: 5px;		
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    height: 50vh;
+    width: 100%;
+    margin-bottom: 2vh;
+    padding-top: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;     
 }
-
 .first-place-left{
-	width: 100%;
-
+    width: 100%;
 }
-
 .first-place-right{
-	width: 100%
+    width: 100%
 }
-
 .first-place-img {
-	height: 50%;
-	width: 50%;
-
+    height: 50%;
+    width: 50%;
 }
-
 .SecondThirdUnranked {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: left;
-	align-items: center;
-	align-content: center;
-	height: 100%;
-	width: 100%;
-	
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    
 }
-
 .SecondThirdAgents {
-
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-content: center;
-
-	height: 40vh;
-	width: 100%;
-	margin: 5px;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    height: 40vh;
+    width: 100%;
+    margin: 5px;
 }
-
-
 .SecondPlaceAgent {
-	display: flex;
-	align-self: center;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-content: center; 
-
-	height: 100%;
-	width: 43vw; 
-	padding: 10%;
-
-	background-color: white;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-	border-radius: 5px;		
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: center; 
+    height: 100%;
+    width: 43vw; 
+    padding: 10%;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;     
 }
-
-
 .ThirdPlaceAgent {
-	display: flex;
-	align-self: center;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: center; 
-
-	height: 100%;
-	width: 43vw; 
-	padding: 10%;
-
-
-	background-color: white;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-	border-radius: 5px;		
-	
-	
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center; 
+    height: 100%;
+    width: 43vw; 
+    padding: 10%;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;     
+    
+    
 }
-
 .UnrankedAgents {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-
-	width: 100%;
-	height: 100%;
-	margin-top: 2vh;
-
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 2vh;
 }
-
 .all-unranked{
-	margin-bottom: 2vh;
+    margin-bottom: 2vh;
 }
-
 .AVA-unranked-agent-info {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-
-	width: 90vw;
-	height:  8vh;
-	margin-bottom: 8px;
-
-	background-color: white;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-	border-radius: 5px;		
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 90vw;
+    height:  8vh;
+    margin-bottom: 8px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;     
 }
 .single-unranked{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	
-	width: 90vw;
-	padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    width: 90vw;
+    padding: 20px;
 }
-
-
-
-
 @media (min-width: 426px) {
-	.agent-ranking{
-		width: 60vw;
-		height: 90%;
-		margin-bottom: 30px;
-		margin-top: 3vh;
-	}
-
-
-
-	.AVA-title > h2{
-		font-size: 32px;
-		font-weight: 600;	
-	}
-
-	.AVA-title > p {
-		font-size: 20px;
-		font-weight: 300;
-	}
-
-	.AVA-first-place-agent{
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-items: center;
-		align-content: center;
-
-		height: 40vh;
-		width: 100%;
-		margin-bottom: 20px;
-
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		border-radius: 5px;
-	}
-	
-	.first-place-left{
-		width: 100%;
-
-	}
-	
-	.first-place-right{
-		width: 100%
-	}
-	
-	.first-place-img {
-		height: 60%;
-		width: 60%;
-	
-	}
-	
-	.SecondThirdUnranked {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-items: center;
-		align-content: center;
-		height: 30vh;
-		width: 100%;
-	}
-	
-	.SecondThirdAgents {
-	
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-content: center; 
-
-		height: 30vh;
-		width: 100%;
-
-	}
-	
-	
-	.SecondPlaceAgent {
-		display: flex;
-		align-self: center;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: space-around;
-		align-content: center; 
-
-		height: 30vh;
-		width: 14vw; 
-		padding-left: 18%;
-		padding-right: 18%;
-		margin-right: 10px;
-
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		border-radius: 5px;
-	}
-
-
-	.ThirdPlaceAgent {
-		display: flex;
-		align-self: center;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: space-around;
-		align-items: center;
-		align-content: center; 
-		height: 30vh;
-		width: 14vw; 
-
-		padding-left: 18%;
-		padding-right: 18%;
-		margin-left: 10px;
-
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		border-radius: 5px;
-		
-		
-	}
-	
-	.UnrankedAgents {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		align-content: center;
-
-		height: 100%;
-		width: 29vw;
-		margin-top: 4px;
-	}
-
-	.all-unranked{
-		margin-bottom: 0;
-	}
-
-	.AVA-unranked-agent-info {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		align-content: center;
-
-		width: 29vw;
-		height:  8vh;
-		margin-bottom: 8px;
-
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		border-radius: 5px;		
-
-	}
-	.single-unranked{
-		display: flex;
-		flex-direction: row;
-		width: 29vw;
-		justify-content: space-between;
-		padding: 30px;
-	}
-
-	
+    .agent-ranking{
+        width: 60vw;
+        height: 90%;
+        margin-bottom: 30px;
+        margin-top: 3vh;
+    }
+    .AVA-title > h2{
+        font-size: 32px;
+        font-weight: 600;   
+    }
+    .AVA-title > p {
+        font-size: 20px;
+        font-weight: 300;
+    }
+    .AVA-first-place-agent{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        height: 40vh;
+        width: 100%;
+        margin-bottom: 20px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+    }
+    
+    .first-place-left{
+        width: 100%;
+    }
+    
+    .first-place-right{
+        width: 100%
+    }
+    
+    .first-place-img {
+        height: 60%;
+        width: 60%;
+    
+    }
+    
+    .SecondThirdUnranked {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        height: 30vh;
+        width: 100%;
+    }
+    
+    .SecondThirdAgents {
+    
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: center; 
+        height: 30vh;
+        width: 100%;
+    }
+    
+    
+    .SecondPlaceAgent {
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-content: center; 
+        height: 30vh;
+        width: 14vw; 
+        padding-left: 18%;
+        padding-right: 18%;
+        margin-right: 10px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+    }
+    .ThirdPlaceAgent {
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center; 
+        height: 30vh;
+        width: 14vw; 
+        padding-left: 18%;
+        padding-right: 18%;
+        margin-left: 10px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+        
+        
+    }
+    
+    .UnrankedAgents {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100%;
+        width: 29vw;
+        margin-top: 4px;
+    }
+    .all-unranked{
+        margin-bottom: 0;
+    }
+    .AVA-unranked-agent-info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        width: 29vw;
+        height:  8vh;
+        margin-bottom: 8px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;     
+    }
+    .single-unranked{
+        display: flex;
+        flex-direction: row;
+        width: 29vw;
+        justify-content: space-between;
+        padding: 30px;
+    }
+    
 }
-
-

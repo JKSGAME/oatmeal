@@ -1,149 +1,150 @@
-.AVA-FirstPlaceAgent {
-    display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-	border: 1px solid red;
-	width: 100%;
+.agent-ranking{
+	width: 90vw;
 	height: 100%;
+	margin-bottom: 30px;
+	margin-top: 3vh;
+
 }
 
-.ui.card.AVA-first-place-agent {
-	margin: 4px 0;
+
+
+.AVA-title > h2{
+	font-size: 32px;
+	font-weight: 600;	
+}
+
+.AVA-title > p {
+	font-size: 20px;
+	font-weight: 300;
+}
+
+.AVA-first-place-agent{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+
+	height: 50vh;
+	width: 100%;
+	margin-bottom: 2vh;
+	padding-top: 10px;
+
+	background-color: white;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.first-place-left{
+	width: 100%;
+
+}
+
+.first-place-right{
+	width: 100%
 }
 
 .first-place-img {
-	height: 100%;
-	width: auto
-
-}
-
-/* .first-place-img {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-	border: 1px solid orange;
-	height: 100%;
-	width: 50%; */
-/* } */
-
-.AVA-first-data {
-    display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-	border: 1px solid orange;
-	height: 100%;
+	height: 50%;
 	width: 50%;
+
 }
 
 .SecondThirdUnranked {
-    display: flex;
-	flex-direction: row;
+	display: flex;
 	flex-direction: column;
-	/* flex-wrap: nowrap; */
-	justify-content: center;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
 	align-items: center;
-	/* border: 1px solid red; */
-	height: 25%;
-	width: auto;
+	align-content: center;
+	height: 100%;
+	width: 100%;
+	
 }
 
 .SecondThirdAgents {
-    display: flex;
+
+	display: flex;
 	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	width: 50%;
+	justify-content: space-between;
+	align-content: center;
+
+	height: 40vh;
+	width: 100%;
+	margin: 5px;
+
 }
 
-.SecondPlaceAgent>.ui.card {
-	margin-bottom: 2px;
-	height: 35vh;
-}
 
 .SecondPlaceAgent {
 	display: flex;
-	align-items: center;
-	/* border: 1px solid orange; */
+	align-self: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-content: center; 
+
 	height: 100%;
-	width: 50%;
+	width: 43vw; 
+	padding: 10%;
+
+	background-color: white;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
+
 
 .ThirdPlaceAgent {
 	display: flex;
 	align-self: center;
-	/* flex-direction: column;
+	flex-direction: column;
 	flex-wrap: nowrap;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
-	align-content: center; */
-	/* border: 1px solid orange; */
-	height: 100%;
-	width: 50%;
-}
+	align-content: center; 
 
-.ui.card.SecondPlaceAgent {
-	margin: none !important;
+	height: 100%;
+	width: 43vw; 
+	padding: 10%;
+
+
+	background-color: white;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	
+	
 }
 
 .UnrankedAgents {
-    display: flex;
+	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-	/* border: 1px solid orange; */
 	height: 100%;
-	width: 50%;
-}
-
-.AVA-unranked-data {
-    display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-}
-
-.AVA-unranked-ranking {
-    display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-	margin-bottom: 4px;
-}
-
-.AVA-Unranked-lineItem {
-	height: 10vh;
-	margin: 2px 0;
+	width: 100%;
+	margin-top: 2vh;
 }
 
 .AVA-unranked-agent-info {
-    display: flex;
+	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-}
+	margin-bottom: 8px;
+	width: 90vw;
+	height:  8vh;
+	background-color: white;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 
-.prof-pic {
-	height: 50px;
-	width: 50px;
+}
+.single-unranked{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: flex-start;
+	padding: 20px;
 }
 
 
@@ -151,36 +152,24 @@
 
 @media (min-width: 426px) {
 	.agent-ranking{
-		width: 60%;
-		height: 90%
+		width: 60vw;
+		height: 90%;
+		margin-bottom: 30px;
+		margin-top: 3vh;
 	}
 
 
+
 	.AVA-title > h2{
-		margin-top: 3vh;
 		font-size: 32px;
-		font-weight: 600;
-		
+		font-weight: 600;	
 	}
 
 	.AVA-title > p {
 		font-size: 20px;
 		font-weight: 300;
+	}
 
-	}
-	/* .AVA-FirstPlaceAgent {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-items: center;
-		align-content: center;
-		border: 1px solid red;
-		width: 100%;
-		height: 100%;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-	}
-	 */
 	.AVA-first-place-agent{
 		display: flex;
 		flex-direction: row;
@@ -210,23 +199,11 @@
 	
 	}
 	
-	/* .AVA-first-data {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		align-content: center;
-		border: 1px solid orange;
-		height: 100%;
-		width: 50%;
-	} */
-	
 	.SecondThirdUnranked {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
-		justify-content: space-between;
+		justify-content: flex-start;
 		align-items: center;
 		align-content: center;
 		height: 30vh;
@@ -238,8 +215,9 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
-		justify-content: space-between;
+		justify-content: flex-start;
 		align-content: center; 
+
 		height: 30vh;
 		width: 100%;
 
@@ -253,19 +231,18 @@
 		flex-wrap: nowrap;
 		justify-content: space-around;
 		align-content: center; 
+
 		height: 30vh;
-		width: 100%; 
+		width: 14vw; 
 		padding-left: 18%;
 		padding-right: 18%;
-		margin-right: 5px;
+		margin-right: 10px;
+
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 	}
 
-	.SecondPlaceAgent > h4{
-		width: 100%;
-	}
-	
+
 	.ThirdPlaceAgent {
 		display: flex;
 		align-self: center;
@@ -275,18 +252,16 @@
 		align-items: center;
 		align-content: center; 
 		height: 30vh;
-		width: 100%; 
+		width: 14vw; 
+
 		padding-left: 18%;
 		padding-right: 18%;
-		margin-left: 5px;
+		margin-left: 10px;
+
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 		
 		
-	}
-	
-	.ThirdPlaceAgent > h4{
-		width: 100%
 	}
 	
 	.UnrankedAgents {
@@ -296,34 +271,14 @@
 		justify-content: center;
 		align-items: center;
 		align-content: center;
+
 		height: 100%;
-		width: 100%;
+		width: 29vw;
+		margin-top: 4px;
+		
+		
 	}
-	
-	.AVA-unranked-data {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		align-content: center;
-	}
-	
-	.AVA-unranked-ranking {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		align-content: center;
-	
-	}
-	
-	.AVA-Unranked-lineItem {
-		height: 8vh;
-		margin: 2px;
-	}
-	
+
 	.AVA-unranked-agent-info {
 		display: flex;
 		flex-direction: row;
@@ -331,40 +286,24 @@
 		justify-content: center;
 		align-items: center;
 		align-content: center;
-		margin-bottom: 4px;
-		width: 100%;
+
+		width: 29vw;
 		height:  8vh;
+		margin-bottom: 8px;
+
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 
 	}
-	
-	.prof-pic {
-		height: 50px;
-		width: 50px;
+	.single-unranked{
+		display: flex;
+		flex-direction: row;
+		width: 29vw;
+		justify-content: space-between;
+		padding: 30px;
 	}
+
 	
-	.AVA-Unranked-lineItem .ui.card>.content, .ui.cards>.card>.content {
-		padding: 0;
-		height: 10vh;;
-	}
-	
-	.AVA-Unranked-lineItem .ui.card>.content>.header, .ui.cards>.card>.content>.header  {
-		margin: 4px 0;
-		margin-bottom: 0;
-	}
-	
-	.AVA-Unranked-lineItem .ui.card>.content>.header+.description, .ui.card>.content>.meta+.description, .ui.cards>.card>.content>.header+.description, .ui.cards>.card>.content>.meta+.description {
-		margin: 0;
-	}
-	
-	.h6-name {
-		margin: 0;
-	}
-	
-	.ui.header:first-child {
-		margin-top: 0.5em;
-	}
 }
 
 

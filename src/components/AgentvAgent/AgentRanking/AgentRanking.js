@@ -142,12 +142,12 @@ class AgentRanking extends Component {
                     {/* we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more */}
                     
                     <div className="UnrankedAgents">
+                        <div className="all-unranked">
                         <FlipMove>
                             {this.state.sortedUsers.map((e, i) => {   
                                 if (i > 2 && i < 6) {
                                     return <div key={e.userId} className="AVA-unranked-agent-info">
-                                            <div>
-
+                                            <div >
                                                 <div className="single-unranked">
                                                     <div className='rank'>{i + 1}th Place</div>
                                                     <h6>{e.name}</h6>
@@ -158,6 +158,7 @@ class AgentRanking extends Component {
                                 }
                             })}
                         </FlipMove>
+                        </div>
                         
                         <MediaQuery query=" ( max-width: 425px) ">
                             <MobileModal />

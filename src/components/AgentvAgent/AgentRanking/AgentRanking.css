@@ -33,6 +33,7 @@
 
 	background-color: white;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	border-radius: 5px;		
 }
 
 .first-place-left{
@@ -54,7 +55,7 @@
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
-	justify-content: flex-start;
+	justify-content: left;
 	align-items: center;
 	align-content: center;
 	height: 100%;
@@ -90,6 +91,7 @@
 
 	background-color: white;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	border-radius: 5px;		
 }
 
 
@@ -109,6 +111,7 @@
 
 	background-color: white;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	border-radius: 5px;		
 	
 	
 }
@@ -120,9 +123,15 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-	height: 100%;
+
 	width: 100%;
+	height: 100%;
 	margin-top: 2vh;
+
+}
+
+.all-unranked{
+	margin-bottom: 2vh;
 }
 
 .AVA-unranked-agent-info {
@@ -132,18 +141,22 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-	margin-bottom: 8px;
+
 	width: 90vw;
 	height:  8vh;
+	margin-bottom: 8px;
+
 	background-color: white;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	border-radius: 5px;		
 
 }
 .single-unranked{
 	display: flex;
 	flex-direction: row;
-	width: 100%;
-	justify-content: flex-start;
+	justify-content: space-between;
+	
+	width: 90vw;
 	padding: 20px;
 }
 
@@ -177,11 +190,14 @@
 		justify-content: flex-start;
 		align-items: center;
 		align-content: center;
+
 		height: 40vh;
 		width: 100%;
+		margin-bottom: 20px;
+
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		margin-bottom: 20px;
+		border-radius: 5px;
 	}
 	
 	.first-place-left{
@@ -240,6 +256,7 @@
 
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+		border-radius: 5px;
 	}
 
 
@@ -260,6 +277,7 @@
 
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+		border-radius: 5px;
 		
 		
 	}
@@ -275,8 +293,10 @@
 		height: 100%;
 		width: 29vw;
 		margin-top: 4px;
-		
-		
+	}
+
+	.all-unranked{
+		margin-bottom: 0;
 	}
 
 	.AVA-unranked-agent-info {
@@ -293,6 +313,7 @@
 
 		background-color: white;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+		border-radius: 5px;		
 
 	}
 	.single-unranked{

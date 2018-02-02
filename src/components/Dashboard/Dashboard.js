@@ -5,9 +5,6 @@ import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal';
 import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
 import axios from 'axios';
 import Sidebar from './Sidebar/Sidebar'
-
-
-
 class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -16,7 +13,6 @@ class Dashboard extends Component {
       challenges: []
     }
   }
-
   componentDidMount() {
     axios.get('/api/fullChallengeTable').then(res => {
       this.setState({
@@ -24,7 +20,6 @@ class Dashboard extends Component {
       })
     })
   }
-
   render() {
     const { challenges } = this.state
     let chalLength = challenges.length
@@ -39,7 +34,6 @@ class Dashboard extends Component {
         </div>
       )
     })
-
     let remaining = () => {
       let buttonArr = [];
       for (let i = chalLength; i < 5; i++) {
@@ -51,10 +45,6 @@ class Dashboard extends Component {
       }
       return buttonArr
     }
-
-
-
-
     return (
       <div className="flex-row">
         <div className="Dashboard">
@@ -75,12 +65,10 @@ class Dashboard extends Component {
           </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
-
           </div>
           </div>
       </div>
     );
   }
 }
-
 export default Dashboard;

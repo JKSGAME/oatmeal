@@ -14,7 +14,6 @@ import fullicon from '../../icon/fullscreen.png';
 
 const socket = io()
 
-
 class AgentvAgent extends Component {
     constructor( props ) {
         super( props )
@@ -50,11 +49,9 @@ class AgentvAgent extends Component {
             })   
         }
     }
-
     goFull = () => {
         this.setState({ isFull: true })
     }
-
     render() {
     return (
         <div>

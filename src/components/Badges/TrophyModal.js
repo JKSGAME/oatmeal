@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Popup, Button, Header, Modal, Dropdown, Input, Form, TextArea, Segment, Divider, Image } from 'semantic-ui-react'
-// import DropzoneComponent from 'react-dropzone-component'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 

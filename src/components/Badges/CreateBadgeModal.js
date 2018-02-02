@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Modal, Grid } from 'semantic-ui-react'
-import AchievementModal from './AchievementModal';
-import TrophyModal from './TrophyModal';
-import Sidebar from '../Dashboard/Sidebar/Sidebar';
+import AchievementModal from './AchievementModal'
+import TrophyModal from './TrophyModal'
+import Sidebar from '../Dashboard/Sidebar/Sidebar'
 import { Link } from 'react-router-dom'
 
 class CreateBadgeModal extends Component {

@@ -24,7 +24,6 @@ class AgentvAgent extends Component {
     componentDidMount() {
         // this.props.fetchAVAData()
         let roomId = this.props.challengeId
-        console.log(roomId)
         if ( roomId > 0 ) {
             socket.emit( 'join room', {
                 room: roomId,
@@ -59,6 +58,7 @@ class AgentvAgent extends Component {
         <div>
             <button onClick= {this.goFull} className="fullscreen-button">
                 <img src={fullicon} className="fullscreen-icon" alt='full screen option'/>
+                <p>Fullscreen</p>
             </button>
             <Fullscreen enabled ={this.state.isFull} onChange = {isFull => this.setState({isFull})}>
                 <div className="AgentvAgent">

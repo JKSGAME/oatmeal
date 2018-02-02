@@ -14,19 +14,24 @@
 
 .fullscreen-button{
     position: fixed;
+   
     top: 3vh;
-    right: 40px;
+    right: 21.5vw;
     width: 50px;
     height: 50px;
     background-color: transparent;
     border-radius: 50%;
-    border: solid black 2px;
+    border: none;
+    text-align: right;
 }
 
 .fullscreen-icon{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
+    margin-right: -4px;
+    
 }
+
 
 .AVA-title {
     display: flex;

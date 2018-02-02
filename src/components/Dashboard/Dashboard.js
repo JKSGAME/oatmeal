@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import './Dashboard.css';
-import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import './Dashboard.css'
 import CreateChallengeModal from './CreateChallengeModal/CreateChallengeModal'
-import axios from 'axios';
+import CurrentChallengeModal from './CurrentChallengeModal/CurrentChallengeModal'
+import axios from 'axios'
 import Sidebar from './Sidebar/Sidebar'
 
 
@@ -43,7 +44,7 @@ class Dashboard extends Component {
       let buttonArr = [];
       for (let i = chalLength; i < 5; i++) {
         buttonArr.push(
-          <div className="create-challenge" key={i}>
+          <div className="create-challenge-off" key={i}>
             <CreateChallengeModal />
           </div>
         )
@@ -56,11 +57,10 @@ class Dashboard extends Component {
 
     return (
       <div className="flex-row">
-        <div className="sidebar">
-          <div className="icon-column"></div>
-        </div>
         <div className="Dashboard">
-        <Sidebar/>
+        <div className="sidebar">
+          <Sidebar/>
+        </div>
           <header>
             <h1>Dashboard</h1>
           </header>
@@ -75,8 +75,10 @@ class Dashboard extends Component {
           </div>
         <div className='modals'>
           <CurrentChallengeModal history={this.props.history} challengeId={this.state.challenges.challenge_id} />
-        </div>
-        </div>
+
+          </div>
+            <Link to="/dummycrm" ><button className="crm-btn">Sample CRM</button></Link>
+          </div>
       </div>
     );
   }

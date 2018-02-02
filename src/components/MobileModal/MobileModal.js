@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import _ from 'lodash';
-import { Button, Modal, Grid, Segment } from 'semantic-ui-react';
-// import { Link } from 'react-router-dom';
-// users in state might need to be put in redux, for other componenets to have sorted da
+import React, { Component } from 'react'
+import axios from 'axios'
+import _ from 'lodash'
+import { Button, Modal, Grid, Segment } from 'semantic-ui-react'
+
 
 class MobileModal extends Component {
 
@@ -25,7 +24,6 @@ class MobileModal extends Component {
 
     componentWillReceiveProps(nextProps) {
         axios.get(`/api/viewmore/${nextProps.chalid}`).then(res => {
-            // console.log('res.data', res.data);
             let userArr = []
             res.data.map((e, i) => {
                 let standingsObj = JSON.parse(e.standings)

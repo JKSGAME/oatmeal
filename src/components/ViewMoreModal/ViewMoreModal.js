@@ -43,9 +43,7 @@ class ViewMoreModal extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
         axios.get(`/api/viewmore/${nextProps.chalid}`).then(res => {
-            // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
                 let standingsObj = JSON.parse(e.standings)
@@ -59,7 +57,6 @@ class ViewMoreModal extends Component {
                     challengeTypeId: e.challenge_type_id
                 })
             })
-            console.log(userArr, 'userarr');
             let orderedUsers = () => {
                 let arr = []
                 if (userArr[0].kpi === 'Sales') {
@@ -80,7 +77,6 @@ class ViewMoreModal extends Component {
     
     render() {
         const { open, column, direction, kpiTitle, users } = this.state
-        console.log('users', users);
         let dynamicKPI = (i) => {
             if (users[0].kpi && users[0].kpi === 'Sales') {
                 return users[i].standings.salesKPI

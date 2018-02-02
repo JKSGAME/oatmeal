@@ -12,8 +12,8 @@ class DummyUser extends Component {
     super( props )
 
     this.state = {
-      sales: 1,
-      dials: 1
+      sales: 0,
+      dials: 0
     }
 
     this.handleClick = this.handleClick.bind( this )
@@ -69,7 +69,7 @@ class DummyUser extends Component {
     return (
       <div className="DummyUser">
         <header className="DummyTitle">
-            <h1>Name: { this.props.name }</h1>
+            <h1>{ this.props.name }</h1>
             <h2>Team: { this.props.team }</h2>
         </header>
         <span className="DummyKpis">

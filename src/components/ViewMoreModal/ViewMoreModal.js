@@ -47,7 +47,6 @@ class ViewMoreModal extends Component {
             // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
-                let standingsObj = JSON.parse(e.standings)
                 return userArr.push({
                     index: i,
                     userId: e.user_id,

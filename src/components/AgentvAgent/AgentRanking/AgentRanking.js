@@ -77,97 +77,98 @@ class AgentRanking extends Component {
                     {dynamicName()}
                     {dynamicDesc()}
                 </div>
-                {/* <div className='AVA-FirstPlaceAgent'> */}
-                    <FlipMove>
-                        {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                            if (i === 0) {
-                                return <div key={e.userId} className='AVA-first-place-agent'>
-                                    <div className="first-place-left">
-                                        <h1 as='h1'>1st Place</h1>
-                                        <img className='first-place-img' centered size='small' src={e.photos} />
-                                    </div>
-                                    <div className="first-place-right">
-                                        <h2>{e.name}</h2>
-                                        <div>
-                                            <h3>Team: {e.team}</h3>
-                                            {e.kpi}: {dynamicKPI(i)}
+                <FlipMove>
+                    {this.state.sortedUsers.map((e, i) => {   
+                        if (i === 0) {
+                            return <div key={e.userId} className='AVA-first-place-agent'>
+                                        <div className="first-place-left">
+                                            <h1 as='h1'>1st Place</h1>
+                                            <img className='first-place-img' centered size='small' src={e.photos} />
+                                        </div>
+                                        <div className="first-place-right">
+                                            <h2>{e.name}</h2>
+                                            <div>
+                                                <h3>Team: {e.team}</h3>
+                                                <h3>{e.kpi}: {dynamicKPI(i)}</h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            }
-                        })}
-                    </FlipMove>
-                {/* </div> */}
-                
-                    {/* { this.props.users.length > 0 && */}
-                    <div className="SecondThirdUnranked">
-                        <div className="SecondThirdAgents">
-                            {/* <div className="SecondPlaceAgent"> */}
-                                <FlipMove>
-                                    {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                        if (i === 1) {
-                                            return <div className="SecondPlaceAgent" key={e.userId} >
-                                                    <h4 as='h4'>2nd Place</h4>
+                        }
+                    })}
+                </FlipMove>
+            
+                <div className="SecondThirdUnranked">
+
+                    <div className="SecondThirdAgents">
+                    <FlipMove>
+                            {this.state.sortedUsers.map((e, i) => {   
+                                if (i === 1) {
+                                    return <div className="SecondPlaceAgent" key={e.userId} >
+                                                <div className="secondPlace">
+                                                    <div className='rank'>2nd Place</div>
                                                     <Image size='small' src={e.photos} />
                                                     <div>
-                                                        <div>{e.name}</div>
-                                                        <div><p>Team: {e.team}</p>
-                                                            {e.kpi}: {dynamicKPI(i)}
+                                                        <span>{e.name}</span>
+                                                        <div>
+                                                            <p>Team: {e.team}</p>
+                                                            <div>{e.kpi}: {dynamicKPI(i)}</div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            // </div>
-                                        }
-                                    })}
-                                </FlipMove>
-                            {/* </div> */}
-                            {/* <div className="ThirdPlaceAgent"> */}
-                                <FlipMove>
-                                    {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                        if (i === 2) {
-                                             return <div className='ThirdPlaceAgent'  key={e.userId}>
-                                                    <div as='h4'>3rd Place</div>
+                                            </div>
+                                }
+                            })}
+                        </FlipMove>
+
+                        <FlipMove>
+                            {this.state.sortedUsers.map((e, i) => { 
+                                if (i === 2) {
+                                    return <div className='ThirdPlaceAgent'  key={e.userId}>
+                                                <div className="thirdPlace">
+                                                    <div className='rank'>3rd Place</div>
                                                     <Image size='small' src={e.photos} />
                                                     <div>
-                                                        <div>{e.name}</div>
+                                                        <span>{e.name}</span>
                                                         <div><p>Team: {e.team}</p>
-                                                            {e.kpi}: {dynamicKPI(i)}</div>
+                                                            <div>{e.kpi}: {dynamicKPI(i)}</div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            // </div>
-                                        }
-                                    })}
-                                </FlipMove>
-                            {/* </div> */}
-                        </div>
-                        <div className="UnrankedAgents">
-                            <div className="AVA-unranked-data">
-                                <div className="AVA-unranked-ranking">
-                                    <FlipMove>
-                                        {this.state.sortedUsers.map((e, i) => {   // we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more. 
-                                            if (i > 2 && i < 6) {
-                                                return <div key={e.userId} className="AVA-unranked-agent-info">
-                                                            <div as='h6'>{i + 1}th Place</div>
-                                                            <div>
-                                                                <h6 className='h6-name'>{e.name}</h6>
-                                                                {e.kpi}: {dynamicKPI(i)}
-                                                            </div>
-                                                        </div>
-                                           }
-                                        })}
-                                    </FlipMove>
-                                </div>
-                                <MediaQuery query=" ( max-width: 425px) ">
-                                    <MobileModal />
-                                </MediaQuery>
-                                <MediaQuery query=" ( min-width: 426px) ">
-                                    <ViewMoreModal />
-                                </MediaQuery>
-                            </div>
-                        </div>
-                        {/* } */}
+                                            </div>
+                                }
+                            })}
+                        </FlipMove>
+                    </div>
+                    {/* we need to start the map at user 4 and end after 3 iterations.  all users 7+ will be seen onclick of view more */}
+                    
+                    <div className="UnrankedAgents">
+                        <FlipMove>
+                            {this.state.sortedUsers.map((e, i) => {   
+                                if (i > 2 && i < 6) {
+                                    return <div key={e.userId} className="AVA-unranked-agent-info">
+                                            <div>
+
+                                                <div className="single-unranked">
+                                                    <div className='rank'>{i + 1}th Place</div>
+                                                    <h6>{e.name}</h6>
+                                                    <h6>{e.kpi}: {dynamicKPI(i)}</h6>
+                                                </div>
+                                            </div>
+                                            </div>
+                                }
+                            })}
+                        </FlipMove>
+                        
+                        <MediaQuery query=" ( max-width: 425px) ">
+                            <MobileModal />
+                        </MediaQuery>
+                        <MediaQuery query=" ( min-width: 426px) ">
+                            <ViewMoreModal />
+                        </MediaQuery>
+
                     </div>
                 </div>
+            </div>
           
         )
     }

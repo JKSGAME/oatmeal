@@ -9,7 +9,6 @@ class CreateChallengeModal extends Component {
         super()
         this.state = {
             open: false,
-            challenges: [],
             teams: [],
             modes: [],
             kpis: [],
@@ -96,11 +95,6 @@ class CreateChallengeModal extends Component {
 
 
     componentDidMount() {
-        axios.get('/api/challenges').then(res => {
-            this.setState({
-                challenges: res.data
-            })
-        })
 
         axios.get('/api/teams').then(res => {
             this.setState({
@@ -161,7 +155,7 @@ class CreateChallengeModal extends Component {
 
         return (
             <div>
-                <Button id="create" onClick={this.show('blurring')}>Create Challenge <br/>
+                <Button id="create" onClick={this.show('false')}>Create Challenge <br/>
                 <br/>
                     <div>
                         <img src={plus} alt="plus icon"/>
@@ -183,9 +177,7 @@ class CreateChallengeModal extends Component {
                                         <Header size='small'>Challenge Type</Header>
                                         <Dropdown placeholder='Select Challenge Type' floating search selection onChange={(e, d) => this.dataGrabber('selectedType', d.value)} options={challengeType} text={challengeType.text} value={challengeType.value} labeled={true} />
                                         <Header size='small'>Teams</Header>
-                                        <Dropdown placeholder='Select Teams Involved' floating search selection  onChange={(e, d) => {
-                                            console.log('d.value', d.value);
-                                            this.dataGrabber('selectedTeam', d.value)}} options={teamInfo} text={teamInfo.text} />
+                                        <Dropdown placeholder='Select Teams Involved' floating search selection  onChange={(e, d) => this.dataGrabber('selectedTeam', d.value)} options={teamInfo} text={teamInfo.text} />
 
                                     </Segment>
 

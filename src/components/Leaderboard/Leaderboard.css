@@ -5,5 +5,10 @@
     align-self: center;
     max-width: 100%;
     overflow: hidden;
-    background-color: #dbe1e5
+    background-color: #dbe1e5;
+
+    overflow-y: visible;
+
+    
 }
+

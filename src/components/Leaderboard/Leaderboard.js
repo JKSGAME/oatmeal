@@ -39,7 +39,9 @@ class Leaderboard extends Component {
         }
         return (
             <div className="Leaderboard">
-                <Sidebar color="#06324F"/>
+                <div  className="sidebar">
+                    <Sidebar />
+                </div>
                 <div className='board'>
                     { leaderboard( chalTypeId[0] ) }
                 </div> 

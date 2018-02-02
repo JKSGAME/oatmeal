@@ -12,7 +12,7 @@
     font-size: 20px;
     font-weight: 300;
 }
-.AVA-first-place-agent{
+.AVA-first-place-agent {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -27,10 +27,14 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     border-radius: 5px;     
 }
-.first-place-left{
+.first-place-left {
     width: 100%;
 }
-.first-place-right{
+.first-place-right h3 {
+    margin: 0;
+    font-size: 20px;
+}
+.first-place-right {
     width: 100%
 }
 .first-place-img {
@@ -71,6 +75,14 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     border-radius: 5px;     
 }
+div.SecondPlaceAgent p {
+    margin: 0;
+    font-size: 15px;
+}
+div.SecondPlaceAgent h6 {
+    font-size: 18px;
+}
+
 .ThirdPlaceAgent {
     display: flex;
     align-self: center;
@@ -85,8 +97,13 @@
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     border-radius: 5px;     
-    
-    
+}
+div.ThirdPlaceAgent p {
+    margin: 0;
+    font-size: 15px;
+}
+div.ThirdPlaceAgent h6 {
+    font-size: 18px;
 }
 .UnrankedAgents {
     display: flex;
@@ -198,9 +215,9 @@
         width: 100%;
     }
     
-    .img.ui.small.image.secondPlaceImg {
+    img.ui.small.image.secondPlaceImg {
         margin-bottom: 6px;
-        margin-right: 0 !important;
+        display: inline-block;
     }
     
     .SecondPlaceAgent {

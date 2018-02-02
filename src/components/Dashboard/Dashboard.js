@@ -27,7 +27,7 @@ class Dashboard extends Component {
     let curChal = challenges.map((e, i) => {
       return (
         <div key={e.id}>
-          <div className='chal-box' key={e.name} onClick={() => this.props.history.push(`/leaderboard/${e.challenge_id}`)}>
+          <div className='chal-box hvr-float' key={e.name} onClick={() => this.props.history.push(`/leaderboard/${e.challenge_id}`)}>
             <div className="card-content">
               <h3>{e.name}</h3>
               <h4>Challenge mode: {e.mode}</h4><br/>
@@ -41,7 +41,7 @@ class Dashboard extends Component {
       let buttonArr = [];
       for (let i = chalLength; i < 5; i++) {
         buttonArr.push(
-          <div className="create-challenge-off" key={i}>
+          <div className="create-challenge-off hvr-float" key={i}>
             <div className="create-content">
               <CreateChallengeModal />
             </div>
@@ -67,7 +67,7 @@ class Dashboard extends Component {
               <div className='chal-box-wrapper'>
                 {curChal}
                 {remaining()}
-                <div className="create-challenge">
+                <div className="create-challenge hvr-float">
                   <div className="create-content">  
                     <CreateChallengeModal />
                   </div>

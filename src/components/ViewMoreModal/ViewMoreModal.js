@@ -89,7 +89,7 @@ class ViewMoreModal extends Component {
 
         return (
             <div className='ViewMoreModal'>
-                <Button className='viewMoreBtn' basic onClick={this.show('blurred')}>View More</Button>
+                <Button className='viewMoreBtn hvr-grow-shadow' basic onClick={this.show('blurred')}>View More</Button>
                 <Modal dimmer open={open} onClose={this.close}>
                     <Modal.Header>Full Current Standings List</Modal.Header>
                     <Modal.Content >

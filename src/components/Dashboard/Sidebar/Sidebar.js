@@ -3,6 +3,7 @@ import { Sidebar, Menu, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import BadgeDisplayModal from '../../Badges/BadgeDisplayModal'
 import CurrentChallengeModal from '../CurrentChallengeModal/CurrentChallengeModal'
+import './Sidebar.css'
 
 
 class SideBar extends Component {
@@ -15,7 +16,7 @@ class SideBar extends Component {
     return (
       <div>
         <Sidebar as={Menu} width='thin' visible icon='labeled' vertical inverted>
-          <Link to='/' ><Menu.Item name='home'><Icon name='home' /></Menu.Item></Link>
+          <Link to='/' ><Menu.Item name='home'><Icon  name='home' /></Menu.Item></Link>
           <Link to='/'><Menu.Item name='profile'><Icon name='user circle outline' /></Menu.Item></Link>
           <Link to='/'><Menu.Item name='rewards'><Icon name='dollar' /></Menu.Item></Link>
           <Menu.Item name='badges' onClick={this.show('false')} ><Icon name='trophy' /><BadgeDisplayModal open={this.state.open} close={this.close} /></Menu.Item>

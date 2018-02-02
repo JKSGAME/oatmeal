@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Popup, Button, Header, Modal, Dropdown, Input, Form, TextArea, Segment, Divider, Image } from 'semantic-ui-react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import './Badges.css'
 
 
 // var componentConfig = { postUrl: 'no-url' };
@@ -109,7 +110,6 @@ class TrophyModal extends Component {
 
     render() {
         let { scoreTypes, rewards, photos, displaySubTypes } = this.state
-        console.log('scoresub', this.state.scoreSubTypes)
         const rewardsInfo = rewards.map((e, i) => {
             return { id: e.id, key: e.id, text: e.reward_type, value: e.id }
         })
@@ -119,7 +119,6 @@ class TrophyModal extends Component {
         })
 
         const scoreSubTypeInfo = displaySubTypes.map((e, i) => {
-            console.log('e', e);
             return { id: e.id, key: e.id, text: e.text, value: e.id }
         })
 
@@ -129,7 +128,7 @@ class TrophyModal extends Component {
 
         return (
             <div>
-                <Popup wide on='hover' position='bottom right' trigger={<Button content='Trophy' onClick={this.show2('false')} />} >
+                <Popup wide on='hover' position='bottom right' trigger={<Button className='hvr-grow' content='Trophy' onClick={this.show2('false')} />} >
                     <Popup.Content>
                         A trophy badge is given to those who win challenges or duels. Rewards should be based on difficulty of the win. Ex. First to 10 dials Reward: 100 points.
           </Popup.Content>

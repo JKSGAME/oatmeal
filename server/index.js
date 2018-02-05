@@ -16,6 +16,7 @@ app.use( cors() );
 S3( app )
 
 massive( process.env.DB_CONNECTION ).then( db => { app.set( 'db', db ) } )
+app.use( express.static( `${__dirname}/../build` ) );
 
 // app.use(session({
 //     secret: process.env.SESSION_SECRET,
@@ -86,8 +87,13 @@ io.on( 'connection', socket => {
         console.log( input, "input" ) 
         io.to( room ).emit( 'response', {standings: input} )
     })
-
-
 })
+
+
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
+
 
 // exports = module.exports = app

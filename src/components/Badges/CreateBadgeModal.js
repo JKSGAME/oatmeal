@@ -25,7 +25,7 @@ class CreateBadgeModal extends Component {
           <Modal.Header>Create a Badge!</Modal.Header>
           <Modal.Content >
             <Modal.Description>
-                <Grid relaxed columns={2} >
+                <Grid relaxed className='test' columns={2} >
                 {/* <Grid.Column></Grid.Column> */}
                     <Grid.Column floated='right' >
 

@@ -33,7 +33,7 @@ class AchievementModal extends Component {
         console.log('rewardvalue', this.rewardValue.inputRef.value);
         console.log('scoretarget', this.scoreTarget.inputRef.value);
         console.log('state', this.state);
-        // this.addAchievement()
+        this.addAchievement()
         // send data to db, send data in fields, then this.name = ''
         this.setState({
             selectedScoreType: '',

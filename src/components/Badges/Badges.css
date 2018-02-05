@@ -19,7 +19,7 @@
     margin-right: 10px;
   }
 
-  .ui[class*="two column"].grid>.column:not(.row), .ui[class*="two column"].grid>.row>.column {
+  .ui[class="test two column"].grid>.column:not(.row), .ui[class*="two column"].grid>.row>.column {
     width: 25%;
     margin-left: 85px;
   }

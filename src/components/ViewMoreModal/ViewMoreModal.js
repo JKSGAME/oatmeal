@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import _ from 'lodash'
 import { Button, Modal, Table } from 'semantic-ui-react'
+import './ViewMoreModal.css'
 // import { Link } from 'react-router-dom';
 // users in state might need to be put in redux, for other componenets to have sorted da
 
@@ -43,9 +44,7 @@ class ViewMoreModal extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
         axios.get(`/api/viewmore/${nextProps.chalid}`).then(res => {
-            // console.log('res.data', res.data);
             let userArr = []
             res.data.map( (e, i) => {
                 let standingsObj = JSON.parse(e.standings)
@@ -59,7 +58,6 @@ class ViewMoreModal extends Component {
                     challengeTypeId: e.challenge_type_id
                 })
             })
-            console.log(userArr, 'userarr');
             let orderedUsers = () => {
                 let arr = []
                 if (userArr[0].kpi === 'Sales') {
@@ -80,7 +78,6 @@ class ViewMoreModal extends Component {
     
     render() {
         const { open, column, direction, kpiTitle, users } = this.state
-        console.log('users', users);
         let dynamicKPI = (i) => {
             if (users[0].kpi && users[0].kpi === 'Sales') {
                 return users[i].standings.salesKPI
@@ -92,7 +89,7 @@ class ViewMoreModal extends Component {
 
         return (
             <div className='ViewMoreModal'>
-                <Button onClick={this.show('blurred')}>View More</Button>
+                <Button className='viewMoreBtn hvr-grow-shadow' basic onClick={this.show('blurred')}>View More</Button>
                 <Modal dimmer open={open} onClose={this.close}>
                     <Modal.Header>Full Current Standings List</Modal.Header>
                     <Modal.Content >
@@ -116,7 +113,7 @@ class ViewMoreModal extends Component {
                                 </Table.Header>
                                 <Table.Body>
                                     {users.map(  (e, i)  => {
-                                       return  <Table.Row key={e.userId} >
+                                       return <Table.Row key={e.userId} >
                                         <Table.Cell>{i + 1}</Table.Cell>
                                         <Table.Cell>{e.name}</Table.Cell>
                                         <Table.Cell>{e.team}</Table.Cell>

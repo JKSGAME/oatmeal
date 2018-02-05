@@ -25,9 +25,9 @@ class CreateBadgeModal extends Component {
           <Modal.Header>Create a Badge!</Modal.Header>
           <Modal.Content >
             <Modal.Description>
-                <Grid relaxed columns={4} >
-                <Grid.Column></Grid.Column>
-                    <Grid.Column floated='left' >
+                <Grid relaxed columns={2} >
+                {/* <Grid.Column></Grid.Column> */}
+                    <Grid.Column floated='right' >
 
                     <AchievementModal function={this.show2} childOpen={this.state.childOpen} function2={this.close2} function3={this.close}/> 
 
@@ -37,7 +37,7 @@ class CreateBadgeModal extends Component {
                     <TrophyModal function={this.show3} childOpen={this.state.child2Open} function2={this.close3} function3={this.close}/> 
 
                     </Grid.Column>
-                    <Grid.Column></Grid.Column>
+                    {/* <Grid.Column></Grid.Column> */}
                 </Grid>
             </Modal.Description>
           </Modal.Content>

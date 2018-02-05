@@ -3,25 +3,28 @@
     align-self: center;
     max-width: 100%;
     overflow: hidden;
-    background-color: #dbe1e5;
-    
+    background-color: #dbe5f1;
     overflow-y: visible;
-    
     height: 100%;
     width: 100%;
     
 }
+
 @media (min-width: 426px){
     .Leaderboard{
         align-self: center;
         max-width: 100%;
         overflow: hidden;
-        background-color: #dbe1e5;
-        
+        background-color: #dbe5f1;
         overflow-y: visible;
-        
         height: 100%;
         width: 100%;
         margin-left: 4.5%;
+    }
+
+    .logo-location2{ 
+        margin-left: 42vw;
+        margin-top: 2vh;
+        margin-bottom: -3vh;
     }
 }

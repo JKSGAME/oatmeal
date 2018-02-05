@@ -12,7 +12,7 @@
     font-size: 20px;
     font-weight: 300;
 }
-.AVA-first-place-agent{
+.AVA-first-place-agent {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -27,10 +27,14 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     border-radius: 5px;     
 }
-.first-place-left{
+.first-place-left {
     width: 100%;
 }
-.first-place-right{
+.first-place-right h3 {
+    margin: 0;
+    font-size: 20px;
+}
+.first-place-right {
     width: 100%
 }
 .first-place-img {
@@ -71,6 +75,14 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     border-radius: 5px;     
 }
+div.SecondPlaceAgent p {
+    margin: 0;
+    font-size: 15px;
+}
+div.SecondPlaceAgent h6 {
+    font-size: 18px;
+}
+
 .ThirdPlaceAgent {
     display: flex;
     align-self: center;
@@ -85,8 +97,13 @@
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     border-radius: 5px;     
-    
-    
+}
+div.ThirdPlaceAgent p {
+    margin: 0;
+    font-size: 15px;
+}
+div.ThirdPlaceAgent h6 {
+    font-size: 18px;
 }
 .UnrankedAgents {
     display: flex;
@@ -125,169 +142,187 @@
     padding: 20px;
 }
 @media (min-width: 426px) {
-	.agent-ranking{
-		width: 60vw;
-		height: 90%;
-		margin-bottom: 30px;
-		margin-top: 3vh;
-	}
+    .agent-ranking{
+        width: 60vw;
+        height: 90%;
+        margin-bottom: 30px;
+        margin-top: 3vh;
+    }
+    .AVA-title > h2{
+        font-size: 32px;
+        font-weight: 600;   
+    }
+    .AVA-title > p {
+        font-size: 20px;
+        font-weight: 300;
+    }
+    .AVA-first-place-agent{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        height: 40vh;
+        width: 100%;
+        margin-bottom: 20px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+    }
+    
+    .first-place-left {
+        width: 100%;
+    }
+    .first-place-left h1 {
+        font-size: 45px;
+        margin-bottom: 0;
+    }
+    
+    .first-place-right {
+        width: 100%
+    }
+    .first-place-right h2 {
+        font-size: 45px;
+    }
+    .first-place-right h3 {
+        font-size: 35px;
+    }
+    
+    .first-place-img {
+        height: 260px;
+        width: 266px;
+    }
+    
+    .SecondThirdUnranked {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        height: 30vh;
+        width: 100%;
+    }
+    
+    .SecondThirdAgents {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: center; 
+        height: 30vh;
+        width: 100%;
+    }
+    
+    img.ui.small.image.secondPlaceImg {
+        margin-bottom: 6px;
+        display: inline-block;
+    }
+    
+    .SecondPlaceAgent {
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-content: center; 
+        height: 30vh;
+        width: 14vw; 
+        /* padding-left: 18%; */
+        /* padding-right: 18%; */
+        margin-right: 10px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+    }
+    .SecondPlaceAgent h6 {
+        font-size: 20px;
+        margin-bottom: 3px;
+    }
+    .SecondPlaceAgent p {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
 
+    .ui.small.image.thirdPlaceImg {
+        margin-bottom: 6px;
+    }
 
+    .ThirdPlaceAgent {
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center; 
+        height: 30vh;
+        width: 14vw; 
+        /* padding-left: 18%; */
+        /* padding-right: 18%; */
+        margin-left: 10px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+    }
+    .ThirdPlaceAgent h6 {
+        font-size: 20px;
+        margin-bottom: 3px;
+    }
+    .ThirdPlaceAgent p {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+    .ThirdPlaceAgent div.rank {
+        margin-bottom: 2px;
+    }
+    
+    .UnrankedAgents {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100%;
+        width: 29vw;
+        margin-top: 4px;
+    }
 
-	.AVA-title > h2{
-		font-size: 32px;
-		font-weight: 600;	
-	}
+    .all-unranked{
+        margin-bottom: 0;
+    }
 
-	.AVA-title > p {
-		font-size: 20px;
-		font-weight: 300;
-	}
+    .AVA-unranked-agent-info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        width: 29vw;
+        height:  8vh;
+        margin-bottom: 8px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-radius: 5px;     
+    }
 
-	.AVA-first-place-agent{
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-items: center;
-		align-content: center;
+    .single-unranked{
+        display: flex;
+        flex-direction: row;
+        width: 29vw;
+        justify-content: space-between;
+        padding: 30px;
+    }
+    .single-unranked h6 {
+        font-size: 16px;
+        margin-bottom: 0;
+    }
 
-		height: 40vh;
-		width: 100%;
-		margin-bottom: 20px;
-
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		border-radius: 5px;
-	}
-	
-	.first-place-left{
-		width: 100%;
-
-	}
-	
-	.first-place-right{
-		width: 100%
-	}
-	
-	.first-place-img {
-		height: 60%;
-		width: 60%;
-	
-	}
-	
-	.SecondThirdUnranked {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-items: center;
-		align-content: center;
-		height: 30vh;
-		width: 100%;
-	}
-	
-	.SecondThirdAgents {
-	
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-content: center; 
-
-		height: 30vh;
-		width: 100%;
-
-	}
-	
-	
-	.SecondPlaceAgent {
-		display: flex;
-		align-self: center;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: space-around;
-		align-content: center; 
-
-		height: 30vh;
-		width: 14vw; 
-		padding-left: 18%;
-		padding-right: 18%;
-		margin-right: 10px;
-
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		border-radius: 5px;
-	}
-
-
-	.ThirdPlaceAgent {
-		display: flex;
-		align-self: center;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: space-around;
-		align-items: center;
-		align-content: center; 
-		height: 30vh;
-		width: 14vw; 
-
-		padding-left: 18%;
-		padding-right: 18%;
-		margin-left: 10px;
-
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		border-radius: 5px;
-		
-		
-	}
-	
-	.UnrankedAgents {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		align-content: center;
-
-		height: 100%;
-		width: 29vw;
-		margin-top: 4px;
-	}
-
-	.all-unranked{
-		margin-bottom: 0;
-	}
-
-	.AVA-unranked-agent-info {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		align-content: center;
-
-		width: 29vw;
-		height:  8vh;
-		margin-bottom: 8px;
-
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-		border-radius: 5px;		
-
-	}
-	.single-unranked{
-		display: flex;
-		flex-direction: row;
-		width: 29vw;
-		justify-content: space-between;
-		padding: 30px;
-	}
-
-	
+    div.rank {
+        font-size: 18px;
+    }
+    
 }
-
-
-
-

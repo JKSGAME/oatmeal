@@ -21,11 +21,13 @@ class CreateChallengeModal extends Component {
             timeEnd: '',
             selectedDur: '',
             selectedRD: '',
-            challengeType: []
+            challengeType: [],
+            inputMaxLength: 30
         }
         this.submit = this.submit.bind(this)
         this.dataGrabber = this.dataGrabber.bind(this)
         this.addChallenge = this.addChallenge.bind(this)
+        this.inputCheck = this.inputCheck.bind(this)
     }
 
     show = dimmer => () => this.setState({ dimmer, open: true })
@@ -48,19 +50,24 @@ class CreateChallengeModal extends Component {
         console.log(this.targetValue.inputRef.value);
         console.log(this.rewardValue.inputRef.value);
         console.log('state', this.state);
-        this.addChallenge()
-        // send data to db, send data in fields, then this.name = ''
-        this.setState({
-            open: false,
-            selectedTeam: [],
-            selectedType: '',
-            selectedMode: '',
-            selectedKPI: '',
-            timeStart: '',
-            timeEnd: '',
-            selectedDur: '',
-            selectedRD: ''
-        })
+        let { selectedType, selectedTeam, selectedDur, timeStart, timeEnd, selectedMode, selectedKPI, selectedRD } = this.state
+        if ( selectedType, selectedTeam, selectedDur, timeStart, timeEnd, selectedMode, selectedKPI, selectedRD ) {
+            this.addChallenge()
+            alert('Your Challenge Has Been Created')
+            this.setState({
+                open: false,
+                selectedTeam: [],
+                selectedType: '',
+                selectedMode: '',
+                selectedKPI: '',
+                timeStart: '',
+                timeEnd: '',
+                selectedDur: '',
+                selectedRD: ''
+            })
+        } else {
+            alert('The Form Must Be Completed Before Submiting')
+        }
     }
 
 
@@ -88,9 +95,21 @@ class CreateChallengeModal extends Component {
             RewardDist: this.state.selectedRD
         }
 
+
         axios.post( '/api/create', chal ).then(res => {
             console.log('res', res.data)
         })
+
+        this.setState({ open: false })
+    }
+
+    inputCheck(value) {
+        if(value){
+            if (value.length > this.state.inputMaxLength) {
+            return "Exceeded Max amount of Characters"
+        } 
+         return value
+    }
     }
 
 
@@ -166,7 +185,9 @@ class CreateChallengeModal extends Component {
                     <Modal.Content scrolling={true}>
                         <Modal.Description>
 
-                            <Input label={'Challenge Name'} placeholder='Type here' ref={name => this.name = name} />
+                            <Input label={'Challenge Name'} placeholder='Type here' ref={name => this.name = name} onChange={(e, d) => {
+                                console.log(d.value);
+                                console.log(this.inputCheck(d.value))}}/>
                             <Divider hidden={true} />
                             <Grid stackable columns={2}>
 

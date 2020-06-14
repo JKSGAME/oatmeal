@@ -6,17 +6,18 @@
   "proxy": "http://localhost:3005",
   "dependencies": {
     "aws-sdk": "^2.186.0",
-    "axios": "^0.17.1",
+    "axios": "^0.19.2",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "hover.css": "^2.2.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.15",
     "massive": "^4.6.3",
+    "passport-auth0": "^1.3.3",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.13.1",
     "react-dropzone-component": "^3.1.0",
     "react-flip-move": "^3.0.1",
     "react-full-screen": "^0.2.2",
@@ -24,7 +25,7 @@
     "react-responsive": "^4.0.3",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.0",
+    "react-scripts": "^3.4.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-promise-middleware": "^5.0.0",
@@ -40,6 +41,6 @@
     "server": "nodemon --watch server"
   },
   "devDependencies": {
-    "jest": "^22.1.1"
+    "jest": "^26.0.1"
   }
 }
